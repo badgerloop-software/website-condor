@@ -1,0 +1,54 @@
+///
+/// Hypothesis by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Icon */
+
+	.icon {
+		@include icon;
+		border-bottom: none;
+		position: relative;
+
+		> .label {
+			display: none;
+		}
+
+		&.major {
+			display: block;
+			margin: 0 0 (_size(element-margin) * 0.625) 0;
+
+			&:before {
+				display: inline-block;
+				width: 4.5rem;
+				height: 4.5rem;
+				line-height: 4.5rem;
+				border-radius: 4.5rem;
+				font-size: 1.75rem;
+				text-align: center;
+			}
+		}
+	}
+
+	@mixin color-icon($p: null) {
+		.icon {
+
+			&.major {
+				@if ($p != null) {
+					&:before {
+						box-shadow: inset 0 0 0 3px _palette($p, fg-bold);
+						color: _palette($p, fg-bold);
+					}
+				}
+				@else {
+					&:before {
+						box-shadow: inset 0 0 0 3px _palette(accent1, bg);
+						color: _palette(accent1, bg);
+					}
+				}
+			}
+		}
+	}
+
+	@include color-icon;

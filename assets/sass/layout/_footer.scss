@@ -1,0 +1,133 @@
+///
+/// Hypothesis by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Footer */
+
+	#footer {
+		$padding: _size(padding, default);
+
+		@include padding($padding, 0);
+		background-color: _palette(bg);
+
+		> .inner {
+			@include vendor('display', 'flex');
+
+			h4 {
+				margin: 0 0 (_size(element-margin) * 0.75) 0;
+			}
+
+			> * {
+				@include vendor('flex-grow', '1');
+				@include vendor('flex-shrink', '1');
+				width: 30%;
+				margin: 0 1rem;
+
+				> :last-child {
+					margin-bottom: 0;
+				}
+
+				&.narrow {
+					width: 15%;
+				}
+			}
+
+			> :first-child {
+				margin-left: 0;
+			}
+
+			> :last-child {
+				margin-right: 0;
+			}
+		}
+
+		.copyright {
+			color: _palette(fg-light);
+			margin-top: $padding * 0.75;
+			text-align: center;
+		}
+
+		@include breakpoint('<=large') {
+			$padding: _size(padding, large);
+
+			@include padding($padding, 0);
+
+			.copyright {
+				margin-top: $padding * 0.75;
+			}
+		}
+
+		@include breakpoint('<=medium') {
+			$padding: _size(padding, medium);
+
+			@include padding($padding, 0);
+			text-align: center;
+
+			> .inner {
+				@include vendor('flex-wrap', 'wrap');
+
+				ul {
+					&.links {
+						li {
+							padding-left: 0;
+
+							&:before {
+								display: none;
+							}
+						}
+					}
+				}
+
+				> * {
+					width: 100%;
+					margin: 0 0 ($padding * 0.75) 0;
+
+					&.narrow {
+						width: 50%;
+					}
+				}
+			}
+
+			.copyright {
+				margin-top: $padding * 0.75;
+			}
+		}
+
+		@include breakpoint('<=small') {
+			$padding: _size(padding, small);
+
+			@include padding($padding, 0);
+
+			> .inner {
+				> * {
+					margin: 0 0 ($padding * 0.75) 0;
+				}
+			}
+
+			.copyright {
+				margin-top: $padding * 0.75;
+			}
+		}
+
+		@include breakpoint('<=xsmall') {
+			$padding: _size(padding, small);
+
+			> .inner {
+				> * {
+					border-bottom: solid 1px _palette(border);
+					padding-bottom: ($padding * 0.75);
+
+					&.narrow {
+						width: 100%;
+					}
+
+					&:last-child {
+						border-bottom: 0;
+						padding-bottom: 0;
+					}
+				}
+			}
+		}
+	}
