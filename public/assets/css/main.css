@@ -73,6 +73,10 @@ input, select, textarea {
 	appearance: none;
 }
 
+.flex-end {
+	align-self: flex-end;
+}
+
 /* Basic */
 
 	@-ms-viewport {
@@ -3479,10 +3483,12 @@ input, select, textarea {
 		}
 
 		#banner .content {
-			padding: 11rem 0 5.5rem 0 ;
+			/* padding: 11rem 0 5.5rem 0 ; */
+			height: 100vh;
 			text-align: center;
 			position: relative;
 			z-index: 1;
+			display: flex;
 		}
 
 			#banner .content.primary {
