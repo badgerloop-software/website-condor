@@ -3216,6 +3216,18 @@ input, select, textarea {
 				font-weight: 700;
 			}
 
+			@media screen and (max-width: 500px) {
+				#header > .logo img {
+					height: 30px;
+					margin-top: 5px;
+				}
+			}
+			@media screen and (min-width: 500px) {
+				#header > .logo img {
+					height: 50px;
+				}
+			}
+
 		#header > nav {
 			position: absolute;
 			right: 0;
