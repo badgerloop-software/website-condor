@@ -4935,6 +4935,17 @@ input, select, textarea {
 				margin: 0 1rem;
 			}
 
+			#footerMiddle img{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 40%;
+			}
+
+			#footerRight {
+				text-align: right;
+			}
+
 				#footer > .inner > * > :last-child {
 					margin-bottom: 0;
 				}
