@@ -3776,6 +3776,13 @@ input, select, textarea {
 			height: 100%;
 		}
 
+		#homeImage {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+			width: 80%;
+		}
+
 		#wrapper > .main > header {
 			padding: 6rem 0 4rem 0 ;
 			text-align: center;
