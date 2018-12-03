@@ -3716,6 +3716,20 @@ input, select, textarea {
 	#wrapper > .main {
 		background-color: #ffffff;
 	}
+		#iframeDiv {
+			position: relative;
+			padding-bottom: 56.25%; /* 16:9 */
+			padding-top: 25px;
+			height: 0;
+		}
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+		}
 
 		#wrapper > .main > header {
 			padding: 6rem 0 4rem 0 ;
@@ -4935,9 +4949,22 @@ input, select, textarea {
 				margin-right: auto;
 				width: 40%;
 			}
-
-			#footerRight {
-				text-align: right;
+			
+			@media screen and (max-width: 750px) {
+				#footerRight {
+					text-align: center;
+				}
+				#footerRight ul {
+					width: 100%;
+				}
+			}
+			@media screen and (min-width: 751px) {
+				#footerRight {
+					text-align: right;
+				}
+				#footerRight .actions{
+					float: right;
+				}
 			}
 
 				#footer > .inner > * > :last-child {
