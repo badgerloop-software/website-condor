@@ -2041,6 +2041,10 @@ input, select, textarea {
 		}
 	}	
 
+	form ul {
+		padding-bottom: 20px;
+	}
+
 	label {
 		display: block;
 		font-size: 0.9rem;
@@ -2883,14 +2887,27 @@ input, select, textarea {
 			width: calc(33.3333333333% + -0.5rem);
 		}
 
-		#articleSponsors {
-			background-color: #F7F7F7;
-			border-radius: 15px;
-			border-color: #F7F7F7;
-			border-style: solid;
-			border-width: 10px;
-			margin: 0 0 3rem 0;
+		@media screen and (max-width: 984px) {
+			#articleSponsors {
+				background-color: #F7F7F7;
+				border-radius: 15px;
+				border-color: #F7F7F7;
+				border-style: solid;
+				border-width: 10px;
+			}
 		}
+		
+		@media screen and (min-width: 985px) {
+			#articleSponsors {
+				background-color: #F7F7F7;
+				border-radius: 15px;
+				border-color: #F7F7F7;
+				border-style: solid;
+				border-width: 10px;
+				margin: 0 0 3rem 0;
+			}
+		}
+		
 
 		@media screen and (max-width: 984px) {
 			#articleHome {
@@ -2904,9 +2921,9 @@ input, select, textarea {
 		
 		@media screen and (min-width: 985px) {
 			#articleHome {
-				background-color:#F7F7F7;;
+				background-color:#ffffff;;
 				border-radius: 15px;
-				border-color: #F7F7F7;;
+				border-color: #ffffff;;
 				border-style: solid;
 				border-width: 10px;
 				margin: 0 0 3rem 0;
@@ -2932,21 +2949,23 @@ input, select, textarea {
 					width: 75%;
 				}
 			}
-
-			#contentHome {
-				height: 420px;
-			}
-			#content1 {
-				height: 420px;
-			}
-			#content2 {
-				height: 400px;
-			}
-			#content3 {
-				height: 550px;
-			}
-			#content4  {
-				height: 400px;
+			
+			@media screen and (min-width: 985px) {
+				#contentHome {
+					height: 420px;
+				}
+				#content1 {
+					height: 420px;
+				}
+				#content2 {
+					height: 400px;
+				}
+				#content3 {
+					height: 550px;
+				}
+				#content4  {
+					height: 400px;
+				}
 			}
 
 			.posts > div > article:last-child {
@@ -4991,9 +5010,9 @@ input, select, textarea {
 				}
 				#footerRight li {
 					display:inline-block;
-    float:left;
-    vertical-align: top;
-    width: 50%;
+					float:left;
+					vertical-align: top;
+					width: 50%;
 				}
 			}
 			@media screen and (min-width: 985px) {
