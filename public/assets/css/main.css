@@ -3543,22 +3543,43 @@ input, select, textarea {
 			opacity: 0.5;
 		}
 
-		#banner video {
-			-moz-object-fit: cover;
-			-webkit-object-fit: cover;
-			-ms-object-fit: cover;
-			object-fit: cover;
-			-moz-object-position: center;
-			-webkit-object-position: center;
-			-ms-object-position: center;
-			object-position: center;
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-			overflow: hidden;
-			z-index: -1;
+		@media screen and (max-width: 800px) {
+			#banner video {
+				-moz-object-fit: cover;
+				-webkit-object-fit: cover;
+				-ms-object-fit: cover;
+				object-fit: cover;
+				-moz-object-position: center;
+				-webkit-object-position: center;
+				-ms-object-position: center;
+				object-position: center;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 60vh;
+				overflow: hidden;
+				z-index: -1;
+			}
+		}
+		@media screen and (min-width: 801px) {
+			#banner video {
+				-moz-object-fit: cover;
+				-webkit-object-fit: cover;
+				-ms-object-fit: cover;
+				object-fit: cover;
+				-moz-object-position: center;
+				-webkit-object-position: center;
+				-ms-object-position: center;
+				object-position: center;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
+				z-index: -1;
+			}
 		}
 
 		#banner header p {
