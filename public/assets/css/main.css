@@ -2,12 +2,6 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,300i,400i,700i");
 @import url('https://fonts.googleapis.com/css?family=Play:400,700');
 
-/*
-	Hypothesis by Pixelarity
-	pixelarity.com | hello@pixelarity.com
-	License: pixelarity.com/license
-*/
-
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -1995,7 +1989,7 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			background-color: rgba(35, 177, 236, 0.1);
+			background-color: rgba(135, 34, 37, .1);
 		}
 
 			input[type="submit"]:hover:active,
@@ -2003,7 +1997,7 @@ input, select, textarea {
 			input[type="button"]:hover:active,
 			button:hover:active,
 			.button:hover:active {
-				background-color: rgba(35, 177, 236, 0.25);
+				background-color:rgba(135, 34, 37, .1);
 			}
 
 		input[type="submit"].primary,
@@ -2021,7 +2015,7 @@ input, select, textarea {
 			input[type="button"].primary:hover,
 			button.primary:hover,
 			.button.primary:hover {
-				background-color: #49beef;
+				background-color: #872225;
 			}
 
 			input[type="submit"].primary:active,
@@ -2029,7 +2023,7 @@ input, select, textarea {
 			input[type="button"].primary:active,
 			button.primary:active,
 			.button.primary:active {
-				background-color: #13a2dd;
+				background-color: #872225;
 			}
 
 /* Form */
@@ -2880,8 +2874,20 @@ input, select, textarea {
 			width: calc(33.3333333333% + -0.5rem);
 		}
 
-		.posts > div > article {
-			background-color: #ffffff;
+		#articleSponsors {
+			background-color: #F7F7F7;
+			border-radius: 15px;
+			border-color: #F7F7F7;
+			border-style: solid;
+			border-width: 10px;
+			margin: 0 0 3rem 0;
+		}
+		#articleHome {
+			background-color:#ffffff;
+			border-radius: 15px;
+			border-color: #ffffff;
+			border-style: solid;
+			border-width: 10px;
 			margin: 0 0 3rem 0;
 		}
 
@@ -2895,6 +2901,28 @@ input, select, textarea {
 
 			.posts > div > article > .content {
 				padding: 2rem 2rem 0.1rem 2rem ;
+				position:relative;
+			}
+			#sponsorButton {
+				position: absolute;
+				bottom:   20px;
+				width: 75%;
+			}
+
+			#contentHome {
+				height: 420px;
+			}
+			#content1 {
+				height: 420px;
+			}
+			#content2 {
+				height: 400px;
+			}
+			#content3 {
+				height: 550px;
+			}
+			#content4  {
+				height: 400px;
 			}
 
 			.posts > div > article:last-child {
@@ -3216,6 +3244,18 @@ input, select, textarea {
 				font-weight: 700;
 			}
 
+			@media screen and (max-width: 500px) {
+				#header > .logo img {
+					height: 30px;
+					margin-top: 5px;
+				}
+			}
+			@media screen and (min-width: 500px) {
+				#header > .logo img {
+					height: 50px;
+				}
+			}
+
 		#header > nav {
 			position: absolute;
 			right: 0;
@@ -3243,7 +3283,7 @@ input, select, textarea {
 							float: right;
 							margin-left: 0.75rem;
 							line-height: inherit;
-							color: #acacac;
+							color: #1E1E1E;
 						}
 
 						#header > nav > ul > li > a.icon:hover:before {
@@ -3676,6 +3716,20 @@ input, select, textarea {
 	#wrapper > .main {
 		background-color: #ffffff;
 	}
+		#iframeDiv {
+			position: relative;
+			padding-bottom: 56.25%; /* 16:9 */
+			padding-top: 25px;
+			height: 0;
+		}
+		iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			height: 100%;
+		}
 
 		#wrapper > .main > header {
 			padding: 6rem 0 4rem 0 ;
@@ -4887,6 +4941,30 @@ input, select, textarea {
 				flex-shrink: 1;
 				width: 30%;
 				margin: 0 1rem;
+			}
+
+			#footerMiddle img{
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 40%;
+			}
+			
+			@media screen and (max-width: 750px) {
+				#footerRight {
+					text-align: center;
+				}
+				#footerRight ul {
+					width: 100%;
+				}
+			}
+			@media screen and (min-width: 751px) {
+				#footerRight {
+					text-align: right;
+				}
+				#footerRight .actions{
+					float: right;
+				}
 			}
 
 				#footer > .inner > * > :last-child {
