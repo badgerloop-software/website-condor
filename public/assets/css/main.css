@@ -2028,9 +2028,18 @@ input, select, textarea {
 
 /* Form */
 
-	form {
-		margin: 0 0 2rem 0;
+	@media screen and (max-width: 500px) {
+		form {
+			margin: auto;
+			width: 90%;
+		}
 	}
+	@media screen and (min-width: 501px) {
+		form {
+			margin:auto;
+			width: 60%;
+		}
+	}	
 
 	label {
 		display: block;
@@ -2882,13 +2891,26 @@ input, select, textarea {
 			border-width: 10px;
 			margin: 0 0 3rem 0;
 		}
-		#articleHome {
-			background-color:#ffffff;
-			border-radius: 15px;
-			border-color: #ffffff;
-			border-style: solid;
-			border-width: 10px;
-			margin: 0 0 3rem 0;
+
+		@media screen and (max-width: 984px) {
+			#articleHome {
+				background-color:#ffffff;
+				border-radius: 15px;
+				border-color: #ffffff;
+				border-style: solid;
+				border-width: 10px;
+			}
+		}
+		
+		@media screen and (min-width: 985px) {
+			#articleHome {
+				background-color:#F7F7F7;;
+				border-radius: 15px;
+				border-color: #F7F7F7;;
+				border-style: solid;
+				border-width: 10px;
+				margin: 0 0 3rem 0;
+			}
 		}
 
 			.posts > div > article > .image {
@@ -2903,10 +2925,12 @@ input, select, textarea {
 				padding: 2rem 2rem 0.1rem 2rem ;
 				position:relative;
 			}
-			#sponsorButton {
-				position: absolute;
-				bottom:   20px;
-				width: 75%;
+			@media screen and (min-width: 985px) {
+				#sponsorButton {
+					position: absolute;
+					bottom:   20px;
+					width: 75%;
+				}
 			}
 
 			#contentHome {
@@ -3721,6 +3745,8 @@ input, select, textarea {
 			padding-bottom: 56.25%; /* 16:9 */
 			padding-top: 25px;
 			height: 0;
+			width: 80%;
+			margin: auto;
 		}
 		iframe {
 			position: absolute;
@@ -4942,23 +4968,35 @@ input, select, textarea {
 				width: 30%;
 				margin: 0 1rem;
 			}
-
-			#footerMiddle img{
-				display: block;
-				margin-left: auto;
-				margin-right: auto;
-				width: 40%;
+			@media screen and (min-width: 985px) {
+				#footerMiddle img{
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+					width: 40%;
+				}
+			}
+			@media screen and (max-width: 984px) {
+				#footerMiddle img{
+					display: block;
+					margin-left: auto;
+					margin-right: auto;
+					width: 20%;
+				}
 			}
 			
-			@media screen and (max-width: 750px) {
-				#footerRight {
+			@media screen and (max-width: 984px) {
+				#footerRight h3{
 					text-align: center;
 				}
-				#footerRight ul {
-					width: 100%;
+				#footerRight li {
+					display:inline-block;
+    float:left;
+    vertical-align: top;
+    width: 50%;
 				}
 			}
-			@media screen and (min-width: 751px) {
+			@media screen and (min-width: 985px) {
 				#footerRight {
 					text-align: right;
 				}
