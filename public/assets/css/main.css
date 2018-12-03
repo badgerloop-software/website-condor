@@ -3283,7 +3283,7 @@ input, select, textarea {
 							float: right;
 							margin-left: 0.75rem;
 							line-height: inherit;
-							color: #acacac;
+							color: #1E1E1E;
 						}
 
 						#header > nav > ul > li > a.icon:hover:before {
