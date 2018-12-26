@@ -1,6 +1,6 @@
-const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
 let https = require('https');
+let url = require('url');
+
  
 // Connection URL
 const url = 'mongodb://localhost:27017';
@@ -8,6 +8,13 @@ const url = 'mongodb://localhost:27017';
 // Database Name
 const dbName = 'playground';
  
+https.createServer((request, response) => {
+
+  pathName = url.parse(request.url).pathname;
+  response.end(pathName);
+
+}).listen(3005);
+
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, client) {
   assert.equal(null, err);
