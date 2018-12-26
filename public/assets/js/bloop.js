@@ -11,7 +11,7 @@ function testRequest() {
         }
     }
 
-    xhttp.open("POST", 'https://dev.badgerloop.com/api/' + url) //TODO: need full link to server API when implemented.
+    xhttp.open("GET", 'https://dev.badgerloop.com/api/' + url) //TODO: need full link to server API when implemented.
     xhttp.send();
 
 
