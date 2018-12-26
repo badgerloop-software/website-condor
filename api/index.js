@@ -1,5 +1,5 @@
 let MongoClient = require('mongodb');
-let https = require('https');
+let http = require('http');
 let url = require('url');
 
  
@@ -9,10 +9,14 @@ const urlDB = 'mongodb://localhost:27017';
 // Database Name
 const dbName = 'playground';
  
-https.createServer((request, response) => {
-
+http.createServer((request, response) => {
+  console.log("made server");
   pathName = url.parse(request.url).pathname;
   response.end(pathName);
+  console.log("METHOD: " + request.method);
+  if (pathName == "/test") {
+	console.log("TEST has been reached");
+  }
 
 }).listen(3005);
 
