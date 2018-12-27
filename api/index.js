@@ -1,59 +1,50 @@
 let MongoClient = require('mongodb');
 let http = require('http');
 let url = require('url');
+let fs = require('fs');
 
- 
-// Connection URL
-const urlDB = 'mongodb://localhost:27017';
- 
-// Database Name
-const dbName = 'playground';
+let creds;
+fs.readFile('creds.json', 'utf8', function (err, data) {
+  if (err) throw err;
+  creds = JSON.parse(data);
+});
  
 http.createServer((request, response) => {
-  console.log("made server");
-  pathName = url.parse(request.url).pathname;
-  response.end(pathName);
-  console.log("METHOD: " + request.method);
-  if (pathName == "/test") {
-	console.log("TEST has been reached");
+  let pathName = url.parse(request.url).pathname;
+
+  if (pathName === "/teamleads" && request.method === "GET") {
+    mongoConnect(findDocuments);
   }
 
 }).listen(3005);
 
-// Use connect method to connect to the server
-MongoClient.connect(urlDB, function(err, client) {
-  console.log("Connected successfully to server");
- 
-  const db = client.db(dbName);
 
-  findDocuments(db);
+function mongoConnect(callback) {
+  MongoClient.connect(creds.dbURL, function(err, client) {
+    let db = client.db(creds.db);
 
-  client.close();
-});
+    callback(db);
 
-const insertDocuments = function(db, callback) {
-    // Get the documents collection
-    const collection = db.collection('documents');
-    // Insert some documents
-    collection.insertMany([
-      {a : 1}, {a : 2}, {a : 3}
-    ], function(err, result) {
-      console.log("Inserted 3 documents into the collection");
-      callback(result);
-    });
-  }
+    client.close();
+  });
+}
 
-  function findDocuments(db) {
-    let collection = db.collection('documents');
 
-    collection.find({}).toArray((err, docs) => {
-        for (x of docs) {
-            console.log(`new line: ${x}`);
-            console.log(Object.keys(x));
-            for (let i = 0; i < Object.keys(x).length; i++) {
-                console.log(`${Object.keys(x)[i]} : ${x[Object.keys(x)[i]]}`);
-            }
-        }
-    });
 
-  }
+function findDocuments(db) {
+  let collection = db.collection('teamleads');
+
+  collection.find({}).toArray((err, data) => {
+    console.log("before sending data");
+    response.end( data );
+    console.log("after sending data");
+
+    // for (x of docs) {
+    //   console.log(`new line: ${x}`);
+    //   console.log(Object.keys(x));
+    //   for (let i = 0; i < Object.keys(x).length; i++) {
+    //     console.log(`${Object.keys(x)[i]} : ${x[Object.keys(x)[i]]}`);
+    //   }
+    // }
+  });
+}
