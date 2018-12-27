@@ -15,6 +15,7 @@ http.createServer((request, response) => {
   console.log(pathName);
 
   if (pathName === "/teamleads" && request.method === "GET") {
+    console.log("made it into if statement");
     mongoConnect(findTeamleads).then((mongoResponse) => {
       response.end(mongoResponse);
     });
