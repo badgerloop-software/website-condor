@@ -13,32 +13,28 @@ http.createServer((request, response) => {
   let pathName = url.parse(request.url).pathname;
 
   if (pathName === "/teamleads" && request.method === "GET") {
-    mongoConnect(findDocuments);
+    response.end(mongoConnect(findTeamleads));
   }
 
 }).listen(3005);
-
 
 function mongoConnect(callback) {
   MongoClient.connect(creds.dbURL, function(err, client) {
     let db = client.db(creds.db);
 
-    callback(db);
+    let response = callback(db);
 
     client.close();
+
+    return response;
   });
 }
 
-
-
-function findDocuments(db) {
+function findTeamleads(db) {
   let collection = db.collection('teamleads');
 
   collection.find({}).toArray((err, data) => {
-    console.log("before sending data");
-    response.end( data );
-    console.log("after sending data");
-
+    return data;
     // for (x of docs) {
     //   console.log(`new line: ${x}`);
     //   console.log(Object.keys(x));
