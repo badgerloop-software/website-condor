@@ -12,22 +12,29 @@ fs.readFile('creds.json', 'utf8', function (err, data) {
 http.createServer((request, response) => {
   let pathName = url.parse(request.url).pathname;
 
+  console.log(pathName);
+
   if (pathName === "/teamleads" && request.method === "GET") {
-    response.end(mongoConnect(findTeamleads));
+    mongoConnect(findTeamleads).then((mongoResponse) => {
+      response.end(mongoResponse);
+    });
   }
 
 }).listen(3005);
 
 function mongoConnect(callback) {
-  MongoClient.connect(creds.dbURL, function(err, client) {
-    let db = client.db(creds.db);
-
-    let response = callback(db);
-
-    client.close();
-
-    return response;
+  return new Promise((resolve, reject) => {
+    MongoClient.connect(creds.dbURL, function(err, client) {
+      let db = client.db(creds.db);
+  
+      let response = callback(db);
+  
+      client.close();
+  
+      resolve(response);
+    });
   });
+
 }
 
 function findTeamleads(db) {
