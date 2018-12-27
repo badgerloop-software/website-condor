@@ -17,9 +17,9 @@ http.createServer((request, response) => {
   if (pathName === "/teamleads" && request.method === "GET") {
     console.log("made it into if statement");
     mongoConnect(findTeamleads).then((mongoResponse) => {
-      response.end(mongoResponse);
+      response.end(JSON.stringify(mongoResponse));
     }).catch((err) => {
-	console.log(`error1: ${err}`);	    
+      console.log(`error1: ${err}`);	    
     });
   }
 
@@ -29,41 +29,24 @@ function mongoConnect(callback) {
   return new Promise((resolve, reject) => {
     MongoClient.connect(creds.dbURL, function(err, client) {
       let db = client.db(creds.db);
-  
+
       callback(db).then((data) => {
-	client.close();
-	      resolve(data);
+        client.close();
+        resolve(data);
       }).catch((err) => {
-	console.log(`error: ${err}`);      
+        console.log(`error: ${err}`);      
       });
-  
-     // client.close();
-  
-      //resolve(response);
     });
   });
-
 }
 
 function findTeamleads(db) {
-	return new Promise((resolve, reject) => {
-		 let collection = db.collection('teamleads');
+  return new Promise((resolve, reject) => {
+    let collection = db.collection('teamleads');
 
-  		collection.find({}).toArray((err, data) => {
-		console.log(data);
-			resolve(data);
-		});
-	});
- // let collection = db.collection('teamleads');
-
-  //collection.find({}).toArray((err, data) => {
-    //return data;
-    // for (x of docs) {
-    //   console.log(`new line: ${x}`);
-    //   console.log(Object.keys(x));
-    //   for (let i = 0; i < Object.keys(x).length; i++) {
-    //     console.log(`${Object.keys(x)[i]} : ${x[Object.keys(x)[i]]}`);
-    //   }
-    // }
-  //});
+    collection.find({}).toArray((err, data) => {
+      console.log(data);
+      resolve(data);
+    });
+  });
 }
