@@ -18,6 +18,8 @@ http.createServer((request, response) => {
     console.log("made it into if statement");
     mongoConnect(findTeamleads).then((mongoResponse) => {
       response.end(mongoResponse);
+    }).catch((err) => {
+	console.log(`error1: ${err}`);	    
     });
   }
 
@@ -28,21 +30,34 @@ function mongoConnect(callback) {
     MongoClient.connect(creds.dbURL, function(err, client) {
       let db = client.db(creds.db);
   
-      let response = callback(db);
+      callback(db).then((data) => {
+	client.close();
+	      resolve(data);
+      }).catch((err) => {
+	console.log(`error: ${err}`);      
+      });
   
-      client.close();
+     // client.close();
   
-      resolve(response);
+      //resolve(response);
     });
   });
 
 }
 
 function findTeamleads(db) {
-  let collection = db.collection('teamleads');
+	return new Promise((resolve, reject) => {
+		 let collection = db.collection('teamleads');
 
-  collection.find({}).toArray((err, data) => {
-    return data;
+  		collection.find({}).toArray((err, data) => {
+		console.log(data);
+			resolve(data);
+		});
+	});
+ // let collection = db.collection('teamleads');
+
+  //collection.find({}).toArray((err, data) => {
+    //return data;
     // for (x of docs) {
     //   console.log(`new line: ${x}`);
     //   console.log(Object.keys(x));
@@ -50,5 +65,5 @@ function findTeamleads(db) {
     //     console.log(`${Object.keys(x)[i]} : ${x[Object.keys(x)[i]]}`);
     //   }
     // }
-  });
+  //});
 }
