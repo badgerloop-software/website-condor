@@ -1,20 +1,17 @@
 function testRequest() {
     var url = document.getElementById("url-textbox").value;
 
-    let xhttp = new XMLHttpRequest();
+    let req = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function() {
-        if (xhttp.readyState === 4 && xhttp.status === 200) {
-            console.log(xhttp.responseText);
-        } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
+    req.onreadystatechange = function() {
+        if (req.readyState === 4 && req.status === 200) {
+            console.log(req.responseText);
+        } else if (req.readyState === 4 && req.status !== 200) {
             console.log('error');
         }
     }
 
-    xhttp.open("GET", 'https://dev.badgerloop.com/api/' + url) //TODO: need full link to server API when implemented.
-    xhttp.send();
-
-
-
+    req.open("GET", 'https://dev.badgerloop.com/api/' + url) //TODO: need full link to server API when implemented.
+    req.send();
 
 }
