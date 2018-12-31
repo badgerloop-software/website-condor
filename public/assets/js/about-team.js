@@ -26,7 +26,7 @@ function teamLeadCardDriver(info) {
        container.appendChild(createTeamLeadCard(x));
     }
 
-    document.getElementById('footer').insertBefore(container);
+    document.getElementById('wrapper').insertBefore(container, document.getElementById('footer'));
 }
 
 function createTeamLeadCard(obj) {
