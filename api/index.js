@@ -12,14 +12,12 @@ fs.readFile('creds.json', 'utf8', function (err, data) {
 http.createServer((request, response) => {
   let pathName = url.parse(request.url).pathname;
 
-  console.log(pathName);
-
   if (pathName === "/teamleads" && request.method === "GET") {
     console.log("made it into if statement");
     mongoConnect(findTeamleads).then((mongoResponse) => {
       response.end(JSON.stringify(mongoResponse));
     }).catch((err) => {
-      console.log(`error1: ${err}`);	    
+      //TODO: handle error	    
     });
   }
 
@@ -34,7 +32,7 @@ function mongoConnect(callback) {
         client.close();
         resolve(data);
       }).catch((err) => {
-        console.log(`error: ${err}`);      
+        //TODO: handle error     
       });
     });
   });
@@ -45,7 +43,6 @@ function findTeamleads(db) {
     let collection = db.collection('teamleads');
 
     collection.find({}).toArray((err, data) => {
-      console.log(data);
       resolve(data);
     });
   });
