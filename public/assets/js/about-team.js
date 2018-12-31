@@ -30,8 +30,10 @@ function teamLeadCardDriver(info) {
 }
 
 function createTeamLeadCard(obj) {
+    let div = document.createElement("div");
+    div.classList.add('team-lead-card');
+    div.setAttribute('id', obj._id);
     let card = `
-    <div class='team-lead-card' id='${obj._id}>
         <div class='team-lead-img'>
             <img src=/public/images/teamleads/${obj.Picture}
         </div>
@@ -47,8 +49,8 @@ function createTeamLeadCard(obj) {
         <div class='team-lead-text'>
             ${obj.Year}
         </div>
-    </div>
     `;
-
+    div.innerHTML = card;
+    
     return card;
 }
