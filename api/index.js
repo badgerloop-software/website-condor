@@ -14,7 +14,6 @@ http.createServer((request, response) => {
 
   if (pathName === "/teamleads" && request.method === "GET") {
     mongoConnect(findTeamleads).then((mongoResponse) => {
-      response.setHeader("Access-Control-Allow-Origin", "*");
       response.end(JSON.stringify(mongoResponse));
     }).catch((err) => {
       //TODO: handle error	    
