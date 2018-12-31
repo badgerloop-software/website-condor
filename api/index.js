@@ -13,8 +13,8 @@ http.createServer((request, response) => {
   let pathName = url.parse(request.url).pathname;
 
   if (pathName === "/teamleads" && request.method === "GET") {
-    console.log("made it into if statement");
     mongoConnect(findTeamleads).then((mongoResponse) => {
+      response.setHeader("Access-Control-Allow-Origin", "*");
       response.end(JSON.stringify(mongoResponse));
     }).catch((err) => {
       //TODO: handle error	    
@@ -41,7 +41,7 @@ function mongoConnect(callback) {
 function findTeamleads(db) {
   return new Promise((resolve, reject) => {
     let collection = db.collection('teamleads');
-
+    //TODO: make query that finds sorted alphabetically by "TEAM"
     collection.find({}).toArray((err, data) => {
       resolve(data);
     });
