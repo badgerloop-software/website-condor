@@ -35,7 +35,7 @@ function createTeamLeadCard(obj) {
     div.setAttribute('id', obj._id);
     let card = `
         <div class='team-lead-img'>
-            <img src=/public/images/teamleads/${obj.Picture}
+            <img src=/images/teamleads/${obj.Picture}
         </div>
         <div class='team-lead-name'>
             ${obj.Name}
@@ -51,6 +51,6 @@ function createTeamLeadCard(obj) {
         </div>
     `;
     div.innerHTML = card;
-    
-    return card;
+
+    return div;
 }
