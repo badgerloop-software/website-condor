@@ -26,7 +26,8 @@ function teamLeadCardDriver(info) {
     for (let x of info) {
        tlContainer.appendChild(createTeamLeadCard(x));
     }
-
+    
+    container.appendChild(tlContainer);
     document.getElementById('wrapper').insertBefore(container, document.getElementById('footer'));
 }
 
