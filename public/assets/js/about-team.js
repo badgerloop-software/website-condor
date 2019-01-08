@@ -3,14 +3,13 @@
 
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState === xhttp.DONE) {
-            // if ( xhttp.status === 200) {
+            if ( xhttp.status === 200) {
                 teamLeadCardDriver(JSON.parse(xhttp.responseText));
-            // } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
-            //     //TODO: decide how to handle errors with
-            // }
+            } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
+                //TODO: decide how to handle errors with
+            }
         } 
     }
-
     
     xhttp.open("GET", 'https://dev.badgerloop.com/api/teamleads'); //FIXME: when moved to prod link needs to change
     xhttp.send();
@@ -21,9 +20,11 @@
 */
 function teamLeadCardDriver(info) {
     let container = document.createElement("div");
-    container.setAttribute('class', 'team-lead-container');
+    container.setAttribute('class', 'flex-container');
+    let tlContainer = document.createElement("div");
+    tlContainer.setAttribute('class', 'team-lead-container');
     for (let x of info) {
-       container.appendChild(createTeamLeadCard(x));
+       tlContainer.appendChild(createTeamLeadCard(x));
     }
 
     document.getElementById('wrapper').insertBefore(container, document.getElementById('footer'));

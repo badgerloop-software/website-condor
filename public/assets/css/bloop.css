@@ -21,4 +21,7 @@
 .team-lead-text {
     margin-bottom: .5em;
 }
-
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
