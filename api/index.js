@@ -22,8 +22,7 @@ http.createServer((request, response) => {
   // }
 
 	if (pathName === "/teamleads" && request.method === "GET") {
-
-		let responseObj = [];
+		response.end(JSON.stringify(findTeamLeads("Administrative")));
 		/*
 			Trying to query based on each team returned from the initial query. 
 			Will need to rewrite mongoConnect and findTeamleads. 
@@ -34,44 +33,34 @@ http.createServer((request, response) => {
 				...
 			}
 		*/
-		mongoConnect().then((client) => {
-			let db = client.db(creds.db);
-			return findTeams(db);
-		}).then((teams) => {
-			console.log(`got teams: ${teams}`);
-			return teamDriver(db, teams);	
-		}).then((teamLeads) => {
-			client.close();
-			console.log(`finished product: ${teamLeads}`);
-			response.end(JSON.stringify(teamLeads));
-		}).catch((err) => {
-			//TODO: handle errors
-		});
+		
+
 	}	
-
-
 
 }).listen(3005);
 
 function mongoConnect() {
   return new Promise((resolve, reject) => {
     MongoClient.connect(creds.dbURL, function(err, client) {
-      let db = client.db(creds.db);
       resolve(client);
     });
   });
 }
 
-function findTeamleads(db, team) {
-	return new Promise((resolve, reject) => {
-		let collection = db.collection('teamleads');
-
-		//TODO: make query that finds sorted alphabetically by "TEAM"
-		collection.find({'Team': team}).toArray((err, data) => {
-			console.log(`data found from findTeamleads(): ${data}`);
-			resolve(data);
+function findTeamleads(team) {
+	mongoConnect().then((client) => {
+		return new Promise((resolve, reject) => {
+			let db = client.db();
+			let collection = db.collection('teamleads');
+	
+			//TODO: make query that finds sorted alphabetically by "TEAM"
+			collection.find({'Team': team}).toArray((err, data) => {
+				console.log(`data found from findTeamleads(): ${data}`);
+				resolve(data);
+			});
 		});
 	});
+
 }
 
 function findTeams(db) {
@@ -82,20 +71,4 @@ function findTeams(db) {
       resolve(data);
     });
   });
-}
-
-function teamDriver(db, teams) {
-	return new Promise( (resolve, reject) => {
-		let promiseList = [];
-		let resultList = {};
-		for (let x of teams) {
-			promiseList.push(findTeamleads(db, team).then( (teamLeads) => {
-				resultList[x] = teamLeads;
-			}));
-		}
-
-		Promise.all(promiseList).then( () => {
-			resolve(resultList);
-		});
-	});
 }
