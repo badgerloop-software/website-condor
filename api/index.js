@@ -62,33 +62,34 @@ function getTeamLeads(team) {
 				
 				db.collection('teamleads').find({'Team': team}).toArray( (err, result) => {
 					if (!err) {
+						console.log(`getTeamLeads result: ${result}`);
 						resolve(result);
 					} else {
 						reject(err);
 					}
 				});
 
-				client.close();
 			} else {
 				reject(err);
 			}
+
+			client.close();
 		});
 	});
 }
 
 function getTeamLeadsDriver(teams) {
 	return new Promise((resolve, reject) => {
-		let promistList = [];
+		let promiseList = [];
 		let resultObject = {};
 		for (let x of teams) {
-			promistList.push(getTeamLeads(teams[x]).then((result) => {
+			promiseList.push(getTeamLeads(teams[x]).then((result) => {
 				console.log(`result: ${result}`);
 				resultObject[x] = result;
 			}));
 		}
 	
-	
-		Promise.all(promistList).then( () => {
+		Promise.all(promiseList).then( () => {
 			resolve(resultObject);
 		});
 	});
