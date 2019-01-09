@@ -22,7 +22,7 @@ http.createServer((request, response) => {
   // }
 
 	if (pathName === "/teamleads" && request.method === "GET") {
-		response.end(JSON.stringify(findTeamLeads("Administrative")));
+		response.end(JSON.stringify(findTeamleads("Administrative")));
 		/*
 			Trying to query based on each team returned from the initial query. 
 			Will need to rewrite mongoConnect and findTeamleads. 
