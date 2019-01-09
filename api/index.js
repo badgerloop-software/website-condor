@@ -21,7 +21,7 @@ http.createServer((request, response) => {
 		}).then((result) => {
 			response.end(JSON.stringify(result))
 		}).catch( (err) => {
-			//TODO: do something with errors. 
+			//TODO: do something with errors (send to slack channel?). 
 			console.log(`error: ${err}`);
 		});
 	}	
@@ -36,11 +36,12 @@ function getTeams() {
 			if (!err) {
 				let db = client.db(creds.db);
 				
-				db.collection('teamleadz').distinct('Team', (err, result) => {
+				db.collection('teamleads').distinct('Team', (err, result) => {
 					console.log(`RESULT FROM GETTEAMS(): ${result}, TYPEOF: ${typeof(result)}`);
 					if (err) {
 						reject(err);
 					} else if ( result === null ) {
+						//TODO: figure out what empty result returns as.
 						reject("Empty object returned from MongoDB in getTeamLeads() within api/index.js")
 					} else {
 						resolve(result);
@@ -67,6 +68,7 @@ function getTeamLeads(team) {
 					if (err) {
 						reject(err);
 					} else if ( result == {} ) {
+						//TODO: figure out what empty result returns as. 
 						reject("Empty object returned from MongoDB in getTeamLeads() within api/index.js")
 					} else {
 						resolve(result);
