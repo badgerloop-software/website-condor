@@ -14,7 +14,10 @@ http.createServer((request, response) => {
 	let pathName = url.parse(request.url).pathname;
 
 	if (pathName === "/teamleads" && request.method === "GET") {
-		console.log(getTeams());
+		getTeams().then((result) => {
+			response.end(JSON.stringify(result));
+			console.log(result);
+		})
 	}	
 
 }).listen(3005);
