@@ -17,6 +17,7 @@ http.createServer((request, response) => {
 		let finalObj = {};
 		let promiseList = [];
 		getTeams().then( (teams) => {
+			console.log(`teams resolved: ${teams}`);
 			return getTeamLeadsDriver(teams);
 		}).then((result) => {
 			response.end(JSON.stringify(result))
