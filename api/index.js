@@ -37,10 +37,10 @@ function getTeams() {
 				let db = client.db(creds.db);
 				
 				db.collection('teamleadz').distinct('Team', (err, result) => {
-					console.log(`RESULT FROM GETTEAMS(): ${result}`);
+					console.log(`RESULT FROM GETTEAMS(): ${result}, TYPEOF: ${typeof(result)}`);
 					if (err) {
 						reject(err);
-					} else if ( result == {} ) {
+					} else if ( result === "" ) {
 						reject("Empty object returned from MongoDB in getTeamLeads() within api/index.js")
 					} else {
 						resolve(result);
