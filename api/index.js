@@ -20,7 +20,7 @@ http.createServer((request, response) => {
 			if (!err) {
 				console.log("Connected successfully to server");
 		
-				const db = client.db(dbName);
+				const db = client.db(creds.db);
 			
 				client.close();
 			} else {
