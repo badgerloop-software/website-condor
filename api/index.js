@@ -78,10 +78,12 @@ function getTeamLeads(team) {
 
 function getTeamLeadsDriver(teams) {
 	let promistList = [];
+	for (x of teams) {
+		promistList.push(getTeamLeads(teams[x]).then((result) => {
+			console.log(`result: ${JSON.parse(result)}`);
+		}));
+	}
 
-	promistList.push(getTeamLeads(teams[0]).then((result) => {
-		console.log(`result: ${result}`);
-	}));
 
 	Promise.all(promistList).then( () => {
 		console.log(`completed all promises`);
