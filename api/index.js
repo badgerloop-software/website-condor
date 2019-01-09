@@ -84,10 +84,10 @@ function findTeams(db) {
 function teamDriver(db, teams) {
 	return new Promise( (resolve, reject) => {
 		let promiseList = [];
-		let resultList = [];
+		let resultList = {};
 		for (let x of teams) {
 			promiseList.push(findTeamleads(db, team).then( (teamLeads) => {
-				resultList.push(teamLeads);
+				resultList[x] = teamLeads;
 			}));
 		}
 
