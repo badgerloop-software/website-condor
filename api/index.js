@@ -21,16 +21,16 @@ http.createServer((request, response) => {
 
 function getTeams() {
 	return new Promise((resolve, reject) => {
-		const client = new MongoClient(creds.dbURL);
+		let client = new MongoClient(creds.dbURL);
 
 		client.connect(function(err) {
 			if (!err) {
 				console.log("Connected successfully to server");
-				const db = client.db(creds.db);
+				let db = client.db(creds.db);
 				
-				db.teamleads.distinct('Teams', (err, data) => {
+				db.collection('teamleads').distinct('Team', (err, result) => {
 					if (!err) {
-						resolve(data);
+						resolve(result);
 					} else {
 						reject(err);
 					}
