@@ -38,6 +38,7 @@ http.createServer((request, response) => {
 			let db = client.db(creds.db);
 			return findTeams(db);
 		}).then((teams) => {
+			response.end(JSON.stringify(teams));
 			return teamDriver(db, teams);	
 		}).then((teamLeads) => {
 			client.close();
