@@ -68,6 +68,7 @@ function findTeamleads(db, team) {
 
 		//TODO: make query that finds sorted alphabetically by "TEAM"
 		collection.find({'Team': team}).toArray((err, data) => {
+			console.log(`data found from findTeamleads(): ${data}`);
 			resolve(data);
 		});
 	});
