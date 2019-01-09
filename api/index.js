@@ -60,10 +60,12 @@ function getTeamLeads(team) {
 			if (!err) {
 				let db = client.db(creds.db);
 				db.collection('teamleads').find( { "Team": team } ).toArray( (err, result) => {
-					if (!err) {
-						resolve(result);
-					} else {
+					if (err) {
 						reject(err);
+					} else if ( result === {} ) {
+						reject("Empty object returned from MongoDB in getTeamLeads() within api/index.js")
+					} else {
+						resolve(result);
 					}
 				});
 
