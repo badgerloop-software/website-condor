@@ -40,7 +40,7 @@ function getTeams() {
 					console.log(`RESULT FROM GETTEAMS(): ${result}, TYPEOF: ${typeof(result)}`);
 					if (err) {
 						reject(err);
-					} else if ( result === "" ) {
+					} else if ( result === null ) {
 						reject("Empty object returned from MongoDB in getTeamLeads() within api/index.js")
 					} else {
 						resolve(result);
