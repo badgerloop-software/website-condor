@@ -11,7 +11,7 @@
         } 
     }
     
-    xhttp.open("GET", 'https://dev.badgerloop.com/api/teamleads'); //FIXME: when moved to prod link needs to change
+    xhttp.open("GET", '/api/teamleads'); //FIXME: when moved to prod link needs to change
     xhttp.send();
 })();
 
