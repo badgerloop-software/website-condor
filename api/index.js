@@ -38,10 +38,11 @@ http.createServer((request, response) => {
 			let db = client.db(creds.db);
 			return findTeams(db);
 		}).then((teams) => {
-			response.end(JSON.stringify(teams));
+			console.log(`got teams: ${teams}`);
 			return teamDriver(db, teams);	
 		}).then((teamLeads) => {
 			client.close();
+			console.log(`finished product: ${teamLeads}`);
 			response.end(JSON.stringify(teamLeads));
 		}).catch((err) => {
 			//TODO: handle errors
