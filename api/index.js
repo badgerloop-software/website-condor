@@ -17,15 +17,12 @@ http.createServer((request, response) => {
 		let finalObj = {};
 		let promiseList = [];
 		getTeams().then( (teams) => {
-			console.log(`teams resolved: ${teams}`);
-			for (x of teams) {
-				console.log(`breaking it up individually: ${x}`);
-			}
 			return getTeamLeadsDriver(teams);
 		}).then((result) => {
 			response.end(JSON.stringify(result))
 		}).catch( (err) => {
 			//TODO: do something with errors. 
+			console.log(`error: ${err}`);
 		});
 	}	
 
@@ -37,10 +34,9 @@ function getTeams() {
 
 		client.connect(function(err) {
 			if (!err) {
-				console.log("Connected successfully to server");
 				let db = client.db(creds.db);
 				
-				db.collection('teamleads').distinct('Team', (err, result) => {
+				db.collection('teamleadz').distinct('Team', (err, result) => {
 					if (!err) {
 						resolve(result);
 					} else {
@@ -63,10 +59,8 @@ function getTeamLeads(team) {
 		client.connect(function(err) {
 			if (!err) {
 				let db = client.db(creds.db);
-				console.log(`team: ${team}, typeof: ${typeof(team)}`);
 				db.collection('teamleads').find( { "Team": team } ).toArray( (err, result) => {
 					if (!err) {
-						console.log(`getTeamLeads result: ${result}`);
 						resolve(result);
 					} else {
 						reject(err);
@@ -83,14 +77,11 @@ function getTeamLeads(team) {
 }
 
 function getTeamLeadsDriver(teams) {
-	console.log(`teams in getTeamLeadsDriver(): ${teams}`);
 	return new Promise((resolve, reject) => {
 		let promiseList = [];
 		let resultObject = {};
 		for (let x of teams) {
-			console.log(`x in getTeamLEadsDriver() ${x}`);
 			promiseList.push(getTeamLeads(x).then((result) => {
-				console.log(`result: ${result}`);
 				resultObject[x] = result;
 			}));
 		}
