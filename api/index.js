@@ -14,17 +14,22 @@ http.createServer((request, response) => {
 	let pathName = url.parse(request.url).pathname;
 
 	if (pathName === "/teamleads" && request.method === "GET") {
+		let finalObj = {};
+		let promiseList = [];
 		getTeams().then( (result) => {
-			let finalObj = {};
 			for (x of result) {
-				getTeamLeads(x).then( (result) => {
+
+				promiseList.push(getTeamLeads(x).then( (result) => {
 					finalObj[x] = result;
-				});
+				}));
 			}
 
-			response.end(JSON.stringify(finalObj));
 		}).catch( (err) => {
 			//TODO: do something with errors. 
+		});
+
+		Promise.all(promiseList).then( () => {
+			response.end(JSON.stringify(finalObj));
 		})
 	}	
 
