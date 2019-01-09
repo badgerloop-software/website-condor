@@ -14,13 +14,18 @@ http.createServer((request, response) => {
 	let pathName = url.parse(request.url).pathname;
 
 	if (pathName === "/teamleads" && request.method === "GET") {
-		getTeams().then((result) => {
+		getTeams().then( (result) => {
+			let finalObj = {};
 			for (x of result) {
-				return getTeamLeads(x);
+				getTeamLeads(x).then( (result) => {
+					finalObj[x] = result;
+				});
 			}
-		}).then((result) => {
-			console.log(result);
-		});
+
+			response.end(JSON.stringify(finalObj));
+		}).catch( (err) => {
+			//TODO: do something with errors. 
+		})
 	}	
 
 }).listen(3005);
