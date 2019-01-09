@@ -1,4 +1,4 @@
-let MongoClient = require('mongodb');
+let MongoClient = require('mongodb').client;
 let http = require('http');
 let url = require('url');
 let fs = require('fs');
@@ -13,7 +13,7 @@ http.createServer((request, response) => {
 	let pathName = url.parse(request.url).pathname;
 
 	if (pathName === "/teamleads" && request.method === "GET") {
-		
+	
 	}	
 
 }).listen(3005);
