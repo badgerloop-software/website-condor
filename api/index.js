@@ -64,7 +64,7 @@ function getTeamLeads(team) {
 			if (!err) {
 				let db = client.db(creds.db);
 				
-				db.collection('teamleads').find( { } ).toArray( (err, result) => {
+				db.collection('teamleads').find( { "Team": `${team}` } ).toArray( (err, result) => {
 					if (!err) {
 						console.log(`getTeamLeads result: ${result}`);
 						resolve(result);
