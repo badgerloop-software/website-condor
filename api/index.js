@@ -83,10 +83,12 @@ function getTeamLeads(team) {
 }
 
 function getTeamLeadsDriver(teams) {
+	console.log(`teams in getTeamLeadsDriver(): ${teams}`);
 	return new Promise((resolve, reject) => {
 		let promiseList = [];
 		let resultObject = {};
 		for (let x of teams) {
+			console.log(`x in getTeamLEadsDriver() ${x}`);
 			promiseList.push(getTeamLeads(teams[x]).then((result) => {
 				console.log(`result: ${result}`);
 				resultObject[x] = result;
