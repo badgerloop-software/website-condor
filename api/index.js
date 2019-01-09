@@ -77,15 +77,20 @@ function getTeamLeads(team) {
 }
 
 function getTeamLeadsDriver(teams) {
-	let promistList = [];
-	for (x of teams) {
-		promistList.push(getTeamLeads(teams[x]).then((result) => {
-			console.log(`result: ${result}`);
-		}));
-	}
+	return new Promise((resolve, reject) => {
+		let promistList = [];
+		let resultObject = {};
+		for (x of teams) {
+			promistList.push(getTeamLeads(teams[x]).then((result) => {
+				console.log(`result: ${result}`);
+				resultObject[x] = result;
+			}));
+		}
+	
+	
+		Promise.all(promistList).then( () => {
+			resolve(resultObject);
+		});
+	});
 
-
-	Promise.all(promistList).then( () => {
-		console.log(`completed all promises`);
-	})
 }
