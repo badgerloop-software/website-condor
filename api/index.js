@@ -15,8 +15,9 @@ http.createServer((request, response) => {
 
 	if (pathName === "/teamleads" && request.method === "GET") {
 		getTeams().then((result) => {
-			response.end(JSON.stringify(result));
-			console.log(result);
+			for (x of result) {
+				console.log(x);
+			}
 		})
 	}	
 
@@ -41,7 +42,31 @@ function getTeams() {
 
 				client.close();
 			} else {
-				console.log(`error: ${err}`);
+				reject(err);
+			}
+		});
+	});
+}
+
+function getTeamLeads(team) {
+	return new Promise((resolve, reject) => {
+		let client = new MongoClient(creds.dbURL);
+
+		client.connect(function(err) {
+			if (!err) {
+				let db = client.db(creds.db);
+				
+				db.collection('teamleads').find({'Team': team}).toArray( (err, result) => {
+					if (!err) {
+						resolve(result);
+					} else {
+						reject(err);
+					}
+				});
+
+				client.close();
+			} else {
+				reject(err);
 			}
 		});
 	});
