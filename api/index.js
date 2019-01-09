@@ -16,21 +16,13 @@ http.createServer((request, response) => {
 	if (pathName === "/teamleads" && request.method === "GET") {
 		let finalObj = {};
 		let promiseList = [];
-		getTeams().then( (result) => {
-			for (x of result) {
-
-				promiseList.push(getTeamLeads(x).then( (result) => {
-					finalObj[x] = result;
-				}));
-			}
-
+		getTeams().then( (teams) => {
+			return getTeamLeadsDriver(teams);
+		}).then((result) => {
+			response.end(JSON.stringify(result))
 		}).catch( (err) => {
 			//TODO: do something with errors. 
 		});
-
-		Promise.all(promiseList).then( () => {
-			response.end(JSON.stringify(finalObj));
-		})
 	}	
 
 }).listen(3005);
@@ -84,3 +76,6 @@ function getTeamLeads(team) {
 	});
 }
 
+function getTeamLeadsDriver(teams) {
+	console.log(getTeamLeads(teams[0]));
+}
