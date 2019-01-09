@@ -22,7 +22,6 @@ http.createServer((request, response) => {
 			response.end(JSON.stringify(result))
 		}).catch( (err) => {
 			//TODO: do something with errors (send to slack channel?). 
-			console.log(`error: ${err}`);
 		});
 	}	
 
@@ -37,7 +36,6 @@ function getTeams() {
 				let db = client.db(creds.db);
 				
 				db.collection('teamleads').distinct('Team', (err, result) => {
-					console.log(`RESULT FROM GETTEAMS(): ${result}, TYPEOF: ${typeof(result)}`);
 					if (err) {
 						reject(err);
 					} else if ( result === null ) {
@@ -64,7 +62,6 @@ function getTeamLeads(team) {
 			if (!err) {
 				let db = client.db(creds.db);
 				db.collection('teamleads').find( { "Team": team } ).toArray( (err, result) => {
-					console.log(`RESULT FROM GETTEAMLEADS(): ${result}`);
 					if (err) {
 						reject(err);
 					} else if ( result == {} ) {
