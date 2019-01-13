@@ -19,19 +19,19 @@
     info: Array of objects holding each team leads information
 */
 function teamLeadCardDriver(info) {
-    let teams = {};
-    for (x of info) {
-        if (teams.indexOf(info.Team) === -1) {
-            teams.push(x.Team);
-        }
-    }
+    // let teams = {};
+    // for (x of info) {
+    //     if (teams.indexOf(info.Team) === -1) {
+    //         teams.push(x.Team);
+    //     }
+    // }
 
     let container = document.createElement("div");
     container.setAttribute('class', 'flex-container');
     let tlContainer = document.createElement("div");
     tlContainer.setAttribute('class', 'team-lead-container');
     for (let team in info) {
-    tlContainer.appendChild(createTeamTitle(team));
+        tlContainer.appendChild(createTeamTitle(team));
         for (let x of info) {
         tlContainer.appendChild(createTeamLeadCard(x));
         }
