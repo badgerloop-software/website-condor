@@ -27,7 +27,7 @@ function teamLeadCardDriver(info) {
         tlContainer.appendChild(createTeamTitle(team));
 
         let teamContainer = document.createElement("div");
-        
+        teamContainer.setAttribute("class", "team-container");
         for (let x of info[team]) {
             teamContainer.appendChild(createTeamLeadCard(x));
         }
