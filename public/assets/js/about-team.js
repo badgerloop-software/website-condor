@@ -66,7 +66,7 @@ function createTeamLeadCard(obj) {
     return div;
 }
 
-function createTeamLeadTitle(team) {
+function createTeamTitle(team) {
     let title = document.createElement("h2");
     title.innerText = team;
     return title;
