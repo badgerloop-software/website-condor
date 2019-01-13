@@ -26,3 +26,8 @@
     display: flex;
     justify-content: center;
 }
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
