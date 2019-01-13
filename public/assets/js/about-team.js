@@ -6,12 +6,12 @@
             if ( xhttp.status === 200) {
                 teamLeadCardDriver(JSON.parse(xhttp.responseText));
             } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
-                //TODO: decide how to handle errors with
+                //TODO: decide how to handle errors - slack channel? 
             }
         } 
     }
     
-    xhttp.open("GET", '/api/teamleads'); //FIXME: when moved to prod link needs to change
+    xhttp.open("GET", '/api/teamleads'); 
     xhttp.send();
 })();
 
@@ -30,10 +30,12 @@ function teamLeadCardDriver(info) {
     container.setAttribute('class', 'flex-container');
     let tlContainer = document.createElement("div");
     tlContainer.setAttribute('class', 'team-lead-container');
-    for (let x of info) {
-       tlContainer.appendChild(createTeamLeadCard(x));
+    for (let team in info) {
+    tlContainer.appendChild(createTeamTitle(team));
+        for (let x of info) {
+        tlContainer.appendChild(createTeamLeadCard(x));
+        }
     }
-
     container.appendChild(tlContainer);
     document.getElementById('wrapper').insertBefore(container, document.getElementById('footer'));
 }
@@ -62,4 +64,10 @@ function createTeamLeadCard(obj) {
     div.innerHTML = card;
 
     return div;
+}
+
+function createTeamLeadTitle(team) {
+    let title = document.createElement("h2");
+    title.innerText = team;
+    return title;
 }
