@@ -32,7 +32,7 @@ function teamLeadCardDriver(info) {
     tlContainer.setAttribute('class', 'team-lead-container');
     for (let team in info) {
         tlContainer.appendChild(createTeamTitle(team));
-        for (let x of team) {
+        for (let x of info[team]) {
             tlContainer.appendChild(createTeamLeadCard(x));
         }
     }
