@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/bloop.css" />
 		<meta name="description" content="Badgerloop is a student organization at the University of Wisconsin-Madison that competes in the SpaceX Hyperloop Pod Competition">
 		<meta name="keywords" content="hyperloop,badgerloop, pod, madison, spacex, uw, uw-madison, engineering">
 		<link rel="shortcut icon" type="image/png" href="images/favicon.png"/>
@@ -53,46 +54,38 @@
 						</header>
 						<div class="inner alt">
 							<div class="content">
-									<form method="post" action="#">
-											<div class="row gtr-uniform">
-												<div class="col-6 col-12-xsmall">
-													<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-												</div>
-												<div class="col-6 col-12-xsmall">
-													<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-												</div>
-												<!-- Break -->
-												<div class="col-12">
-													<select name="demo-category" id="demo-category">
-														<option value="">Reason For Contacting</option>
-														<option value="1">Student Inquiry</option>
-														<option value="1">Sponsorship Inquiry</option>
-														<option value="1">Media Inquiry</option>
-														<option value="1">Other</option>
-													</select>
-												</div>
-												<!-- Break -->
-												<div class="col-6 col-12-small">
-													<input type="checkbox" id="demo-copy" name="demo-copy">
-													<label for="demo-copy">Email me a copy</label>
-												</div>
-												<div class="col-6 col-12-small">
-													<input type="checkbox" id="demo-human" name="demo-human" checked>
-													<label for="demo-human">I am a human</label>
-												</div>
-												<!-- Break -->
-												<div class="col-12">
-													<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-												</div>
-												<!-- Break -->
-												<div class="col-12">
-													<ul class="actions">
-														<li><input type="submit" value="Submit" /></li>
-														<li><input type="reset" value="Reset" /></li>
-													</ul>
-												</div>
-											</div>
-										</form>
+								<div class="row gtr-uniform" id="contact-form">
+									<div class="col-6 col-12-xsmall">
+										<div class="form-label">Name:</div>
+										<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
+									</div>
+									<div class="col-6 col-12-xsmall">
+										<div class="form-label">Email:</div>
+										<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
+									</div>
+									<!-- Break -->
+									<div class="col-12">
+										<div class="form-label">Reason For Contacting:</div>
+										<select name="demo-category" id="contact-category">
+											<option value="" disabled selected>...</option>
+											<option>Student Inquiry</option>
+											<option>Sponsorship Inquiry</option>
+											<option>Media Inquiry</option>
+											<option>Other</option>
+										</select>
+									</div>
+									<!-- Break -->
+									<div class="col-12">
+										<div class="form-label">Message:</div>
+										<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
+									</div>
+									<!-- Break -->
+									<div class="col-12">
+										<ul class="actions">
+											<li class="form-li"><input class="form-button" type="submit" value="Submit" /></li>
+										</ul>
+									</div>
+								</div>
 
 							</div>
 						</div>
@@ -140,6 +133,7 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+			<script src="assets/js/contact.js"></script>
 
 	</body>
 </html>
