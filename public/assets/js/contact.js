@@ -108,6 +108,7 @@ function sendForm(message) {
         } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
             //TODO: catch errors from Slack and from our API - set up email
             displayStatusMessage('error');
+            clearForm();
         }
     }
 
