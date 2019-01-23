@@ -39,3 +39,30 @@
     width: 50%;
     margin-bottom: 2rem;
 }
+.form-error {
+    border: 1px solid #c5050c!important;
+}
+.success-message {
+    background-color: rgb(125, 207, 48);
+}
+.failure-message {
+    background-color: #c5050c;
+}
+.alert {
+    margin-top: 1em;
+    display: flex;
+    padding: .8em!important;
+    border-radius: .5em;
+}
+.status-close img {
+    width: 10%;
+}
+.status-close img:hover {
+    cursor: pointer;
+}
+.status-close {
+    text-align: right;
+}
+#contact-form {
+    justify-content: center;
+}
