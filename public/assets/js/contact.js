@@ -147,7 +147,7 @@ function displayStatusMessage(message) {
         alertMessage = "Message successfully sent!";
         css = "success-message";
     } else {
-        alertMessage = "There was an issue sending your message. The Badgerloop website team has been notified.";
+        alertMessage = "There was an issue sending your message. \nA notification has been sent to Badgerloop.";
         css = "failure-message";
     }
 
