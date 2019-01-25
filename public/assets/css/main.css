@@ -1882,6 +1882,27 @@ input, select, textarea {
 		border-color: #eeeeee;
 	}
 
+	#boxOne {
+		height: 250px;
+		color: white;
+		background-color: #f2849e;
+	}
+	#boxTwo {
+		height: 250px;
+		color: white;
+		background-color: #7ecaf6;
+	}
+	#boxThree {
+		height: 250px;
+		color: white;
+		background-color: #8499e7;
+	}
+	#boxFour {
+		height: 250px;
+		color: white;
+		background-color: #ae85ca;
+	}
+
 /* Button */
 
 	input[type="submit"],
