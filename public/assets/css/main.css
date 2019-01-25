@@ -2653,6 +2653,11 @@ input, select, textarea {
 			table.alt tfoot {
 				border-top: 0;
 			}
+	#tableHome thead tfoot tr th  {
+		border: none;
+		background-color: #152437;
+		color: white;
+	}
 
 	table tbody tr {
 		border-color: #eeeeee;
