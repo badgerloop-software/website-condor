@@ -90,3 +90,25 @@
     padding-left: 1rem;
     padding-top: 1rem;
 }
+.media-left {
+    /* height: 500px; */
+    text-align: center;
+}
+.media-right {
+    /* height: 500px; */
+    text-align: center;
+}
+.media-inner {
+    width: unset!important;
+    max-width: unset!important;
+    margin: 0 3rem;
+}
+.news-piece img{
+    width: 100%;
+    height: auto;
+}
+.news-piece {
+    text-align:left;
+    border: 1px solid black;
+    width: 80%;
+}

@@ -17,7 +17,6 @@ function removeForm() {
 }
 
 function dynamicForm() {
-    console.log("changing");
     let selected = document.getElementById('contact-category').value.toLowerCase();
 
     switch(selected) {
