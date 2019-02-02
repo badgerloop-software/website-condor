@@ -1882,26 +1882,52 @@ input, select, textarea {
 		border-color: #eeeeee;
 	}
 
-	#boxOne {
-		height: 250px;
-		color: white;
-		background-color: #f2849e;
+	/* styling for boxes on about-badgerloop page */
+	@media screen and (max-width: 1699px) {
+		#boxOne {
+			height: 250px;
+			color: white;
+			background-color: #f2849e;
+		}
+		#boxTwo {
+			height: 250px;
+			color: white;
+			background-color: #7ecaf6;
+		}
+		#boxThree {
+			height: 250px;
+			color: white;
+			background-color: #8499e7;
+		}
+		#boxFour {
+			height: 250px;
+			color: white;
+			background-color: #ae85ca;
+		}
 	}
-	#boxTwo {
-		height: 250px;
-		color: white;
-		background-color: #7ecaf6;
+	@media screen and (min-width: 1700px) {
+		#boxOne {
+			height: 400px;
+			color: white;
+			background-color: #f2849e;
+		}
+		#boxTwo {
+			height: 400px;
+			color: white;
+			background-color: #7ecaf6;
+		}
+		#boxThree {
+			height: 400px;
+			color: white;
+			background-color: #8499e7;
+		}
+		#boxFour {
+			height: 400px;
+			color: white;
+			background-color: #ae85ca;
+		}
 	}
-	#boxThree {
-		height: 250px;
-		color: white;
-		background-color: #8499e7;
-	}
-	#boxFour {
-		height: 250px;
-		color: white;
-		background-color: #ae85ca;
-	}
+
 
 /* Button */
 
