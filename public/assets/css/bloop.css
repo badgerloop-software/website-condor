@@ -63,6 +63,9 @@
 .status-close {
     text-align: right;
 }
+.status-content {
+    font-weight: 400;
+}
 #contact-form {
     justify-content: center;
 }
@@ -71,9 +74,19 @@
     padding: 3em;
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 .goal {
     margin: 1em;
     text-align: center;
     flex: 1;
+    min-width: 400px;
+}
+.check-error {
+    border: 1px solid #c5050c!important;
+    border-radius: .5em;
+}
+.team-checkboxes {
+    padding-left: 1rem;
+    padding-top: 1rem;
 }
