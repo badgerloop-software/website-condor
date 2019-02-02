@@ -3001,7 +3001,7 @@ input, select, textarea {
 				}
 			}
 			
-			@media screen and (min-width: 985px) {
+			@media screen and (min-width: 1200px) {
 				#contentHome {
 					height: 420px;
 				}
@@ -3016,6 +3016,28 @@ input, select, textarea {
 				}
 				#content4  {
 					height: 400px;
+				}
+			}
+			@media screen and (max-width: 1200px) {
+				#contentHome {
+					height: 420px;
+				}
+				#content1 {
+					height: 300px;
+				}
+				#content2 {
+					height: 300px;
+				}
+				#content3 {
+					height: 400px;
+				}
+				#content4  {
+					height: 250px;
+				}
+			}
+			@media screen and (max-width: 859px) {
+				#content1, #content2, #content3, #content4 {
+					height: 100%;
 				}
 			}
 
