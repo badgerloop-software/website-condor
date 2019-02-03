@@ -60,7 +60,7 @@ http.createServer((request, response) => {
 
                 response.on('end', () => {
                     console.log(slackResponse);
-                    response.writeHead(200, {'Content-Type': 'application/json'});
+                    response.status(200);
                     response.end(slackResponse);
                 });
 
@@ -68,7 +68,7 @@ http.createServer((request, response) => {
 
             req.on('error', (e) => {
 				console.log(`error: ${e.message}`);
-				response.writeHead(e.statusCode);
+				response.status(e.statusCode);
                 response.end(e.message);
             });
 
