@@ -1,4 +1,5 @@
 let http = require('http');
+let https = require('https');
 let url = require('url');
 let fs = require('fs');
 let MongoClient = require('mongodb').MongoClient;
