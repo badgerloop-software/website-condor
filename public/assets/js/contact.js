@@ -108,21 +108,26 @@ function validInput(x) {
 }
 
 function validCheckGroup(group) {
-    let flag = false;
-    for (x of group) {
-        
-        x.addEventListener('input', ()=> {
-            checkChange(group);
-        });
-        if (x.checked) { 
-            flag = true;   
+    if (group.length > 0) {
+        let flag = false;
+        for (x of group) {
+            
+            x.addEventListener('input', ()=> {
+                checkChange(group);
+            });
+            if (x.checked) { 
+                flag = true;   
+            }
         }
+    
+        if (group && flag) x.parentNode.classList.remove('check-error');
+        else if (group && !flag) x.parentNode.classList.add('check-error');
+    
+        return flag;
+    } else {
+        return true;
     }
 
-    if (group && flag) x.parentNode.classList.remove('check-error');
-    else if (group && !flag) x.parentNode.classList.add('check-error');
-
-    return flag;
 }
 
 function checkChange(group) {
