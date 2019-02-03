@@ -60,16 +60,16 @@ http.createServer((request, response) => {
 
                 response.on('end', () => {
                     console.log(slackResponse);
-                    res.writeHead(200, {'Content-Type': 'application/json'});
-                    res.end(slackResponse);
+                    response.writeHead(200, {'Content-Type': 'application/json'});
+                    response.end(slackResponse);
                 });
 
             });
 
             req.on('error', (e) => {
 				console.log(`error: ${e.message}`);
-				res.writeHead(e.statusCode);
-                res.end(e.message);
+				response.writeHead(e.statusCode);
+                response.end(e.message);
             });
 
             // write data to request body
