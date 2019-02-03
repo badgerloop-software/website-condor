@@ -157,7 +157,63 @@ function sendForm(message) {
 }
 
 function googleFormSubmission(items) {
+    let data = createGoogleFormInfo(items);
 
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === XMLHttpRequest.DONE) {
+            console.log(xhttp.responseText);
+        }
+    }
+
+    xhttp.open("POST", "https://script.google.com/macros/s/AKfycbx66Vvo52zz-l0JVFFx01B2j7F3igeqo9gZ1TDSRXSuexqR2Bak/exec");
+    
+    xhttp.send(JSON.stringify(data));
+
+}
+
+function createGoogleFormInfo(items) {
+    let data = {};
+
+    for (let x of items) {
+        switch (x.title.toLowerCase()) { 
+            case "name":
+                data['First Name'] = x.value.split(' ', 1).toString();
+                data['Last Name'] = x.value.substr(x.value.indexOf(" ")).trim();
+                break;
+            case "major": 
+                data['Prospective Major(s)'] = x.value.trim();
+                break;
+            case "email": 
+                data["Email address"] = x.value.trim();
+                break;
+            default: 
+                break;
+        }    
+    }
+
+    let subTeams = document.querySelectorAll('.required-check');
+    data["I am interested in the following Sub-team(s):"] = [];
+    for (let x of subTeams) {
+        if (x.checked) {
+            switch(x.id.toLowerCase()) {
+                case "electrical-check":
+                    data["I am interested in the following Sub-team(s):"].push("Electrical Teams (Battery, Controls, Low Voltage, High Voltage, Software)");
+                    break;
+                case "mechanical-check":
+                    data["I am interested in the following Sub-team(s):"].push("Mechanical Teams (Analysis, Braking, Fabrication, Propulsion, Stability, Structural, Testing/Safety)");
+                    break;
+                case "operations-check": 
+                    data["I am interested in the following Sub-team(s):"].push("Operations Teams (Communications, Feasibility, Finance/Supply Chain, Industry Relations, Outreach & Recruiting, Virtual Reality, Website)");
+                    break;
+                default: 
+                    break;
+            }
+        }
+    }
+
+    return data;
 }
 
 function inputChange(event) {
