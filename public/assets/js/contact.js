@@ -143,22 +143,21 @@ function checkChange(group) {
 }
 
 function sendForm(message) {
-    // let xhttp = new XMLHttpRequest();
+    let xhttp = new XMLHttpRequest();
 
-    // xhttp.onreadystatechange = function() {
-    //     if (xhttp.readyState === 4 && xhttp.status === 200) {
-    //         displayStatusMessage('success');
-    //         clearForm();
-    //     } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
-    //         //TODO: catch errors from Slack and from our API - set up email
-    //         displayStatusMessage('error');
-    //         clearForm();
-    //     }
-    // }
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === 4 && xhttp.status === 200) {
+            displayStatusMessage('success');
+            clearForm();
+        } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
+            //TODO: catch errors from Slack and from our API - set up email
+            displayStatusMessage('error');
+            clearForm();
+        }
+    }
 
-    // xhttp.open("POST", 'https://badgerloop.com/node/contact') //TODO: need full link to server API when implemented.
-    // xhttp.send(JSON.stringify(message));
-    console.log("sending form!");
+    xhttp.open("POST", 'https://badgerloop.com/node/contact') //TODO: need full link to server API when implemented.
+    xhttp.send(JSON.stringify(message));
 }
 
 function googleFormSubmission(items) {
