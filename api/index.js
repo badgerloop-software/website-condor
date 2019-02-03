@@ -49,18 +49,18 @@ http.createServer((request, response) => {
                 }
             };
 
-            let req = https.request(options, (response) => {
-                console.log(`Status: ${response.statusCode}`);
+            let req = https.request(options, (res) => {
+                console.log(`Status: ${res.statusCode}`);
                 let slackResponse = "";
 
-                response.on('data', (chunk) => {
+                res.on('data', (chunk) => {
                     console.log("chunk of slack response received");
                     slackResponse += chunk;
                 });
 
-                response.on('end', () => {
+                res.on('end', () => {
                     console.log(slackResponse);
-                    response.status(200);
+                    response.statusCode = 200;
                     response.end(slackResponse);
                 });
 
@@ -68,7 +68,7 @@ http.createServer((request, response) => {
 
             req.on('error', (e) => {
 				console.log(`error: ${e.message}`);
-				response.status(e.statusCode);
+				response.statusCode = e.statusCode;
                 response.end(e.message);
             });
 
