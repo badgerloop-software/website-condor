@@ -97,6 +97,7 @@ function formSubmit() {
     if (!validCheckGroup(document.querySelectorAll('.required-check'))) validFlag = false;
 
     if (validFlag) sendForm(message);
+    if (validFlag && document.getElementById("contact-category").value === "Student Inquiry") googleFormSubmission(inputObjects);
 
 }
 
@@ -152,6 +153,10 @@ function sendForm(message) {
 
     xhttp.open("POST", 'https://badgerloop.com/node/contact') //TODO: need full link to server API when implemented.
     xhttp.send(JSON.stringify(message));
+}
+
+function googleFormSubmission(items) {
+    
 }
 
 function inputChange(event) {
