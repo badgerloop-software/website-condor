@@ -167,8 +167,8 @@ function googleFormSubmission(items) {
         }
     }
 
-    xhttp.open("POST", "https://script.google.com/macros/s/AKfycbx66Vvo52zz-l0JVFFx01B2j7F3igeqo9gZ1TDSRXSuexqR2Bak/exec");
-    
+    xhttp.open("POST", "https://script.google.com/macros/s/AKfycbxJqdWAA9juExLXPb94uKad_NMzBnoZDbEgiz1LIBnYqR50fe-W/exec");
+
     xhttp.send(JSON.stringify(data));
 
 }
