@@ -3354,6 +3354,11 @@ input, select, textarea {
 		#header > .logo {
 			position: absolute;
 			left: 1rem;
+			height: 100%;
+		}
+		#header > .logo a {
+			display: flex;
+			align-items: center;
 		}
 
 			#header > .logo strong {
