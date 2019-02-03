@@ -34,7 +34,6 @@ http.createServer((request, response) => {
         });
 
         request.on('end', function() {
-            console.log(`Request from client has ended : ${JSON.parse(postData)}`);
 
             let message = {
                 "text": JSON.parse(postData)
@@ -50,16 +49,13 @@ http.createServer((request, response) => {
             };
 
             let req = https.request(options, (res) => {
-                console.log(`Status: ${res.statusCode}`);
                 let slackResponse = "";
 
                 res.on('data', (chunk) => {
-                    console.log("chunk of slack response received");
                     slackResponse += chunk;
                 });
 
                 res.on('end', () => {
-                    console.log(slackResponse);
                     response.statusCode = 200;
                     response.end(slackResponse);
                 });
@@ -67,7 +63,6 @@ http.createServer((request, response) => {
             });
 
             req.on('error', (e) => {
-				console.log(`error: ${e.message}`);
 				response.statusCode = e.statusCode;
                 response.end(e.message);
             });
