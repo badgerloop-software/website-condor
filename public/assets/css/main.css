@@ -5209,6 +5209,12 @@ input, select, textarea {
 
 		}
 
+	#footerMiddle {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
 /* Nav Panel */
 
 	#wrapper {
