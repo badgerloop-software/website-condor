@@ -17,7 +17,6 @@ function removeForm() {
 }
 
 function dynamicForm() {
-    console.log("changing");
     let selected = document.getElementById('contact-category').value.toLowerCase();
 
     switch(selected) {
@@ -36,8 +35,15 @@ function dynamicForm() {
 function studentForm() {
 
     let teams = document.createElement('div');
-    teams.setAttribute('class', 'col-12 additional-form');
-    teams.innerHTML = `<div class="form-label">Team(s) Interested In:</div><input class="form-check" class="form-check" type="text" title="Teams Interested In">`;
+    teams.setAttribute('class', 'col-12 additional-form form-checkbox');
+    teams.innerHTML = `
+    <div class="form-label">Team(s) Interested In:</div>
+    <div class="team-checkboxes">
+        <input class="required-check" type="checkbox" id="electrical-check"><label for="electrical-check">Electrical Team</label>
+        <input class="required-check" type="checkbox" id="mechanical-check"><label for="mechanical-check">Mechanical Team</label>
+        <input class="required-check" type="checkbox" id="operations-check"><label for="operations-check">Operations Team</label>
+    </div>
+    `;
     document.getElementById("contact-form").insertBefore(teams, document.getElementById("contact-category").parentNode.nextSibling);
 
     let year = document.createElement('div');
@@ -88,6 +94,8 @@ function formSubmit() {
         }
     }
 
+    if (!validCheckGroup(document.querySelectorAll('.required-check'))) validFlag = false;
+
     if (validFlag) sendForm(message);
 
 }
@@ -96,6 +104,36 @@ function validInput(x) {
     if (x === "") return false
 
     return true;
+}
+
+function validCheckGroup(group) {
+    let flag = false;
+    for (x of group) {
+        
+        x.addEventListener('input', ()=> {
+            checkChange(group);
+        });
+        if (x.checked) { 
+            flag = true;   
+        }
+    }
+
+    if (group && flag) x.parentNode.classList.remove('check-error');
+    else if (group && !flag) x.parentNode.classList.add('check-error');
+
+    return flag;
+}
+
+function checkChange(group) {
+    let flag = false;
+    for (x of group) {
+        if (x.checked) {
+            flag = true;
+        }
+    }
+
+    if (flag) group[0].parentNode.classList.remove('check-error');
+    else group[0].parentNode.classList.add('check-error');
 }
 
 function sendForm(message) {
