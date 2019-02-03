@@ -25,14 +25,14 @@ http.createServer((request, response) => {
 		});
 	}
 	
-	if (req.url === '/contact' && req.method === 'POST') {
+	if (pathName === '/contact' && request.method === 'POST') {
         var postData = '';
 
-        req.on('data', function (data) {
+        request.on('data', function (data) {
             postData += data;
         });
 
-        req.on('end', function() {
+        request.on('end', function() {
             console.log(`Request from client has ended : ${JSON.parse(postData)}`);
 
             let message = {
@@ -48,7 +48,7 @@ http.createServer((request, response) => {
                 }
             };
 
-            let request = https.request(options, (response) => {
+            let req = https.request(options, (response) => {
                 console.log(`Status: ${response.statusCode}`);
                 let slackResponse = "";
 
@@ -65,15 +65,15 @@ http.createServer((request, response) => {
 
             });
 
-            request.on('error', (e) => {
+            req.on('error', (e) => {
 				console.log(`error: ${e.message}`);
 				res.writeHead(e.statusCode);
                 res.end(e.message);
             });
 
             // write data to request body
-            request.write(JSON.stringify(message));
-            request.end();
+            req.write(JSON.stringify(message));
+            req.end();
         });
     }
 
