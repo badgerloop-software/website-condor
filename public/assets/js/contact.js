@@ -156,7 +156,7 @@ function sendForm(message) {
         }
     }
 
-    xhttp.open("POST", '/api/contact') //TODO: need full link to server API when implemented.
+    xhttp.open("POST", '/api/contact');
     xhttp.send(JSON.stringify(message));
 }
 
