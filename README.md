@@ -20,10 +20,21 @@ For details on contributing to the site, check out [CONTIRBUTING.md](https://git
 
 3. **[Font Awesome Icons](https://fontawesome.com/v4.7.0/icons/)**
 
+4. **[Slack API](https://api.slack.com/)**
+
+5. **[Google Apps Script Form Service](https://developers.google.com/apps-script/reference/forms/)**
+
+6. **[Github Web Hooks](https://developer.github.com/webhooks/)**
+
+7. **[GNU Mailutils-3.5 Mail Server Package](https://mailutils.org/)**
+
+8. **[PostFix mail transfer agent (MTA) (included in Mailutils)](http://www.postfix.org/)**
+
+
 ## Server and Hosting
-The website is hosted on a Computer Sciences department VM that is serving the site using apache. The servers address is [badgerloop.cs.wisc.edu](badgerloop.cs.wisc.edu), which will display a basic HTML page is the server is functioning. If there are issues with the server contact Liam Mahoney or Luke Houge.
+The website is hosted on a Computer Sciences department VM off ESXi hypervisor that is serving the site using apache. If there are issues with the server contact Liam Mahoney or Luke Houge.
 1. **[Ubuntu Server 18.04.1 LTS](https://www.ubuntu.com/download/server)**
 
 2. **[Node.js](https://nodejs.org/en/about/)**
 
-3. **[Whatever DB we choose]()**
+3. **[Mongo DB 4.0.5](https://www.mongodb.com/)**
