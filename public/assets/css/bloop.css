@@ -148,3 +148,21 @@
     display: flex;
     justify-content: center;
 }
+.iframe-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    height: auto;
+    max-height: 325px;
+
+}
+#iframeDiv {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.home-video {
+    justify-content: center;
+}
