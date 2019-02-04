@@ -48,10 +48,10 @@ function createTeamLeadCard(obj) {
             <img src='/images/teamleads/${obj.Picture}'>
         </div>
         <div class='team-lead-name'>
-            ${obj.Name}
+            ${obj.Position}
         </div>
         <div class='team-lead-text'>
-            ${obj.Position}
+            ${obj.Name}
         </div>
         <div class='team-lead-text'>
             ${obj.Major}
