@@ -243,3 +243,12 @@
     width: 225px;
     max-width: 75%;
 }
+.nobkgrnd {
+    background-color: unset!important;
+}
+.sponsor-benefits {
+    border-radius: 10px;
+    padding: 1em;
+    background-color: white;
+    margin-bottom: 1em;
+}
