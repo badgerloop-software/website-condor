@@ -213,6 +213,12 @@
     height: auto;
     border-radius: 10px 10px 0px 0px;
 }
+.home {
+    flex: 1;
+    max-width: 85%;
+    min-width: 300px;
+    background-color: white;
+}
 .diamond {
     width: 325px!important;
     max-width: 95%;
