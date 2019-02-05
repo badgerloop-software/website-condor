@@ -102,7 +102,7 @@ function formSubmit() {
     if (validFlag && document.getElementById("contact-category").value === "Student Inquiry") {
         googleFormSubmission(inputObjects);
         let teams = getStudentTeams();
-        message += "*Team(s) Interested In:*" + teams + "\n";
+        message += "*Team(s) Interested In:* " + teams + "\n";
         sendStudentEmailResponse(email);
     } 
     if (validFlag) sendForm(message);
