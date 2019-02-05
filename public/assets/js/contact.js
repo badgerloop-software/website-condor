@@ -39,9 +39,9 @@ function studentForm() {
     teams.innerHTML = `
     <div class="form-label">Team(s) Interested In:</div>
     <div class="team-checkboxes">
-        <input class="required-check" type="checkbox" id="electrical-check"><label for="electrical-check">Electrical Team</label>
-        <input class="required-check" type="checkbox" id="mechanical-check"><label for="mechanical-check">Mechanical Team</label>
-        <input class="required-check" type="checkbox" id="operations-check"><label for="operations-check">Operations Team</label>
+        <input class="required-check" type="checkbox" id="electrical-check" title="Electrical"><label for="electrical-check">Electrical Team</label>
+        <input class="required-check" type="checkbox" id="mechanical-check" title="Mechanical"><label for="mechanical-check">Mechanical Team</label>
+        <input class="required-check" type="checkbox" id="operations-check" title="Operations"><label for="operations-check">Operations Team</label>
     </div>
     `;
     document.getElementById("contact-form").insertBefore(teams, document.getElementById("contact-category").parentNode.nextSibling);
@@ -81,6 +81,7 @@ function formSubmit() {
 
     let message = "";
     let validFlag = true;
+    let email = "";
 
     for (x of inputObjects) {
         x.addEventListener('input', inputChange);
@@ -88,6 +89,7 @@ function formSubmit() {
         if (validInput(x.value)) {
             x.classList.remove('form-error');
             message += "*" + x.title + ":* " + x.value + "\n";
+            if (x.title == "email") email = x.value;
         } else {
             validFlag = false;
             x.classList.add('form-error');
@@ -96,8 +98,14 @@ function formSubmit() {
 
     if (!validCheckGroup(document.querySelectorAll('.required-check'))) validFlag = false;
 
+    // teams interested in is separated becuase they are check boxes
+    if (validFlag && document.getElementById("contact-category").value === "Student Inquiry") {
+        googleFormSubmission(inputObjects);
+        let teams = getStudentTeams();
+        message += "*Team(s) Interested In:*" + teams + "\n";
+        sendStudentEmailResponse(email);
+    } 
     if (validFlag) sendForm(message);
-    if (validFlag && document.getElementById("contact-category").value === "Student Inquiry") googleFormSubmission(inputObjects);
 
 }
 
@@ -175,6 +183,33 @@ function googleFormSubmission(items) {
 
     xhttp.send(JSON.stringify(data));
 
+}
+
+function sendStudentEmailResponse(emailAddr) {
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (xhttp.readyState === XMLHttpRequest.DONE) {
+            console.log(xhttp.responseText);
+        }
+    }
+
+    xhttp.open("POST", "/api/emailResponse");
+
+    xhttp.send(JSON.stringify(emailAddr));
+}
+
+function getStudentTeams() {
+    let teams = "";
+    let checks = document.querySelectorAll('.required-check');
+
+    for (let x of checks) {
+        if (x.checked) {
+            teams += x.title + ", ";
+        }
+    }
+    
+    return teams.substr(0, teams.length - 2);
 }
 
 function createGoogleFormInfo(items) {
