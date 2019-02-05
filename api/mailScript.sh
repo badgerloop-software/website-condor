@@ -3,6 +3,6 @@
   echo From: noreply@badgerloop.com
   echo "Content-Type: text/html; "
   echo Subject: Badgerloop Form Submission Autoreply
-  echo 
+  echo
   cat mail.html
-) | sendmail -t 
+) | sendmail -t
