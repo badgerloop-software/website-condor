@@ -184,6 +184,10 @@
     justify-content: center;
     margin-top: 3em;
 }
+.sponsor-content-container {
+    width: 100%;
+    padding-top: 5em;
+}
 .sponsor-container {
     width: 100%;
     display: flex;
