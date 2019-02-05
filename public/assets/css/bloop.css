@@ -208,6 +208,7 @@
     margin: 1em;
     border-radius: 10px;
     max-width: 100%;
+    background-color: white;
 }
 .sponsor-content {
     padding: 1em;
@@ -251,4 +252,10 @@
     padding: 1em;
     background-color: white;
     margin-bottom: 1em;
+}
+.box-primary {
+    background-color: #c5050c;
+}
+.box-secondary {
+    background-color: #9b0000;
 }
