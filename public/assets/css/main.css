@@ -1880,51 +1880,25 @@ input, select, textarea {
 
 	.box {
 		border-color: #eeeeee;
+		color: white;
+	}
+	.box-primary {
+		background: #c5050c;
+	}
+	.box-secondary {
+		background: #9b0000;
 	}
 
 	/* styling for boxes on about-badgerloop page */
 	@media screen and (max-width: 1699px) {
-		#boxOne {
+		.box {
 			height: 250px;
-			color: white;
-			background-color: #f2849e;
 		}
-		#boxTwo {
-			height: 250px;
-			color: white;
-			background-color: #7ecaf6;
-		}
-		#boxThree {
-			height: 250px;
-			color: white;
-			background-color: #8499e7;
-		}
-		#boxFour {
-			height: 250px;
-			color: white;
-			background-color: #ae85ca;
-		}
+
 	}
 	@media screen and (min-width: 1700px) {
-		#boxOne {
+		.box {
 			height: 400px;
-			color: white;
-			background-color: #f2849e;
-		}
-		#boxTwo {
-			height: 400px;
-			color: white;
-			background-color: #7ecaf6;
-		}
-		#boxThree {
-			height: 400px;
-			color: white;
-			background-color: #8499e7;
-		}
-		#boxFour {
-			height: 400px;
-			color: white;
-			background-color: #ae85ca;
 		}
 	}
 
