@@ -9,11 +9,11 @@
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
     text-align: center;
     margin: 1em;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .team-lead-card img {
     width: 100%;
-    border-radius: 5px 5px 0px 0px;
+    border-radius: 10px 10px 0px 0px;
 }
 .team-lead-name {
     font-weight: 600;
@@ -80,7 +80,8 @@
     margin: 1em;
     text-align: center;
     flex: 1;
-    min-width: 400px;
+    min-width: 300px;
+    max-width: 90vw;
 }
 .check-error {
     border: 1px solid #c5050c!important;
@@ -169,4 +170,66 @@
 .team-title {
     width: 100%;
     text-align: center;
+}
+/* tile */
+.styleCustom {
+    width: 350px!important;
+    max-width: 90vw!important;
+    margin-left: 1em!important;
+    margin-right: 1em!important;
+}
+.tiles-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 3em;
+}
+.sponsor-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
+    flex-wrap: wrap;
+}
+.sponsor-tier {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2em;
+    width: 100%;
+}
+.sponsor-card {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    text-align: center;
+    margin: 1em;
+    border-radius: 10px;
+    max-width: 100%;
+}
+.sponsor-content {
+    padding: 1em;
+}
+.sponsor-img img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0px 0px;
+}
+.diamond {
+    width: 325px!important;
+    max-width: 95%;
+}
+.platinum {
+    width: 300px;
+    max-width: 90%;
+}
+.gold {
+    width: 275px;
+    max-width: 85%;
+}
+.silver {
+    width: 250px;
+    max-width: 80%;
+}
+.bronze {
+    width: 225px;
+    max-width: 75%;
 }
