@@ -264,7 +264,7 @@
     text-align: center;
 }
 .about-badgerloop-container {
-    padding: 10em;
+    padding: 3em 10em;
 }
 @media screen and (max-width: 736px) {
     .about-badgerloop-container {
@@ -279,4 +279,7 @@
     .about-badgerloop-container {
         padding: 3.5em;
     }
+}
+.mission-statement{
+    padding: 2em 0;
 }
