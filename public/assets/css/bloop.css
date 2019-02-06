@@ -264,7 +264,7 @@
     text-align: center;
 }
 .about-badgerloop-container {
-    padding: 5em;
+    padding: 10em;
 }
 @media screen and (max-width: 736px) {
     .about-badgerloop-container {
@@ -272,5 +272,11 @@
     }
     .cbp_tmicon {
         display: none!important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .about-badgerloop-container {
+        padding: 3.5em;
     }
 }
