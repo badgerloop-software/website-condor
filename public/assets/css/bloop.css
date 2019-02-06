@@ -223,6 +223,7 @@
     max-width: 85%;
     min-width: 300px;
     background-color: white;
+    flex-grow: 0;
 }
 .diamond {
     width: 325px!important;
@@ -258,4 +259,18 @@
 }
 .box-secondary {
     background-color: #9b0000;
+}
+.content-title {
+    text-align: center;
+}
+.about-badgerloop-container {
+    padding: 5em;
+}
+@media screen and (max-width: 736px) {
+    .about-badgerloop-container {
+        padding: 2em;
+    }
+    .cbp_tmicon {
+        display: none!important;
+    }
 }
