@@ -1,3 +1,6 @@
+function test() {
+    console.log("ELLO");
+}
 (function getTeamLeads() {
     let xhttp = new XMLHttpRequest();
 
