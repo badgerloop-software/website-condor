@@ -1,13 +1,22 @@
+/**
+ * Imediately Invoked Function (IIF) gets called as soon as it is declared.
+ * Sets event listeners for the form
+ */
 (function() {
     document.getElementById('contact-category').addEventListener('change', formChange);
     document.getElementById('contact-submit').addEventListener('click', formSubmit);
 })();
-
+/**
+ * Removes additional form and checks for which new type of form was selected. Used
+ * with a change event on the contact-category (dropdown) node.
+ */
 function formChange() {
     removeForm();
     dynamicForm();
 }
-
+/**
+ * Removes the additional input fields appended to the DOM.
+ */
 function removeForm() {
     let list = document.querySelectorAll('.additional-form');
 
@@ -15,7 +24,9 @@ function removeForm() {
         x.parentNode.removeChild(x);
     }
 }
-
+/**
+ * Determines which type of form to display.
+ */
 function dynamicForm() {
     let selected = document.getElementById('contact-category').value.toLowerCase();
 
@@ -31,7 +42,9 @@ function dynamicForm() {
             break;
     }
 }
-
+/**
+ * Fills the DOM with the appropriate UI for a student inquiry.
+ */
 function studentForm() {
 
     let teams = document.createElement('div');
@@ -57,7 +70,9 @@ function studentForm() {
     document.getElementById("contact-form").insertBefore(major, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
-
+/**
+ * Fills the DOM with the appropriate UI for the sponsor form.
+ */
 function sponsorForm() {
 
     let company = document.createElement('div');
@@ -66,7 +81,9 @@ function sponsorForm() {
     document.getElementById("contact-form").insertBefore(company, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
-
+/**
+ * Fills the DOM with the appropriate UI for the media form.
+ */
 function mediaForm() {
 
     let media = document.createElement('div');
@@ -75,7 +92,11 @@ function mediaForm() {
     document.getElementById("contact-form").insertBefore(media, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
-
+/**
+ * Driver for the form submission. Calls functions to check the validity of input fields. 
+ * If all fields are valid, sends the message to the appropriate areas. All forms are submitted
+ * to our slack. If the form is a student inquiry, it also sends the form input to our google form.
+ */
 function formSubmit() {
     let inputObjects = document.querySelectorAll('.form-check');
 
@@ -83,6 +104,7 @@ function formSubmit() {
     let validFlag = true;
     let email = "";
 
+    //checks all form inputs except for the checkboxes
     for (x of inputObjects) {
         x.addEventListener('input', inputChange);
 
@@ -108,7 +130,12 @@ function formSubmit() {
 
     if (validFlag) sendForm(message);
 }
-
+/**
+ * Checks if the trimmed input value is valid or not. Valid input is not empty, and if the input 
+ * is an email it must contain "@" and "." characters (to ensure it's an email entered).
+ * @param {Node} x input field node
+ * @returns {boolean} true if all of the input fields are valid, false if one or more input fields are invalid.
+ */
 function validInput(x) {
     if (x.value.trim() === "") return false
     if (x.title === "Email") {
@@ -116,7 +143,14 @@ function validInput(x) {
     }
     return true;
 }
-
+/**
+ * Called on form submission. Checks if one of the checkboxes of the group is selected. If one is, 
+ * it returns true and allows the form to continue to be submitted. If one is not, it prevents
+ * the form from being submitted and adds an event listener to listen for the checkboxes to be
+ * changed.
+ * @param {NodeList} group group of checkboxes
+ * @returns {boolean} true if one or more checkboxes are selected, false if one or more is not.
+ */
 function validCheckGroup(group) {
     if (group.length > 0) {
         let flag = false;
@@ -139,7 +173,11 @@ function validCheckGroup(group) {
     }
 
 }
-
+/**
+ * If one of the check boxes is selected, removes the error class from the checkboxes parent. 
+ * If one of the check boxes isn't selected, adds the error class to the checkboxes parent. 
+ * @param {NodeList} group group of checkboxes
+ */
 function checkChange(group) {
     let flag = false;
     for (x of group) {
@@ -151,15 +189,20 @@ function checkChange(group) {
     if (flag) group[0].parentNode.classList.remove('check-error');
     else group[0].parentNode.classList.add('check-error');
 }
-
+/**
+ * Sends the form data to a slack webhook. The message will be posted in website-activity. 
+ * @param {string} message the slack formatted message containing all input from the form
+ */
 function sendForm(message) {
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState === 4 && xhttp.status === 200) {
+            //posting message was successful
             displayStatusMessage('success');
             clearForm();
         } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
+            //posting message was unsuccessful
             //TODO: catch errors from Slack and from our API - set up email
             displayStatusMessage('error');
             clearForm();
@@ -169,7 +212,11 @@ function sendForm(message) {
     xhttp.open("POST", '/api/contact');
     xhttp.send(JSON.stringify(message));
 }
-
+/**
+ * Sends requst to google app script to populate the google form (https://docs.google.com/forms/d/e/1FAIpQLScUSWZHf-8eMYvrwFLx6pG0ZON6Mkk1SVvaA4QKJ0U3b2hnjA/viewform) with 
+ * response data from the student inquiry form. 
+ * @param {NodeList} items list of input items with class "form-check"
+ */
 function googleFormSubmission(items) {
     let data = createGoogleFormInfo(items);
 
@@ -177,7 +224,7 @@ function googleFormSubmission(items) {
 
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState === XMLHttpRequest.DONE) {
-            console.log(xhttp.responseText);
+            //TODO: catch errors and report via slack bot.
         }
     }
 
@@ -202,7 +249,11 @@ function sendStudentEmailResponse(emailAddr) {
     // xhttp.send(JSON.stringify(emailAddr));
     
 }
-
+/**
+ * Checks the checkbox group to make sure one of the checkboxes is selected. Checkboxes
+ * must have the class "required-check" to be selected.
+ * @returns true if a checkbox is selected. false if no checkboxes are selected.
+ */
 function getStudentTeams() {
     let teams = "";
     let checks = document.querySelectorAll('.required-check');
@@ -215,7 +266,12 @@ function getStudentTeams() {
     
     return teams.substr(0, teams.length - 2);
 }
-
+/**
+ * Prepares data to be submitted to the google form (https://docs.google.com/forms/d/e/1FAIpQLScUSWZHf-8eMYvrwFLx6pG0ZON6Mkk1SVvaA4QKJ0U3b2hnjA/viewform).
+ * Only needed for Student Inquiries!
+ * @param {NodeList} items 
+ * @returns {obj} data formatted properly for the google form script 
+ */
 function createGoogleFormInfo(items) {
     let data = {};
 
@@ -260,7 +316,10 @@ function createGoogleFormInfo(items) {
 
     return data;
 }
-
+/**
+ * Checks whether the form input needs to be displayed as invalid or not. 
+ * @param {event} event the event object passed when an event fires
+ */
 function inputChange(event) {
 
     if (event.target.value !== "") {
@@ -270,7 +329,9 @@ function inputChange(event) {
     }
 
 }
-
+/**
+ * Clears the form of any entered information.
+ */
 function clearForm() {
 
     removeForm();
@@ -282,10 +343,13 @@ function clearForm() {
     }
     
 }
-
+/**
+ * Displays either a status or error message to the user. Inserted before div with ID "form-submit"
+ * @param {string} message flag to identify if success or error message should be displayed. "success" for success, anything else for failure.
+ */
 function displayStatusMessage(message) {
 
-    let button = document.getElementById('contact-submit');
+    let button = document.getElementById('form-submit');
     let parent = button.parentNode.parentNode.parentNode;
 
     if (message === "success") {
@@ -302,7 +366,10 @@ function displayStatusMessage(message) {
     parent.parentNode.insertBefore(newNode, parent);
 
 }
-
+/**
+ * Removes status message from the DOM. When the x button is clicked it should be removed from the DOM.
+ * @param {DOM Node} obj UI status message x button that was clicked
+ */
 function closeStatusMessage(obj) {
     obj.parentNode.parentNode.removeChild(obj.parentNode);
 }
