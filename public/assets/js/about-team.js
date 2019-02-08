@@ -19,6 +19,8 @@
     info: Array of objects holding each team leads information
 */
 function teamLeadCardDriver(info) {
+    let section = document.createElement("section");
+    section.setAttribute("class", "main alt");
     let container = document.createElement("div");
     container.setAttribute('class', 'flex-container');
     let tlContainer = document.createElement("div");
@@ -36,7 +38,8 @@ function teamLeadCardDriver(info) {
     }
     
     container.appendChild(tlContainer);
-    document.getElementById('wrapper').insertBefore(container, document.getElementById('footer'));
+    section.appendChild(container);
+    document.getElementById('wrapper').insertBefore(section, document.getElementById('footer'));
 }
 
 function createTeamLeadCard(obj) {

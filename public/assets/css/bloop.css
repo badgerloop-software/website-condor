@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     justify-content: center;
     max-width: 85vw;
+    padding: 5em 0;
 }
 .team-lead-card {
     width: 15em;
