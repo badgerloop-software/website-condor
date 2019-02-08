@@ -50,22 +50,27 @@
 					<section id="one" class="main alt">
 						<header class="accent1">
 							<h1>Contact</h1>
-							<p>Drop us a line with an questions, comments or feedback you have! Also feel free to give us a follow on one of our social medias, linked below.</p>
+							<p>Send us a message with comments, questions or feedback you have!</p>
 						</header>
 						<div class="inner alt">
 							<div class="content">
 								<div class="row gtr-uniform" id="contact-form">
 									<div class="col-6 col-12-xsmall">
-										<div class="form-label">Name:</div>
-										<input type="text" class="form-check" title="Name" placeholder="Name" />
+										<div class="form-label">First Name:*</div>
+										<input type="text" class="form-check" title="first-name" placeholder="Name" />
 									</div>
 									<div class="col-6 col-12-xsmall">
-										<div class="form-label">Email:</div>
+										<div class="form-label">Last Name:*</div>
+										<input type="text" class="form-check" title="last-name" placeholder="Name" />
+									</div>
+									<div class="col-12 col-12-xsmall">
+										<div class="form-label">Email:*</div>
 										<input type="email" class="form-check" title="Email" placeholder="Email" />
+										<span class="email-error" aria-live="polite"></span>
 									</div>
 									<!-- Break -->
 									<div class="col-12">
-										<div class="form-label">Reason For Contacting:</div>
+										<div class="form-label">Reason For Contacting:*</div>
 										<select name="demo-category" id="contact-category" class="form-check" title="Reason for Contacting">
 											<option value="" disabled selected>...</option>
 											<option>Student Inquiry</option>
@@ -76,17 +81,19 @@
 									</div>
 									<!-- Break -->
 									<div class="col-12">
-										<div class="form-label">Message:</div>
+										<div class="form-label">Message:*</div>
 										<textarea name="form-message" placeholder="Enter your message" rows="6" class="form-check" title="Message"></textarea>
 									</div>
 									<!-- Break -->
+									<div class="col-12">
+										<div class="form-label">* Required Field</div>
+									</div>
 									<div class="col-12">
 										<ul class="actions">
 											<li class="form-li"><input id="contact-submit" class="form-button primary" type="submit" value="Submit" /></li>
 										</ul>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</section>

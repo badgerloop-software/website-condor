@@ -37,7 +37,7 @@ function studentForm() {
     let teams = document.createElement('div');
     teams.setAttribute('class', 'col-12 additional-form form-checkbox');
     teams.innerHTML = `
-    <div class="form-label">Team(s) Interested In:</div>
+    <div class="form-label">Team(s) Interested In (select one or more):*</div>
     <div class="team-checkboxes">
         <input class="required-check" type="checkbox" id="electrical-check" title="Electrical"><label for="electrical-check">Electrical Team</label>
         <input class="required-check" type="checkbox" id="mechanical-check" title="Mechanical"><label for="mechanical-check">Mechanical Team</label>
@@ -48,12 +48,12 @@ function studentForm() {
 
     let year = document.createElement('div');
     year.setAttribute('class', 'col-6 col-12-xsmall additional-form');
-    year.innerHTML = `<div class="form-label">Year:</div><input class="form-check" type="text" title="Year">`;
+    year.innerHTML = `<div class="form-label">Year:*</div><input class="form-check" type="text" title="Year">`;
     document.getElementById("contact-form").insertBefore(year, document.getElementById("contact-category").parentNode.nextSibling);
 
     let major = document.createElement('div');
     major.setAttribute('class', 'col-6 col-12-xsmall additional-form');
-    major.innerHTML = `<div class="form-label">Major:</div><input class="form-check" type="text" title="Major">`;
+    major.innerHTML = `<div class="form-label">Major:*</div><input class="form-check" type="text" title="Major">`;
     document.getElementById("contact-form").insertBefore(major, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
@@ -62,7 +62,7 @@ function sponsorForm() {
 
     let company = document.createElement('div');
     company.setAttribute('class', 'col-12 additional-form');
-    company.innerHTML = `<div class="form-label">Company Name:</div><input class="form-check" type="text" title="Company Name">`;
+    company.innerHTML = `<div class="form-label">Company Name:*</div><input class="form-check" type="text" title="Company Name">`;
     document.getElementById("contact-form").insertBefore(company, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
@@ -71,7 +71,7 @@ function mediaForm() {
 
     let media = document.createElement('div');
     media.setAttribute('class', 'col-12 additional-form');
-    media.innerHTML = `<div class="form-label">Organization Name:</div><input class="form-check" type="text" title="Organization Name">`;
+    media.innerHTML = `<div class="form-label">Organization Name:*</div><input class="form-check" type="text" title="Organization Name">`;
     document.getElementById("contact-form").insertBefore(media, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
@@ -86,7 +86,7 @@ function formSubmit() {
     for (x of inputObjects) {
         x.addEventListener('input', inputChange);
 
-        if (validInput(x.value)) {
+        if (validInput(x)) {
             x.classList.remove('form-error');
             message += "*" + x.title + ":* " + x.value + "\n";
             if (x.title == "email") email = x.value;
@@ -105,13 +105,15 @@ function formSubmit() {
         message += "*Team(s) Interested In:* " + teams + "\n";
         // sendStudentEmailResponse(email);
     } 
-    if (validFlag) sendForm(message);
 
+    if (validFlag) sendForm(message);
 }
 
 function validInput(x) {
-    if (x === "") return false
-
+    if (x.value.trim() === "") return false
+    if (x.title === "Email") {
+        if (x.value.indexOf("@") === -1 || x.value.indexOf(".") === -1) return false;
+    }
     return true;
 }
 
@@ -219,9 +221,11 @@ function createGoogleFormInfo(items) {
 
     for (let x of items) {
         switch (x.title.toLowerCase()) { 
-            case "name":
-                data['First Name'] = x.value.split(' ', 1).toString();
-                data['Last Name'] = x.value.substr(x.value.indexOf(" ")).trim();
+            case "first-name":
+                data['First Name'] = x.value.trim();
+                break;
+            case "last-name":
+                data['Last Name'] = x.value.trim();
                 break;
             case "major": 
                 data['Prospective Major(s)'] = x.value.trim();
