@@ -4,7 +4,7 @@
  */
 (function() {
     document.getElementById('contact-category').addEventListener('change', formChange);
-    document.getElementById('contact-submit').addEventListener('click', formSubmit);
+    document.getElementById('form-submit').addEventListener('click', formSubmit);
 })();
 /**
  * Removes additional form and checks for which new type of form was selected. Used
