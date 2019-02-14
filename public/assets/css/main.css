@@ -18,7 +18,8 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -26,6 +27,7 @@ footer, header, hgroup, menu, nav, section {
 
 body {
 	line-height: 1;
+	zoom: 90%;
 }
 
 ol, ul {
@@ -223,6 +225,7 @@ input, select, textarea {
 
 	p {
 		margin: 0 0 2rem 0;
+		font-size: 1.05rem;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
@@ -258,12 +261,12 @@ input, select, textarea {
 	}
 
 	h4 {
-		font-size: 1.1rem;
+		font-size: 1.25rem;
 		margin: 0 0 0.65rem 0;
 	}
 
 	h5 {
-		font-size: 0.9rem;
+		font-size: 1.2rem;
 	}
 
 	h6 {
