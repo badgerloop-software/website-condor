@@ -2590,7 +2590,7 @@ input, select, textarea {
 		text-align: center;
 	}
 
-	header h1 + p {
+	header p {
 		font-size: 1.5rem;
 		margin: -2rem 0 4rem 0;
 	}
@@ -2602,7 +2602,7 @@ input, select, textarea {
 
 	@media screen and (max-width: 736px) {
 
-		header h1 + p {
+		header p {
 			font-size: 1.25rem;
 		}
 
