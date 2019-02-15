@@ -245,6 +245,11 @@
     height: auto;
     border-radius: 10px 10px 0px 0px;
 }
+.sponsor-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .home {
     flex: 1;
     max-width: 85%;
@@ -256,21 +261,46 @@
     width: 325px!important;
     max-width: 95%;
 }
+.diamond .sponsor-img {
+    height: 325px;
+    width: 325px;
+    max-width: 100%;
+}
 .platinum {
     width: 300px;
     max-width: 90%;
+}
+.platinum .sponsor-img {
+    height: 300px;
+    width: 300px;
+    max-width: 100%;
 }
 .gold {
     width: 275px;
     max-width: 85%;
 }
+.gold .sponsor-img {
+    height: 275px;
+    width: 275px;
+    max-width: 100%;
+}
 .silver {
     width: 250px;
     max-width: 80%;
 }
+.silver .sponsor-img {
+    height: 250px;
+    width: 250px;
+    max-width: 100%;
+}
 .bronze {
     width: 225px;
     max-width: 75%;
+}
+.bronze .sponsor-img {
+    height: 225px;
+    width: 225px;
+    max-width: 100%;
 }
 .nobkgrnd {
     background-color: unset!important;
