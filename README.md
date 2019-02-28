@@ -4,7 +4,7 @@ The third revision of the Badgerloop website! The official page for UW-Madison's
 
 *Contributors: Liam Mahoney, Luke Houge*
 
-![badgerloop logo](https://github.com/badgerloop-software/website-condor/blob/dev-general_content/public/images/logo.png)
+![badgerloop logo](https://raw.githubusercontent.com/badgerloop-software/website-condor/master/public/images/logo.png)
 ## Contributing
 
 For details on contributing to the site, check out [CONTIRBUTING.md](https://github.com/badgerloop-software/website-condor/blob/dev-general_content/CONTRIBUTING.md)
