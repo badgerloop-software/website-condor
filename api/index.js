@@ -6,7 +6,7 @@ let MongoClient = require("mongodb").MongoClient;
 
 let creds;
 
-fs.readFileSync("creds.json", "utf8", function(err, data) {
+fs.readFile("creds.json", "utf8", function(err, data) {
     if (err) throw err;
     creds = JSON.parse(data);
 })();
