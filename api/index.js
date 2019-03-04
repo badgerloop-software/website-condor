@@ -6,10 +6,10 @@ let MongoClient = require("mongodb").MongoClient;
 
 let creds;
 
-fs.readFile("creds.json", "utf8", function(err, data) {
+(fs.readFile("creds.json", "utf8", function (err, data) {
     if (err) throw err;
     creds = JSON.parse(data);
-})();
+}))();
 
 http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
@@ -32,11 +32,11 @@ http.createServer((request, response) => {
     if (pathName === "/contact" && request.method === "POST") {
         var postData = "";
 
-        request.on("data", function(data) {
+        request.on("data", function (data) {
             postData += data;
         });
 
-        request.on("end", function() {
+        request.on("end", function () {
             let message = {
                 text: JSON.parse(postData)
             };
@@ -77,11 +77,11 @@ http.createServer((request, response) => {
     if (pathName === "/emailResponse" && request.method === "POST") {
         let postData = "";
 
-        request.on("data", function(data) {
+        request.on("data", function (data) {
             postData += data;
         });
 
-        request.on("end", function() {
+        request.on("end", function () {
             sendNewStudentEmail(JSON.parse(postData));
         });
     }
@@ -91,7 +91,7 @@ function getTeams() {
     return new Promise((resolve, reject) => {
         let client = new MongoClient(creds.dbURL);
 
-        client.connect(function(err) {
+        client.connect(function (err) {
             if (!err) {
                 let db = client.db(creds.db);
 
@@ -120,7 +120,7 @@ function getTeamLeads(team) {
     return new Promise((resolve, reject) => {
         let client = new MongoClient(creds.dbURL);
 
-        client.connect(function(err) {
+        client.connect(function (err) {
             if (!err) {
                 let db = client.db(creds.db);
                 db.collection("teamleads")
@@ -166,7 +166,7 @@ function getTeamLeadsDriver(teams) {
 
 function sendNewStudentEmail(emailAddr) {
     var stream = fs.createWriteStream("mailScript.sh"); //creates a write stream to mailScript.sh script file
-    stream.once("open", function(fd) {
+    stream.once("open", function (fd) {
         //file descriptor so you will be able to close stream
         stream.write("(\n"); //open script
         stream.write("  echo To: " + emailAddr + "\n"); //sets recipient to the address
