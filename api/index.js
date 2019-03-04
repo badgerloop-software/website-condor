@@ -9,83 +9,87 @@ let creds;
 fs.readFileSync("creds.json", "utf8", function(err, data) {
     if (err) throw err;
     creds = JSON.parse(data);
+    startServer();
 });
 
-http.createServer((request, response) => {
-    let pathName = url.parse(request.url).pathname;
+function startServer() {
+    http.createServer((request, response) => {
+        let pathName = url.parse(request.url).pathname;
 
-    if (pathName === "/teamleads" && request.method === "GET") {
-        let finalObj = {};
-        let promiseList = [];
-        getTeams()
-            .then((teams) => {
-                return getTeamLeadsDriver(teams);
-            })
-            .then((result) => {
-                response.end(JSON.stringify(result));
-            })
-            .catch((err) => {
-                //TODO: do something with errors (send to slack channel?).
+        if (pathName === "/teamleads" && request.method === "GET") {
+            let finalObj = {};
+            let promiseList = [];
+            getTeams()
+                .then((teams) => {
+                    return getTeamLeadsDriver(teams);
+                })
+                .then((result) => {
+                    response.end(JSON.stringify(result));
+                })
+                .catch((err) => {
+                    //TODO: do something with errors (send to slack channel?).
+                });
+        }
+
+        if (pathName === "/contact" && request.method === "POST") {
+            var postData = "";
+
+            request.on("data", function(data) {
+                postData += data;
             });
-    }
 
-    if (pathName === "/contact" && request.method === "POST") {
-        var postData = "";
+            request.on("end", function() {
+                let message = {
+                    text: JSON.parse(postData)
+                };
 
-        request.on("data", function(data) {
-            postData += data;
-        });
+                let options = {
+                    hostname: "hooks.slack.com",
+                    path:
+                        "/services/T09PPL10S/BD948FF24/9HsUZ9zw7TtifqC4TPLT8eRB",
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                };
 
-        request.on("end", function() {
-            let message = {
-                text: JSON.parse(postData)
-            };
+                let req = https.request(options, (res) => {
+                    let slackResponse = "";
 
-            let options = {
-                hostname: "hooks.slack.com",
-                path: "/services/T09PPL10S/BD948FF24/9HsUZ9zw7TtifqC4TPLT8eRB",
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            };
+                    res.on("data", (chunk) => {
+                        slackResponse += chunk;
+                    });
 
-            let req = https.request(options, (res) => {
-                let slackResponse = "";
-
-                res.on("data", (chunk) => {
-                    slackResponse += chunk;
+                    res.on("end", () => {
+                        response.statusCode = 200;
+                        response.end(slackResponse);
+                    });
                 });
 
-                res.on("end", () => {
-                    response.statusCode = 200;
-                    response.end(slackResponse);
+                req.on("error", (e) => {
+                    response.statusCode = e.statusCode;
+                    response.end(e.message);
                 });
+
+                // write data to request body
+                req.write(JSON.stringify(message));
+                req.end();
+            });
+        }
+
+        if (pathName === "/emailResponse" && request.method === "POST") {
+            let postData = "";
+
+            request.on("data", function(data) {
+                postData += data;
             });
 
-            req.on("error", (e) => {
-                response.statusCode = e.statusCode;
-                response.end(e.message);
+            request.on("end", function() {
+                sendNewStudentEmail(JSON.parse(postData));
             });
-
-            // write data to request body
-            req.write(JSON.stringify(message));
-            req.end();
-        });
-    }
-
-    if (pathName === "/emailResponse" && request.method === "POST") {
-        let postData = "";
-
-        request.on("data", function(data) {
-            postData += data;
-        });
-
-        request.on("end", function() {
-            sendNewStudentEmail(JSON.parse(postData));
-        });
-    }
-}).listen(creds.port);
+        }
+    }).listen(creds.port);
+}
 
 function getTeams() {
     return new Promise((resolve, reject) => {
