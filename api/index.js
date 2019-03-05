@@ -93,7 +93,6 @@ function getTeams() {
         client.connect(function (err) {
             if (!err) {
                 let db = client.db(creds.db);
-
                 db.collection("teamleads").distinct("Team", (err, result) => {
                     if (err) {
                         reject(err);
