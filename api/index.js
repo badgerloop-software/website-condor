@@ -5,11 +5,6 @@ let fs = require("fs");
 let MongoClient = require("mongodb").MongoClient;
 let creds = require("./creds.json");
 
-// fs.readFile("creds.json", "utf8", function (err, data) {
-//     if (err) throw err;
-//     creds = JSON.parse(data);
-// });
-
 http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
