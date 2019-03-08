@@ -200,7 +200,7 @@ function getTiers() {
     });
 }
 
-function getSponsors(team) {
+function getSponsors(tier) {
     return new Promise((resolve, reject) => {
         let client = new MongoClient(creds.dbURL);
 
