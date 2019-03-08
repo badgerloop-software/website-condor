@@ -39,7 +39,7 @@ function teamLeadCardDriver(info) {
     
     container.appendChild(tlContainer);
     section.appendChild(container);
-    document.getElementById('wrapper').insertBefore(section, document.getElementById('footer'));
+    document.getElementById('wrapper').insertBefore(section, document.getElementById('two'));
 }
 
 function createTeamLeadCard(obj) {
