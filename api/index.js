@@ -26,9 +26,9 @@ http.createServer((request, response) => {
     if (pathName === "/sponsors" && request.method === "GET") {
         let finalObj = {};
         let promiseList = [];
-        getTiers()
-            .then((tiers) => {
-                return getSponsorsDriver(tiers);
+        getSponsors()
+            .then((teams) => {
+                return getTeamLeadsDriver(teams);
             })
             .then((result) => {
                 response.end(JSON.stringify(result));
@@ -200,32 +200,30 @@ function getTiers() {
     });
 }
 
-function getSponsors(tier) {
+function getSponsors() {
     return new Promise((resolve, reject) => {
         let client = new MongoClient(creds.dbURL);
 
         client.connect(function (err) {
             if (!err) {
                 let db = client.db(creds.db);
-                db.collection("sponsors")
-                    .find({ tier: tier })
-                    .toArray((err, result) => {
-                        if (err) {
-                            reject(err);
-                        } else if (result == {}) {
-                            //TODO: figure out what empty result returns as.
-                            reject(
-                                "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
-                            );
-                        } else {
-                            resolve(result);
-                        }
-                    });
+                db.collection("teamleads").distinct("Team", (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else if (result === null) {
+                        //TODO: figure out what empty result returns as.
+                        reject(
+                            "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
+                        );
+                    } else {
+                        resolve(result);
+                    }
+                });
+
+                client.close();
             } else {
                 reject(err);
             }
-
-            client.close();
         });
     });
 }
