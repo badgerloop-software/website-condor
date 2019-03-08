@@ -22,6 +22,21 @@ http.createServer((request, response) => {
                 //TODO: do something with errors (send to slack channel?).
             });
     }
+    
+    if (pathName === "/sponsors" && request.method === "GET") {
+        let finalObj = {};
+        let promiseList = [];
+        getSponsors()
+            .then((tiers) => {
+                return getTeamLeadsDriver(tiers);
+            })
+            .then((result) => {
+                response.end(JSON.stringify(result));
+            })
+            .catch((err) => {
+                //TODO: do something with errors (send to slack channel?).
+            });
+    }
 
     if (pathName === "/contact" && request.method === "POST") {
         var postData = "";
@@ -156,6 +171,83 @@ function getTeamLeadsDriver(teams) {
         });
     });
 }
+
+function getSponsors() {
+    return new Promise((resolve, reject) => {
+        let client = new MongoClient(creds.dbURL);
+
+        client.connect(function (err) {
+            if (!err) {
+                let db = client.db(creds.db);
+                db.collection("sponsors").distinct("tier", (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else if (result === null) {
+                        //TODO: figure out what empty result returns as.
+                        reject(
+                            "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
+                        );
+                    } else {
+                        resolve(result);
+                    }
+                });
+
+                client.close();
+            } else {
+                reject(err);
+            }
+        });
+    });
+}
+
+function getSponsors(team) {
+    return new Promise((resolve, reject) => {
+        let client = new MongoClient(creds.dbURL);
+
+        client.connect(function (err) {
+            if (!err) {
+                let db = client.db(creds.db);
+                db.collection("sponsors")
+                    .find({ tier: tier })
+                    .toArray((err, result) => {
+                        if (err) {
+                            reject(err);
+                        } else if (result == {}) {
+                            //TODO: figure out what empty result returns as.
+                            reject(
+                                "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
+                            );
+                        } else {
+                            resolve(result);
+                        }
+                    });
+            } else {
+                reject(err);
+            }
+
+            client.close();
+        });
+    });
+}
+
+function getSponsorsDriver(sponsors) {
+    return new Promise((resolve, reject) => {
+        let promiseList = [];
+        let resultObject = {};
+        for (let x of teams) {
+            promiseList.push(
+                getSponsors(x).then((result) => {
+                    resultObject[x] = result;
+                })
+            );
+        }
+
+        Promise.all(promiseList).then(() => {
+            resolve(resultObject);
+        });
+    });
+}
+
 
 function sendNewStudentEmail(emailAddr) {
     var stream = fs.createWriteStream("mailScript.sh"); //creates a write stream to mailScript.sh script file
