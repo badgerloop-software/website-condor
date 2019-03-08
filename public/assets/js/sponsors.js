@@ -11,7 +11,7 @@
         } 
     }
     
-    xhttp.open("GET", '/api/teamleads'); 
+    xhttp.open("GET", '/api/sponsors'); 
     xhttp.send();
 })();
 
