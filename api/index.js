@@ -28,7 +28,7 @@ http.createServer((request, response) => {
         let promiseList = [];
         getSponsors()
             .then((tiers) => {
-                return getSponsorsDriver();
+                return getSponsorsDriver(tiers);
             })
             .then((result) => {
                 response.end(JSON.stringify(result));
@@ -103,7 +103,7 @@ function getTeams() {
         client.connect(function (err) {
             if (!err) {
                 let db = client.db(creds.db);
-                db.collection("teamleads").distinct("Team", (err, result) => {
+                db.collection("sponsors").distinct("tier", (err, result) => {
                     if (err) {
                         reject(err);
                     } else if (result === null) {
@@ -131,8 +131,8 @@ function getTeamLeads(team) {
         client.connect(function (err) {
             if (!err) {
                 let db = client.db(creds.db);
-                db.collection("teamleads")
-                    .find({ Team: team })
+                db.collection("sponsors")
+                    .find({ tier: tier })
                     .toArray((err, result) => {
                         if (err) {
                             reject(err);
