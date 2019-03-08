@@ -26,9 +26,9 @@ http.createServer((request, response) => {
     if (pathName === "/sponsors" && request.method === "GET") {
         let finalObj = {};
         let promiseList = [];
-        getTeams()
-            .then((teams) => {
-                return getTeamLeadsDriver(teams);
+        getTiers()
+            .then((tiers) => {
+                return getSponsorsDriver(tiers);
             })
             .then((result) => {
                 response.end(JSON.stringify(result));
