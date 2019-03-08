@@ -172,6 +172,82 @@ function getTeamLeadsDriver(teams) {
     });
 }
 
+function getTiers() {
+    return new Promise((resolve, reject) => {
+        let client = new MongoClient(creds.dbURL);
+
+        client.connect(function (err) {
+            if (!err) {
+                let db = client.db(creds.db);
+                db.collection("sponsors").distinct("tier", (err, result) => {
+                    if (err) {
+                        reject(err);
+                    } else if (result === null) {
+                        //TODO: figure out what empty result returns as.
+                        reject(
+                            "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
+                        );
+                    } else {
+                        resolve(result);
+                    }
+                });
+
+                client.close();
+            } else {
+                reject(err);
+            }
+        });
+    });
+}
+
+function getSponsors(team) {
+    return new Promise((resolve, reject) => {
+        let client = new MongoClient(creds.dbURL);
+
+        client.connect(function (err) {
+            if (!err) {
+                let db = client.db(creds.db);
+                db.collection("sponsors")
+                    .find({ tier: tier })
+                    .toArray((err, result) => {
+                        if (err) {
+                            reject(err);
+                        } else if (result == {}) {
+                            //TODO: figure out what empty result returns as.
+                            reject(
+                                "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
+                            );
+                        } else {
+                            resolve(result);
+                        }
+                    });
+            } else {
+                reject(err);
+            }
+
+            client.close();
+        });
+    });
+}
+
+function getSponsorsDriver(tiers) {
+    return new Promise((resolve, reject) => {
+        let promiseList = [];
+        let resultObject = {};
+        for (let x of tiers) {
+            promiseList.push(
+                getSponsors(x).then((result) => {
+                    resultObject[x] = result;
+                })
+            );
+        }
+
+        Promise.all(promiseList).then(() => {
+            resolve(resultObject);
+        });
+    });
+}
+
 function sendNewStudentEmail(emailAddr) {
     var stream = fs.createWriteStream("mailScript.sh"); //creates a write stream to mailScript.sh script file
     stream.once("open", function (fd) {
