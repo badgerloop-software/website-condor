@@ -1,57 +1,66 @@
-(function getSponsors() {
+(function getTeamLeads() {
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function() {
         if (xhttp.readyState === xhttp.DONE) {
             if ( xhttp.status === 200) {
-                sponsorsCardDriver(JSON.parse(xhttp.responseText));
+                teamLeadCardDriver(JSON.parse(xhttp.responseText));
             } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
                 //TODO: decide how to handle errors - slack channel? 
             }
         } 
     }
     
-    xhttp.open("GET", '/api/sponsors'); 
+    xhttp.open("GET", '/api/teamleads'); 
     xhttp.send();
 })();
 
 /* 
-    info: Array of objects holding each sponsor leads information
+    info: Array of objects holding each team leads information
 */
-function sponsorsCardDriver(info) {
+function teamLeadCardDriver(info) {
     let section = document.createElement("section");
     section.setAttribute("class", "main alt");
     let container = document.createElement("div");
     container.setAttribute('class', 'flex-container');
-    let sponsorContainer = document.createElement("div");
-    sponsorContainer.setAttribute('class', 'sponsor-container');
-    for (let sponsor in info) {
-        sponsorContainer.appendChild(createSponsorTier(tier));
+    let tlContainer = document.createElement("div");
+    tlContainer.setAttribute('class', 'team-lead-container');
+    for (let team in info) {
+        tlContainer.appendChild(createTeamTitle(team));
 
-        let tierContainer = document.createElement("div");
-        tierContainer.setAttribute("class", "sponsor-tier");
-        for (let x of info[tier]) {
-            sponsorContainer.appendChild(createSponsorCard(x));
+        let teamContainer = document.createElement("div");
+        teamContainer.setAttribute("class", "team-container");
+        for (let x of info[team]) {
+            teamContainer.appendChild(createTeamLeadCard(x));
         }
 
-        sponsorContainer.appendChild(tierContainer);
+        tlContainer.appendChild(teamContainer);
     }
     
-    container.appendChild(sponsorContainer);
+    container.appendChild(tlContainer);
     section.appendChild(container);
-    document.getElementById('wrapper').insertBefore(section, document.getElementById('two'));
+    document.getElementById('wrapper').insertBefore(section, document.getElementById('footer'));
 }
 
-function createSponsorCard(obj) {
+function createTeamLeadCard(obj) {
     let div = document.createElement("div");
-    div.classList.add('sponsor-card diamond');
+    div.classList.add('team-lead-card');
     div.setAttribute('id', obj._id);
     let card = `
-        <div class='sponsor-img'>
-            <img src='/images/sponsors/${obj.logo}'>
+        <div class='team-lead-img'>
+            <img src='/images/teamleads/${obj.Picture}'>
         </div>
-        <div class='sponsor-text'>
-            ${obj.website}
+        <div class='team-lead-name'>
+            ${obj.Position}
+        </div>
+        <div class='team-lead-text'>
+            ${obj.Name}
+        </div>
+        <div class='team-lead-text'>
+            ${obj.Major}
+        </div>
+        <div class='team-lead-text'>
+            ${obj.Year}
         </div>
     `;
     div.innerHTML = card;
@@ -59,11 +68,11 @@ function createSponsorCard(obj) {
     return div;
 }
 
-function createTierTitle(tier) {
+function createTeamTitle(team) {
     let div = document.createElement("div");
-    div.setAttribute("class", "tier-title");
+    div.setAttribute("class", "team-title");
     let title = document.createElement("h2");
-    title.innerText = tier;
+    title.innerText = team;
     div.appendChild(title);
     return div;
 }
