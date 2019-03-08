@@ -16,7 +16,7 @@
 })();
 
 /* 
-    info: Array of objects holding each team leads information
+    info: Array of objects holding each sponsor leads information
 */
 function sponsorsCardDriver(info) {
     let section = document.createElement("section");
@@ -25,13 +25,13 @@ function sponsorsCardDriver(info) {
     container.setAttribute('class', 'flex-container');
     let sponsorContainer = document.createElement("div");
     sponsorContainer.setAttribute('class', 'sponsor-container');
-    for (let team in info) {
+    for (let sponsor in info) {
         sponsorContainer.appendChild(createSponsorTier(tier));
 
         let tierContainer = document.createElement("div");
         tierContainer.setAttribute("class", "sponsor-tier");
         for (let x of info[tier]) {
-            teamContainer.appendChild(createSponsorCard(x));
+            sponsorContainer.appendChild(createSponsorCard(x));
         }
 
         sponsorContainer.appendChild(tierContainer);
@@ -42,25 +42,16 @@ function sponsorsCardDriver(info) {
     document.getElementById('wrapper').insertBefore(section, document.getElementById('two'));
 }
 
-function createTeamLeadCard(obj) {
+function createSponsorCard(obj) {
     let div = document.createElement("div");
     div.classList.add('sponsor-card diamond');
     div.setAttribute('id', obj._id);
     let card = `
-        <div class='team-lead-img'>
-            <img src='/images/teamleads/${obj.Picture}'>
+        <div class='sponsor-img'>
+            <img src='/images/sponsors/${obj.logo}'>
         </div>
-        <div class='team-lead-name'>
-            ${obj.Position}
-        </div>
-        <div class='team-lead-text'>
-            ${obj.Name}
-        </div>
-        <div class='team-lead-text'>
-            ${obj.Major}
-        </div>
-        <div class='team-lead-text'>
-            ${obj.Year}
+        <div class='sponsor-text'>
+            ${obj.website}
         </div>
     `;
     div.innerHTML = card;
