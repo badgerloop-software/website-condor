@@ -8,36 +8,7 @@ let creds = require("./creds.json");
 http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
-    if (pathName === "/teamleads" && request.method === "GET") {
-        let finalObj = {};
-        let promiseList = [];
-        getTeams()
-            .then((teams) => {
-                return getTeamLeadsDriver(teams);
-            })
-            .then((result) => {
-                response.end(JSON.stringify(result));
-            })
-            .catch((err) => {
-                //TODO: do something with errors (send to slack channel?).
-            });
-    }
     
-    if (pathName === "/sponsors" && request.method === "GET") {
-        let finalObj = {};
-        let promiseList = [];
-        getSponsors()
-            .then((tiers) => {
-                return getSponsorsDriver(tiers);
-            })
-            .then((result) => {
-                response.end(JSON.stringify(result));
-            })
-            .catch((err) => {
-                //TODO: do something with errors (send to slack channel?).
-            });
-    }
-
     if (pathName === "/contact" && request.method === "POST") {
         var postData = "";
 
