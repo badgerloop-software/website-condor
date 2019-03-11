@@ -9,33 +9,24 @@ http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
     if (pathName === "/teamleads" && request.method === "GET") {
-        let finalObj = {};
-        let promiseList = [];
-        getTeams()
-            .then((teams) => {
-                return getTeamLeadsDriver(teams);
-            })
-            .then((result) => {
-                response.end(JSON.stringify(result));
-            })
-            .catch((err) => {
-                //TODO: do something with errors (send to slack channel?).
-            });
+        getTeamleads().then((result) => {
+            return formatData(result, "Team");
+        }).then((result) => {
+            response.end(JSON.stringify(result));
+        }).catch((err) => {
+            //TODO: do something with error
+            response.end("ERROR");
+        })
     }
-    
+
     if (pathName === "/sponsors" && request.method === "GET") {
-        let finalObj = {};
-        let promiseList = [];
-        getSponsors()
-            .then((tiers) => {
-                return getSponsorsDriver(tiers);
-            })
-            .then((result) => {
-                response.end(JSON.stringify(result));
-            })
-            .catch((err) => {
-                //TODO: do something with errors (send to slack channel?).
-            });
+        getSponsors().then((result) => {
+            return formatData(result, "tier");
+        }).then((result) => {
+            response.end(JSON.stringify(result));
+        }).catch((err) => {
+            console.log(err);
+        });
     }
 
     if (pathName === "/contact" && request.method === "POST") {
@@ -83,194 +74,69 @@ http.createServer((request, response) => {
         });
     }
 
-    if (pathName === "/emailResponse" && request.method === "POST") {
-        let postData = "";
-
-        request.on("data", function (data) {
-            postData += data;
-        });
-
-        request.on("end", function () {
-            sendNewStudentEmail(JSON.parse(postData));
-        });
-    }
 }).listen(creds.port);
 
-function getTeams() {
+function getTeamleads() {
     return new Promise((resolve, reject) => {
-        let client = new MongoClient(creds.dbURL);
+        let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
 
-        client.connect(function (err) {
-            if (!err) {
-                let db = client.db(creds.db);
-                db.collection("sponsors").distinct("tier", (err, result) => {
-                    if (err) {
-                        reject(err);
-                    } else if (result === null) {
-                        //TODO: figure out what empty result returns as.
-                        reject(
-                            "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
-                        );
-                    } else {
-                        resolve(result);
-                    }
-                });
+        client.connect((err) => {
+            if (err) reject(err);
 
-                client.close();
-            } else {
-                reject(err);
-            }
-        });
-    });
-}
+            let db = client.db(creds.db);
+            let collection = db.collection("teamleads");
 
-function getTeamLeads(team) {
-    return new Promise((resolve, reject) => {
-        let client = new MongoClient(creds.dbURL);
-
-        client.connect(function (err) {
-            if (!err) {
-                let db = client.db(creds.db);
-                db.collection("sponsors")
-                    .find({ tier: tier })
-                    .toArray((err, result) => {
-                        if (err) {
-                            reject(err);
-                        } else if (result == {}) {
-                            //TODO: figure out what empty result returns as.
-                            reject(
-                                "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
-                            );
-                        } else {
-                            resolve(result);
-                        }
-                    });
-            } else {
-                reject(err);
+            let options = {
+                "sort": "Position"
             }
 
-            client.close();
-        });
-    });
-}
+            collection.find({}, options).toArray((err, docs) => {
+                if (err) reject(err);
 
-function getTeamLeadsDriver(teams) {
-    return new Promise((resolve, reject) => {
-        let promiseList = [];
-        let resultObject = {};
-        for (let x of teams) {
-            promiseList.push(
-                getTeamLeads(x).then((result) => {
-                    resultObject[x] = result;
-                })
-            );
-        }
-
-        Promise.all(promiseList).then(() => {
-            resolve(resultObject);
-        });
-    });
-}
-
-function getTiers() {
-    return new Promise((resolve, reject) => {
-        let client = new MongoClient(creds.dbURL);
-
-        client.connect(function (err) {
-            if (!err) {
-                let db = client.db(creds.db);
-                db.collection("sponsors").distinct("tier", (err, result) => {
-                    if (err) {
-                        reject(err);
-                    } else if (result === null) {
-                        //TODO: figure out what empty result returns as.
-                        reject(
-                            "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
-                        );
-                    } else {
-                        resolve(result);
-                    }
-                });
-
-                client.close();
-            } else {
-                reject(err);
-            }
+                resolve(docs);
+            });
         });
     });
 }
 
 function getSponsors() {
     return new Promise((resolve, reject) => {
-        let client = new MongoClient(creds.dbURL);
+        let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
 
-        client.connect(function (err) {
-            if (!err) {
-                let db = client.db(creds.db);
-                db.collection("teamleads").distinct("Team", (err, result) => {
-                    if (err) {
-                        reject(err);
-                    } else if (result === null) {
-                        //TODO: figure out what empty result returns as.
-                        reject(
-                            "Empty object returned from MongoDB in getTeamLeads() within api/index.js"
-                        );
-                    } else {
-                        resolve(result);
-                    }
-                });
+        client.connect((err) => {
+            if (err) reject(err);
 
-                client.close();
-            } else {
-                reject(err);
+            let db = client.db(creds.db);
+            let collection = db.collection("sponsors");
+
+            let options = {
+                "sort": "company"
             }
+
+            collection.find({}, options).toArray((err, docs) => {
+                if (err) reject(err);
+
+                resolve(docs);
+            });
         });
     });
 }
 
-function getSponsorsDriver(tiers) {
+//key: key to create parent elements based off of
+function formatData(data, key) {
     return new Promise((resolve, reject) => {
-        let promiseList = [];
-        let resultObject = {};
-        for (let x of tiers) {
-            promiseList.push(
-                getSponsors(x).then((result) => {
-                    resultObject[x] = result;
-                })
-            );
-        }
+        let result = {};
 
-        Promise.all(promiseList).then(() => {
-            resolve(resultObject);
-        });
-    });
-}
-
-function sendNewStudentEmail(emailAddr) {
-    var stream = fs.createWriteStream("mailScript.sh"); //creates a write stream to mailScript.sh script file
-    stream.once("open", function (fd) {
-        //file descriptor so you will be able to close stream
-        stream.write("(\n"); //open script
-        stream.write("  echo To: " + emailAddr + "\n"); //sets recipient to the address
-        stream.write("  echo From: noreply@badgerloop.com\n"); // sets the from address to noreply@badgerloop.com
-        stream.write('  echo "Content-Type: text/html; "\n'); // says the email will be in HTML format
-        stream.write("  echo Subject: Badgerloop Form Submission Autoreply\n"); // sets subject of email
-        stream.write("  echo\n");
-        stream.write("  cat mail.html\n"); // points the the mail content file
-        stream.write(") | sendmail -t\n"); // closes the script, then sends the mail using PostFix
-        stream.end(); //finishes writing the file
-    });
-
-    //code to actually execute the script
-    const exec = require("child_process").exec;
-    var yourscript = exec(
-        "sh mailScript.sh", //command to run that executes the script
-        (error, stdout, stderr) => {
-            console.log(`${stdout}`);
-            console.log(`${stderr}`);
-            if (error !== null) {
-                console.log(`exec error: ${error}`);
+        for (x of data) {
+            if (result[x[key]]) {
+                result[x[key]].push(x);
+            } else {
+                result[x[key]] = [];
+                result[x[key]].push(x);
             }
         }
-    );
+
+        resolve(result);
+    });
 }
+
