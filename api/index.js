@@ -31,6 +31,7 @@ http.createServer((request, response) => {
 
         request.on('end', () => {
             updateDatabase(JSON.parse(data), "teamleads").then((result) => {
+                //TODO: return number of results changed? 
                 response.end("OK");
             }).catch((err) => {
                 response.statusCode = 500;
