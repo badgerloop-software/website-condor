@@ -396,6 +396,7 @@ input:invalid {
     width: 100%;
     min-height: 100vh;
     padding-bottom: 2rem;
+    align-items: center;
 }
 .reveal-img {
     flex: 1;
