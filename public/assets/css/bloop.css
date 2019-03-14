@@ -421,6 +421,9 @@ input:invalid {
     margin: .1em;
     font-size:1.2rem;
 }
+.reveal-text a {
+    color: white;
+}
 .reveal-where {
     margin-top: 1rem;
     text-align: center;
