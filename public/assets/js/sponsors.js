@@ -1,3 +1,4 @@
+// calls the HTTP server from sponsors.html
 (function getSponsors() {
     let xhttp = new XMLHttpRequest();
 
@@ -15,9 +16,7 @@
     xhttp.send();
 })();
 
-/* 
-    info: Array of objects holding each sponsor leads information
-*/
+// takes in info (the JSON object) and creates the needed sections and div's, calling other methods to place the info
 function sponsorsCardDriver(info) {
     let section = document.createElement("section");
     section.setAttribute("class", "main alt");
@@ -30,15 +29,15 @@ function sponsorsCardDriver(info) {
     container.setAttribute('class', 'flex-container');
     let sponsorContainer = document.createElement("div");
     sponsorContainer.setAttribute('class', 'sponsor-container');
-    let tiers = ['Diamond', 'Platinum', 'Gold', 'Silver', 'Bronze'];
-    for (let y=0; y<tiers.length; y++) {
-        for (let tier in info) {
-            if (tiers[y] === tier) {
-                let tierDiv = createSponsorTier(tier)
-                sponsorContainer.appendChild(tierDiv);
+    let tiers = ['Diamond', 'Platinum', 'Gold', 'Silver', 'Bronze']; // an array containg the tiers in correct order to sort for now
+    for (let y=0; y<tiers.length; y++) { // loops through the correctly ordered tiers array
+        for (let tier in info) { // loops through the different tiers in the JSON
+            if (tiers[y] === tier) { // if the currently selected JSON tier = the tier in the array, continue (to check order)
+                let tierDiv = createSponsorTier(tier) // calls createSponsorTier to create the tier container 
+                sponsorContainer.appendChild(tierDiv); 
                 
-                for (let x of info[tier]) {
-                    tierDiv.appendChild(createSponsorCard(x));
+                for (let x of info[tier]) { // loops through sponsors in that tier
+                    tierDiv.appendChild(createSponsorCard(x)); // calls createSponsorCard for each sponsor
                 }
             }
             else {
@@ -47,15 +46,15 @@ function sponsorsCardDriver(info) {
         }
     }
 
-    container.appendChild(sponsorContainer);
+    container.appendChild(sponsorContainer); // appends all needed sections and div's
     sponsorContentContainer.appendChild(container);
     inner.appendChild(sponsorContentContainer);
     section.appendChild(inner);
 
-    document.getElementById('wrapper').insertBefore(section, document.getElementById('two'));
+    document.getElementById('wrapper').insertBefore(section, document.getElementById('two')); // places the info in the right place
 }
 
-function createSponsorCard(obj) {
+function createSponsorCard(obj) { // creates a card for each sponsor
     let div = document.createElement("div");
     div.classList.add('sponsor-card', obj.tier.toLowerCase());
     div.setAttribute('id', obj._id);
@@ -72,7 +71,7 @@ function createSponsorCard(obj) {
     return div;
 }
 
-function createSponsorTier(tier) {
+function createSponsorTier(tier) { // creates the tier div for each tier
     let tierDiv = document.createElement("div");
     tierDiv.setAttribute("class", "sponsor-tier");
     let div = document.createElement("div");
