@@ -376,3 +376,8 @@ input:invalid {
   input:focus:invalid {
     box-shadow: none;
   }
+
+  #buttonCenter {
+      margin: auto;
+      text-align: center;
+  }
