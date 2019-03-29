@@ -3,7 +3,10 @@ let https = require("https");
 let url = require("url");
 let fs = require("fs");
 let MongoClient = require("mongodb").MongoClient;
+let ObjectId = require('mongodb').ObjectID;
 let creds = require("./creds.json");
+const client = new MongoClient(creds.dbURL);
+
 
 http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
@@ -19,6 +22,34 @@ http.createServer((request, response) => {
         })
     }
 
+    if (pathName === "/teamleads" && request.method === "PUT") {
+        let data = "";
+
+        request.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        request.on('end', () => {
+            updateDatabase(JSON.parse(data), "teamleads").then((result) => {
+                //TODO: return number of results changed? 
+                response.end("OK");
+            }).catch((err) => {
+                response.statusCode = 500;
+                response.end(JSON.stringify(err.message));
+            }).finally(() => {
+                client.close();
+            });
+        });
+    }
+
+    if (pathName === "/teamleads" && request.method === "POST") {
+
+    }
+
+    if (pathName === "/teamleads" && request.method === "DELETE") {
+
+    }
+
     if (pathName === "/sponsors" && request.method === "GET") {
         getSponsors().then((result) => {
             return formatData(result, "tier");
@@ -27,6 +58,43 @@ http.createServer((request, response) => {
         }).catch((err) => {
             console.log(err);
         });
+    }
+    /**
+     * Updates the document with whatever is passed in via data.
+     * incomming data:
+     * {
+     * _id: <object ID>,
+     * data: {
+     *          <Field to update>: <new data>,
+     *           ...
+     *         }
+     * }
+     */
+    if (pathName === "/sponsors" && request.method === "PUT") {
+        let data = "";
+
+        request.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        request.on('end', () => {
+            updateDatabase(JSON.parse(data), "sponsors").then((result) => {
+                response.end("OK");
+            }).catch((err) => {
+                response.statusCode = 500;
+                response.end(JSON.stringify(err.message));
+            }).finally(() => {
+                client.close();
+            });
+        });
+    }
+
+    if (pathName === "/sponsors" && request.method === "POST") {
+
+    }
+
+    if (pathName === "/sponsors" && request.method === "DELETE") {
+
     }
 
     if (pathName === "/contact" && request.method === "POST") {
@@ -140,3 +208,24 @@ function formatData(data, key) {
     });
 }
 
+function updateDatabase(json, collecName) {
+    return new Promise((resolve, reject) => {
+        if (!json._id) reject("Empty set passed in");
+
+        let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
+
+        client.connect((err) => {
+            if (err) reject(err);
+
+            let db = client.db(creds.db);
+            let collection = db.collection(collecName);
+            collection.updateOne({ "_id": new ObjectId(json._id) }, { $set: json.data }).then((result) => {
+                resolve(result);
+            }).catch((error) => {
+                reject(error);
+            }).finally(() => {
+                client.close();
+            })
+        })
+    });
+}

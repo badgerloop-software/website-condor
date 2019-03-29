@@ -21,37 +21,50 @@
 function sponsorsCardDriver(info) {
     let section = document.createElement("section");
     section.setAttribute("class", "main alt");
+    section.setAttribute("id", "three");
+    let inner = document.createElement("div");
+    inner.setAttribute('class', 'inner');
+    let sponsorContentContainer = document.createElement("div");
+    sponsorContentContainer.setAttribute('class', 'sponsor-content-container');
     let container = document.createElement("div");
     container.setAttribute('class', 'flex-container');
     let sponsorContainer = document.createElement("div");
     sponsorContainer.setAttribute('class', 'sponsor-container');
-    for (let sponsor in info) {
-        sponsorContainer.appendChild(createSponsorTier(tier));
-
-        let tierContainer = document.createElement("div");
-        tierContainer.setAttribute("class", "sponsor-tier");
-        for (let x of info[tier]) {
-            sponsorContainer.appendChild(createSponsorCard(x));
+    let tiers = ['Diamond', 'Platinum', 'Gold', 'Silver', 'Bronze'];
+    for (let y=0; y<tiers.length; y++) {
+        for (let tier in info) {
+            if (tiers[y] === tier) {
+                let tierDiv = createSponsorTier(tier)
+                sponsorContainer.appendChild(tierDiv);
+                
+                for (let x of info[tier]) {
+                    tierDiv.appendChild(createSponsorCard(x));
+                }
+            }
+            else {
+                continue;
+            }
         }
-
-        sponsorContainer.appendChild(tierContainer);
     }
-    
+
     container.appendChild(sponsorContainer);
-    section.appendChild(container);
+    sponsorContentContainer.appendChild(container);
+    inner.appendChild(sponsorContentContainer);
+    section.appendChild(inner);
+
     document.getElementById('wrapper').insertBefore(section, document.getElementById('two'));
 }
 
 function createSponsorCard(obj) {
     let div = document.createElement("div");
-    div.classList.add('sponsor-card diamond');
+    div.classList.add('sponsor-card', obj.tier.toLowerCase());
     div.setAttribute('id', obj._id);
     let card = `
         <div class='sponsor-img'>
             <img src='/images/sponsors/${obj.logo}'>
         </div>
-        <div class='sponsor-text'>
-            ${obj.website}
+        <div class='sponsor-content'>
+            <a href="${obj.website}" class="primary button">Learn More</a>
         </div>
     `;
     div.innerHTML = card;
@@ -59,11 +72,14 @@ function createSponsorCard(obj) {
     return div;
 }
 
-function createTierTitle(tier) {
+function createSponsorTier(tier) {
+    let tierDiv = document.createElement("div");
+    tierDiv.setAttribute("class", "sponsor-tier");
     let div = document.createElement("div");
-    div.setAttribute("class", "tier-title");
+    div.setAttribute("class", "team-title");
     let title = document.createElement("h2");
-    title.innerText = tier;
+    title.innerText = tier + ' Tier:';
     div.appendChild(title);
-    return div;
+    tierDiv.appendChild(div);
+    return tierDiv;
 }
