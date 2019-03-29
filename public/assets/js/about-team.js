@@ -26,16 +26,24 @@ function teamLeadCardDriver(info) {
     container.setAttribute('class', 'flex-container');
     let tlContainer = document.createElement("div");
     tlContainer.setAttribute('class', 'team-lead-container');
-    for (let team in info) {
-        tlContainer.appendChild(createTeamTitle(team));
+    let teams = ['Administrative', 'Electrical', 'Mechanical', 'Operations']; // an array containg the teams in correct order to sort for now
+    for (let y = 0; y < teams.length; y++) { // loops through the correctly ordered teams array
+        for (let team in info) {
+            if(teams[y] === team) { // if the currently selected JSON team = the teams in the array, continue (to check order)
+                tlContainer.appendChild(createTeamTitle(team));
 
-        let teamContainer = document.createElement("div");
-        teamContainer.setAttribute("class", "team-container");
-        for (let x of info[team]) {
-            teamContainer.appendChild(createTeamLeadCard(x));
+                let teamContainer = document.createElement("div");
+                teamContainer.setAttribute("class", "team-container");
+                for (let x of info[team]) {
+                    teamContainer.appendChild(createTeamLeadCard(x));
+                }
+
+                tlContainer.appendChild(teamContainer);
+            }
+            else {
+                continue;
+            }
         }
-
-        tlContainer.appendChild(teamContainer);
     }
     
     container.appendChild(tlContainer);
