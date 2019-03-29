@@ -31,20 +31,18 @@ function sponsorsCardDriver(info) {
     let sponsorContainer = document.createElement("div");
     sponsorContainer.setAttribute('class', 'sponsor-container');
     for (let tier in info) {
-        sponsorContainer.appendChild(createSponsorTier(tier));
-
-        let tierContainer = document.createElement("div");
-        tierContainer.setAttribute("class", "sponsor-tier");
+        let tierDiv = createSponsorTier(tier)
+        sponsorContainer.appendChild(tierDiv);
+        
         for (let x of info[tier]) {
-            sponsorContainer.appendChild(createSponsorCard(x));
+            tierDiv.appendChild(createSponsorCard(x));
         }
 
-        sponsorContainer.appendChild(tierContainer);
     }
 
     container.appendChild(sponsorContainer);
     sponsorContentContainer.appendChild(container);
-    section.appendChild(sponsorContentContainer);
+    inner.appendChild(sponsorContentContainer);
     section.appendChild(inner);
 
     document.getElementById('wrapper').insertBefore(section, document.getElementById('two'));
@@ -58,8 +56,8 @@ function createSponsorCard(obj) {
         <div class='sponsor-img'>
             <img src='/images/sponsors/${obj.logo}'>
         </div>
-        <div class='sponsor-text'>
-            ${obj.website}
+        <div class='sponsor-content'>
+            <a href="${obj.website}" class="primary button">Learn More</a>
         </div>
     `;
     div.innerHTML = card;
