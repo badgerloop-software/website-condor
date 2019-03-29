@@ -5,6 +5,7 @@
         if (xhttp.readyState === xhttp.DONE) {
             if ( xhttp.status === 200) {
                 teamLeadCardDriver(JSON.parse(xhttp.responseText));
+                executiveLeadDriver(JSON.parse(xhttp.responseText));
             } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
                 //TODO: decide how to handle errors - slack channel? 
             }
@@ -75,4 +76,15 @@ function createTeamTitle(team) {
     title.innerText = team;
     div.appendChild(title);
     return div;
+}
+
+function executiveLeadDriver(info) {
+    let electricalLead = document.getElementById("electricalLead");
+    electricalLead.innerHTML = info.Administrative[0]["Name"];
+
+    let mechanicalLead = document.getElementById("mechanicalLead");
+    mechanicalLead.innerHTML = info.Administrative[1]["Name"];
+
+    let operationsLead = document.getElementById("operationsLead");
+    operationsLead.innerHTML = info.Administrative[2]["Name"];
 }
