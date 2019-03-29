@@ -71,7 +71,7 @@ function createSponsorTier(tier) {
     let div = document.createElement("div");
     div.setAttribute("class", "team-title");
     let title = document.createElement("h2");
-    title.innerText = tier;
+    title.innerText = tier + ' Tier:';
     div.appendChild(title);
     tierDiv.appendChild(div);
     return tierDiv;
