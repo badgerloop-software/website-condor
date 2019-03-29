@@ -97,6 +97,53 @@ http.createServer((request, response) => {
 
     }
 
+    if (pathName === "/index" && request.method === "GET") {
+        getSponsors().then((result) => {
+            return formatData(result, "tier");
+        }).then((result) => {
+            response.end(JSON.stringify(result));
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+    /**
+     * Updates the document with whatever is passed in via data.
+     * incomming data:
+     * {
+     * _id: <object ID>,
+     * data: {
+     *          <Field to update>: <new data>,
+     *           ...
+     *         }
+     * }
+     */
+    if (pathName === "/index" && request.method === "PUT") {
+        let data = "";
+
+        request.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        request.on('end', () => {
+            updateDatabase(JSON.parse(data), "sponsors").then((result) => {
+                response.end("OK");
+            }).catch((err) => {
+                response.statusCode = 500;
+                response.end(JSON.stringify(err.message));
+            }).finally(() => {
+                client.close();
+            });
+        });
+    }
+
+    if (pathName === "/index" && request.method === "POST") {
+
+    }
+
+    if (pathName === "/index" && request.method === "DELETE") {
+
+    }
+
     if (pathName === "/contact" && request.method === "POST") {
         var postData = "";
 
