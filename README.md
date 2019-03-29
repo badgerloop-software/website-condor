@@ -7,7 +7,7 @@ The third revision of the Badgerloop website! The official page for UW-Madison's
 ![badgerloop logo](https://raw.githubusercontent.com/badgerloop-software/website-condor/master/public/images/logo.png)
 ## Contributing
 
-For details on contributing to the site, check out [CONTIRBUTING.md](https://github.com/badgerloop-software/website-condor/blob/dev-general_content/CONTRIBUTING.md)
+For details on contributing to the site, check out [CONTIRBUTING.md](https://github.com/badgerloop-software/website-condor/blob/master/CONTRIBUTING.md)
 
 ## Website Technologies
 
