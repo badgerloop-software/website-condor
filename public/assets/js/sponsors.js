@@ -30,14 +30,21 @@ function sponsorsCardDriver(info) {
     container.setAttribute('class', 'flex-container');
     let sponsorContainer = document.createElement("div");
     sponsorContainer.setAttribute('class', 'sponsor-container');
-    for (let tier in info) {
-        let tierDiv = createSponsorTier(tier)
-        sponsorContainer.appendChild(tierDiv);
-        
-        for (let x of info[tier]) {
-            tierDiv.appendChild(createSponsorCard(x));
+    let tiers = ['Diamond', 'Platinum', 'Gold', 'Silver', 'Bronze'];
+    for (let y=0; y<tiers.length; y++) {
+        for (let tier in info) {
+            if (tiers[y] === tier) {
+                let tierDiv = createSponsorTier(tier)
+                sponsorContainer.appendChild(tierDiv);
+                
+                for (let x of info[tier]) {
+                    tierDiv.appendChild(createSponsorCard(x));
+                }
+            }
+            else {
+                continue;
+            }
         }
-
     }
 
     container.appendChild(sponsorContainer);
@@ -50,7 +57,7 @@ function sponsorsCardDriver(info) {
 
 function createSponsorCard(obj) {
     let div = document.createElement("div");
-    div.classList.add('sponsor-card', obj.tier);
+    div.classList.add('sponsor-card', obj.tier.toLowerCase());
     div.setAttribute('id', obj._id);
     let card = `
         <div class='sponsor-img'>
