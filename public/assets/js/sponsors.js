@@ -21,11 +21,16 @@
 function sponsorsCardDriver(info) {
     let section = document.createElement("section");
     section.setAttribute("class", "main alt");
+    section.setAttribute("id", "three");
+    let inner = document.createElement("div");
+    inner.setAttribute('class', 'inner');
+    let sponsorContentContainer = document.createElement("div");
+    sponsorContentContainer.setAttribute('class', 'sponsor-content-container');
     let container = document.createElement("div");
     container.setAttribute('class', 'flex-container');
     let sponsorContainer = document.createElement("div");
     sponsorContainer.setAttribute('class', 'sponsor-container');
-    for (let sponsor in info) {
+    for (let tier in info) {
         sponsorContainer.appendChild(createSponsorTier(tier));
 
         let tierContainer = document.createElement("div");
@@ -36,15 +41,18 @@ function sponsorsCardDriver(info) {
 
         sponsorContainer.appendChild(tierContainer);
     }
-    
+
     container.appendChild(sponsorContainer);
-    section.appendChild(container);
+    sponsorContentContainer.appendChild(container);
+    section.appendChild(sponsorContentContainer);
+    section.appendChild(inner);
+
     document.getElementById('wrapper').insertBefore(section, document.getElementById('two'));
 }
 
 function createSponsorCard(obj) {
     let div = document.createElement("div");
-    div.classList.add('sponsor-card diamond');
+    div.classList.add('sponsor-card', obj.tier);
     div.setAttribute('id', obj._id);
     let card = `
         <div class='sponsor-img'>
@@ -59,11 +67,14 @@ function createSponsorCard(obj) {
     return div;
 }
 
-function createTierTitle(tier) {
+function createSponsorTier(tier) {
+    let tierDiv = document.createElement("div");
+    tierDiv.setAttribute("class", "sponsor-tier");
     let div = document.createElement("div");
-    div.setAttribute("class", "tier-title");
+    div.setAttribute("class", "team-title");
     let title = document.createElement("h2");
     title.innerText = tier;
     div.appendChild(title);
-    return div;
+    tierDiv.appendChild(div);
+    return tierDiv;
 }
