@@ -441,3 +441,6 @@ input:invalid {
         font-size: 1.4rem;
     }
 }
+.reveal-text .button {
+    margin-top: 2rem;
+}
