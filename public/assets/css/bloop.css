@@ -383,16 +383,27 @@ input:invalid {
   }
 
   /* styling for the countdown timer on home */
-  #countdown {
-      padding-top: 30vh;
-      text-align: center;
-      width: 100vw;
-      font-size: 5em;
-      margin: auto;
-  }
-    #countdownDiv{
-      text-align: center;
-      width: 100vw;
-      margin: auto;
-      position: absolute;
-  }
+@media screen and (max-width: 700px) {
+    #countdown {
+        padding-top: 30vh;
+        text-align: center;
+        font-size: 60px;
+    }
+}
+@media screen and (min-width: 701px) {
+    #countdown {
+        padding-top: 30vh;
+        text-align: center;
+        width: 100vw;
+        font-size: 100px;
+        margin: auto;
+    }
+    #countdownDiv h2 {
+        padding-left: 100px;
+    }
+}
+#countdownDiv{
+    width: 95vw;
+    margin: auto;
+    position: absolute;
+}
