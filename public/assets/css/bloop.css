@@ -376,3 +376,24 @@ input:invalid {
   input:focus:invalid {
     box-shadow: none;
   }
+
+  #buttonCenter {
+      margin: auto;
+      text-align: center;
+  }
+
+  /* styling for the countdown timer on home */
+  #countdown {
+      padding-top: 300px;
+      text-align: center;
+      width: 100vw;
+      font-size: 100px;
+      margin: auto;
+  }
+    #countdownDiv{
+      text-align: center;
+      width: 100vw;
+      font-size: 60px;
+      margin: auto;
+      position: absolute;
+  }
