@@ -5,6 +5,7 @@
         if (xhttp.readyState === xhttp.DONE) {
             if ( xhttp.status === 200) {
                 teamLeadCardDriver(JSON.parse(xhttp.responseText));
+                executiveLeadDriver(JSON.parse(xhttp.responseText));
             } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
                 //TODO: decide how to handle errors - slack channel? 
             }
@@ -25,16 +26,24 @@ function teamLeadCardDriver(info) {
     container.setAttribute('class', 'flex-container');
     let tlContainer = document.createElement("div");
     tlContainer.setAttribute('class', 'team-lead-container');
-    for (let team in info) {
-        tlContainer.appendChild(createTeamTitle(team));
+    let teams = ['Administrative', 'Electrical', 'Mechanical', 'Operations']; // an array containg the teams in correct order to sort for now
+    for (let y = 0; y < teams.length; y++) { // loops through the correctly ordered teams array
+        for (let team in info) {
+            if(teams[y] === team) { // if the currently selected JSON team = the teams in the array, continue (to check order)
+                tlContainer.appendChild(createTeamTitle(team));
 
-        let teamContainer = document.createElement("div");
-        teamContainer.setAttribute("class", "team-container");
-        for (let x of info[team]) {
-            teamContainer.appendChild(createTeamLeadCard(x));
+                let teamContainer = document.createElement("div");
+                teamContainer.setAttribute("class", "team-container");
+                for (let x of info[team]) {
+                    teamContainer.appendChild(createTeamLeadCard(x));
+                }
+
+                tlContainer.appendChild(teamContainer);
+            }
+            else {
+                continue;
+            }
         }
-
-        tlContainer.appendChild(teamContainer);
     }
     
     container.appendChild(tlContainer);
@@ -75,4 +84,15 @@ function createTeamTitle(team) {
     title.innerText = team;
     div.appendChild(title);
     return div;
+}
+
+function executiveLeadDriver(info) {
+    let electricalLead = document.getElementById("electricalLead");
+    electricalLead.innerHTML = info.Administrative[0]["Name"];
+
+    let mechanicalLead = document.getElementById("mechanicalLead");
+    mechanicalLead.innerHTML = info.Administrative[1]["Name"];
+
+    let operationsLead = document.getElementById("operationsLead");
+    operationsLead.innerHTML = info.Administrative[2]["Name"];
 }

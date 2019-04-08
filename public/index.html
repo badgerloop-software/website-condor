@@ -56,6 +56,10 @@
 		<!-- Banner -->
 		<section id="banner">
 			<div class="content primary" style="height:100vh;">
+				<header id="countdownDiv">
+					<h1 id="countdown"></h1>
+					<h2>UNTIL REVEAL</h2>
+				</header>
 				<ul class="actions special flex-end">
 					<li><a href="#one" class="button large scrolly"><span class="icon fa-angle-double-down"></span></a>
 					</li>
@@ -111,7 +115,7 @@
 							</li>
 							<li>
 								<h4>Director</h4>
-								<p>Ethan Link</p>
+								<p id="electricalLead"></p>
 							</li>
 					</div>
 				</li>
@@ -133,7 +137,7 @@
 							</li>
 							<li>
 								<h4>Director</h4>
-								<p>Mitch Wall</p>
+								<p id="mechanicalLead"></p>
 							</li>
 						</ul>
 					</div>
@@ -157,7 +161,7 @@
 							</li>
 							<li>
 								<h4>Director</h4>
-								<p>Emma Krueger</p>
+								<p id="operationsLead"></p>
 							</li>
 						</ul>
 					</div>
@@ -225,62 +229,8 @@
 					costs of building hyperloop pods.<br><br>We would love to partner with you for Competition IV!</p>
 				<h3>Our Diamond Sponsors:</h3>
 			</header>
-			<div class="inner">
-				<div class="flex-container">
-					<div class="sponsor-container">
-						<div class="sponsor-card home">
-							<div class="sponsor-img">
-								<img src="images/sponsors/rockwell.png">
-							</div>
-							<div class="sponsor-content">
-								<a href="https://www.rockwellautomation.com/en_NA/overview.page"
-									class="primary button">Learn More</a>
-							</div>
-						</div>
-						<div class="sponsor-card home">
-							<div class="sponsor-img">
-								<img src="images/sponsors/steamfitters.png">
-							</div>
-							<div class="sponsor-content">
-								<a href="http://www.steam601.org" class="primary button">Learn More</a>
-							</div>
-						</div>
-						<div class="sponsor-card home">
-							<div class="sponsor-img">
-								<img src="images/sponsors/Altium.png">
-							</div>
-							<div class="sponsor-content">
-								<a href="https://www.altium.com/" class="primary button">Learn More</a>
-							</div>
-						</div>
-						<div class="sponsor-card home">
-							<div class="sponsor-img">
-								<img src="images/sponsors/ansys.png">
-							</div>
-							<div class="sponsor-content">
-								<a href="https://www.ansys.com/" class="primary button">Learn More</a>
-							</div>
-						</div>
-						<div class="sponsor-card home">
-							<div class="sponsor-img">
-								<img src="images/sponsors/Bulletproof.png">
-							</div>
-							<div class="sponsor-content">
-								<a href="https://bulletproofautomotive.com" class="primary button">Learn More</a>
-							</div>
-						</div>
-						<div class="sponsor-card home">
-							<div class="sponsor-img">
-								<img src="images/sponsors/meche.png">
-							</div>
-							<div class="sponsor-content">
-								<a href="https://www.engr.wisc.edu/department/mechanical-engineering/"
-									class="primary button">Learn More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<center><a href="sponsors.html" class="button primary large" style="width: 300px;">View All</a></center>
+			<div class="inner" id="inner">
+				<div id="buttonCenter"><a id="insertAbove" href="sponsors.html" class="button primary large" style="width: 300px;">View All</a></div>
 			</div>
 		</section>
 
@@ -335,6 +285,7 @@
 	<script src="assets/js/breakpoints.min.js"></script>
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
+	<script src="assets/js/home.js"></script>
 
 </body>
 
