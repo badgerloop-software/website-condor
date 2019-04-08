@@ -377,6 +377,35 @@ input:invalid {
     box-shadow: none;
   }
 
+  #buttonCenter {
+      margin: auto;
+      text-align: center;
+  }
+
+  /* styling for the countdown timer on home */
+@media screen and (max-width: 700px) {
+    #countdown {
+        padding-top: 30vh;
+        text-align: center;
+        font-size: 60px;
+    }
+}
+@media screen and (min-width: 701px) {
+    #countdown {
+        padding-top: 30vh;
+        text-align: center;
+        width: 100vw;
+        font-size: 100px;
+        margin: auto;
+    }
+    #countdownDiv h2 {
+        padding-left: 100px;
+    }
+}
+#countdownDiv{
+    width: 95vw;
+    margin: auto;
+    position: absolute;
 .reveal-news-text {
     text-align: center;
     padding: 1rem;
