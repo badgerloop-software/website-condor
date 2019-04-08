@@ -382,7 +382,7 @@ input:invalid {
       text-align: center;
   }
 
-  /* styling for the countdown timer on home */
+/* styling for the countdown timer on home */
 @media screen and (max-width: 700px) {
     #countdown {
         padding-top: 30vh;
@@ -406,6 +406,9 @@ input:invalid {
     width: 95vw;
     margin: auto;
     position: absolute;
+}
+
+/* styling for the reveal info */
 .reveal-news-text {
     text-align: center;
     padding: 1rem;
