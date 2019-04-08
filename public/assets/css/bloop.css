@@ -384,16 +384,15 @@ input:invalid {
 
   /* styling for the countdown timer on home */
   #countdown {
-      padding-top: 300px;
+      padding-top: 30vh;
       text-align: center;
       width: 100vw;
-      font-size: 100px;
+      font-size: 5em;
       margin: auto;
   }
     #countdownDiv{
       text-align: center;
       width: 100vw;
-      font-size: 60px;
       margin: auto;
       position: absolute;
   }
