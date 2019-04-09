@@ -385,7 +385,7 @@ input:invalid {
 /* styling for the countdown timer on home */
 @media screen and (max-width: 700px) {
     #countdown {
-        padding-top: 30vh;
+        padding-top: 20vh;
         text-align: center;
         font-size: 60px;
     }
