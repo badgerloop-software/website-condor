@@ -70,13 +70,13 @@ function createSponsorCard(obj) { // creates a card for each sponsor
 
 function executiveLeadDriver(info) {
     let electricalLead = document.getElementById("electricalLead");
-    electricalLead.innerHTML = info.Administrative[0]["Name"];
+    electricalLead.innerHTML = info.Administrative[1]["Name"];
 
     let mechanicalLead = document.getElementById("mechanicalLead");
-    mechanicalLead.innerHTML = info.Administrative[1]["Name"];
+    mechanicalLead.innerHTML = info.Administrative[2]["Name"];
 
     let operationsLead = document.getElementById("operationsLead");
-    operationsLead.innerHTML = info.Administrative[2]["Name"];
+    operationsLead.innerHTML = info.Administrative[3]["Name"];
 }
 
 
