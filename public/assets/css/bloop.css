@@ -408,6 +408,9 @@ input:invalid {
     margin: auto;
     position: absolute;
 }
+#countdownDiv span{
+    color: #CE282B;
+}
 
 /* styling for the reveal info */
 .reveal-news-text {
