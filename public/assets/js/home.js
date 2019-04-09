@@ -103,9 +103,11 @@ var x = setInterval(function() {
         return (value < 10 ? '0' : '') + value;
     }
 
-  // Output the result in an element with id="demo"
-  document.getElementById("countdown").innerHTML = days + "D " + hours + "H "
-  + minutes + "M " + seconds + "S ";
+  // Output the result in an element with id="countdown"
+    let countdown = `
+        ${days}<span>D </span> ${hours}<span>H </span> ${minutes}<span>M </span> ${seconds}<span>S </span>
+    `;
+  document.getElementById("countdown").innerHTML = countdown;
     
   // If the count down is over, write some text 
   if (distance < 0) {
