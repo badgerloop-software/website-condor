@@ -103,7 +103,7 @@ var x = setInterval(function() {
         return (value < 10 ? '0' : '') + value;
     }
 
-  // Output the result in an element with id="countdown"
+  // Output the result in an element with id="countdown", with the unit labels in spans so they can be styled seperately
     let countdown = `
         ${days}<span>D </span> ${hours}<span>H </span> ${minutes}<span>M </span> ${seconds}<span>S </span>
     `;
