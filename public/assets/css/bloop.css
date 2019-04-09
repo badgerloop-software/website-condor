@@ -395,11 +395,12 @@ input:invalid {
         padding-top: 30vh;
         text-align: center;
         width: 100vw;
-        font-size: 100px;
+        font-size: 150px;
         margin: auto;
     }
     #countdownDiv h2 {
         padding-left: 100px;
+        font-size: 60px;
     }
 }
 #countdownDiv{
