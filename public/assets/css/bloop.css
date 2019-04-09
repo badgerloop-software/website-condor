@@ -395,7 +395,7 @@ input:invalid {
         padding-top: 30vh;
         text-align: center;
         width: 100vw;
-        font-size: 150px;
+        font-size: 160px;
         margin: auto;
     }
     #countdownDiv h2 {
@@ -408,9 +408,8 @@ input:invalid {
     margin: auto;
     position: absolute;
 }
-#countdownDiv span{
+#countdownDiv span {
     color: #CE282B;
-}
 
 /* styling for the reveal info */
 .reveal-news-text {
