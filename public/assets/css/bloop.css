@@ -121,7 +121,7 @@
     }
 }
 
-.news-piece img{
+.news-piece img, .news-piece video{
     width: 100%;
     height: auto;
     border-radius: 10px 10px 0 0;
