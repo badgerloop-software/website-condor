@@ -187,7 +187,7 @@
 #iframeDiv {
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     height: 100%;
 }
 .home-video {
@@ -384,9 +384,10 @@ input:invalid {
 
 /* media page styling */
 #media-flex-box img{
-    padding: 30px;
-    height: 600px;
+    margin-left: 30px;
+    height: 40vh;
     border-radius: 8%;
+    padding: 10px;
 }
 #media-flex-box img:hover{
     opacity: .8;
