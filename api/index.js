@@ -15,7 +15,7 @@ http.createServer((request, response) => {
     if (pathName === "/admin" && request.method === "GET") {
         let userID = getSlackUserID();
         let channelIDs = getSlackChannels();
-        if (validUser(userID, channelIDs)) {
+        if (isValidUser(userID, channelIDs)) {
 
         } else {
             //TODO: render error page.
@@ -337,6 +337,9 @@ function getSlackUserID(code) {
     req.on('error', (e) => {
         return e;
     });
+
+    req.write(postData);
+    req.end();
 }
 
 /**
@@ -344,7 +347,7 @@ function getSlackUserID(code) {
  * channels to edit pages on the website. These channels are listed in the 
  * creds.json file.
  * 
- * @returns <array>: list of channels
+ * @returns {array}: list of channels
  */
 function getSlackChannels() {
     let ids = [];
@@ -353,4 +356,86 @@ function getSlackChannels() {
     }
 
     return ids;
+}
+
+/**
+ *  
+ * @param {string} userID 
+ * @param {array} channels 
+ * @returns true if the userID is found within one of the channel member lists
+ */
+function isValidUser(userID, channels) {
+    try {
+        for (x in channels) {
+            let members = getChannelMembers(channels[x]);
+            if (isUserInChannel(userID, members)) return true;
+        }
+    } catch (e) {
+        //TODO: log error, helpful to log which function it happened in
+    } finally {
+        // user not found in channel member list
+        return false;
+    }
+}
+
+/**
+ * Gets a list of members that are in the channel specified.
+ * @param {string} channelID: channel to get member list of
+ * @returns {array}: list of member IDs in channel
+ * returns an error when request is not okay or error occurs with http request
+ */
+function getChannelMembers(channelID) {
+    let params = querystring.stringify({
+        "token": creds.slackToken,
+        "channel": channelID
+    });
+
+    let options = {
+        host: "slack.com",
+        path: `/api/conversations.members?${params}`,
+        method: "GET",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }
+
+    let req = https.request(options, (res) => {
+        res.setEncoding("utf8");
+        let data = "";
+
+        res.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        res.on('end', () => {
+            let json = JSON.parse(data);
+            // valid response from slack
+            if (json.ok === true) {
+                return json.members;
+            } else {
+                //TODO: test this out - make sure we want to move forward returning errors - check if error happens on function call? 
+                return new Error(json.error);
+            }
+        });
+    });
+
+    req.on('error', (e) => {
+        return e;
+    });
+
+    req.end();
+}
+
+/**
+ * 
+ * @param {string} userID 
+ * @param {array} channelMembers 
+ * @returns {boolean}: true if the user is in the member list, false otherwise
+ */
+function isUserInChannel(userID, channelMembers) {
+    for (x of channelMembers) {
+        if (userID === x) return true
+    }
+    // member not found in list
+    return false;
 }
