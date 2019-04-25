@@ -2,6 +2,7 @@ let http = require("http");
 let https = require("https");
 let url = require("url");
 let fs = require("fs");
+let querystring = require("querystring");
 let MongoClient = require("mongodb").MongoClient;
 let ObjectId = require('mongodb').ObjectID;
 let creds = require("./creds.json");
@@ -11,8 +12,14 @@ const client = new MongoClient(creds.dbURL);
 http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
-    if (pathName === "/admin") {
-        console.log("HIT");
+    if (pathName === "/admin" && request.method === "GET") {
+        let userID = getSlackUserID();
+        let channelIDs = getSlackChannels();
+        if (validUser(userID, channelIDs)) {
+
+        } else {
+            //TODO: render error page.
+        }
     }
 
     if (pathName === "/teamleads" && request.method === "GET") {
@@ -279,4 +286,71 @@ function updateDatabase(json, collecName) {
             })
         })
     });
+}
+
+/**
+ * Transforms the temporary code granted by the sign in with slack process into 
+ * a user token which also gives us the user's ID.
+ * More information about the sign in with slack process can be found here: 
+ * https://api.slack.com/docs/sign-in-with-slack
+ * @param <string> code: the temporary code granted by the first step of slack's 
+ * oauth process. 
+ * @returns <string>: Slack user ID associated with the temporary code
+ */
+function getSlackUserID(code) {
+    let postData = querystring.stringify({
+        "code": code,
+        "client_id": creds.slackAppCID,
+        "client_secret": creds.slackAppSec,
+    });
+
+    // HTTP request options
+    let options = {
+        host: "slack.com",
+        path: "/api/oauth.access",
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        }
+    }
+
+    let req = https.request(options, (res) => {
+        res.setEncoding("utf8");
+        let data = "";
+
+        res.on('data', (chunk) => {
+            data += chunk;
+        });
+
+        res.on('end', () => {
+            let json = JSON.parse(data);
+            // valid response from slack
+            if (json.ok === true) {
+                return json.user.id;
+            } else {
+                //TODO: test this out - make sure we want to move forward returning errors - check if error happens on function call? 
+                return new Error(json.error);
+            }
+        });
+    });
+
+    req.on('error', (e) => {
+        return e;
+    });
+}
+
+/**
+ * Gets a list of all Slack channel IDs that we will allow members of those 
+ * channels to edit pages on the website. These channels are listed in the 
+ * creds.json file.
+ * 
+ * @returns <array>: list of channels
+ */
+function getSlackChannels() {
+    let ids = [];
+    for (x in creds.slackAdminChannels) {
+        ids.push(creds.slackAdminChannels[x]);
+    }
+
+    return ids;
 }
