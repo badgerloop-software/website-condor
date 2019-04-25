@@ -184,7 +184,6 @@
 
 }
 #iframeDiv {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -381,3 +380,18 @@ input:invalid {
       margin: auto;
       text-align: center;
   }
+
+/* media page styling */
+#media-flex-box img{
+    padding: 30px;
+    height: 600px;
+    border-radius: 8%;
+}
+#media-flex-box img:hover{
+    opacity: .8;
+    transition: opacity .5s;
+}
+#media-flex-box a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
