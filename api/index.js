@@ -13,13 +13,30 @@ http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
     if (pathName === "/admin" && request.method === "GET") {
-        let userID = getSlackUserID();
-        let channelIDs = getSlackChannels();
-        if (isValidUser(userID, channelIDs)) {
-
-        } else {
-            //TODO: render error page.
-        }
+        getSlackUserID().then((userID) => {
+            let channelIDs = getSlackChannels();
+            let promiseList = [];
+            for (x of channelIDs) {
+                promsieList.push(isValidUser(userID, channelIDs[x]));
+            }
+            return Promise.all(promiseList);
+        }).then(() => {
+            response.end("YES");
+        }).catch((err) => {
+            response.end("NO");
+        });
+        // let channelIDs = getSlackChannels();
+        // if (isValidUser(userID, channelIDs)) {
+        //     response.end("YES");
+        // } else {
+        //     //TODO: render error page.
+        //     response.end("NO");
+        // }
+        // isValidUser(userID, channelIDs).then((response) => {
+        //     response.end("YES");
+        // }).catch((err) => {
+        //     response.end("NO");
+        // });
     }
 
     if (pathName === "/teamleads" && request.method === "GET") {
@@ -298,48 +315,50 @@ function updateDatabase(json, collecName) {
  * @returns <string>: Slack user ID associated with the temporary code
  */
 function getSlackUserID(code) {
-    let postData = querystring.stringify({
-        "code": code,
-        "client_id": creds.slackAppCID,
-        "client_secret": creds.slackAppSec,
-    });
-
-    // HTTP request options
-    let options = {
-        host: "slack.com",
-        path: "/api/oauth.access",
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    }
-
-    let req = https.request(options, (res) => {
-        res.setEncoding("utf8");
-        let data = "";
-
-        res.on('data', (chunk) => {
-            data += chunk;
+    return new Promise((resolve, reject) => {
+        let postData = querystring.stringify({
+            "code": code,
+            "client_id": creds.slackAppCID,
+            "client_secret": creds.slackAppSec,
         });
 
-        res.on('end', () => {
-            let json = JSON.parse(data);
-            // valid response from slack
-            if (json.ok === true) {
-                return json.user.id;
-            } else {
-                //TODO: test this out - make sure we want to move forward returning errors - check if error happens on function call? 
-                return new Error(json.error);
+        // HTTP request options
+        let options = {
+            host: "slack.com",
+            path: "/api/oauth.access",
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
+        }
+
+        let req = https.request(options, (res) => {
+            res.setEncoding("utf8");
+            let data = "";
+
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            res.on('end', () => {
+                let json = JSON.parse(data);
+                // valid response from slack
+                if (json.ok === true) {
+                    resolve(json.user.id);
+                } else {
+                    //TODO: test this out - make sure we want to move forward returning errors - check if error happens on function call? 
+                    reject();
+                }
+            });
         });
-    });
 
-    req.on('error', (e) => {
-        return e;
-    });
+        req.on('error', (e) => {
+            reject(e);
+        });
 
-    req.write(postData);
-    req.end();
+        req.write(postData);
+        req.end();
+    });
 }
 
 /**
@@ -359,71 +378,76 @@ function getSlackChannels() {
 }
 
 /**
- *  
+ * 
  * @param {string} userID 
  * @param {array} channels 
  * @returns true if the userID is found within one of the channel member lists
  */
 function isValidUser(userID, channels) {
-    try {
-        for (x in channels) {
-            let members = getChannelMembers(channels[x]);
-            if (isUserInChannel(userID, members)) return true;
+    return new Promise((resolve, reject) => {
+        // let members = getChannelMembers(channels[x]);
+        for (x of channels) {
+            getChannelMembers(channels[x]).then((members) => {
+                return isUserInChannels(userID, channels)
+            }).then((results) => {
+
+            }).catch((message) => {
+                //TODO: log err here
+            });
         }
-    } catch (e) {
-        //TODO: log error, helpful to log which function it happened in
-    } finally {
-        // user not found in channel member list
-        return false;
-    }
+    });
 }
 
 /**
  * Gets a list of members that are in the channel specified.
+ * TODO: return promise
  * @param {string} channelID: channel to get member list of
  * @returns {array}: list of member IDs in channel
  * returns an error when request is not okay or error occurs with http request
  */
 function getChannelMembers(channelID) {
-    let params = querystring.stringify({
-        "token": creds.slackToken,
-        "channel": channelID
-    });
-
-    let options = {
-        host: "slack.com",
-        path: `/api/conversations.members?${params}`,
-        method: "GET",
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
-    }
-
-    let req = https.request(options, (res) => {
-        res.setEncoding("utf8");
-        let data = "";
-
-        res.on('data', (chunk) => {
-            data += chunk;
+    return new Promise((resolve, reject) => {
+        let params = querystring.stringify({
+            "token": creds.slackToken,
+            "channel": channelID
         });
 
-        res.on('end', () => {
-            let json = JSON.parse(data);
-            // valid response from slack
-            if (json.ok === true) {
-                return json.members;
-            } else {
-                //TODO: test this out - make sure we want to move forward returning errors - check if error happens on function call? 
-                return new Error(json.error);
+        let options = {
+            host: "slack.com",
+            path: `/api/conversations.members?${params}`,
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
             }
+        }
+
+        let req = https.request(options, (res) => {
+            res.setEncoding("utf8");
+            let data = "";
+
+            res.on('data', (chunk) => {
+                data += chunk;
+            });
+
+            res.on('end', () => {
+                let json = JSON.parse(data);
+                // valid response from slack
+                if (json.ok === true) {
+                    resolve(json.members);
+                } else {
+                    //TODO: test this out - make sure we want to move forward returning errors - check if error happens on function call? 
+                    reject(json.error);
+                    // return new Error(json.error);
+                }
+            });
         });
-    });
 
-    req.on('error', (e) => {
-        return e;
-    });
+        req.on('error', (e) => {
+            reject(e);
+        });
 
-    req.end();
+        req.end();
+    });
 }
 
 /**
@@ -433,9 +457,11 @@ function getChannelMembers(channelID) {
  * @returns {boolean}: true if the user is in the member list, false otherwise
  */
 function isUserInChannel(userID, channelMembers) {
-    for (x of channelMembers) {
-        if (userID === x) return true
-    }
-    // member not found in list
-    return false;
+    return new Promise((resolve, reject) => {
+        for (x of channelMembers) {
+            if (userID === x) resolve("member in channel");
+        }
+        // member not found in list
+        reject("member not in channel");
+    });
 }
