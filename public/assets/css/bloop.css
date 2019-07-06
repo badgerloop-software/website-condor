@@ -25,6 +25,7 @@
 }
 .flex-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .team-container {
@@ -121,7 +122,7 @@
     }
 }
 
-.news-piece img{
+.news-piece img, .news-piece video{
     width: 100%;
     height: auto;
     border-radius: 10px 10px 0 0;
@@ -184,10 +185,9 @@
 
 }
 #iframeDiv {
-    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     height: 100%;
 }
 .home-video {
@@ -382,94 +382,18 @@ input:invalid {
       text-align: center;
   }
 
-  /* styling for the countdown timer on home */
-@media screen and (max-width: 700px) {
-    #countdown {
-        padding-top: 30vh;
-        text-align: center;
-        font-size: 60px;
-    }
+/* media page styling */
+#media-flex-box img{
+    margin-left: 30px;
+    height: 40vh;
+    border-radius: 8%;
+    padding: 10px;
 }
-@media screen and (min-width: 701px) {
-    #countdown {
-        padding-top: 30vh;
-        text-align: center;
-        width: 100vw;
-        font-size: 100px;
-        margin: auto;
-    }
-    #countdownDiv h2 {
-        padding-left: 100px;
-    }
+#media-flex-box img:hover{
+    opacity: .8;
+    transition: opacity .5s;
 }
-#countdownDiv{
-    width: 95vw;
-    margin: auto;
-    position: absolute;
-.reveal-news-text {
-    text-align: center;
-    padding: 1rem;
-}
-.reveal-piece {
-    text-align: center;
-    padding-top: 2rem;
-}
-.reveal-piece img {
-    width: 50%;
-}
-.reveal-container {
-    background-color: rgb(16, 16, 16);
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    min-height: 100vh;
-    padding-bottom: 2rem;
-    align-items: center;
-}
-.reveal-img {
-    flex: 1;
-    text-align: center;
-    max-width: 100%;
-}
-.reveal-img img {
-    max-width: 90%;
-    height: auto;
-}
-.reveal-info {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-}
-.reveal-info h2 {
-    color: white;
-}
-.reveal-text {
-    color: white;
-    margin: .1em;
-    font-size:1.2rem;
-}
-.reveal-text a {
-    color: white;
-}
-.reveal-where {
-    margin-top: 1rem;
-    text-align: center;
-}
-
-@media screen and (max-width: 800px) {
-    .reveal-container {
-        flex-direction: column;
-    }
-    .reveal-info h2 {
-        font-size: 2rem;
-    }
-    .reveal-text {
-        font-size: 1.4rem;
-    }
-}
-.reveal-text .button {
-    margin-top: 2rem;
+#media-flex-box a{
+    text-decoration: none;
+    color: #FFFFFF;
 }
