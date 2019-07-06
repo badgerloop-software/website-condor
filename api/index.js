@@ -186,7 +186,7 @@ http.createServer((request, response) => {
 
             let options = {
                 hostname: "hooks.slack.com",
-                path: "/services/T09PPL10S/BD948FF24/9HsUZ9zw7TtifqC4TPLT8eRB",
+                path: creds.slackWebhook,
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
