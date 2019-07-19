@@ -6,7 +6,7 @@ let MongoClient = require("mongodb").MongoClient;
 let ObjectId = require('mongodb').ObjectID;
 let creds = require("./creds.json");
 const client = new MongoClient(creds.dbURL);
-// DOES THIS SHOW UP! HOW ABOU TTHIS
+
 http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
