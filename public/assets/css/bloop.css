@@ -137,6 +137,9 @@
         margin-bottom: 2rem;
         background-color: white;
     }
+    .twitter-timeline {
+        width: 600px;
+    }
 }
 @media screen and (min-width: 1280px) {
     .news-piece {
@@ -149,6 +152,9 @@
         margin-left: auto;
         margin-right: auto;
         background-color: white;
+    }
+    .twitter-timeline {
+        width: 600px;
     }
 }
 .news-piece h3 {
@@ -330,6 +336,9 @@
     .cbp_tmicon {
         display: none!important;
     }
+    .twitter-timeline {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -381,3 +390,8 @@ input:invalid {
       margin: auto;
       text-align: center;
   }
+
+.twitter-timeline-container {
+    display: flex;
+    justify-content: center;
+}
