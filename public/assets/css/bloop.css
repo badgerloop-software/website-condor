@@ -137,10 +137,6 @@
         margin-bottom: 2rem;
         background-color: white;
     }
-    .twitter-timeline {
-        margin-top: 3rem;
-        width: 600px;
-    }
 }
 @media screen and (min-width: 1280px) {
     .news-piece {
@@ -153,10 +149,6 @@
         margin-left: auto;
         margin-right: auto;
         background-color: white;
-    }
-    .twitter-timeline {
-        margin-top: 3rem;
-        width: 600px;
     }
 }
 .news-piece h3 {
@@ -339,8 +331,8 @@
         display: none!important;
     }
     .twitter-timeline {
-        margin-top: 3rem;
-        width: 90%;
+        margin-top: 0!important;
+        width: 100%;
     }
     .announcement-header header {
         font-size: 2rem!important;
@@ -403,6 +395,10 @@ input:invalid {
 .twitter-timeline-container {
     display: flex;
     justify-content: center;
+}
+.twitter-timeline {
+    margin-top: 3rem;
+    width: 600px;
 }
 .announcement-header {
     flex-grow: 1;
