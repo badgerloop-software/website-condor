@@ -114,6 +114,7 @@
         margin: auto;
     }
     .twitter-timeline {
+        margin-top: 3rem;
         width: 600px;
     }
 }
@@ -334,6 +335,7 @@
         display: none!important;
     }
     .twitter-timeline {
+        margin-top: 3rem;
         width: 90%;
     }
 }
