@@ -397,3 +397,7 @@ input:invalid {
     text-decoration: none;
     color: #FFFFFF;
 }
+.twitter-timeline-container {
+    display: flex;
+    justify-content: center;
+}
