@@ -339,6 +339,12 @@
     .twitter-timeline {
         width: 90%;
     }
+    .announcement-header header {
+        font-size: 2rem!important;
+    }
+    .announcement-header a {
+        width: 80%!important;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -394,4 +400,19 @@ input:invalid {
 .twitter-timeline-container {
     display: flex;
     justify-content: center;
+}
+.announcement-header {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.announcement-header a {
+    width: 50%;
+    margin-top: 5rem;
+}
+.announcement-header header {
+    font-size: 3rem;
+    font-weight: 600;
 }
