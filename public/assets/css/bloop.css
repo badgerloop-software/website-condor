@@ -113,15 +113,15 @@
         max-width: 100vw!important;
         margin: auto;
     }
+    .twitter-timeline {
+        width: 600px;
+    }
 }
 @media screen and (min-width: 1280px) {
     .media-inner {
         margin: auto;
         width: unset!important;
         max-width: 90vw!important;
-    }
-    .twitter-timeline {
-        width: 600px;
     }
 }
 
