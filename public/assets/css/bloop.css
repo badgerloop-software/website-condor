@@ -330,6 +330,9 @@
     .cbp_tmicon {
         display: none!important;
     }
+    .twitter-timeline {
+        width: 90%;
+    }
 }
 
 @media screen and (max-width: 1200px) {
