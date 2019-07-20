@@ -120,6 +120,9 @@
         width: unset!important;
         max-width: 90vw!important;
     }
+    .twitter-timeline {
+        width: 600px;
+    }
 }
 
 .news-piece img, .news-piece video{
