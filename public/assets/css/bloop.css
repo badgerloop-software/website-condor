@@ -138,6 +138,7 @@
         background-color: white;
     }
     .twitter-timeline {
+        margin-top: 3rem;
         width: 600px;
     }
 }
@@ -154,6 +155,7 @@
         background-color: white;
     }
     .twitter-timeline {
+        margin-top: 3rem;
         width: 600px;
     }
 }
@@ -337,6 +339,7 @@
         display: none!important;
     }
     .twitter-timeline {
+        margin-top: 3rem;
         width: 90%;
     }
     .announcement-header header {
