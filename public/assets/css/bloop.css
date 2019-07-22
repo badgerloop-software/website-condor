@@ -126,8 +126,31 @@
     height: auto;
     border-radius: 10px 10px 0 0;
     max-height: 450px;
-    object-fit: cover;
+    object-fit: cover; 
+    object-position: center;   
+    transition: transform .1s ease-out;
+  -moz-transition: transform .1s ease-out;
+  -webkit-transition: transform .1s ease-out;
+  -o-transition: transform .1s ease-out;
 }
+.news-piece {
+    overflow: hidden;
+}
+.news-piece:hover {
+    opacity: .8;
+    transition: opacity .2s ease-out;
+  -moz-transition: opacity .2s ease-out;
+  -webkit-transition: opacity .2s ease-out;
+  -o-transition: opacity .2s ease-out;
+}
+.news-piece:hover img {
+    transform: scale(1.02);
+    transition: transform .1s ease-out;
+    -moz-transition: transform .1s ease-out;
+    -webkit-transition: transform .1s ease-out;
+    -o-transition: transform .1s ease-out;
+}
+
 @media screen and (max-width: 1280px) {
     .news-piece {
         text-align:left;
