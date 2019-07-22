@@ -177,7 +177,6 @@ input, select, textarea {
 		-ms-transition: background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		transition: background-color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out, color 0.2s ease-in-out;
 		text-decoration: none;
-		border-bottom: dotted 1px;
 	}
 
 		a strong {
@@ -3579,22 +3578,21 @@ input, select, textarea {
 	}
 
 		#banner:after {
-			-moz-transition: opacity 3s ease-in-out;
-			-webkit-transition: opacity 3s ease-in-out;
-			-ms-transition: opacity 3s ease-in-out;
-			transition: opacity 3s ease-in-out;
-			-moz-transition-delay: 0.5s;
-			-webkit-transition-delay: 0.5s;
-			-ms-transition-delay: 0.5s;
-			transition-delay: 0.5s;
+			-moz-transition: opacity .5s ease-in-out;
+			-webkit-transition: opacity .5s ease-in-out;
+			-ms-transition: opacity .5s ease-in-out;
+			transition: opacity .5s ease-in-out;
 			content: '';
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100%;
 			height: 100%;
-			background-color: #f7f7f7;
 			opacity:.5;
+			background-image: url("../../images/hyperloop-compiv.jpeg");
+			background-position: center; /* Center the image */
+			background-repeat: no-repeat; /* Do not repeat the image */
+			background-size: cover; /* Resize the background image to cover the entire container */
 		}
 
 		#banner video {

@@ -7,7 +7,6 @@ let ObjectId = require('mongodb').ObjectID;
 let creds = require("./creds.json");
 const client = new MongoClient(creds.dbURL);
 
-
 http.createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
