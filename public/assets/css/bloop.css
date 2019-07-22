@@ -443,6 +443,7 @@ input:invalid {
 .announcement-header header {
     font-size: 3rem;
     font-weight: 600;
+}
 /* media page styling */
 #media-flex-box img{
     margin-left: 30px;
@@ -458,6 +459,7 @@ input:invalid {
     text-decoration: none;
     color: #FFFFFF;
 }
+
 .twitter-timeline-container {
     display: flex;
     justify-content: center;
