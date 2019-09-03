@@ -266,6 +266,9 @@ function getStudentTeams() {
     
     return teams.substr(0, teams.length - 2);
 }
+
+
+
 /**
  * Prepares data to be submitted to the google form (https://docs.google.com/forms/d/e/1FAIpQLScUSWZHf-8eMYvrwFLx6pG0ZON6Mkk1SVvaA4QKJ0U3b2hnjA/viewform).
  * Only needed for Student Inquiries!
@@ -274,6 +277,24 @@ function getStudentTeams() {
  */
 function createGoogleFormInfo(items) {
     let data = {};
+
+    var GoogleSpreadsheet = require('google-spreadsheet');
+    var creds = require('./client_secret.json');
+
+    // Create a document object using the ID of the spreadsheet - obtained from its URL.
+    var doc = new GoogleSpreadsheet('18LqWQdvJqPOoMwiraWW6mVouszCmkJF9r1nCGV61cXw');
+
+    // Authenticate with the Google Spreadsheets API.
+    doc.useServiceAccountAuth(creds, function (err) {
+
+        doc.addRow(1, {
+            first: items[0].value.trim()
+        }, function (err) {
+            if (err) {
+                console.log(err);
+            }
+        });
+    });
 
     for (let x of items) {
         switch (x.title.toLowerCase()) { 
