@@ -1,4 +1,5 @@
-# Badgerloop Website- Condor [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://stats.uptimerobot.com/M1422c4x5)
+# Badgerloop Website- Condor [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://stats.uptimerobot.com/M1422c4x5) [![Actions Status](https://github.com/LukeHouge/website-condor/workflows/Node_CI/badge.svg)](https://github.com/LukeHouge/website-condor/actions)
+
 
 The third revision of the Badgerloop website! The official page for UW-Madison's hyperloop competition team.
 
