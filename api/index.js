@@ -273,5 +273,5 @@ function updateDatabase(json, collecName) {
                 client.close();
             });
         });
-    });
+    })
 }
