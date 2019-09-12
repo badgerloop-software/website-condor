@@ -18,7 +18,7 @@ http.createServer((request, response) => {
         }).catch((err) => {
             //TODO: do something with error
             response.end("ERROR");
-        })
+        });
     }
 
     if (pathName === "/teamleads" && request.method === "PUT") {
@@ -202,7 +202,7 @@ function getTeamleads() {
 
             let options = {
                 "sort": "Position"
-            }
+            };
 
             collection.find({}, options).toArray((err, docs) => {
                 if (err) reject(err);
@@ -225,7 +225,7 @@ function getSponsors() {
 
             let options = {
                 "sort": "company"
-            }
+            };
 
             collection.find({}, options).toArray((err, docs) => {
                 if (err) reject(err);
@@ -271,7 +271,7 @@ function updateDatabase(json, collecName) {
                 reject(error);
             }).finally(() => {
                 client.close();
-            })
-        })
+            });
+        });
     });
 }

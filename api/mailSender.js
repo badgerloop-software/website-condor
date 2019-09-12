@@ -1,6 +1,6 @@
 //code to create the script file for sending the email
 var fs = require('fs'); 
-var email = "lukehouge@gmail.com" //sets email address to email variable
+var email = "lukehouge@gmail.com";//sets email address to email variable
 var stream = fs.createWriteStream("mailScript.sh"); //creates a write stream to mailScript.sh script file
 stream.once('open', function (fd) { //file descriptor so you will be able to close stream
     stream.write("(\n"); //open script
@@ -15,7 +15,7 @@ stream.once('open', function (fd) { //file descriptor so you will be able to clo
 });
 
 //code to actually execute the script
-const exec = require('child_process').exec;
+var exec = require('child_process').exec;
 var yourscript = exec('sh mailScript.sh', //command to run that executes the script
     (error, stdout, stderr) => {
         console.log(`${stdout}`);
