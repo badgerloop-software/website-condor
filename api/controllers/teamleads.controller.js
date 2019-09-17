@@ -5,7 +5,7 @@ exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
 };
 
-exports.teamleadscreate = function (req, res) {
+exports.teamleads_create = function (req, res) {
     let teamleads = new Teamleads(
         {
             Team: req.body.team,
