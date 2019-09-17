@@ -329,7 +329,7 @@ function getSlackUserID(code) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }
+        };
 
         let req = https.request(options, (res) => {
             res.setEncoding("utf8");
@@ -387,7 +387,7 @@ function isValidUser(userID, channels) {
         // let members = getChannelMembers(channels[x]);
         for (x of channels) {
             getChannelMembers(channels[x]).then((members) => {
-                return isUserInChannels(userID, channels)
+                return isUserInChannels(userID, channels);
             }).then((results) => {
 
             }).catch((message) => {
@@ -418,7 +418,7 @@ function getChannelMembers(channelID) {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
-        }
+        };
 
         let req = https.request(options, (res) => {
             res.setEncoding("utf8");

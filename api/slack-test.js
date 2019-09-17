@@ -16,7 +16,7 @@ function getChannelMembers(channelID) {
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
-    }
+    };
 
     let req = https.request(options, (res) => {
         res.setEncoding("utf8");

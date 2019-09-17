@@ -21,15 +21,15 @@ exports.teamleads_create = function (req, res) {
         if (err) {
             return next(err);
         }
-        res.send('Teamlead Created successfully')
-    })
+        res.send('Teamlead Created successfully');
+    });
 };
 
 exports.teamleads_details = function (req, res) {
     teamleads.findById(req.params.id, function (err, teamleads) {
         if (err) return next(err);
         res.send(teamleads);
-    })
+    });
 };
 
 exports.teamleads_update = function (req, res) {
@@ -43,5 +43,5 @@ exports.teamleads_delete = function (req, res) {
     teamleads.findByIdAndRemove(req.params.id, function (err) {
         if (err) return next(err);
         res.send('Deleted successfully!');
-    })
+    });
 };
