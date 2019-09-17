@@ -27,3 +27,10 @@ exports.product_details = function (req, res) {
         res.send(product);
     })
 };
+
+exports.product_update = function (req, res) {
+    Product.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, product) {
+        if (err) return next(err);
+        res.send('Product udpated.');
+    });
+};

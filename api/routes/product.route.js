@@ -11,3 +11,4 @@ module.exports = router;
 
 router.post('/create', product_controller.product_create);
 router.get('/:id', product_controller.product_details);
+router.put('/:id/update', product_controller.product_update);
