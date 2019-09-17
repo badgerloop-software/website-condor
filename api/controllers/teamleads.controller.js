@@ -14,7 +14,6 @@ exports.teamleads_create = function (req, res) {
             Major: req.body.team,
             Year: req.body.team,
             Picture: req.body.team,
-
         }
     );
 
