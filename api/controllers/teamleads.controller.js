@@ -6,7 +6,7 @@ exports.test = function (req, res) {
 };
 
 exports.teamleads_create = function (req, res) {
-    let teamleads = new Teamleads(
+    let teamleads = new teamleads(
         {
             Team: req.body.team,
             Position: req.body.team,
