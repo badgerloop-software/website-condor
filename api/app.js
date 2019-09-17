@@ -7,7 +7,7 @@ const app = express();
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/DEV', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/PROD', {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
