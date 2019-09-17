@@ -12,4 +12,4 @@ let TeamleadsSchema = new Schema({
 
 
 // Export the model
-module.exports = mongoose.model('Teamleads', ProductSchema);
+module.exports = mongoose.model('Teamleads', TeamleadsSchema);
