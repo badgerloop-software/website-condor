@@ -1,4 +1,4 @@
-const Teamleads = require('../models/teamleads.model');
+const teamleads = require('../models/teamleads.model');
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
