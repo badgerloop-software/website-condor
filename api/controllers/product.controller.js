@@ -1,42 +1,47 @@
-const Product = require('../models/product.model');
+const Teamleads = require('../models/teamleads.model');
 
 //Simple version, without validation or sanitation
 exports.test = function (req, res) {
     res.send('Greetings from the Test controller!');
 };
 
-exports.product_create = function (req, res) {
-    let product = new Product(
+exports.teamleadscreate = function (req, res) {
+    let teamleads = new Teamleads(
         {
-            name: req.body.name,
-            price: req.body.price
+            Team: req.body.team,
+            Position: req.body.team,
+            Name: req.body.team,
+            Major: req.body.team,
+            Year: req.body.team,
+            Picture: req.body.team,
+
         }
     );
 
-    product.save(function (err) {
+    teamleads.save(function (err) {
         if (err) {
             return next(err);
         }
-        res.send('Product Created successfully')
+        res.send('Teamlead Created successfully')
     })
 };
 
-exports.product_details = function (req, res) {
-    Product.findById(req.params.id, function (err, product) {
+exports.teamleads_details = function (req, res) {
+    teamleads.findById(req.params.id, function (err, teamleads) {
         if (err) return next(err);
-        res.send(product);
+        res.send(teamleads);
     })
 };
 
-exports.product_update = function (req, res) {
-    Product.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, product) {
+exports.teamleads_update = function (req, res) {
+    teamleads.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, teamleads) {
         if (err) return next(err);
-        res.send('Product udpated.');
+        res.send('teamlead udpated.');
     });
 };
 
-exports.product_delete = function (req, res) {
-    Product.findByIdAndRemove(req.params.id, function (err) {
+exports.teamleads_delete = function (req, res) {
+    teamleads.findByIdAndRemove(req.params.id, function (err) {
         if (err) return next(err);
         res.send('Deleted successfully!');
     })

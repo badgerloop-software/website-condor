@@ -2,19 +2,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 
-const product = require('./routes/product.route'); // Imports routes for the products
+const teamleads = require('./routes/teamleads.route'); // Imports routes for the teamleads
 const app = express();
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/TEST_DB', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/DEV', {useNewUrlParser: true});
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use('/products', product);
+app.use('/teamleads', teamleads);
 
 let port = 1234;
 
