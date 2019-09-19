@@ -10,5 +10,6 @@ module.exports = router;
 
 router.post('/create', sponsors_controller.sponsors_create);
 router.get('/:id', sponsors_controller.sponsors_details);
+router.get('/', sponsors_controller.sponsors_list);
 router.put('/:id/update', sponsors_controller.sponsors_update);
 router.delete('/:id/delete', sponsors_controller.sponsors_delete);

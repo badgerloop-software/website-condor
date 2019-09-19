@@ -27,6 +27,16 @@ exports.sponsors_details = function (req, res) {
     });
 };
 
+exports.sponsors_list = function (req, res) {
+    sponsors.find(function(err, sponsors) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(sponsors);
+        }
+    });
+};
+
 exports.sponsors_update = function (req, res) {
     sponsors.findByIdAndUpdate(req.params.id, { $set: req.body }, function (err, sponsors) {
         if (err) return next(err);
