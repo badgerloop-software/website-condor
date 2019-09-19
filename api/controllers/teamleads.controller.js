@@ -5,12 +5,12 @@ const Teamleads = require('../models/teamleads.model');
 exports.teamleads_create = function (req, res) {
     let teamleads = new Teamleads(
         {
-            Team: req.body.team,
-            Position: req.body.team,
-            Name: req.body.team,
-            Major: req.body.team,
-            Year: req.body.team,
-            Picture: req.body.team,
+            Team: req.body.Team,
+            Position: req.body.Position,
+            Name: req.body.Name,
+            Major: req.body.Major,
+            Year: req.body.Year,
+            Picture: req.body.Picture,
         }
     );
 

@@ -1,16 +1,14 @@
 const sponsors = require('../models/sponsors.model');
-const Sponsors = require('../models/teamleads.model');
+const Sponsors = require('../models/sponsors.model');
 
 
 exports.sponsors_create = function (req, res) {
     let sponsors = new Sponsors(
         {
-            Team: req.body.team,
-            Position: req.body.team,
-            Name: req.body.team,
-            Major: req.body.team,
-            Year: req.body.team,
-            Picture: req.body.team,
+            tier: req.body.tier,
+            company: req.body.company,
+            website: req.body.website,
+            logo: req.body.logo,
         }
     );
 
