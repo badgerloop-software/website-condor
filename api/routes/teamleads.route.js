@@ -9,7 +9,7 @@ const teamleads_controller = require('../controllers/teamleads.controller');
 module.exports = router;
 
 router.post('/create', teamleads_controller.teamleads_create);
-router.get('/teamleads', teamleads_controller.teamleads_list);
+router.get('/', teamleads_controller.teamleads_list);
 router.get('/:id', teamleads_controller.teamleads_details);
 router.put('/:id/update', teamleads_controller.teamleads_update);
 router.delete('/:id/delete', teamleads_controller.teamleads_delete);
