@@ -1,7 +1,8 @@
-const Teamleads = require('../models/teamleads.model');
+const teamleads = require('../models/teamleads.model');
+
 
 exports.teamleads_create = function (req, res) {
-    let teamleads = new Teamleads(
+    let teamleads = new teamleads(
         {
             Team: req.body.team,
             Position: req.body.team,
