@@ -6,7 +6,6 @@ const teamleads_controller = require('../controllers/teamleads.controller');
 
 
 // a simple test url to check that all of our files are communicating correctly.
-router.get('/test', teamleads_controller.test);
 module.exports = router;
 
 router.post('/create', teamleads_controller.teamleads_create);
