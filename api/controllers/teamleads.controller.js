@@ -29,6 +29,16 @@ exports.teamleads_details = function (req, res) {
     });
 };
 
+exports.teamleads_list = function (req, res) {
+    teamleads.find(function(err, teamleads) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(teamleads);
+        }
+    });
+};
+
 exports.teamleads_update = function (req, res) {
     teamleads.findByIdAndUpdate(req.params.id, {$set: req.body}, function (err, teamleads) {
         if (err) return next(err);
