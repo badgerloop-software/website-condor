@@ -185,33 +185,6 @@ http.createServer((request, response) => {
                 text: JSON.parse(postData)
             };
 
-            let options = {
-                hostname: "hooks.slack.com",
-                path: creds.slackWebhook,
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            };
-
-            let req = https.request(options, (res) => {
-                let slackResponse = "";
-
-                res.on("data", (chunk) => {
-                    slackResponse += chunk;
-                });
-
-                res.on("end", () => {
-                    response.statusCode = 200;
-                    response.end(slackResponse);
-                });
-            });
-
-            req.on("error", (e) => {
-                response.statusCode = e.statusCode;
-                response.end(e.message);
-            });
-
             // write data to request body
             req.write(JSON.stringify(message));
             req.end();
