@@ -5,6 +5,8 @@ let fs = require("fs");
 let querystring = require("querystring");
 let MongoClient = require("mongodb").MongoClient;
 let ObjectId = require('mongodb').ObjectID;
+const shell = require('shelljs')
+shell.exec('./path_to_your_file')
 let creds = require("./creds.json");
 const client = new MongoClient(creds.dbURL);
 

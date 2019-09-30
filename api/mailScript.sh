@@ -1,6 +1,8 @@
 (
   echo To: lukehouge@gmail.com
   echo From: noreply@badgerloop.com
+  echo "Content-Type: text/html; "
   echo Subject: Badgerloop Form Submission Autoreply
-  echo Message: Hello
+  echo
+  cat mail.html
 ) | sendmail -t
