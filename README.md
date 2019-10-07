@@ -3,7 +3,7 @@
 
 The third revision of the Badgerloop website! The official page for UW-Madison's hyperloop competition team.
 
-*Contributors: Liam Mahoney, Luke Houge*
+*Contributors: Luke Houge, Liam Mahoney*
 
 ## Contributing
 
