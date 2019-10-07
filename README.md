@@ -9,6 +9,7 @@ The third revision of the Badgerloop website! The official page for UW-Madison's
 For details on contributing to the site, check out [CONTIRBUTING.md](https://github.com/badgerloop-software/website-condor/blob/master/CONTRIBUTING.md)
 
 ## Testing &nbsp; [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://stats.uptimerobot.com/M1422c4x5) [![Actions Status](https://github.com/badgerloop-software/website-condor/workflows/Node_CI/badge.svg)](https://github.com/badgerloop-software/website-condor/actions)
+https://github.com/badgerloop-software/website-condor/actions
 - Configured with eslint for formatting tests
 - Configured with jest for unit testing and coverage
 - CI handled by Github Actions
