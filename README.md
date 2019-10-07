@@ -1,11 +1,10 @@
-# Badgerloop Website- Condor [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://stats.uptimerobot.com/M1422c4x5) [![Actions Status](https://github.com/badgerloop-software/website-condor/workflows/Node_CI/badge.svg)](https://github.com/badgerloop-software/website-condor/actions)
+# Badgerloop Website- Condor ![GitHub Logo](https://raw.githubusercontent.com/badgerloop-software/pod-dashboard/master/src/public/images/icon.png) [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://stats.uptimerobot.com/M1422c4x5) [![Actions Status](https://github.com/badgerloop-software/website-condor/workflows/Node_CI/badge.svg)](https://github.com/badgerloop-software/website-condor/actions)
 
 
 The third revision of the Badgerloop website! The official page for UW-Madison's hyperloop competition team.
 
 *Contributors: Liam Mahoney, Luke Houge*
 
-![badgerloop logo](https://raw.githubusercontent.com/badgerloop-software/website-condor/master/public/images/logo.png)
 ## Contributing
 
 For details on contributing to the site, check out [CONTIRBUTING.md](https://github.com/badgerloop-software/website-condor/blob/master/CONTRIBUTING.md)
@@ -33,7 +32,7 @@ For details on contributing to the site, check out [CONTIRBUTING.md](https://git
 
 
 ## Server and Hosting
-The website is hosted on a Computer Sciences department VM off ESXi hypervisor that is serving the site using apache. If there are issues with the server contact Liam Mahoney or Luke Houge.
+The website is hosted on a Computer Sciences department VM off ESXi hypervisor that is serving the site using apache. If there are issues with the server contact Luke Houge.
 1. **[Ubuntu Server 18.04.1 LTS](https://www.ubuntu.com/download/server)**
 
 2. **[Node.js](https://nodejs.org/en/about/)**
