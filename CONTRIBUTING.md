@@ -1,4 +1,4 @@
-When contributing to this repository, please first discuss the proposed changes with Liam. After the changes have been discussed, create a branch specifically for your feature using `git checkout -b [branch name]`.
+When contributing to this repository, please first discuss the proposed changes with Luke. After the changes have been discussed, create a branch specifically for your feature using `git checkout -b [branch name]`.
 Develop on the branch you created until your feature is complete.
 
 # Badgerloop Website Development
@@ -13,7 +13,7 @@ It's that simple!
 ### Git (Want to know how to publish my work to GitHub)
 
 **WARNING: You will need a GitHub account and to be a part of the  
-badgerloop-software GitHub organization first, contact Vaughn Kottler or Liam Mahoney 
+badgerloop-software GitHub organization first, contact Luke Houge 
 for help**
 
 Make a new folder somewhere (i.e. called `website-template`), open a terminal or **Git Bash**  
