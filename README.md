@@ -1,5 +1,4 @@
-# Badgerloop Website- Condor ![GitHub Logo](https://raw.githubusercontent.com/badgerloop-software/pod-dashboard/master/src/public/images/icon.png) [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://stats.uptimerobot.com/M1422c4x5) [![Actions Status](https://github.com/badgerloop-software/website-condor/workflows/Node_CI/badge.svg)](https://github.com/badgerloop-software/website-condor/actions)
-
+# Badgerloop Website- Condor ![GitHub Logo](https://raw.githubusercontent.com/badgerloop-software/pod-dashboard/master/src/public/images/icon.png)
 
 The third revision of the Badgerloop website! The official page for UW-Madison's hyperloop competition team.
 
@@ -8,6 +7,15 @@ The third revision of the Badgerloop website! The official page for UW-Madison's
 ## Contributing
 
 For details on contributing to the site, check out [CONTIRBUTING.md](https://github.com/badgerloop-software/website-condor/blob/master/CONTRIBUTING.md)
+
+## Testing &nbsp; [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://stats.uptimerobot.com/M1422c4x5) [![Actions Status](https://github.com/badgerloop-software/website-condor/workflows/Node_CI/badge.svg)](https://github.com/badgerloop-software/website-condor/actions)
+(https://travis-ci.com/badgerloop-software/pod-dashboard)
+- Configured with eslint for formatting tests
+- Configured with jest for unit testing and coverage
+- CI handled by Github Actions
+- Uptime Robot tracks our uptime and notifies of any downtime
+
+It is currently configured to run a pretest that uses eslint to check for any formating and stylistic errors. If that passes without any issues, then it runs jest which completes all unit tests that are setup (none except for a test called add.js for now) and then displays the coverage (what percent is unit tested). Github Actions will run automatically on any commit, and before a pull request to check that all checks passed.
 
 ## Website Technologies
 
