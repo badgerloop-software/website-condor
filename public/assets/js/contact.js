@@ -125,7 +125,7 @@ function formSubmit() {
         googleFormSubmission(inputObjects);
         let teams = getStudentTeams();
         message += "*Team(s) Interested In:* " + teams + "\n";
-        sendStudentEmailResponse(email);
+        // sendStudentEmailResponse(email);
     } 
 
     if (validFlag) sendForm(message);
@@ -235,17 +235,18 @@ function googleFormSubmission(items) {
 }
 
 function sendStudentEmailResponse(emailAddr) {
-    let xhttp = new XMLHttpRequest();
+    //TODO:
+    // let xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function() {
-         if (xhttp.readyState === XMLHttpRequest.DONE) {
-             console.log(xhttp.responseText);
-         }
-     }
+    // xhttp.onreadystatechange = function() {
+    //     if (xhttp.readyState === XMLHttpRequest.DONE) {
+    //         console.log(xhttp.responseText);
+    //     }
+    // }
 
-     xhttp.open("POST", "/api/emailResponse");
+    // xhttp.open("POST", "/api/emailResponse");
 
-     xhttp.send(JSON.stringify(emailAddr));
+    // xhttp.send(JSON.stringify(emailAddr));
     
 }
 /**
