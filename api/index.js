@@ -22,34 +22,6 @@ http.createServer((request, response) => {
         });
     }
 
-    if (pathName === "/teamleads" && request.method === "PUT") {
-        let data = "";
-
-        request.on('data', (chunk) => {
-            data += chunk;
-        });
-
-        request.on('end', () => {
-            updateDatabase(JSON.parse(data), "teamleads").then((result) => {
-                //TODO: return number of results changed? 
-                response.end("OK");
-            }).catch((err) => {
-                response.statusCode = 500;
-                response.end(JSON.stringify(err.message));
-            }).finally(() => {
-                client.close();
-            });
-        });
-    }
-
-    if (pathName === "/teamleads" && request.method === "POST") {
-
-    }
-
-    if (pathName === "/teamleads" && request.method === "DELETE") {
-
-    }
-
     if (pathName === "/sponsors" && request.method === "GET") {
         getSponsors().then((result) => {
             return formatData(result, "tier");
@@ -59,43 +31,6 @@ http.createServer((request, response) => {
             console.log(err);
         });
     }
-    /**
-     * Updates the document with whatever is passed in via data.
-     * incomming data:
-     * {
-     * _id: <object ID>,
-     * data: {
-     *          <Field to update>: <new data>,
-     *           ...
-     *         }
-     * }
-     */
-    if (pathName === "/sponsors" && request.method === "PUT") {
-        let data = "";
-
-        request.on('data', (chunk) => {
-            data += chunk;
-        });
-
-        request.on('end', () => {
-            updateDatabase(JSON.parse(data), "sponsors").then((result) => {
-                response.end("OK");
-            }).catch((err) => {
-                response.statusCode = 500;
-                response.end(JSON.stringify(err.message));
-            }).finally(() => {
-                client.close();
-            });
-        });
-    }
-
-    if (pathName === "/sponsors" && request.method === "POST") {
-
-    }
-
-    if (pathName === "/sponsors" && request.method === "DELETE") {
-
-    }
 
     if (pathName === "/index" && request.method === "GET") {
         getSponsors().then((result) => {
@@ -104,88 +39,6 @@ http.createServer((request, response) => {
             response.end(JSON.stringify(result));
         }).catch((err) => {
             console.log(err);
-        });
-    }
-    /**
-     * Updates the document with whatever is passed in via data.
-     * incomming data:
-     * {
-     * _id: <object ID>,
-     * data: {
-     *          <Field to update>: <new data>,
-     *           ...
-     *         }
-     * }
-     */
-    if (pathName === "/index" && request.method === "PUT") {
-        let data = "";
-
-        request.on('data', (chunk) => {
-            data += chunk;
-        });
-
-        request.on('end', () => {
-            updateDatabase(JSON.parse(data), "sponsors").then((result) => {
-                response.end("OK");
-            }).catch((err) => {
-                response.statusCode = 500;
-                response.end(JSON.stringify(err.message));
-            }).finally(() => {
-                client.close();
-            });
-        });
-    }
-
-    if (pathName === "/index" && request.method === "POST") {
-
-    }
-
-    if (pathName === "/index" && request.method === "DELETE") {
-
-    }
-
-    if (pathName === "/contact" && request.method === "POST") {
-        var postData = "";
-
-        request.on("data", function (data) {
-            postData += data;
-        });
-
-        request.on("end", function () {
-            let message = {
-                text: JSON.parse(postData)
-            };
-
-            let options = {
-                hostname: "hooks.slack.com",
-                path: creds.slackWebhook,
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            };
-
-            let req = https.request(options, (res) => {
-                let slackResponse = "";
-
-                res.on("data", (chunk) => {
-                    slackResponse += chunk;
-                });
-
-                res.on("end", () => {
-                    response.statusCode = 200;
-                    response.end(slackResponse);
-                });
-            });
-
-            req.on("error", (e) => {
-                response.statusCode = e.statusCode;
-                response.end(e.message);
-            });
-
-            // write data to request body
-            req.write(JSON.stringify(message));
-            req.end();
         });
     }
 
@@ -252,27 +105,5 @@ function formatData(data, key) {
         }
 
         resolve(result);
-    });
-}
-
-function updateDatabase(json, collecName) {
-    return new Promise((resolve, reject) => {
-        if (!json._id) reject("Empty set passed in");
-
-        let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
-
-        client.connect((err) => {
-            if (err) reject(err);
-
-            let db = client.db(creds.db);
-            let collection = db.collection(collecName);
-            collection.updateOne({ "_id": new ObjectId(json._id) }, { $set: json.data }).then((result) => {
-                resolve(result);
-            }).catch((error) => {
-                reject(error);
-            }).finally(() => {
-                client.close();
-            });
-        });
     });
 }
