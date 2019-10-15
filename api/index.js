@@ -1,14 +1,11 @@
 let http = require("http");
 let https = require("https");
 let url = require("url");
-let fs = require("fs");
-let querystring = require("querystring");
 let MongoClient = require("mongodb").MongoClient;
-let ObjectId = require('mongodb').ObjectID;
 let creds = require("./creds.json");
-const client = new MongoClient(creds.dbURL);
 
 http.createServer((request, response) => {
+
     let pathName = url.parse(request.url).pathname;
 
     if (pathName === "/teamleads" && request.method === "GET") {
@@ -32,6 +29,16 @@ http.createServer((request, response) => {
         });
     }
 
+    if (pathName === "/news" && request.method === "GET") {
+        getNewsPosts().then((result) => {
+            return formatData(result);
+        }).then((result) => {
+            response.end(JSON.stringify(result));
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
+
     if (pathName === "/index" && request.method === "GET") {
         getSponsors().then((result) => {
             return formatData(result, "tier");
@@ -39,6 +46,51 @@ http.createServer((request, response) => {
             response.end(JSON.stringify(result));
         }).catch((err) => {
             console.log(err);
+        });
+    }
+
+    if (pathName === "/contact" && request.method === "POST") {
+        var postData = "";
+
+        request.on("data", function (data) {
+            postData += data;
+        });
+
+        request.on("end", function () {
+            let message = {
+                text: JSON.parse(postData)
+            };
+
+            let options = {
+                hostname: "hooks.slack.com",
+                path: creds.slackWebhook,
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            };
+
+            let req = https.request(options, (res) => {
+                let slackResponse = "";
+
+                res.on("data", (chunk) => {
+                    slackResponse += chunk;
+                });
+
+                res.on("end", () => {
+                    response.statusCode = 200;
+                    response.end(slackResponse);
+                });
+            });
+
+            req.on("error", (e) => {
+                response.statusCode = e.statusCode;
+                response.end(e.message);
+            });
+
+            // write data to request body
+            req.write(JSON.stringify(message));
+            req.end();
         });
     }
 
@@ -84,6 +136,24 @@ function getSponsors() {
             collection.find({}, options).toArray((err, docs) => {
                 if (err) reject(err);
 
+                resolve(docs);
+            });
+        });
+    });
+}
+
+function getNewsPosts() {
+    return new Promise((resolve, reject) => {
+        let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
+
+        client.connect((err) => {
+            if (err) reject(err);
+
+            let db = client.db(creds.db);
+            let collection = db.collection("news");
+
+            collection.find({}).toArray((err, docs) => {
+                if (err) reject(err);
                 resolve(docs);
             });
         });
