@@ -24,7 +24,7 @@ function getNewsPosts(i) {
 function createNewsLink(resp) { // creates a card for each news piece
     let newsArticles = resp.undefined;
 
-    for (i = newsArticles.length-1; i >= 0; i--) {
+    for (i = 0; i <= newsArticles.length - 1; i++) {
         let outerLink = document.createElement("a");
         outerLink.setAttribute('onclick', 'getNewsPosts(' + i + ')');
         let outerDiv = document.createElement("div");
