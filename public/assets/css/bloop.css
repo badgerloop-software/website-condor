@@ -72,7 +72,7 @@
     justify-content: center;
 }
 .goals-container {
-    background-color: #ffffff;
+    background-color: #25272C;
     padding: 3em;
     display: flex;
     justify-content: center;
@@ -93,14 +93,27 @@
     padding-left: 1rem;
     padding-top: 1rem;
 }
-.media-left {
+.media-right {
     /* height: 500px; */
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
 }
-.media-right {
+.media-left {
+    /* height: 500px; */
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+.media-left h2  {
+    text-align: center;
+}
+.media-left hr {
+    margin: 5px;
+    text-align: left;
+}
+.media-middle {
     /* height: 500px; */
     text-align: center;
     display: flex;
@@ -126,6 +139,7 @@
     }
 }
 
+
 .news-piece img, .news-piece video{
     width: 100%;
     height: auto;
@@ -140,6 +154,7 @@
 }
 .news-piece {
     overflow: hidden;
+    color: #222222 !important;
 }
 .news-piece:hover {
     opacity: .8;
@@ -182,9 +197,22 @@
 .news-piece h3 {
     margin-bottom: 0;
     align-self: center;
+    color: #3B3B3B;
 }
 .news-piece .content {
     padding: 1.5em;
+}
+@media screen and (max-width: 1280px) {
+    #news-container {
+        width: 100vw;
+        padding-right: 10px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    #news-container {
+        width: 100vw;
+        padding-right: 10vw;
+    }
 }
 .content p {
     margin: 0 0 1rem 0!important;
@@ -281,7 +309,7 @@
     flex: 1;
     max-width: 85%;
     min-width: 300px;
-    background-color: white;
+    background-color: #25272C;
     flex-grow: 0;
 }
 .diamond {
@@ -388,24 +416,29 @@
     height: 100px;
     width: auto;
     border-radius: 4px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .story-link {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: right;
+    justify-content: right;
+    text-align: right;
+    padding-left: 40px;
 }
 .story-link a {
     border-bottom: none!important;
     text-decoration: underline;
+    text-align: right;
 }
 .story-link i {
-    align-self: center;
+    text-align: right;
+    float: right;
 }
 .story-source-img {
     display: flex;
     justify-content: center;
-    margin-right: .5em;
     width: 100px;
 }
 input:invalid {
