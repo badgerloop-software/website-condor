@@ -1,5 +1,0 @@
-{
-    "dbURL": "mongodb://localhost:27017",
-    "db": "PROD",
-    "port": 3006
-}
