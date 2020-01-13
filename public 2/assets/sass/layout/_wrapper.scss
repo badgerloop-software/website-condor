@@ -1,0 +1,477 @@
+///
+/// Hypothesis by Pixelarity
+/// pixelarity.com | hello@pixelarity.com
+/// License: pixelarity.com/license
+///
+
+/* Wrapper */
+
+	$padding: _size(padding, default);
+
+	.inner {
+		margin: 0 auto;
+		width: _size(inner);
+		max-width: calc(100% - #{$padding});
+	}
+
+	@include keyframes(tab-title) {
+		0% {
+			@include vendor('transform', 'translateY(0.325rem)');
+		}
+
+		100% {
+			@include vendor('transform', 'translateY(1px)');
+		}
+	}
+
+	#wrapper {
+		> .main {
+			background-color: _palette(bg);
+
+			> header {
+				@include padding($padding, 0);
+				text-align: center;
+				cursor: default;
+
+				> * {
+					width: _size(inner) * 0.625;
+					max-width: calc(100% - #{$padding});
+					margin-left: auto;
+					margin-right: auto;
+				}
+
+				> :last-child {
+					margin-bottom: _size(element-margin);
+				}
+
+				&.accent1 {
+					@include color(accent1);
+
+					& + .inner {
+						padding-top: $padding;
+					}
+
+					& + .tabs {
+						> .titles {
+							background-color: _palette(accent1, bg);
+
+							&:before {
+								background-color: _palette(accent1, bg);
+							}
+
+							> .title {
+								color: _palette(accent1, fg-bold);
+
+								&.active {
+									color: _palette(accent1, bg);
+									background-color: _palette(accent1, fg-bold);
+									box-shadow: none;
+								}
+							}
+						}
+					}
+				}
+
+				&.accent2 {
+					@include color(accent2);
+
+					& + .inner {
+						padding-top: $padding;
+					}
+
+					& + .tabs {
+						> .titles {
+							&:before {
+								background-color: _palette(accent2, bg);
+							}
+
+							> .title {
+								color: _palette(accent2, fg-bold);
+
+								&.active {
+									color: _palette(accent2, bg);
+									background-color: _palette(accent2, fg-bold);
+									box-shadow: none;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			> .inner {
+				@include padding($padding, 0, ($padding * -1, 0, 0, 0));
+
+				> .image.main:last-child {
+					margin-bottom: (($padding * -1) + _size(element-margin));
+				}
+
+				> .content {
+					@include padding($padding * 0.5, $padding * 0.5);
+					background-color: _palette(bg);
+
+					> .image.main:first-child {
+						margin-top: ($padding * -0.5);
+						margin-left: ($padding * -0.5);
+						width: calc(100% + #{$padding});
+					}
+				}
+
+				&.alt {
+					padding: ($padding * 0.5) 0 !important;
+				}
+			}
+
+			> .tabs {
+				width: _size(inner);
+				margin: ($padding * -0.325) auto 0 auto;
+				max-width: calc(100% - #{$padding});
+
+				> .titles {
+					@include vendor('display', 'flex');
+					@include vendor('user-select', 'none');
+					list-style: none;
+					padding: 0;
+					margin: 0;
+
+					&:before {
+						content: '';
+						display: block;
+						left: 0;
+						width: 100%;
+						height: _size(element-height) * 2;
+						position: absolute;
+						z-index: 0;
+					}
+
+					> .title {
+						@include vendor('transition-property', 'color, background-color, box-shadow');
+						@include vendor('transition-duration', '#{_duration(transition)}');
+						@include vendor('flex-grow', '1');
+						@include vendor('flex-shrink', '1');
+						padding: 0;
+						width: 100%;
+						text-align: center;
+						height: _size(element-height) * 2;
+						line-height: _size(element-height) * 2;
+						font-weight: _font(weight-bold);
+						font-size: 1.35rem;
+						position: relative;
+						z-index: 1;
+
+						&.active {
+							box-shadow: 0 3px 0 0 _palette(accent1, bg);
+							@include vendor('animation', 'tab-title 0.5s ease forwards');
+						}
+					}
+				}
+
+				> .panels {
+					> .panel {
+						@include padding($padding, 0);
+						@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
+						opacity: 0;
+
+						&.active {
+							opacity: 1;
+						}
+					}
+				}
+			}
+
+			&.accent1 {
+				@include color(accent1);
+
+				> .tabs {
+					> .titles {
+						> .title {
+							&.active {
+								box-shadow: 0 3px 0 0 _palette(accent1, fg-bold);
+							}
+						}
+					}
+				}
+			}
+
+			&.accent2 {
+				@include color(accent2);
+
+				> .tabs {
+					> .titles {
+						> .title {
+							&.active {
+								box-shadow: 0 3px 0 0 _palette(accent2, fg-bold);
+							}
+						}
+					}
+				}
+			}
+
+			&.alt {
+				background-color: _palette(bg-alt);
+			}
+		}
+	}
+
+	@include breakpoint('<=large') {
+
+		$padding: _size(padding, large);
+
+		.inner {
+			max-width: calc(100% - #{$padding});
+		}
+
+		#wrapper {
+			> .main {
+				> header {
+					@include padding($padding, 0);
+
+					> * {
+						max-width: calc(100% - #{$padding});
+					}
+
+					&.accent1 {
+						& + .inner {
+							padding-top: $padding;
+						}
+					}
+
+					&.accent2 {
+						& + .inner {
+							padding-top: $padding;
+						}
+					}
+
+					&.alt {
+						background-color: _palette(bg-alt);
+					}
+				}
+
+				> .inner {
+					@include padding($padding, 0, ($padding * -1, 0, 0, 0));
+
+					> .image.main:last-child {
+						margin-bottom: (($padding * -1) + _size(element-margin));
+					}
+
+					> .content {
+						@include padding($padding * 0.5, $padding * 0.5);
+
+						> .image.main:first-child {
+							margin-top: ($padding * -0.5);
+							margin-left: ($padding * -0.5);
+							width: calc(100% + #{$padding});
+						}
+					}
+
+					&.alt {
+						padding: ($padding * 0.5) 0 !important;
+					}
+				}
+
+				> .tabs {
+					margin: ($padding * -0.325) auto 0 auto;
+					max-width: calc(100% - #{$padding});
+
+					> .panels {
+						> .panel {
+							@include padding($padding, 0);
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	@include breakpoint('<=medium') {
+
+		$padding: _size(padding, medium);
+
+		.inner {
+			max-width: calc(100% - #{$padding});
+		}
+
+		#wrapper {
+			> .main {
+				> header {
+					@include padding($padding, 0);
+
+					> * {
+						max-width: calc(100% - #{$padding});
+					}
+
+					&.accent1 {
+						& + .inner {
+							padding-top: $padding;
+						}
+					}
+
+					&.accent2 {
+						& + .inner {
+							padding-top: $padding;
+						}
+					}
+
+					&.alt {
+						background-color: _palette(bg-alt);
+					}
+				}
+
+				> .inner {
+					@include padding($padding, 0, ($padding * -1, 0, 0, 0));
+
+					> .image.main:last-child {
+						margin-bottom: (($padding * -1) + _size(element-margin));
+					}
+
+					> .content {
+						@include padding($padding * 0.5, $padding * 0.5);
+
+						> .image.main:first-child {
+							margin-top: ($padding * -0.5);
+							margin-left: ($padding * -0.5);
+							width: calc(100% + #{$padding});
+						}
+					}
+
+					&.alt {
+						padding: ($padding * 0.5) 0 !important;
+					}
+				}
+
+				> .tabs {
+					margin: ($padding * -0.325) auto 0 auto;
+					max-width: calc(100% - #{$padding});
+
+					> .titles {
+						&:before {
+							height: _size(element-height) * 1.5;
+						}
+
+						> .title {
+							height: _size(element-height) * 1.5;
+							line-height: _size(element-height) * 1.5;
+							font-size: 1.25rem;
+						}
+					}
+
+					> .panels {
+						> .panel {
+							@include padding($padding, 0);
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	@include breakpoint('<=small') {
+
+		$padding: _size(padding, small);
+
+		.inner {
+			max-width: calc(100% - #{$padding});
+		}
+
+		#wrapper {
+			> .main {
+				> header {
+					@include padding($padding, 0);
+
+					> * {
+						max-width: calc(100% - #{$padding});
+					}
+
+					&.accent1 {
+						& + .inner {
+							padding-top: $padding;
+						}
+					}
+
+					&.accent2 {
+						& + .inner {
+							padding-top: $padding;
+						}
+					}
+
+					&.alt {
+						background-color: _palette(bg-alt);
+					}
+				}
+
+				> .inner {
+					@include padding($padding, 0, ($padding * -1, 0, 0, 0));
+
+					> .image.main:last-child {
+						margin-bottom: (($padding * -1) + _size(element-margin));
+					}
+
+					> .content {
+						@include padding($padding * 0.5, $padding * 0.5);
+
+						> .image.main:first-child {
+							margin-top: ($padding * -0.5);
+							margin-left: ($padding * -0.5);
+							width: calc(100% + #{$padding});
+						}
+					}
+
+					&.alt {
+						padding: ($padding * 0.5) 0 !important;
+					}
+				}
+
+				> .tabs {
+					margin: ($padding * -0.3125) auto 0 auto;
+					max-width: calc(100% - #{$padding});
+
+					> .titles {
+						&:before {
+							height: _size(element-height) * 1.25;
+						}
+
+						> .title {
+							height: _size(element-height) * 1.25;
+							line-height: _size(element-height) * 1.25;
+							font-size: 1rem;
+							letter-spacing: 0;
+
+							.extra {
+								display: none;
+							}
+						}
+					}
+
+					> .panels {
+						> .panel {
+							@include padding($padding, 0);
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+	@include breakpoint('<=xsmall') {
+
+		#wrapper {
+			> .main {
+				> .tabs {
+					> .titles {
+						@include vendor('justify-content', 'center');
+
+						> .title {
+							width: auto;
+							@include vendor('flex-grow', '0');
+							@include vendor('flex-shrink', '0');
+							padding: 0 1.5rem;
+						}
+					}
+				}
+			}
+		}
+
+	}
