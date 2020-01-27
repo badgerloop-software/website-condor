@@ -2,7 +2,7 @@
  * Imediately Invoked Function (IIF) gets called as soon as it is declared.
  * Sets event listeners for the form
  */
-(function() {
+(function () {
     document.getElementById('contact-category').addEventListener('change', formChange);
     document.getElementById('form-submit').addEventListener('click', formSubmit);
 })();
@@ -30,14 +30,14 @@ function removeForm() {
 function dynamicForm() {
     let selected = document.getElementById('contact-category').value.toLowerCase();
 
-    switch(selected) {
-        case('student inquiry'):
+    switch (selected) {
+        case ('student inquiry'):
             studentForm();
             break;
-        case('sponsorship inquiry'):
+        case ('sponsorship inquiry'):
             sponsorForm();
             break;
-        case('media inquiry'):
+        case ('media inquiry'):
             mediaForm();
             break;
     }
@@ -126,7 +126,7 @@ function formSubmit() {
         let teams = getStudentTeams();
         message += "*Team(s) Interested In:* " + teams + "\n";
         // sendStudentEmailResponse(email);
-    } 
+    }
 
     if (validFlag) sendForm(message);
 }
@@ -155,18 +155,18 @@ function validCheckGroup(group) {
     if (group.length > 0) {
         let flag = false;
         for (x of group) {
-            
-            x.addEventListener('input', ()=> {
+
+            x.addEventListener('input', () => {
                 checkChange(group);
             });
-            if (x.checked) { 
-                flag = true;   
+            if (x.checked) {
+                flag = true;
             }
         }
-    
+
         if (group && flag) x.parentNode.classList.remove('check-error');
         else if (group && !flag) x.parentNode.classList.add('check-error');
-    
+
         return flag;
     } else {
         return true;
@@ -196,7 +196,7 @@ function checkChange(group) {
 function sendForm(message) {
     let xhttp = new XMLHttpRequest();
 
-    xhttp.onreadystatechange = function() {
+    xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4 && xhttp.status === 200) {
             //posting message was successful
             displayStatusMessage('success');
@@ -217,7 +217,7 @@ function sendForm(message) {
  * response data from the student inquiry form. 
  * @param {NodeList} items list of input items with class "form-check"
  */
-function googleFormSubmission(items) {
+/* function googleFormSubmission(items) {
     let data = createGoogleFormInfo(items);
 
     let xhttp = new XMLHttpRequest();
@@ -232,7 +232,7 @@ function googleFormSubmission(items) {
 
     xhttp.send(JSON.stringify(data));
 
-}
+} */
 
 function sendStudentEmailResponse(emailAddr) {
     //TODO:
@@ -247,7 +247,7 @@ function sendStudentEmailResponse(emailAddr) {
     // xhttp.open("POST", "/api/emailResponse");
 
     // xhttp.send(JSON.stringify(emailAddr));
-    
+
 }
 /**
  * Checks the checkbox group to make sure one of the checkboxes is selected. Checkboxes
@@ -263,7 +263,7 @@ function getStudentTeams() {
             teams += x.title + ", ";
         }
     }
-    
+
     return teams.substr(0, teams.length - 2);
 }
 
@@ -275,7 +275,7 @@ function getStudentTeams() {
  * @param {NodeList} items 
  * @returns {obj} data formatted properly for the google form script 
  */
-function createGoogleFormInfo(items) {
+/* function createGoogleFormInfo(items) {
     let data = {};
 
     var GoogleSpreadsheet = require('google-spreadsheet');
@@ -336,7 +336,7 @@ function createGoogleFormInfo(items) {
     }
 
     return data;
-}
+} */
 /**
  * Checks whether the form input needs to be displayed as invalid or not. 
  * @param {event} event the event object passed when an event fires
@@ -362,7 +362,7 @@ function clearForm() {
     for (x of inputs) {
         x.value = "";
     }
-    
+
 }
 /**
  * Displays either a status or error message to the user. Inserted before div with ID "form-submit"
