@@ -2913,6 +2913,12 @@ input, select, textarea {
 			width: calc(33.3333333333% + -0.5rem);
 		}
 
+		.posts > div > article {
+			background-color: #3B3B3B;
+			margin: 0 0 3rem 0;
+			border-radius: 10px;
+		}
+
 		@media screen and (max-width: 984px) {
 			#articleSponsors {
 				background-color: #F7F7F7;
