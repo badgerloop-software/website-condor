@@ -621,8 +621,16 @@ input:invalid {
   height: 75%;
   width: 100% !important;
   vertical-align: middle;
-  background-color: #242424;
+  background-color: #162539;
+  border-color: #162539;
   color: white;
+}
+.accent3 .factsContainer .box {
+  background-color: #162539;
+  border-color: rgb(255, 255, 255, .2);
+}
+.accent2 .factsContainer .box {
+  background-color: #242424;
 }
 @media screen and (min-width: 601px) {
   .factsContainer {
