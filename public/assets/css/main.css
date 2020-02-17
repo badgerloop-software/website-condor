@@ -1865,6 +1865,8 @@ input, select, textarea {
 		border: solid 1px;
 		margin-bottom: 2rem;
 		padding: 1.5rem;
+		height: 150px;
+		margin-top: 20px;
 	}
 
 		.box > :last-child,
@@ -1890,18 +1892,7 @@ input, select, textarea {
 		background: #9b0000;
 	}
 
-	/* styling for boxes on about-badgerloop page */
-	@media screen and (max-width: 1699px) {
-		.box {
-			height: 250px;
-		}
 
-	}
-	@media screen and (min-width: 1700px) {
-		.box {
-			height: 400px;
-		}
-	}
 
 
 /* Button */
