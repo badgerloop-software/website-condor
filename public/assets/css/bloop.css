@@ -650,4 +650,12 @@ input:invalid {
   max-width: 300px;
   margin-bottom: 40px;
   margin-top: 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
