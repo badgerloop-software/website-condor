@@ -575,8 +575,8 @@ input:invalid {
   grid-template-rows: 40px 65px 40px;
   grid-column-gap: 20px;
   grid-row-gap: 1rem;
-  padding-bottom: 100px;
-  padding-top: 100px;
+  padding-bottom: 30px;
+  padding-top: 30px;
   text-align: center;
 }
 .statsContainerSmall {
@@ -643,4 +643,11 @@ input:invalid {
       padding-left: 20px;
       padding-right: 20px;
   }
+}
+
+.pods {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
