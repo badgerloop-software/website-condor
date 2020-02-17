@@ -7,14 +7,8 @@ window.onload = function() {
 
 	for (let i of statsValues) {
 		console.log(i);
-		statsArray.push(new CountUp('stat' + x, i));
-		x++;
-	}
-
-	x = statsValues.length + 1;
-	for (let i of statsValues) {
-		console.log(i);
-		statsArray.push(new CountUp('stat' + x, i));
+		statsArray.push(new CountUp('stat' + x + 'l', i));
+		statsArray.push(new CountUp('stat' + x + 's', i));
 		x++;
 	}
 
