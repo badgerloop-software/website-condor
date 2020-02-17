@@ -1,4 +1,4 @@
-import { CountUp } from './CountUp.min.js';
+import { CountUp } from './countUp.min.js';
 
 window.onload = function() {
 	let statsArray = []
