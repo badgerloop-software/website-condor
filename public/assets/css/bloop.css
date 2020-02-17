@@ -145,8 +145,8 @@
     height: auto;
     border-radius: 10px 10px 0 0;
     max-height: 450px;
-    object-fit: cover; 
-    object-position: center;   
+    object-fit: cover;
+    object-position: center;
     transition: transform .1s ease-out;
   -moz-transition: transform .1s ease-out;
   -webkit-transition: transform .1s ease-out;
@@ -444,7 +444,7 @@
 input:invalid {
     box-shadow: 0 0 5px 1px red;
   }
-  
+
   input:focus:invalid {
     box-shadow: none;
   }
@@ -568,15 +568,71 @@ input:invalid {
 
 /* Styling for pod history pages */
 
-.statsContainer {
-  display: grid;
+.statsContainerLarge {
+  width: 90%;
+  margin: auto;
   grid-template-columns: auto auto auto auto;
-  grid-template-rows: 60px 65px auto; 
+  grid-template-rows: 40px 65px 40px;
   grid-column-gap: 20px;
+  grid-row-gap: 1rem;
+  padding-bottom: 100px;
+  padding-top: 100px;
+  text-align: center;
 }
-.factsContainer {
-  display: grid;
+.statsContainerSmall {
+  width: 90%;
+  margin: auto;
   grid-template-columns: auto auto;
-  grid-template-rows: auto auto; 
+  grid-template-rows: 50px 65px 80px 50px 65px 40px;
   grid-column-gap: 20px;
+  grid-row-gap: .3;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.stats {
+  color: #AA2328 !important;
+}
+@media screen and (max-width: 600px) {
+  .statsContainerLarge {
+    display: none;
+  }
+  .statsContainerSmall {
+    display: grid;
+  }
+}
+@media screen and (min-width: 601px) {
+  .statsContainerLarge {
+    display: grid;
+  }
+  .statsContainerSmall {
+    display: none;
+  }
+}
+
+.factsContainer {
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-column-gap: 30px;
+  text-align: center;
+}
+.factsContainer .box {
+  height: 75%;
+  width: 100% !important;
+  vertical-align: middle;
+  background-color: #242424;
+  color: white;
+}
+@media screen and (min-width: 601px) {
+  .factsContainer {
+      grid-template-columns: repeat(auto-fill, calc(50% - 15px));
+  }
+}
+@media screen and (max-width: 600px) {
+  .factsContainer {
+      grid-template-columns: repeat(auto-fill, 100%);
+      padding-left: 20px;
+      padding-right: 20px;
+  }
 }

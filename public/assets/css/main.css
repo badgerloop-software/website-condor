@@ -2061,7 +2061,7 @@ input, select, textarea {
 			margin:auto;
 			width: 60%;
 		}
-	}	
+	}
 
 	form ul {
 		padding-bottom: 20px;
@@ -2928,7 +2928,7 @@ input, select, textarea {
 				border-width: 10px;
 			}
 		}
-		
+
 		@media screen and (min-width: 985px) {
 			#articleSponsors {
 				background-color: #F7F7F7;
@@ -2939,7 +2939,7 @@ input, select, textarea {
 				margin: 0 0 3rem 0;
 			}
 		}
-		
+
 
 		@media screen and (max-width: 984px) {
 			#articleHome {
@@ -2950,7 +2950,7 @@ input, select, textarea {
 				border-width: 10px;
 			}
 		}
-		
+
 		@media screen and (min-width: 985px) {
 			#articleHome {
 				background-color:#ffffff;;
@@ -2981,7 +2981,7 @@ input, select, textarea {
 					width: 75%;
 				}
 			}
-			
+
 			@media screen and (min-width: 1200px) {
 				#contentHome {
 					height: 420px;
@@ -4668,7 +4668,6 @@ input, select, textarea {
 				#wrapper > .main.accent2 .button.primary {
 					background-color: #222222;
 					box-shadow: none;
-					color: #80bb2d !important;
 				}
 
 					#wrapper > .main.accent2 input[type="submit"].primary:hover,
@@ -4677,6 +4676,7 @@ input, select, textarea {
 					#wrapper > .main.accent2 button.primary:hover,
 					#wrapper > .main.accent2 .button.primary:hover {
 						background-color: rgba(255, 255, 255, 0.9);
+						color: #AA2328 !important;
 					}
 
 					#wrapper > .main.accent2 input[type="submit"].primary:active,
@@ -5073,7 +5073,7 @@ input, select, textarea {
 					width: 20%;
 				}
 			}
-			
+
 			@media screen and (max-width: 984px) {
 				#footerRight h3{
 					text-align: center;
