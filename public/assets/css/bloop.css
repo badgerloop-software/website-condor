@@ -659,3 +659,15 @@ input:invalid {
   justify-content: center;
   align-items: center;
 }
+
+.centerImg{
+  width: 30% !important;
+}
+
+.membersList {
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  columns: 3;
+  list-style-position: inside;
+  list-style-type: none;
+}

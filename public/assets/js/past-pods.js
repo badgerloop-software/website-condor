@@ -2,7 +2,7 @@ import { CountUp } from './countUp.min.js';
 
 window.onload = function() {
 	let statsArray = [];
-	let statsValues = [15.4, 180, 1560.87, 30968.37, 10.1, 235, 547.81, 24984.74, 6.75, 335, 300, 45000];
+	let statsValues = [15.4, 180, 1560.87, 636.7, 10.1, 235, 547.81, 75, 6.75, 335, 300, 238.72];
 	let x = 1;
 
 	for (let i of statsValues) {
