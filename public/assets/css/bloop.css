@@ -72,7 +72,7 @@
     justify-content: center;
 }
 .goals-container {
-    background-color: white;;
+    background-color: #25272C;
     padding: 3em;
     display: flex;
     justify-content: center;
@@ -145,8 +145,8 @@
     height: auto;
     border-radius: 10px 10px 0 0;
     max-height: 450px;
-    object-fit: cover; 
-    object-position: center;   
+    object-fit: cover;
+    object-position: center;
     transition: transform .1s ease-out;
   -moz-transition: transform .1s ease-out;
   -webkit-transition: transform .1s ease-out;
@@ -154,6 +154,7 @@
 }
 .news-piece {
     overflow: hidden;
+    color: #222222 !important;
 }
 .news-piece:hover {
     opacity: .8;
@@ -196,6 +197,7 @@
 .news-piece h3 {
     margin-bottom: 0;
     align-self: center;
+    color: #3B3B3B;
 }
 .news-piece .content {
     padding: 1.5em;
@@ -288,7 +290,7 @@
     margin: 1em;
     border-radius: 10px;
     max-width: 100%;
-    background-color: white;
+    background-color: white !important;
 }
 .sponsor-content {
     padding: 1em;
@@ -307,7 +309,7 @@
     flex: 1;
     max-width: 85%;
     min-width: 300px;
-    background-color: white;
+    background-color: #25272C;
     flex-grow: 0;
 }
 .diamond {
@@ -442,7 +444,7 @@
 input:invalid {
     box-shadow: 0 0 5px 1px red;
   }
-  
+
   input:focus:invalid {
     box-shadow: none;
   }
@@ -562,4 +564,110 @@ input:invalid {
 }
 .reveal-text .button {
     margin-top: 2rem;
+}
+
+/* Styling for pod history pages */
+
+.statsContainerLarge {
+  width: 90%;
+  margin: auto;
+  grid-template-columns: auto auto auto auto;
+  grid-template-rows: 40px 65px 40px;
+  grid-column-gap: 20px;
+  grid-row-gap: 1rem;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+}
+.statsContainerSmall {
+  width: 90%;
+  margin: auto;
+  grid-template-columns: auto auto;
+  grid-template-rows: 50px 65px 80px 50px 65px 40px;
+  grid-column-gap: 20px;
+  grid-row-gap: .3;
+  padding-bottom: 30px;
+  text-align: center;
+}
+.stats {
+  color: #AA2328 !important;
+}
+@media screen and (max-width: 600px) {
+  .statsContainerLarge {
+    display: none;
+  }
+  .statsContainerSmall {
+    display: grid;
+  }
+}
+@media screen and (min-width: 601px) {
+  .statsContainerLarge {
+    display: grid;
+  }
+  .statsContainerSmall {
+    display: none;
+  }
+}
+
+.factsContainer {
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-column-gap: 30px;
+  text-align: center;
+}
+.factsContainer .box {
+  height: 75%;
+  width: 100% !important;
+  vertical-align: middle;
+  background-color: #162539;
+  border-color: #162539;
+  color: white;
+}
+.accent3 .factsContainer .box {
+  background-color: #162539;
+  border-color: rgb(255, 255, 255, .2);
+}
+.accent2 .factsContainer .box {
+  background-color: #242424;
+}
+@media screen and (min-width: 601px) {
+  .factsContainer {
+      grid-template-columns: repeat(auto-fill, calc(50% - 15px));
+  }
+}
+@media screen and (max-width: 600px) {
+  .factsContainer {
+      grid-template-columns: repeat(auto-fill, 100%);
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+}
+
+.pods {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centerImg{
+  width: 30% !important;
+}
+
+.membersList {
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  columns: 3;
+  list-style-position: inside;
+  list-style-type: none;
 }

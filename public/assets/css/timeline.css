@@ -42,11 +42,11 @@
 
 .cbp_tmtimeline > li .cbp_tmtime span:last-child {
 	font-size: 2.9em;
-	color: #9b0000;
+	color: #fff;
 }
 
 .cbp_tmtimeline > li:nth-child(odd) .cbp_tmtime span:last-child {
-	color:#c5050c;
+	color:#fff;
 }
 
 /* Right content */
