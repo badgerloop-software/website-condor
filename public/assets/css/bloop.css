@@ -72,7 +72,7 @@
     justify-content: center;
 }
 .goals-container {
-    background-color: #25272C;
+    background-color: white;;
     padding: 3em;
     display: flex;
     justify-content: center;
@@ -154,7 +154,6 @@
 }
 .news-piece {
     overflow: hidden;
-    color: #222222 !important;
 }
 .news-piece:hover {
     opacity: .8;
@@ -197,7 +196,6 @@
 .news-piece h3 {
     margin-bottom: 0;
     align-self: center;
-    color: #3B3B3B;
 }
 .news-piece .content {
     padding: 1.5em;
@@ -290,7 +288,7 @@
     margin: 1em;
     border-radius: 10px;
     max-width: 100%;
-    background-color: white !important;
+    background-color: white;
 }
 .sponsor-content {
     padding: 1em;
@@ -309,7 +307,7 @@
     flex: 1;
     max-width: 85%;
     min-width: 300px;
-    background-color: #25272C;
+    background-color: white;
     flex-grow: 0;
 }
 .diamond {
@@ -626,11 +624,23 @@ input:invalid {
   color: white;
 }
 .accent3 .factsContainer .box {
-  background-color: #162539;
+  background-color: #AA2328;
   border-color: rgb(255, 255, 255, .2);
 }
+.accent3 .factsContainer .box h3{
+  color: #fff !important;
+}
+.accent3 > .button .pods{
+  color: #fff !important;
+}
 .accent2 .factsContainer .box {
-  background-color: #242424;
+  background-color: #fff;
+}
+.accent2 .factsContainer .box h3{
+  color: #AA2328 !important;
+}
+.accent2 .pods{
+    color: #AA2328 !important;
 }
 @media screen and (min-width: 601px) {
   .factsContainer {
@@ -654,6 +664,11 @@ input:invalid {
   display: inline-block;
 }
 
+.button.pods {
+  background-color: #AA2328;
+  color: #ffffff;
+}
+
 .parent {
   display: flex;
   justify-content: center;
@@ -670,4 +685,18 @@ input:invalid {
   columns: 3;
   list-style-position: inside;
   list-style-type: none;
+}
+
+.posts article {
+  background-color: #fff;
+  color: #162539;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+.posts h3{
+  color: #162539 !important;
+}
+.posts img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
