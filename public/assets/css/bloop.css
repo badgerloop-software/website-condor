@@ -709,11 +709,11 @@ input:invalid {
 
 .prospectiveContainer {
     width: 100%;
-    margin: auto;
     display: grid;
     grid-template-columns: auto auto auto;
     grid-column-gap: 30px;
     text-align: center;
+    margin-top: 40px;
 }
 .prospectiveContainer .box {
     height: 500px;
