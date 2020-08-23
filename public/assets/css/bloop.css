@@ -700,3 +700,38 @@ input:invalid {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
+
+#tagline {
+    margin-bottom: -10px;
+    padding-top: 2em;
+    color: #C5090C;
+}
+
+.prospectiveContainer {
+    width: 100%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 30px;
+    text-align: center;
+}
+.prospectiveContainer .box {
+    height: 500px;
+    width: 100% !important;
+    vertical-align: middle;
+    background-color: #162539;
+    border-color: #162539;
+    color: white;
+    line-height: 450px;
+}
+.prospectiveContainer span{
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px; /* <-- adjust this */
+}
+.prospectiveContainer b {
+    color: #C5090C;
+    font-size: 2rem;
+    font-weight: 400;
+    padding: 4px;
+}
