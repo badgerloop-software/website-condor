@@ -701,6 +701,7 @@ input:invalid {
   border-top-right-radius: 10px;
 }
 
+/* Styling for prospective members page */
 #tagline {
     margin-bottom: -10px;
     padding-top: 2em;
@@ -708,30 +709,117 @@ input:invalid {
 }
 
 .prospectiveContainer {
-    width: 100%;
+    width: 80%;
     display: grid;
-    grid-template-columns: auto auto auto;
     grid-column-gap: 30px;
     text-align: center;
     margin-top: 40px;
+    margin: auto;
 }
 .prospectiveContainer .box {
-    height: 500px;
     width: 100% !important;
     vertical-align: middle;
     background-color: #162539;
     border-color: #162539;
     color: white;
-    line-height: 450px;
 }
-.prospectiveContainer span{
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 30px; /* <-- adjust this */
+
+@media screen and (min-width: 980px) {
+    .prospectiveContainer {
+        grid-template-columns: 30% 30% 30%;
+    }
+    .prospectiveContainer span{
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 30px; /* <-- adjust this */
+    }
+    .prospectiveContainer b {
+        font-size: 1.5rem;
+    }
+    .grid1 .box {
+        height: 500px;
+        line-height: 450px;
+    }
+    .grid2 .box {
+        height: 425px;
+        line-height: 400px;
+    }
+    .grid3 .box {
+        height: 275px;
+        line-height: 225px;
+    }
 }
+@media screen and (max-width: 980px) {
+    .prospectiveContainer {
+        grid-template-columns: 50% 50%;
+    }
+    .prospectiveContainer p {
+        font-size: 1rem;
+    }
+    .prospectiveContainer b {
+        font-size: 1.2rem;
+    }
+    .prospectiveContainer span{
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 18px; /* <-- adjust this */
+    }
+    .grid1 .box {
+        height: 425px;
+        line-height: 400px;
+    }
+    .grid2 .box {
+        height: 425px;
+        line-height: 400px;
+    }
+    .grid3 .box {
+        height: 275px;
+        line-height: 225px;
+    }
+}
+@media screen and (max-width: 525px) {
+    .prospectiveContainer {
+        grid-template-columns: 100%;
+    }
+    .prospectiveContainer p {
+        font-size: 1rem;
+    }
+    .prospectiveContainer b {
+        font-size: 1.2rem;
+    }
+    .prospectiveContainer span{
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 18px; /* <-- adjust this */
+    }
+    .grid1 .box {
+        height: 225px;
+        line-height: 200px;
+    }
+    .grid2 .box {
+        height: 200px;
+        line-height: 175px;
+    }
+    .grid3 .box {
+        height: 150px;
+        line-height: 125px;
+    }
+}
+
 .prospectiveContainer b {
     color: #C5090C;
-    font-size: 2rem;
     font-weight: 400;
     padding: 4px;
+}
+
+.prospective > .tabs{
+    background-color: #ededed;
+    border-radius: 10px 10px 0 0;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.prospective img {
+    width: 80%;
+    margin: auto;
 }
