@@ -814,7 +814,12 @@ input:invalid {
 
 .prospective > .tabs{
     background-color: #ededed;
+    border-radius: 10px;
+}
+.prospective > .tabs li {
     border-radius: 10px 10px 0 0;
+}
+.prospective .spotlight {
     padding-left: 5%;
     padding-right: 5%;
 }
@@ -822,4 +827,21 @@ input:invalid {
 .prospective img {
     width: 80%;
     margin: auto;
+}
+
+/* spacing for prospective page blocks */
+@media screen and (max-width: 525px) {
+    .text {
+        margin: auto;
+        margin-top: 20px;
+    }
+    #prospectiveVideo {
+        margin-bottom: -4em;
+    }
+}
+@media screen and (min-width: 525px) {
+    .text {
+        margin: auto;
+        margin-top: 4em;
+    }
 }
