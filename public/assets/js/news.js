@@ -31,7 +31,7 @@ function createNewsLink(resp) { // creates a card for each news piece
         outerDiv.setAttribute('class', 'news-piece');
         let img = document.createElement("img");
         if (newsArticles[i].imgName != "NONE") {
-            img.setAttribute('src', 'images/' + newsArticles[i].imgName);
+            img.setAttribute('src', 'images/news/' + newsArticles[i].imgName);
         }
         let contentDiv = document.createElement("div");
         contentDiv.setAttribute('class', 'content');
@@ -62,7 +62,7 @@ function renderArticle(newsArticles, i) {
     outerDiv.setAttribute('class', 'news-piece');
     let img = document.createElement("img");
     img.setAttribute('id', 'articleImg');
-    img.setAttribute('src', 'images/' + newsArticles[i].imgName);
+    img.setAttribute('src', 'images/news/' + newsArticles[i].imgName);
     let contentDiv = document.createElement("div");
     contentDiv.setAttribute('class', 'content');
     let titleDiv = document.createElement("div");
