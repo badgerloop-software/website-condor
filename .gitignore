@@ -2,6 +2,9 @@
 /api/creds.json
 /public/images/reveal.mp4
 /public/images/WebsiteHeroVid.mp4
+/public/images/news
+/public/images/sponsors
+/public/images/teamleads
 .idea
 .nova/*
 
