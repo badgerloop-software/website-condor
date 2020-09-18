@@ -2003,7 +2003,7 @@ input, select, textarea {
 	.button {
 		background-color: transparent;
 		box-shadow: inset 0 0 0 3px #C5050C;
-		color: #C5050C;
+		color: #C5050C !important;
 	}
 
 		input[type="submit"]:hover,
@@ -2029,7 +2029,7 @@ input, select, textarea {
 		.button.primary {
 			background-color: #C5050C;
 			box-shadow: none;
-			color: #ffffff;
+			color: #ffffff !important;
 		}
 
 			input[type="submit"].primary:hover,
