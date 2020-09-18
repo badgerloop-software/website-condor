@@ -5,7 +5,7 @@ var stream = fs.createWriteStream("mailScript.sh"); //creates a write stream to 
 stream.once('open', function (fd) { //file descriptor so you will be able to close stream
     stream.write("(\n"); //open script
     stream.write("  echo To: " + email + "\n"); //sets recipient to the address
-    stream.write("  echo From: noreply@badgerloop.com\n"); // sets the from address to noreply@badgerloop.com
+    stream.write("  echo From: noreply@badgerloop.org\n"); // sets the from address to noreply@badgerloop.org
     stream.write("  echo \"Content-Type: text/html; \"\n"); // says the email will be in HTML format
     stream.write("  echo Subject: Badgerloop Form Submission Autoreply\n"); // sets subject of email
     stream.write("  echo\n"); 
