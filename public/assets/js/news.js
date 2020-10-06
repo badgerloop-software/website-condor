@@ -25,14 +25,22 @@ function createNewsLink(resp) { // creates a card for each news piece
     let newsArticles = resp.undefined;
 
     for (i = 0; i <= newsArticles.length - 1; i++) {
+        // extract the date portion of the subheading, and trim whitespace
         let articleDateString = newsArticles[i].subHeading.substring(10).trim();
+
+        // remove any st or th from the date that will not convert to a proper date
+        // ex: February 21st, 2019 is INVALID, but February 21, 2019 is VALID
         articleDateString = articleDateString.replaceAll("st", "");
         articleDateString = articleDateString.replaceAll("th", "");
+
+        // convert string to a date
         var articleDate = new Date(articleDateString);
-        console.log(articleDate);
+
+        // set the various bounds for competitions (only need one for now)
         var pod5Date  = new Date("2020-08-01");
         let comp = 0;
 
+        // check if date is after pod5 starting date, and set comp # accordingly
         if(articleDate > pod5Date) comp = 5;
         else comp = 4;
 
@@ -65,9 +73,13 @@ function createNewsLink(resp) { // creates a card for each news piece
 
         var insertion = "";
 
+        // Set insertion point to  the collapsible if from pod4, or into standard 
+        // insertion area if not. Need to expand this out when news articles from 
+        // other comps get added as well
         if (comp == 4)  insertion = document.getElementById("pod4Collapsible");
         else if (comp == 5)  insertion = document.getElementById("insert");
 
+        // insert the data
         insertion.insertBefore(outerLink, insertion.childNodes[0]);
 
     }
