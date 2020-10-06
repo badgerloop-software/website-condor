@@ -25,6 +25,15 @@ function createNewsLink(resp) { // creates a card for each news piece
     let newsArticles = resp.undefined;
 
     for (i = 0; i <= newsArticles.length - 1; i++) {
+        let articleDateString = newsArticles[i].subHeading.substring(10).trim();
+        var articleDate = new Date(articleDateString);
+
+        var pod5Date  = new Date("2020-08-01");
+        let comp = 0;
+
+        if(articleDate > pod5Date) comp = 5;
+        else comp = 4;
+
         let outerLink = document.createElement("a");
         outerLink.setAttribute('onclick', 'getNewsPosts(' + i + ')');
         let outerDiv = document.createElement("div");
@@ -52,8 +61,13 @@ function createNewsLink(resp) { // creates a card for each news piece
         contentDiv.appendChild(subHeadingDiv);
         contentDiv.appendChild(innerLink);
 
-        var insertion = document.getElementById("insert");
+        var insertion = "";
+
+        if (comp == 4)  insertion = document.getElementById("pod4Collapsible");
+        else if (comp == 5)  insertion = document.getElementById("insert");
+
         insertion.insertBefore(outerLink, insertion.childNodes[0]);
+
     }
 }
 

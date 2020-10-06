@@ -5612,3 +5612,16 @@ input, select, textarea {
 			}
 
 	}
+
+.collapsible {
+	cursor: pointer;
+	width: 100%;
+}
+	
+.collapsibleContent {
+	margin-top: 20px;
+	padding: 0 18px;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0.2s ease-out;
+}

@@ -71,6 +71,9 @@
                         <div class="col-7 col-12-medium media-middle">
                             <h2>News</h2>
                             <div id="insert"></div>
+                            <button class="collapsible">View Articles from Competition IV</button>
+                            <div id="pod4Collapsible" class="collapsibleContent">
+                            </div>
                         </div>
                         <div class="col-3 col-12-medium media-right">
                             <h2>Featured Stories</h2>
@@ -218,6 +221,22 @@
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/news.js"></script>
+    <script>
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+        
+        for (i = 0; i < coll.length; i++) {
+          coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+              content.style.maxHeight = null;
+            } else {
+              content.style.maxHeight = content.scrollHeight + "px";
+            } 
+          });
+        }
+        </script>
 
 </body>
 
