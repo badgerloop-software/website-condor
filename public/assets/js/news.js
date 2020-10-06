@@ -26,8 +26,10 @@ function createNewsLink(resp) { // creates a card for each news piece
 
     for (i = 0; i <= newsArticles.length - 1; i++) {
         let articleDateString = newsArticles[i].subHeading.substring(10).trim();
+        articleDateString = articleDateString.replaceAll("st", "");
+        articleDateString = articleDateString.replaceAll("th", "");
         var articleDate = new Date(articleDateString);
-
+        console.log(articleDate);
         var pod5Date  = new Date("2020-08-01");
         let comp = 0;
 
