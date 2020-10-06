@@ -5620,8 +5620,12 @@ input, select, textarea {
 	
 .collapsibleContent {
 	margin-top: 20px;
-	padding: 0 18px;
 	max-height: 0;
 	overflow: hidden;
 	transition: max-height 0.2s ease-out;
+	width: 100%;
+}
+
+#insert {
+	width: 100%;
 }
