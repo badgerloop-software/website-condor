@@ -6,7 +6,7 @@ app.post('/contact', function(req, res) {
     console.log(field);
     res.send("Received submission from form");
 
-    if (field.reason == "inquiry") {
+    if (field.reason == "Student Inquiry") {
         var message =  {
             type: "message",
             attachments: [
@@ -26,11 +26,11 @@ app.post('/contact', function(req, res) {
                                         facts: [
                                             {
                                                 title: "First Name:",
-                                                value: field.first
+                                                value: field.firstName
                                             },
                                             {
                                                 title: "Last Name:",
-                                                value: field.last
+                                                value: field.lastName
                                             },
                                             {
                                                 title: "Email:",
@@ -67,7 +67,7 @@ app.post('/contact', function(req, res) {
             ]
         }
     }
-    else if (field.reason == "media" || field.reason == "sponsorship") {
+    else if (field.reason == "Media Inquiry" || field.reason == "Sponsorship Inquiry") {
         var message =  {
             type: "message",
             attachments: [
@@ -87,11 +87,11 @@ app.post('/contact', function(req, res) {
                                         facts: [
                                             {
                                                 title: "First Name:",
-                                                value: field.first
+                                                value: field.firstName
                                             },
                                             {
                                                 title: "Last Name:",
-                                                value: field.last
+                                                value: field.lastName
                                             },
                                             {
                                                 title: "Email:",
@@ -120,7 +120,7 @@ app.post('/contact', function(req, res) {
             ]
         }
     }
-    else if (field.reason == "other") {
+    else if (field.reason == "Other") {
         var message =  {
             type: "message",
             attachments: [
@@ -140,11 +140,11 @@ app.post('/contact', function(req, res) {
                                         facts: [
                                             {
                                                 title: "First Name:",
-                                                value: field.first
+                                                value: field.firstName
                                             },
                                             {
                                                 title: "Last Name:",
-                                                value: field.last
+                                                value: field.lastName
                                             },
                                             {
                                                 title: "Email:",
