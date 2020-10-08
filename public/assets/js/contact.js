@@ -100,6 +100,8 @@ function mediaForm() {
 function formSubmit() {
     let inputObjects = document.querySelectorAll('.form-check');
 
+    var fields = {};
+
     let message = "";
     let validFlag = true;
     let email = "";
@@ -107,9 +109,11 @@ function formSubmit() {
     //checks all form inputs except for the checkboxes
     for (x of inputObjects) {
         x.addEventListener('input', inputChange);
-
         if (validInput(x)) {
             x.classList.remove('form-error');
+            let title = x.title;
+            let value = x.value;
+            fields[title] = value;
             message += "*" + x.title + ":* " + x.value + "\n";
             if (x.title == "email") email = x.value;
         } else {
@@ -124,11 +128,12 @@ function formSubmit() {
     if (validFlag && document.getElementById("contact-category").value === "Student Inquiry") {
         //googleFormSubmission(inputObjects);
         let teams = getStudentTeams();
+        fields.teams = teams;
         message += "*Team(s) Interested In:* " + teams + "\n";
         // sendStudentEmailResponse(email);
     }
-
-    if (validFlag) sendForm(message);
+    console.log(fields);
+    if (validFlag) sendForm(fields);
 }
 /**
  * Checks if the trimmed input value is valid or not. Valid input is not empty, and if the input 
@@ -191,10 +196,29 @@ function checkChange(group) {
 }
 /**
  * Sends the form data to a slack webhook. The message will be posted in website-activity. 
- * @param {string} message the slack formatted message containing all input from the form
+ * @param {string} fields the slack formatted message containing all input from the form
  */
-function sendForm(message) {
-    let xhttp = new XMLHttpRequest();
+function sendForm(fields) {
+    console.log("INSIDE SEND FORM");
+    console.log(fields);
+    const Data={
+        name:"Said",
+        id: 23
+    };
+    const Url='https://dev.badgerloop.org/test/contact';
+    const param={
+        headers:{
+            "content-type":"application/json; charset=UTF-8"
+        },
+        body: Data,
+        method:"POST"
+    };
+    fetch(Url, param)
+    .then(data => {return data.json()})
+    .then(res => {console.log(res)})
+    .catch(error => console.log(error))
+
+    /* let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
         if (xhttp.readyState === 4 && xhttp.status === 200) {
@@ -208,9 +232,9 @@ function sendForm(message) {
             clearForm();
         }
     }
-
-    xhttp.open("POST", '/api/contact');
-    xhttp.send(JSON.stringify(message));
+    console.log(fields);
+    xhttp.open("POST", 'http://127.0.0.1:3006/contact/');
+    xhttp.send(fields); */
 }
 /**
  * Sends requst to google app script to populate the google form (https://docs.google.com/forms/d/e/1FAIpQLScUSWZHf-8eMYvrwFLx6pG0ZON6Mkk1SVvaA4QKJ0U3b2hnjA/viewform) with 
