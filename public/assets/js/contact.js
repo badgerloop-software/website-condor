@@ -202,7 +202,7 @@ function sendForm(fields) {
     var requestOptions = {
     method: 'POST',
     headers: {"Content-Type":"application/json; charset=UTF-8"},
-    body: raw,
+    body: fields,
     redirect: 'follow'
     };
 
