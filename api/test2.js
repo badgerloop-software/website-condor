@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 
 app.post('/contact', function(req, res) {
-    console.log(req);
     console.log(req.body);
     var field = req.body;
     console.log(field);
