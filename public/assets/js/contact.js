@@ -61,12 +61,12 @@ function studentForm() {
 
     let year = document.createElement('div');
     year.setAttribute('class', 'col-6 col-12-xsmall additional-form');
-    year.innerHTML = `<div class="form-label">Year:*</div><input class="form-check" type="text" title="Year">`;
+    year.innerHTML = `<div class="form-label">Year:*</div><input class="form-check" type="text" title="year">`;
     document.getElementById("contact-form").insertBefore(year, document.getElementById("contact-category").parentNode.nextSibling);
 
     let major = document.createElement('div');
     major.setAttribute('class', 'col-6 col-12-xsmall additional-form');
-    major.innerHTML = `<div class="form-label">Major:*</div><input class="form-check" type="text" title="Major">`;
+    major.innerHTML = `<div class="form-label">Major:*</div><input class="form-check" type="text" title="major">`;
     document.getElementById("contact-form").insertBefore(major, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
@@ -77,7 +77,7 @@ function sponsorForm() {
 
     let company = document.createElement('div');
     company.setAttribute('class', 'col-12 additional-form');
-    company.innerHTML = `<div class="form-label">Company Name:*</div><input class="form-check" type="text" title="Company Name">`;
+    company.innerHTML = `<div class="form-label">Company Name:*</div><input class="form-check" type="text" title="company">`;
     document.getElementById("contact-form").insertBefore(company, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
@@ -88,7 +88,7 @@ function mediaForm() {
 
     let media = document.createElement('div');
     media.setAttribute('class', 'col-12 additional-form');
-    media.innerHTML = `<div class="form-label">Organization Name:*</div><input class="form-check" type="text" title="Organization Name">`;
+    media.innerHTML = `<div class="form-label">Organization Name:*</div><input class="form-check" type="text" title="company">`;
     document.getElementById("contact-form").insertBefore(media, document.getElementById("contact-category").parentNode.nextSibling);
 
 }
@@ -199,24 +199,17 @@ function checkChange(group) {
  * @param {string} fields the slack formatted message containing all input from the form
  */
 function sendForm(fields) {
-    console.log("INSIDE SEND FORM");
-    console.log(fields);
-    const Data={
-        name:"Said",
-        id: 23
+    var requestOptions = {
+    method: 'POST',
+    headers: {"Content-Type":"application/json; charset=UTF-8"},
+    body: raw,
+    redirect: 'follow'
     };
-    const Url='https://dev.badgerloop.org/test/contact';
-    const param={
-        headers:{
-            "content-type":"application/json; charset=UTF-8"
-        },
-        body: Data,
-        method:"POST"
-    };
-    fetch(Url, param)
-    .then(data => {return data.json()})
-    .then(res => {console.log(res)})
-    .catch(error => console.log(error))
+
+    fetch("/test/contact", requestOptions)
+    .then(response => response.text())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
 
     /* let xhttp = new XMLHttpRequest();
 
