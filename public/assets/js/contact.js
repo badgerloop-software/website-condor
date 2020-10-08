@@ -199,10 +199,11 @@ function checkChange(group) {
  */
 function sendForm(fields) {
     console.log(fields);
+    var fieldsString = JSON.stringify(fields);
     var requestOptions = {
     method: 'POST',
-    headers: {"Content-Type":"application/json"},
-    body: fields,
+    headers: {"Content-Type":"text/plain"},
+    body: fieldsString,
     };
 
     fetch("/test/contact", requestOptions)

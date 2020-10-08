@@ -1,7 +1,10 @@
 const express = require('express')
 const app = express()
+var bodyParser = require('body-parser')
 
-app.post('/contact', function(req, res) {
+var jsonParser = bodyParser.json()
+
+app.post('/contact', jsonParser, function(req, res) {
     console.log(req.body);
     var field = req.body;
     console.log(field);
