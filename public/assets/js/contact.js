@@ -201,9 +201,8 @@ function sendForm(fields) {
     console.log(fields);
     var requestOptions = {
     method: 'POST',
-    headers: {"Content-Type":"application/json; charset=UTF-8"},
+    headers: {"Content-Type":"application/json"},
     body: fields,
-    redirect: 'follow'
     };
 
     fetch("/test/contact", requestOptions)
