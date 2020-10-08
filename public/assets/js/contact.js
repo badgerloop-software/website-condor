@@ -132,7 +132,6 @@ function formSubmit() {
         message += "*Team(s) Interested In:* " + teams + "\n";
         // sendStudentEmailResponse(email);
     }
-    console.log(fields);
     if (validFlag) sendForm(fields);
 }
 /**
@@ -199,6 +198,7 @@ function checkChange(group) {
  * @param {string} fields the slack formatted message containing all input from the form
  */
 function sendForm(fields) {
+    console.log(fields);
     var requestOptions = {
     method: 'POST',
     headers: {"Content-Type":"application/json; charset=UTF-8"},

@@ -2,8 +2,11 @@ const express = require('express')
 const app = express()
 
 app.post('/contact', function(req, res) {
+    console.log(req);
+    console.log(req.body);
     var field = req.body;
     console.log(field);
+    console.log(field.firstName);
     res.send("Received submission from form");
 
     if (field.reason == "Student Inquiry") {
@@ -186,7 +189,7 @@ app.post('/contact', function(req, res) {
 
     });
 
-app.listen(3006, function() {
-    console.log("Listening on port 3006");
+app.listen(3008, function() {
+    console.log("Listening on port 3008");
 });
 
