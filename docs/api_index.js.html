@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>api/index.js - Website Condor</title>
+    
+    
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="wrap">
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#checkChange">checkChange</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#closeStatusMessage">closeStatusMessage</a></li><li><a href="global.html#displayStatusMessage">displayStatusMessage</a></li><li><a href="global.html#dynamicForm">dynamicForm</a></li><li><a href="global.html#formatData">formatData</a></li><li><a href="global.html#formChange">formChange</a></li><li><a href="global.html#formSubmit">formSubmit</a></li><li><a href="global.html#getStudentTeams">getStudentTeams</a></li><li><a href="global.html#inputChange">inputChange</a></li><li><a href="global.html#mediaForm">mediaForm</a></li><li><a href="global.html#removeForm">removeForm</a></li><li><a href="global.html#renderArticle">renderArticle</a></li><li><a href="global.html#sendForm">sendForm</a></li><li><a href="global.html#sponsorForm">sponsorForm</a></li><li><a href="global.html#studentForm">studentForm</a></li><li><a href="global.html#validCheckGroup">validCheckGroup</a></li><li><a href="global.html#validInput">validInput</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">api/index.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let http = require("http");
+let https = require("https");
+let url = require("url");
+let MongoClient = require("mongodb").MongoClient;
+let creds = require("./creds.json");
+
+http
+  .createServer((request, response) => {
+    let pathName = url.parse(request.url).pathname;
+
+    if (pathName === "/teamleads" &amp;&amp; request.method === "GET") {
+      getTeamleads()
+        .then((result) => {
+          return formatData(result, "Team");
+        })
+        .then((result) => {
+          response.end(JSON.stringify(result));
+        })
+        .catch((err) => {
+          //TODO: do something with error
+          response.end("ERROR");
+        });
+    }
+
+    if (pathName === "/sponsors" &amp;&amp; request.method === "GET") {
+      getSponsors()
+        .then((result) => {
+          return formatData(result, "tier");
+        })
+        .then((result) => {
+          response.end(JSON.stringify(result));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    if (pathName === "/news" &amp;&amp; request.method === "GET") {
+      getNewsPosts()
+        .then((result) => {
+          return formatData(result);
+        })
+        .then((result) => {
+          response.end(JSON.stringify(result));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    if (pathName === "/index" &amp;&amp; request.method === "GET") {
+      getSponsors()
+        .then((result) => {
+          return formatData(result, "tier");
+        })
+        .then((result) => {
+          response.end(JSON.stringify(result));
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+
+    if (pathName === "/contact" &amp;&amp; request.method === "POST") {
+      var postData = "";
+
+      request.on("data", function (data) {
+        postData += data;
+      });
+
+      request.on("end", function () {
+        let message = {
+          text: JSON.parse(postData),
+        };
+
+        let options = {
+          hostname: "hooks.slack.com",
+          path: creds.slackWebhook,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+
+        let req = https.request(options, (res) => {
+          let slackResponse = "";
+
+          res.on("data", (chunk) => {
+            slackResponse += chunk;
+          });
+
+          res.on("end", () => {
+            response.statusCode = 200;
+            response.end(slackResponse);
+          });
+        });
+
+        req.on("error", (e) => {
+          response.statusCode = e.statusCode;
+          response.end(e.message);
+        });
+
+        // write data to request body
+        req.write(JSON.stringify(message));
+        req.end();
+      });
+    }
+  })
+  .listen(creds.port);
+
+function getTeamleads() {
+  return new Promise((resolve, reject) => {
+    let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
+
+    client.connect((err) => {
+      if (err) reject(err);
+
+      let db = client.db(creds.db);
+      let collection = db.collection("teamleads");
+
+      let options = {
+        sort: "Position",
+      };
+
+      collection.find({}, options).toArray((err, docs) => {
+        if (err) reject(err);
+
+        resolve(docs);
+      });
+    });
+  });
+}
+
+function getSponsors() {
+  return new Promise((resolve, reject) => {
+    let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
+
+    client.connect((err) => {
+      if (err) reject(err);
+
+      let db = client.db(creds.db);
+      let collection = db.collection("sponsors");
+
+      let options = {
+        sort: "company",
+      };
+
+      collection.find({}, options).toArray((err, docs) => {
+        if (err) reject(err);
+
+        resolve(docs);
+      });
+    });
+  });
+}
+
+function getNewsPosts() {
+  return new Promise((resolve, reject) => {
+    let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
+
+    client.connect((err) => {
+      if (err) reject(err);
+
+      let db = client.db(creds.db);
+      let collection = db.collection("news");
+
+      collection.find({}).toArray((err, docs) => {
+        if (err) reject(err);
+        resolve(docs);
+      });
+    });
+  });
+}
+
+//key: key to create parent elements based off of
+/**
+ * Format Data
+ * @param {*} data
+ * @param {*} key
+ * @returns promise
+ */
+function formatData(data, key) {
+  return new Promise((resolve, reject) => {
+    let result = {};
+
+    for (x of data) {
+      if (result[x[key]]) {
+        result[x[key]].push(x);
+      } else {
+        result[x[key]] = [];
+        result[x[key]].push(x);
+      }
+    }
+
+    resolve(result);
+  });
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Apr 20 2021 15:10:43 GMT-0500 (Central Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

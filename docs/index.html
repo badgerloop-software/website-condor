@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Home - Website Condor</title>
+    
+    
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="wrap">
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#checkChange">checkChange</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#closeStatusMessage">closeStatusMessage</a></li><li><a href="global.html#displayStatusMessage">displayStatusMessage</a></li><li><a href="global.html#dynamicForm">dynamicForm</a></li><li><a href="global.html#formatData">formatData</a></li><li><a href="global.html#formChange">formChange</a></li><li><a href="global.html#formSubmit">formSubmit</a></li><li><a href="global.html#getStudentTeams">getStudentTeams</a></li><li><a href="global.html#inputChange">inputChange</a></li><li><a href="global.html#mediaForm">mediaForm</a></li><li><a href="global.html#removeForm">removeForm</a></li><li><a href="global.html#renderArticle">renderArticle</a></li><li><a href="global.html#sendForm">sendForm</a></li><li><a href="global.html#sponsorForm">sponsorForm</a></li><li><a href="global.html#studentForm">studentForm</a></li><li><a href="global.html#validCheckGroup">validCheckGroup</a></li><li><a href="global.html#validInput">validInput</a></li></ul>
+</nav>
+
+<div id="main">
+    
+
+    
+
+
+
+    
+
+
+    <section class="package">
+        <h3> </h3>		
+    </section>
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <section class="readme usertext">
+        <article><h1>Badgerloop Website- Condor <img src="https://raw.githubusercontent.com/badgerloop-software/pod-dashboard/master/src/public/images/icon.png" alt="GitHub Logo"></h1>
+<p>The third revision of the Badgerloop website! The official page for UW-Madison's hyperloop competition team.</p>
+<p><em>Contributors: Luke Houge, Liam Mahoney</em></p>
+<h2>Contributing</h2>
+<p>For details on contributing to the site, check out <a href="https://github.com/badgerloop-software/website-condor/blob/master/CONTRIBUTING.md">CONTIRBUTING.md</a></p>
+<h2>Testing   <a href="https://status.badgerloop.org"><img src="https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg" alt="Uptime Robot status"></a> <a href="https://github.com/badgerloop-software/website-condor/actions"><img src="https://github.com/badgerloop-software/website-condor/workflows/Node_CI/badge.svg" alt="Actions Status"></a></h2>
+<p>https://github.com/badgerloop-software/website-condor/actions</p>
+<ul>
+<li>Configured with eslint for formatting tests</li>
+<li>Configured with jest for unit testing and coverage</li>
+<li>CI handled by Github Actions</li>
+<li>Uptime Robot tracks our uptime and notifies of any downtime</li>
+</ul>
+<p>It is currently configured to run a pretest that uses eslint to check for any formating and stylistic errors. If that passes without any issues, then it runs jest which completes all unit tests that are setup (none except for a test called add.js for now) and then displays the coverage (what percent is unit tested). Github Actions will run automatically on any commit, and before a pull request to check that all checks passed.</p>
+<h2>Website Technologies</h2>
+<ol>
+<li>
+<p><strong><a href="https://nodejs.org/en/about/">Node.js</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://fonts.google.com/">Google Fonts</a></strong></p>
+<ul>
+<li><a href="https://fonts.google.com/specimen/Lato">Lato</a></li>
+<li><a href="https://fonts.google.com/specimen/Play">Play</a></li>
+</ul>
+</li>
+<li>
+<p><strong><a href="https://fontawesome.com/v4.7.0/icons/">Font Awesome Icons</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://api.slack.com/">Slack API</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://developers.google.com/apps-script/reference/forms/">Google Apps Script Form Service</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://developer.github.com/webhooks/">Github Web Hooks</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://mailutils.org/">GNU Mailutils-3.5 Mail Server Package</a></strong></p>
+</li>
+<li>
+<p><strong><a href="http://www.postfix.org/">PostFix mail transfer agent (MTA) (included in Mailutils)</a></strong></p>
+</li>
+</ol>
+<h2>Server and Hosting</h2>
+<p>The website is hosted on a Computer Sciences department VM off ESXi hypervisor that is serving the site using apache. If there are issues with the server contact Luke Houge.</p>
+<ol>
+<li>
+<p><strong><a href="https://www.ubuntu.com/download/server">Ubuntu Server 18.04.1 LTS</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://nodejs.org/en/about/">Node.js</a></strong></p>
+</li>
+<li>
+<p><strong><a href="https://www.mongodb.com/">Mongo DB 4.0.5</a></strong></p>
+</li>
+</ol></article>
+    </section>
+
+
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Apr 20 2021 15:10:43 GMT-0500 (Central Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>

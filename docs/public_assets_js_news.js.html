@@ -1,4 +1,53 @@
-// calls the HTTP server from sponsors.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="utf-8">
+    <title>public/assets/js/news.js - Website Condor</title>
+    
+    
+    
+    
+    
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <script src="scripts/nav.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav class="wrap">
+    
+    <input type="text" id="nav-search" placeholder="Search" />
+    
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#checkChange">checkChange</a></li><li><a href="global.html#clearForm">clearForm</a></li><li><a href="global.html#closeStatusMessage">closeStatusMessage</a></li><li><a href="global.html#displayStatusMessage">displayStatusMessage</a></li><li><a href="global.html#dynamicForm">dynamicForm</a></li><li><a href="global.html#formatData">formatData</a></li><li><a href="global.html#formChange">formChange</a></li><li><a href="global.html#formSubmit">formSubmit</a></li><li><a href="global.html#getStudentTeams">getStudentTeams</a></li><li><a href="global.html#inputChange">inputChange</a></li><li><a href="global.html#mediaForm">mediaForm</a></li><li><a href="global.html#removeForm">removeForm</a></li><li><a href="global.html#renderArticle">renderArticle</a></li><li><a href="global.html#sendForm">sendForm</a></li><li><a href="global.html#sponsorForm">sponsorForm</a></li><li><a href="global.html#studentForm">studentForm</a></li><li><a href="global.html#validCheckGroup">validCheckGroup</a></li><li><a href="global.html#validInput">validInput</a></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">public/assets/js/news.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// calls the HTTP server from sponsors.html
 window.onload = function () {
   getNewsPosts();
 };
@@ -12,7 +61,7 @@ function getNewsPosts(i) {
           renderArticle(JSON.parse(xhttp.responseText).undefined, i);
         }
         createNewsLink(JSON.parse(xhttp.responseText));
-      } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
+      } else if (xhttp.readyState === 4 &amp;&amp; xhttp.status !== 200) {
         //TODO: decide how to handle errors - slack channel?
       }
     }
@@ -25,7 +74,7 @@ function createNewsLink(resp) {
   // creates a card for each news piece
   let newsArticles = resp.undefined;
 
-  for (i = 0; i <= newsArticles.length - 1; i++) {
+  for (i = 0; i &lt;= newsArticles.length - 1; i++) {
     // extract the date portion of the subheading, and trim whitespace
     let articleDateString = newsArticles[i].subHeading.substring(10).trim();
 
@@ -57,14 +106,14 @@ function createNewsLink(resp) {
     contentDiv.setAttribute("class", "content");
     let titleDiv = document.createElement("div");
     titleDiv.setAttribute("class", "title");
-    titleDiv.innerHTML = "<h3>" + newsArticles[i].title + "</h3>";
+    titleDiv.innerHTML = "&lt;h3>" + newsArticles[i].title + "&lt;/h3>";
     let subHeadingDiv = document.createElement("div");
     subHeadingDiv.setAttribute("class", "posted-date");
-    subHeadingDiv.innerHTML = "<i>" + newsArticles[i].subHeading + "</i>";
+    subHeadingDiv.innerHTML = "&lt;i>" + newsArticles[i].subHeading + "&lt;/i>";
     let innerLink = document.createElement("div");
     innerLink.setAttribute("class", "standalone-news-link");
     innerLink.innerHTML =
-      '<a href="" onclick="getNewsPosts(' + i + " >Click here to find out more</a>";
+      '&lt;a href="" onclick="getNewsPosts(' + i + " >Click here to find out more&lt;/a>";
 
     outerLink.appendChild(outerDiv);
     outerDiv.appendChild(img);
@@ -102,11 +151,11 @@ function renderArticle(newsArticles, i) {
   let titleDiv = document.createElement("div");
   titleDiv.setAttribute("class", "title");
   titleDiv.setAttribute("id", "articleTitle");
-  titleDiv.innerHTML = "<h3>" + newsArticles[i].title + "</h3>";
+  titleDiv.innerHTML = "&lt;h3>" + newsArticles[i].title + "&lt;/h3>";
   let subHeadingDiv = document.createElement("div");
   subHeadingDiv.setAttribute("class", "posted-date");
   subHeadingDiv.setAttribute("id", "articleSubheading");
-  subHeadingDiv.innerHTML = "<i>" + newsArticles[i].subHeading + "</i>";
+  subHeadingDiv.innerHTML = "&lt;i>" + newsArticles[i].subHeading + "&lt;/i>";
   let body = document.createElement("p");
   body.setAttribute("id", "articleBody");
   body.innerHTML = newsArticles[i].body;
@@ -131,3 +180,32 @@ function renderNews() {
   document.getElementById("article").setAttribute("style", "display: none;");
   document.getElementById("default").removeAttribute("style");
 }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+    
+    
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a> on Tue Apr 20 2021 15:10:43 GMT-0500 (Central Daylight Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/polyfill.js"></script>
+<script src="scripts/linenumber.js"></script>
+
+<script src="scripts/search.js" defer></script>
+
+
+<script src="scripts/collapse.js" defer></script>
+
+
+</body>
+</html>
