@@ -4,7 +4,9 @@
   "description": "API for website-condor",
   "main": "index.js",
   "scripts": {
-    "pretest": "eslint --ignore-path ../.gitignore ."
+    "pretest": "eslint --ignore-path ../.gitignore .",
+    "generate-docs": "node_modules/.bin/jsdoc ../public/assets/js ./index.js -R ../README.md -t ./node_modules/docdash/ -c ../jsdoc.json -d ../docs/"
+
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "eslint": "^6.8.0",
-    "eslint-config-strongloop": "^2.1.0"
+    "eslint-config-strongloop": "^2.1.0",
+    "jsdoc": "^3.6.6"
   }
 }
