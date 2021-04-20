@@ -23,5 +23,6 @@ jobs:
         npm install
         npm run build --if-present
         npm run pretest
+        npm run generate-docs
       env:
         CI: true
