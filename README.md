@@ -53,7 +53,7 @@ The website is hosted on a Computer Sciences department VM off ESXi hypervisor t
 ## Documentation
 
 - Added JSDoc generation of a docs page available in `./docs`.
-- Hosted on GitHub pages here
+- Hosted on GitHub pages [here](https://badgerloop-software.github.io/website-condor/)
 
 ### Details
 
