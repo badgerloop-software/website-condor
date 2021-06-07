@@ -3,7 +3,6 @@
  * Sets event listeners for the form
  */
 (function () {
-  document.getElementById("contact-category").addEventListener("change", formChange);
   document.getElementById("form-submit").addEventListener("click", formSubmit);
 })();
 /**
