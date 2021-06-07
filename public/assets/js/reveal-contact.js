@@ -40,12 +40,14 @@ function formSubmit() {
     x.addEventListener("input", inputChange);
 
     x.classList.remove("form-error");
-    message += "*" + x.title + ":* " + x.value + "\n";
+    if (x.value != "") {
+      message += "*" + x.title + ":* " + x.value + "\n";
+    }
   }
 
   if (!validCheckGroup(document.querySelectorAll(".required-check"))) validFlag = false;
 
-  if (validFlag) sendForm(message);
+  if (message != "*REVEAL QUESTION*\n") sendForm(message);
 }
 
 /**
