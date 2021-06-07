@@ -32,36 +32,22 @@ function removeForm() {
 function formSubmit() {
   let inputObjects = document.querySelectorAll(".form-check");
 
-  let message = "";
+  let message = "*REVEAL QUESTION*\n";
   let validFlag = true;
 
   //checks all form inputs except for the checkboxes
   for (x of inputObjects) {
     x.addEventListener("input", inputChange);
 
-    if (validInput(x)) {
-      x.classList.remove("form-error");
-      message += "*" + x.title + ":* " + x.value + "\n";
-    } else {
-      validFlag = false;
-      x.classList.add("form-error");
-    }
+    x.classList.remove("form-error");
+    message += "*" + x.title + ":* " + x.value + "\n";
   }
 
   if (!validCheckGroup(document.querySelectorAll(".required-check"))) validFlag = false;
 
   if (validFlag) sendForm(message);
 }
-/**
- * Checks if the trimmed input value is valid or not. Valid input is not empty, and if the input
- * is an email it must contain "@" and "." characters (to ensure it's an email entered).
- * @param {Node} x input field node
- * @returns {boolean} true if all of the input fields are valid, false if one or more input fields are invalid.
- */
-function validInput(x) {
-  if (x.value.trim() === "") return false;
-  return true;
-}
+
 /**
  * Called on form submission. Checks if one of the checkboxes of the group is selected. If one is,
  * it returns true and allows the form to continue to be submitted. If one is not, it prevents
