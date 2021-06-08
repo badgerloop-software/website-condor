@@ -65,6 +65,26 @@
                                 </div>
                             </div>
                         </div>
+                        <h1>Pod V Reveal- test stream</h1>
+						<div class="inner">
+                            <div class="row gtr-uniform home-video">
+                                <div class="col-4 col-12">
+                                    <div class="iframe-container">
+                                        <div id="iframeDiv"><iframe src="https://www.youtube.com/embed/VGTFlvFeS70"
+                                                frameborder="0" allow="autoplay; encrypted-media"
+                                                allowfullscreen></iframe></div>
+
+                                    </div>
+                                </div>
+                                <div class="col-4 col-12">
+                                    <div class="iframe-container">
+                                       
+                                                 <div id="chat">       </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 					</header>
 				</section>
 
@@ -485,5 +505,14 @@
                 });
             })();
         </script>
+        <script>  
+ let frame = document.createElement("iframe");  
+ frame.referrerPolicy = "origin";  
+ frame.src = "https://www.youtube.com/live_chat?v=VGTFlvFeS70&embed_domain=" + window.location.hostname;  
+ frame.frameBorder = "0";  
+ frame.id = "chat-embed";  
+ let wrapper = document.getElementById("chat");  
+ wrapper.appendChild(frame); 
+</script>
 	</body>
 </html>
