@@ -18,6 +18,8 @@
   text-align: center;
   margin: 1em;
   border-radius: 10px;
+  background-color: #f7f7f7;
+  color: black;
 }
 
 .team-lead-card img {
@@ -277,8 +279,6 @@
 
 .home-video {
   justify-content: center;
-  max-width: 20vw;
-  display: inline-block;
 }
 .team-title {
   width: 100%;
