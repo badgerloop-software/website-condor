@@ -8,7 +8,6 @@ http.createServer((request, response) => {
 
 
     let pathName = url.parse(request.url).pathname;
-    console.log(pathName);
     if (pathName === "/teamleads" && request.method === "GET") {
         getTeamleads().then((result) => {
             return formatData(result, "Team");
@@ -59,8 +58,6 @@ http.createServer((request, response) => {
 
         request.on("end", function () {
             let submission = JSON.parse(postData);
-            console.log("SUBMISSION")
-            console.log(submission);
 
             let options = {
                host: creds.jiraWebhook,
@@ -71,7 +68,7 @@ http.createServer((request, response) => {
                    "Authorization": "Basic " + new Buffer(creds.jiraEmail + ":" + creds.jiraAPIToken).toString("base64"),
                    "Content-Type": "application/json"
                },
-            }
+            };
 
             let ticketMetadata = {
                 "fields": {
