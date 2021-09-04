@@ -111,6 +111,7 @@ http.createServer((request, response) => {
             });
 
             req.on("error", (e) => {
+                console.log(e);
                 response.statusCode = e.statusCode || 500;
                 response.end(e.message);
             });

@@ -128,7 +128,7 @@ function formSubmit() {
         // sendStudentEmailResponse(email);
     }
     jiraMetadata = {
-        "name": document.getElementsByName("first-name")[0].value + " " + document.getElementsByName("last-name")[0].value,
+        "name": document.getElementById("first-name").value + " " + document.getElementById("last-name").value,
         "type": document.getElementById("contact-category").value,
     }
     formSubmission = {
@@ -217,7 +217,7 @@ function sendForm(submission) {
     }
 
     xhttp.open("POST", '/api/contact');
-    xhttp.send(JSON.stringify(message));
+    xhttp.send(JSON.stringify(submission));
 }
 
 /**
