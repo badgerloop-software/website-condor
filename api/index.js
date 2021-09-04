@@ -6,8 +6,9 @@ let creds = require("./creds.json");
 
 http.createServer((request, response) => {
 
-    let pathName = url.parse(request.url).pathname;
 
+    let pathName = url.parse(request.url).pathname;
+    console.log(pathName);
     if (pathName === "/teamleads" && request.method === "GET") {
         getTeamleads().then((result) => {
             return formatData(result, "Team");
@@ -19,7 +20,7 @@ http.createServer((request, response) => {
         });
     }
 
-    if (pathName === "/sponsors" && request.method === "GET") {
+    else if (pathName === "/sponsors" && request.method === "GET") {
         getSponsors().then((result) => {
             return formatData(result, "tier");
         }).then((result) => {
@@ -29,7 +30,7 @@ http.createServer((request, response) => {
         });
     }
 
-    if (pathName === "/news" && request.method === "GET") {
+    else if (pathName === "/news" && request.method === "GET") {
         getNewsPosts().then((result) => {
             return formatData(result);
         }).then((result) => {
@@ -39,7 +40,7 @@ http.createServer((request, response) => {
         });
     }
 
-    if (pathName === "/index" && request.method === "GET") {
+    else if (pathName === "/index" && request.method === "GET") {
         getSponsors().then((result) => {
             return formatData(result, "tier");
         }).then((result) => {
@@ -49,7 +50,7 @@ http.createServer((request, response) => {
         });
     }
 
-    if (pathName === "/contact" && request.method === "POST") {
+    else if (pathName === "/contact" && request.method === "POST") {
         var postData = "";
 
         request.on("data", function (data) {
@@ -57,18 +58,16 @@ http.createServer((request, response) => {
         });
 
         request.on("end", function () {
+            let submission = JSON.parse(postData);
+            console.log(submission);
             let message = {
-                text: JSON.parse(postData)
+                text: JSON.parse(submission.message)
             };
 
+
             let options = {
-                hostname: "hooks.slack.com",
-                path: creds.slackWebhook,
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            };
+
+            }
 
             let req = https.request(options, (res) => {
                 let slackResponse = "";
@@ -92,9 +91,12 @@ http.createServer((request, response) => {
             req.write(JSON.stringify(message));
             req.end();
         });
+    } else {
+        response.statusCode = 404;
+        response.end(`Path ${pathName} does not support operation ${request.method}`);
     }
 
-}).listen(creds.port);
+}).listen(creds.port, "0.0.0.0");
 
 function getTeamleads() {
     return new Promise((resolve, reject) => {

@@ -127,8 +127,15 @@ function formSubmit() {
         message += "*Team(s) Interested In:* " + teams + "\n";
         // sendStudentEmailResponse(email);
     }
-
-    if (validFlag) sendForm(message);
+    jiraMetadata = {
+        "name": document.getElementsByName("first-name")[0].value + " " + document.getElementsByName("last-name")[0].value,
+        "type": document.getElementById("contact-category").value,
+    }
+    formSubmission = {
+        "message": message,
+        "data": jiraMetadata
+    }
+    if (validFlag) sendForm(formSubmission);
 }
 /**
  * Checks if the trimmed input value is valid or not. Valid input is not empty, and if the input 
@@ -190,10 +197,10 @@ function checkChange(group) {
     else group[0].parentNode.classList.add('check-error');
 }
 /**
- * Sends the form data to a slack webhook. The message will be posted in website-activity. 
- * @param {string} message the slack formatted message containing all input from the form
+ * Sends the form data to a Jira Endpoint. The message will be posted in Incomming Emails (EMAIL) board.
+ * @param {object} submission An object with a "message" and "data" key to be sent to Jira
  */
-function sendForm(message) {
+function sendForm(submission) {
     let xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
@@ -212,6 +219,7 @@ function sendForm(message) {
     xhttp.open("POST", '/api/contact');
     xhttp.send(JSON.stringify(message));
 }
+
 /**
  * Sends requst to google app script to populate the google form (https://docs.google.com/forms/d/e/1FAIpQLScUSWZHf-8eMYvrwFLx6pG0ZON6Mkk1SVvaA4QKJ0U3b2hnjA/viewform) with 
  * response data from the student inquiry form. 
