@@ -59,15 +59,46 @@ http.createServer((request, response) => {
 
         request.on("end", function () {
             let submission = JSON.parse(postData);
+            console.log("SUBMISSION")
             console.log(submission);
-            let message = {
-                text: JSON.parse(submission.message)
-            };
-
 
             let options = {
-
+               host: creds.jiraWebhook,
+               port: 443,
+               path: creds.jiraPath,
+               method: "POST",
+               headers: {
+                   "Authorization": "Basic " + new Buffer(creds.jiraEmail + ":" + creds.jiraAPIToken).toString("base64"),
+                   "Content-Type": "application/json"
+               },
             }
+
+            let ticketMetadata = {
+                "fields": {
+                    "project": {
+                        "key": creds.jiraProjectKey
+                    },
+                    "issuetype": {
+                        "id": "10069" // ID for the Email issue type
+                    },
+                    "summary": `[${submission.data.type}] ${submission.data.name}`,
+                    "description": {
+                        "type": "doc",
+                        "version": 1,
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "content": [
+                                    {
+                                        "text": `${submission.message}`,
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+            }
+        };
 
             let req = https.request(options, (res) => {
                 let slackResponse = "";
@@ -83,13 +114,13 @@ http.createServer((request, response) => {
             });
 
             req.on("error", (e) => {
-                response.statusCode = e.statusCode;
+                response.statusCode = e.statusCode || 500;
                 response.end(e.message);
             });
 
             // write data to request body
-            req.write(JSON.stringify(message));
-            req.end();
+            req.write(JSON.stringify(ticketMetadata));
+            req.end("");
         });
     } else {
         response.statusCode = 404;
