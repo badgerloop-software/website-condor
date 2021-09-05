@@ -110,7 +110,7 @@ function formSubmit() {
 
         if (validInput(x)) {
             x.classList.remove('form-error');
-            message += "*" + x.title + ":* " + x.value + "\n";
+            message += "**" + x.title + ":** " + x.value + "\n";
             if (x.title == "email") email = x.value;
         } else {
             validFlag = false;
