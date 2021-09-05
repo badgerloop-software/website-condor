@@ -58,7 +58,6 @@ http.createServer((request, response) => {
 
         request.on("end", function () {
             let submission = JSON.parse(postData);
-
             let options = {
                host: creds.jiraWebhook,
                port: 443,
@@ -105,6 +104,7 @@ http.createServer((request, response) => {
                 });
 
                 res.on("end", () => {
+		    console.log(slackResponse);
                     response.statusCode = 200;
                     response.end(slackResponse);
                 });
@@ -121,6 +121,7 @@ http.createServer((request, response) => {
             req.end("");
         });
     } else {
+	console.log(`Can not find ${pathName} method ${request.method}`);
         response.statusCode = 404;
         response.end(`Path ${pathName} does not support operation ${request.method}`);
     }
