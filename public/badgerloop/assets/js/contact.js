@@ -221,7 +221,7 @@ function sendForm(submission) {
     }
   };
 
-  xhttp.open("POST", "/api/contact");
+  xhttp.open("POST", "badgerloop/api/contact");
   xhttp.send(JSON.stringify(submission));
 }
 
