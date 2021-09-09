@@ -12,7 +12,7 @@
     }
   };
 
-  xhttp.open("GET", "badgerloop/api/sponsors");
+  xhttp.open("GET", "/api/sponsors");
   xhttp.send();
 })();
 
