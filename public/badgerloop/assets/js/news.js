@@ -17,7 +17,7 @@ function getNewsPosts(i) {
       }
     }
   };
-  xhttp.open("GET", "badgerloop/api/news");
+  xhttp.open("GET", "/api/news");
   xhttp.send();
 }
 

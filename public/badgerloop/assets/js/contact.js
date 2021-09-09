@@ -221,7 +221,7 @@ function sendForm(submission) {
     }
   };
 
-  xhttp.open("POST", "badgerloop/api/contact");
+  xhttp.open("POST", "/api/contact");
   xhttp.send(JSON.stringify(submission));
 }
 
@@ -255,7 +255,7 @@ function sendStudentEmailResponse(emailAddr) {
   //         console.log(xhttp.responseText);
   //     }
   // }
-  // xhttp.open("POST", "badgerloop/api/emailResponse");
+  // xhttp.open("POST", "/api/emailResponse");
   // xhttp.send(JSON.stringify(emailAddr));
 }
 /**
