@@ -1887,7 +1887,7 @@ hr {
     background: #14447b;
 }
 .box-secondary {
-    background: #9b0000;
+    background: #333333;
 }
 
 /* styling for boxes on about-badgerloop page */
@@ -4057,7 +4057,7 @@ iframe {
 }
 
 #wrapper > .main > header.accent1 + .tabs > .titles:before {
-    background-color: #9b0000;
+    background-color: #333333;
 }
 
 #wrapper > .main > header.accent1 + .tabs > .titles > .title {
@@ -5513,7 +5513,7 @@ body.is-navPanel-visible #navPanel {
 }
 
 .tiles article.styleCustom > .image:before {
-    background-color: #9b0000;
+    background-color: #333333;
 }
 
 body:not(.is-touch) .tiles article:hover > .image {
