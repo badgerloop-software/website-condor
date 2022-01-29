@@ -310,40 +310,22 @@
     background-color: white;
     flex-grow: 0;
 }
-.diamond {
+.gold {
     width: 325px!important;
     max-width: 95%;
 }
-.diamond .sponsor-img {
+.gold .sponsor-img {
     height: 325px;
     width: 325px;
     max-width: 100%;
 }
-.platinum {
-    width: 300px;
-    max-width: 90%;
-}
-.platinum .sponsor-img {
-    height: 300px;
-    width: 300px;
-    max-width: 100%;
-}
-.gold {
+.silver {
     width: 275px;
     max-width: 85%;
 }
-.gold .sponsor-img {
+.silver .sponsor-img {
     height: 275px;
     width: 275px;
-    max-width: 100%;
-}
-.silver {
-    width: 250px;
-    max-width: 80%;
-}
-.silver .sponsor-img {
-    height: 250px;
-    width: 250px;
     max-width: 100%;
 }
 .bronze {
