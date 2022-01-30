@@ -4,155 +4,147 @@
 	License: pixelarity.com/license
 */
 
-(function($) {
+(function ($) {
+  var $window = $(window),
+    $body = $("body"),
+    $header = $("#header"),
+    $banner = $("#banner");
 
-	var	$window = $(window),
-		$body = $('body'),
-		$header = $('#header'),
-		$banner = $('#banner');
+  // Breakpoints.
+  breakpoints({
+    xlarge: ["1281px", "1680px"],
+    large: ["981px", "1280px"],
+    medium: ["737px", "980px"],
+    small: ["481px", "736px"],
+    xsmall: ["361px", "480px"],
+    xxsmall: [null, "360px"],
+  });
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:   [ '1281px',  '1680px' ],
-			large:    [ '981px',   '1280px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '361px',   '480px'  ],
-			xxsmall:  [ null,      '360px'  ]
-		});
+  // Play initial animations on page load.
+  $window.on("load", function () {
+    window.setTimeout(function () {
+      $body.removeClass("is-preload");
+    }, 100);
+  });
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+  // Scrolly.
+  $(".scrolly").scrolly({
+    offset: function () {
+      return $header.height() - 5;
+    },
+  });
 
-	// Scrolly.
-		$('.scrolly').scrolly({
-			offset: function() { return $header.height() - 5; }
-		});
+  // Header.
+  if ($banner.length > 0 && $header.hasClass("alt")) {
+    $window.on("resize", function () {
+      $window.trigger("scroll");
+    });
 
-	// Header.
-		if ($banner.length > 0
-		&&	$header.hasClass('alt')) {
+    $banner.scrollex({
+      bottom: $header.outerHeight(),
+      terminate: function () {
+        $header.removeClass("alt");
+      },
+      enter: function () {
+        $header.addClass("alt");
+      },
+      leave: function () {
+        $header.removeClass("alt");
+        $header.addClass("reveal");
+      },
+    });
+  }
 
-			$window.on('resize', function() { $window.trigger('scroll'); });
+  // Dropdowns.
+  $("#nav > ul").dropotron({
+    alignment: "right",
+    hideDelay: 350,
+    baseZIndex: 100000,
+  });
 
-			$banner.scrollex({
-				bottom:		$header.outerHeight(),
-				terminate:	function() { $header.removeClass('alt'); },
-				enter:		function() { $header.addClass('alt'); },
-				leave:		function() { $header.removeClass('alt'); $header.addClass('reveal'); }
-			});
+  // Menu.
+  $('<a href="#navPanel" class="navPanelToggle">Menu</a>').appendTo($header);
 
-		}
+  $(
+    '<div id="navPanel">' +
+      "<nav>" +
+      $("#nav").navList() +
+      "</nav>" +
+      '<a href="#navPanel" class="close"></a>' +
+      "</div>"
+  )
+    .appendTo($body)
+    .panel({
+      delay: 500,
+      hideOnClick: true,
+      hideOnSwipe: true,
+      resetScroll: true,
+      resetForms: true,
+      target: $body,
+      visibleClass: "is-navPanel-visible",
+      side: "right",
+    });
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			alignment: 'right',
-			hideDelay: 350,
-			baseZIndex: 100000
-		});
+  // Banner.
+  if ($banner.length > 0) {
+    // Edge + IE: Workaround for object-fit.
+    if (browser.name == "edge" || browser.name == "ie") {
+      var $video = $banner.find("video"),
+        v = $video[0],
+        t,
+        f;
 
-	// Menu.
-		$('<a href="#navPanel" class="navPanelToggle">Menu</a>')
-			.appendTo($header);
+      // Handler function.
+      var f = function () {
+        var w = v.videoWidth,
+          h = v.videoHeight,
+          pw = $window.width(),
+          ph = $window.height(),
+          nw,
+          nh,
+          x;
 
-		$(	'<div id="navPanel">' +
-				'<nav>' +
-					$('#nav') .navList() +
-				'</nav>' +
-				'<a href="#navPanel" class="close"></a>' +
-			'</div>')
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					target: $body,
-					visibleClass: 'is-navPanel-visible',
-					side: 'right'
-				});
+        // Calculate new width, height.
+        if (pw > ph) {
+          nw = pw;
+          nh = (nw / w) * h;
+        } else {
+          nh = ph;
+          nw = (nh / h) * w;
+        }
 
-	// Banner.
-		if ($banner.length > 0) {
+        // Set width, height.
+        if (nw < pw) {
+          v.style.width = "100vw";
+          v.style.height = "auto";
+        } else v.style.width = nw + "px";
 
-			// Edge + IE: Workaround for object-fit.
-				if (browser.name == 'edge'
-				||	browser.name == 'ie') {
+        if (nh < ph) {
+          v.style.height = "100vh";
+          v.style.width = "auto";
+        } else v.style.height = nh + "px";
 
-					var $video = $banner.find('video'),
-						v = $video[0],
-						t, f;
+        // Set position (bottom-right).
+        v.style.top = v.style.bottom = v.style.left = v.style.right = "auto";
+        v.style.bottom = "0";
+        v.style.right = "0";
+      };
 
-					// Handler function.
-						var f = function() {
+      // Do an initial call of the handler.
+      f();
 
-							var w = v.videoWidth, h = v.videoHeight,
-								pw = $window.width(), ph = $window.height(),
-								nw, nh, x;
+      // Add event listeners.
+      $window.on("resize load", function () {
+        clearTimeout(t);
 
-							// Calculate new width, height.
-								if (pw > ph) {
+        t = setTimeout(f, 125);
+      });
+    }
+  }
 
-									nw = pw;
-									nh = (nw / w) * h;
-
-								}
-								else {
-
-									nh = ph;
-									nw = (nh / h) * w;
-
-								}
-
-							// Set width, height.
-								if (nw < pw) {
-
-									v.style.width = '100vw';
-									v.style.height = 'auto';
-
-								}
-								else
-									v.style.width = nw + 'px';
-
-								if (nh < ph) {
-									v.style.height = '100vh';
-									v.style.width = 'auto';
-								}
-								else
-									v.style.height = nh + 'px';
-
-							// Set position (bottom-right).
-								v.style.top = v.style.bottom = v.style.left = v.style.right = 'auto';
-								v.style.bottom = '0';
-								v.style.right = '0';
-
-						};
-
-					// Do an initial call of the handler.
-						(f)();
-
-					// Add event listeners.
-						$window.on('resize load', function() {
-
-							clearTimeout(t);
-
-							t = setTimeout(f, 125);
-
-						});
-
-				}
-
-		}
-
-	// Tabs.
-		$('.tabs').selectorr({
-			titleSelector: 'h3',
-			delay: 250
-		});
-
+  // Tabs.
+  $(".tabs").selectorr({
+    titleSelector: "h3",
+    delay: 250,
+  });
 })(jQuery);

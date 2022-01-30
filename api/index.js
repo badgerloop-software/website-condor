@@ -4,176 +4,188 @@ let url = require("url");
 let MongoClient = require("mongodb").MongoClient;
 let creds = require("./creds.json");
 
-http.createServer((request, response) => {
-
+http
+  .createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
     if (pathName === "/teamleads" && request.method === "GET") {
-        getTeamleads().then((result) => {
-            return formatData(result, "Team");
-        }).then((result) => {
-            response.end(JSON.stringify(result));
-        }).catch((err) => {
-            //TODO: do something with error
-            response.end("ERROR");
+      getTeamleads()
+        .then((result) => {
+          return formatData(result, "Team");
+        })
+        .then((result) => {
+          response.end(JSON.stringify(result));
+        })
+        .catch((err) => {
+          //TODO: do something with error
+          response.end("ERROR");
         });
     }
 
     if (pathName === "/sponsors" && request.method === "GET") {
-        getSponsors().then((result) => {
-            return formatData(result, "tier");
-        }).then((result) => {
-            response.end(JSON.stringify(result));
-        }).catch((err) => {
-            console.log(err);
+      getSponsors()
+        .then((result) => {
+          return formatData(result, "tier");
+        })
+        .then((result) => {
+          response.end(JSON.stringify(result));
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
 
     if (pathName === "/news" && request.method === "GET") {
-        getNewsPosts().then((result) => {
-            return formatData(result);
-        }).then((result) => {
-            response.end(JSON.stringify(result));
-        }).catch((err) => {
-            console.log(err);
+      getNewsPosts()
+        .then((result) => {
+          return formatData(result);
+        })
+        .then((result) => {
+          response.end(JSON.stringify(result));
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
 
     if (pathName === "/index" && request.method === "GET") {
-        getSponsors().then((result) => {
-            return formatData(result, "tier");
-        }).then((result) => {
-            response.end(JSON.stringify(result));
-        }).catch((err) => {
-            console.log(err);
+      getSponsors()
+        .then((result) => {
+          return formatData(result, "tier");
+        })
+        .then((result) => {
+          response.end(JSON.stringify(result));
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
 
     if (pathName === "/contact" && request.method === "POST") {
-        var postData = "";
+      var postData = "";
 
-        request.on("data", function (data) {
-            postData += data;
+      request.on("data", function (data) {
+        postData += data;
+      });
+
+      request.on("end", function () {
+        let message = {
+          text: JSON.parse(postData),
+        };
+
+        let options = {
+          hostname: "hooks.slack.com",
+          path: creds.slackWebhook,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+
+        let req = https.request(options, (res) => {
+          let slackResponse = "";
+
+          res.on("data", (chunk) => {
+            slackResponse += chunk;
+          });
+
+          res.on("end", () => {
+            response.statusCode = 200;
+            response.end(slackResponse);
+          });
         });
 
-        request.on("end", function () {
-            let message = {
-                text: JSON.parse(postData)
-            };
-
-            let options = {
-                hostname: "hooks.slack.com",
-                path: creds.slackWebhook,
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            };
-
-            let req = https.request(options, (res) => {
-                let slackResponse = "";
-
-                res.on("data", (chunk) => {
-                    slackResponse += chunk;
-                });
-
-                res.on("end", () => {
-                    response.statusCode = 200;
-                    response.end(slackResponse);
-                });
-            });
-
-            req.on("error", (e) => {
-                response.statusCode = e.statusCode;
-                response.end(e.message);
-            });
-
-            // write data to request body
-            req.write(JSON.stringify(message));
-            req.end();
+        req.on("error", (e) => {
+          response.statusCode = e.statusCode;
+          response.end(e.message);
         });
+
+        // write data to request body
+        req.write(JSON.stringify(message));
+        req.end();
+      });
     }
-
-}).listen(creds.port);
+  })
+  .listen(creds.port);
 
 function getTeamleads() {
-    return new Promise((resolve, reject) => {
-        let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
+  return new Promise((resolve, reject) => {
+    let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
 
-        client.connect((err) => {
-            if (err) reject(err);
+    client.connect((err) => {
+      if (err) reject(err);
 
-            let db = client.db(creds.db);
-            let collection = db.collection("teamleads");
+      let db = client.db(creds.db);
+      let collection = db.collection("teamleads");
 
-            let options = {
-                "sort": "Position"
-            };
+      let options = {
+        sort: "Position",
+      };
 
-            collection.find({}, options).toArray((err, docs) => {
-                if (err) reject(err);
+      collection.find({}, options).toArray((err, docs) => {
+        if (err) reject(err);
 
-                resolve(docs);
-            });
-        });
+        resolve(docs);
+      });
     });
+  });
 }
 
 function getSponsors() {
-    return new Promise((resolve, reject) => {
-        let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
+  return new Promise((resolve, reject) => {
+    let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
 
-        client.connect((err) => {
-            if (err) reject(err);
+    client.connect((err) => {
+      if (err) reject(err);
 
-            let db = client.db(creds.db);
-            let collection = db.collection("sponsors");
+      let db = client.db(creds.db);
+      let collection = db.collection("sponsors");
 
-            let options = {
-                "sort": "company"
-            };
+      let options = {
+        sort: "company",
+      };
 
-            collection.find({}, options).toArray((err, docs) => {
-                if (err) reject(err);
+      collection.find({}, options).toArray((err, docs) => {
+        if (err) reject(err);
 
-                resolve(docs);
-            });
-        });
+        resolve(docs);
+      });
     });
+  });
 }
 
 function getNewsPosts() {
-    return new Promise((resolve, reject) => {
-        let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
+  return new Promise((resolve, reject) => {
+    let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
 
-        client.connect((err) => {
-            if (err) reject(err);
+    client.connect((err) => {
+      if (err) reject(err);
 
-            let db = client.db(creds.db);
-            let collection = db.collection("news");
+      let db = client.db(creds.db);
+      let collection = db.collection("news");
 
-            collection.find({}).toArray((err, docs) => {
-                if (err) reject(err);
-                resolve(docs);
-            });
-        });
+      collection.find({}).toArray((err, docs) => {
+        if (err) reject(err);
+        resolve(docs);
+      });
     });
+  });
 }
 
 //key: key to create parent elements based off of
 function formatData(data, key) {
-    return new Promise((resolve, reject) => {
-        let result = {};
+  return new Promise((resolve, reject) => {
+    let result = {};
 
-        for (x of data) {
-            if (result[x[key]]) {
-                result[x[key]].push(x);
-            } else {
-                result[x[key]] = [];
-                result[x[key]].push(x);
-            }
-        }
+    for (x of data) {
+      if (result[x[key]]) {
+        result[x[key]].push(x);
+      } else {
+        result[x[key]] = [];
+        result[x[key]].push(x);
+      }
+    }
 
-        resolve(result);
-    });
+    resolve(result);
+  });
 }
