@@ -16,11 +16,11 @@ $padding: _size(padding, default);
 
 @include keyframes(tab-title) {
   0% {
-    @include vendor("transform", "translateY(0.325rem)");
+    @include vendor('transform', 'translateY(0.325rem)');
   }
 
   100% {
-    @include vendor("transform", "translateY(1px)");
+    @include vendor('transform', 'translateY(1px)');
   }
 }
 
@@ -128,14 +128,14 @@ $padding: _size(padding, default);
       max-width: calc(100% - #{$padding});
 
       > .titles {
-        @include vendor("display", "flex");
-        @include vendor("user-select", "none");
+        @include vendor('display', 'flex');
+        @include vendor('user-select', 'none');
         list-style: none;
         padding: 0;
         margin: 0;
 
         &:before {
-          content: "";
+          content: '';
           display: block;
           left: 0;
           width: 100%;
@@ -146,12 +146,12 @@ $padding: _size(padding, default);
 
         > .title {
           @include vendor(
-            "transition-property",
-            "color, background-color, box-shadow"
+            'transition-property',
+            'color, background-color, box-shadow'
           );
-          @include vendor("transition-duration", "#{_duration(transition)}");
-          @include vendor("flex-grow", "1");
-          @include vendor("flex-shrink", "1");
+          @include vendor('transition-duration', '#{_duration(transition)}');
+          @include vendor('flex-grow', '1');
+          @include vendor('flex-shrink', '1');
           padding: 0;
           width: 100%;
           text-align: center;
@@ -164,7 +164,7 @@ $padding: _size(padding, default);
 
           &.active {
             box-shadow: 0 3px 0 0 _palette(accent1, bg);
-            @include vendor("animation", "tab-title 0.5s ease forwards");
+            @include vendor('animation', 'tab-title 0.5s ease forwards');
           }
         }
       }
@@ -173,8 +173,8 @@ $padding: _size(padding, default);
         > .panel {
           @include padding($padding, 0);
           @include vendor(
-            "transition",
-            "opacity #{_duration(transition)} ease-in-out"
+            'transition',
+            'opacity #{_duration(transition)} ease-in-out'
           );
           opacity: 0;
 
@@ -219,7 +219,7 @@ $padding: _size(padding, default);
   }
 }
 
-@include breakpoint("<=large") {
+@include breakpoint('<=large') {
   $padding: _size(padding, large);
 
   .inner {
@@ -288,7 +288,7 @@ $padding: _size(padding, default);
   }
 }
 
-@include breakpoint("<=medium") {
+@include breakpoint('<=medium') {
   $padding: _size(padding, medium);
 
   .inner {
@@ -369,7 +369,7 @@ $padding: _size(padding, default);
   }
 }
 
-@include breakpoint("<=small") {
+@include breakpoint('<=small') {
   $padding: _size(padding, small);
 
   .inner {
@@ -455,17 +455,17 @@ $padding: _size(padding, default);
   }
 }
 
-@include breakpoint("<=xsmall") {
+@include breakpoint('<=xsmall') {
   #wrapper {
     > .main {
       > .tabs {
         > .titles {
-          @include vendor("justify-content", "center");
+          @include vendor('justify-content', 'center');
 
           > .title {
             width: auto;
-            @include vendor("flex-grow", "0");
-            @include vendor("flex-shrink", "0");
+            @include vendor('flex-grow', '0');
+            @include vendor('flex-shrink', '0');
             padding: 0 1.5rem;
           }
         }

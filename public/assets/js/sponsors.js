@@ -12,24 +12,24 @@
     }
   };
 
-  xhttp.open("GET", "/api/sponsors");
+  xhttp.open('GET', '/api/sponsors');
   xhttp.send();
 })();
 
 // takes in info (the JSON object) and creates the needed sections and div's, calling other methods to place the info
 function sponsorsCardDriver(info) {
-  let section = document.createElement("section");
-  section.setAttribute("class", "main alt");
-  section.setAttribute("id", "three");
-  let inner = document.createElement("div");
-  inner.setAttribute("class", "inner");
-  let sponsorContentContainer = document.createElement("div");
-  sponsorContentContainer.setAttribute("class", "sponsor-content-container");
-  let container = document.createElement("div");
-  container.setAttribute("class", "flex-container");
-  let sponsorContainer = document.createElement("div");
-  sponsorContainer.setAttribute("class", "sponsor-container");
-  let tiers = ["Diamond", "Platinum", "Gold", "Silver", "Bronze"]; // an array containg the tiers in correct order to sort for now
+  let section = document.createElement('section');
+  section.setAttribute('class', 'main alt');
+  section.setAttribute('id', 'three');
+  let inner = document.createElement('div');
+  inner.setAttribute('class', 'inner');
+  let sponsorContentContainer = document.createElement('div');
+  sponsorContentContainer.setAttribute('class', 'sponsor-content-container');
+  let container = document.createElement('div');
+  container.setAttribute('class', 'flex-container');
+  let sponsorContainer = document.createElement('div');
+  sponsorContainer.setAttribute('class', 'sponsor-container');
+  let tiers = ['Diamond', 'Platinum', 'Gold', 'Silver', 'Bronze']; // an array containg the tiers in correct order to sort for now
   for (let y = 0; y < tiers.length; y++) {
     // loops through the correctly ordered tiers array
     for (let tier in info) {
@@ -55,15 +55,15 @@ function sponsorsCardDriver(info) {
   section.appendChild(inner);
 
   document
-    .getElementById("wrapper")
-    .insertBefore(section, document.getElementById("two")); // places the info in the right place
+    .getElementById('wrapper')
+    .insertBefore(section, document.getElementById('two')); // places the info in the right place
 }
 
 function createSponsorCard(obj) {
   // creates a card for each sponsor
-  let div = document.createElement("div");
-  div.classList.add("sponsor-card", obj.tier.toLowerCase());
-  div.setAttribute("id", obj._id);
+  let div = document.createElement('div');
+  div.classList.add('sponsor-card', obj.tier.toLowerCase());
+  div.setAttribute('id', obj._id);
   let card = `
           <div class='sponsor-img'>
               <img src='/images/sponsors/${obj.logo}'>
@@ -79,12 +79,12 @@ function createSponsorCard(obj) {
 
 function createSponsorTier(tier) {
   // creates the tier div for each tier
-  let tierDiv = document.createElement("div");
-  tierDiv.setAttribute("class", "sponsor-tier");
-  let div = document.createElement("div");
-  div.setAttribute("class", "team-title");
-  let title = document.createElement("h2");
-  title.innerText = tier + " Tier:";
+  let tierDiv = document.createElement('div');
+  tierDiv.setAttribute('class', 'sponsor-tier');
+  let div = document.createElement('div');
+  div.setAttribute('class', 'team-title');
+  let title = document.createElement('h2');
+  title.innerText = tier + ' Tier:';
   div.appendChild(title);
   tierDiv.appendChild(div);
   return tierDiv;

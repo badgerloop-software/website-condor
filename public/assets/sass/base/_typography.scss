@@ -9,23 +9,23 @@
 html {
   font-size: 15pt;
 
-  @include breakpoint("<=xlarge") {
+  @include breakpoint('<=xlarge') {
     font-size: 12pt;
   }
 
-  @include breakpoint("<=large") {
+  @include breakpoint('<=large') {
     font-size: 11pt;
   }
 
-  @include breakpoint("<=medium") {
+  @include breakpoint('<=medium') {
     font-size: 12pt;
   }
 
-  @include breakpoint("<=small") {
+  @include breakpoint('<=small') {
     font-size: 11pt;
   }
 
-  @include breakpoint("<=xxsmall") {
+  @include breakpoint('<=xxsmall') {
     font-size: 10pt;
   }
 }
@@ -47,11 +47,11 @@ textarea {
 
 a {
   @include vendor(
-    "transition",
+    'transition',
     (
-      "background-color #{_duration(transition)} ease-in-out",
-      "border-bottom-color #{_duration(transition)} ease-in-out",
-      "color #{_duration(transition)} ease-in-out"
+      'background-color #{_duration(transition)} ease-in-out',
+      'border-bottom-color #{_duration(transition)} ease-in-out',
+      'color #{_duration(transition)} ease-in-out'
     )
   );
   text-decoration: none;
@@ -59,8 +59,8 @@ a {
 
   strong {
     @include vendor(
-      "transition",
-      ("color #{_duration(transition)} ease-in-out")
+      'transition',
+      ('color #{_duration(transition)} ease-in-out')
     );
   }
 
@@ -82,7 +82,7 @@ a {
     letter-spacing: -0.025rem;
   }
 
-  @include breakpoint("<=small") {
+  @include breakpoint('<=small') {
     &.major {
       font-size: 1.75rem;
       letter-spacing: 0;
@@ -153,7 +153,7 @@ h6 {
   font-size: 0.7rem;
 }
 
-@include breakpoint("<=small") {
+@include breakpoint('<=small') {
   h1 {
     font-size: 2.25rem;
     letter-spacing: -0.025rem;

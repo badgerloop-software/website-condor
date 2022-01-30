@@ -1,4 +1,4 @@
-import { CountUp } from "./countUp.min.js";
+import { CountUp } from './countUp.min.js';
 
 window.onload = function () {
   let statsArray = [];
@@ -10,10 +10,10 @@ window.onload = function () {
 
   for (let i of statsValues) {
     console.log(i);
-    statsArray.push(new CountUp("stat" + x + "l", i));
-    statsArray.push(new CountUp("stat" + x + "s", i));
+    statsArray.push(new CountUp('stat' + x + 'l', i));
+    statsArray.push(new CountUp('stat' + x + 's', i));
     x++;
   }
 
-  statsArray.forEach((CountUp) => CountUp.start());
+  statsArray.forEach(CountUp => CountUp.start());
 };

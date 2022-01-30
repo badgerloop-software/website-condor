@@ -12,7 +12,7 @@
     }
   };
 
-  xhttp.open("GET", "/api/sponsors");
+  xhttp.open('GET', '/api/sponsors');
   xhttp.send();
 })();
 
@@ -30,33 +30,33 @@
     }
   };
 
-  xhttp.open("GET", "/api/teamleads");
+  xhttp.open('GET', '/api/teamleads');
   xhttp.send();
 })();
 
 // takes in info (the JSON object) and creates the needed sections and div's, calling other methods to place the info
 function sponsorsCardDriver(info) {
-  let container = document.createElement("div");
-  container.setAttribute("class", "flex-container");
-  let sponsorContainer = document.createElement("div");
-  sponsorContainer.setAttribute("class", "sponsor-container");
+  let container = document.createElement('div');
+  container.setAttribute('class', 'flex-container');
+  let sponsorContainer = document.createElement('div');
+  sponsorContainer.setAttribute('class', 'sponsor-container');
 
-  for (let x of info["Diamond"]) {
+  for (let x of info['Diamond']) {
     sponsorContainer.appendChild(createSponsorCard(x));
   }
 
   container.appendChild(sponsorContainer);
 
   document
-    .getElementById("inner")
-    .insertBefore(container, document.getElementById("buttonCenter"));
+    .getElementById('inner')
+    .insertBefore(container, document.getElementById('buttonCenter'));
 }
 
 function createSponsorCard(obj) {
   // creates a card for each sponsor
-  let div = document.createElement("div");
-  div.classList.add("sponsor-card", "home");
-  div.setAttribute("id", obj._id);
+  let div = document.createElement('div');
+  div.classList.add('sponsor-card', 'home');
+  div.setAttribute('id', obj._id);
   let card = `
         <div class='sponsor-img'>
             <img src='/images/sponsors/${obj.logo}'>
@@ -71,12 +71,12 @@ function createSponsorCard(obj) {
 }
 
 function executiveLeadDriver(info) {
-  let electricalLead = document.getElementById("electricalLead");
-  electricalLead.innerHTML = info.Administrative[0]["Name"];
+  let electricalLead = document.getElementById('electricalLead');
+  electricalLead.innerHTML = info.Administrative[0]['Name'];
 
-  let mechanicalLead = document.getElementById("mechanicalLead");
-  mechanicalLead.innerHTML = info.Administrative[1]["Name"];
+  let mechanicalLead = document.getElementById('mechanicalLead');
+  mechanicalLead.innerHTML = info.Administrative[1]['Name'];
 
-  let operationsLead = document.getElementById("operationsLead");
-  operationsLead.innerHTML = info.Administrative[2]["Name"];
+  let operationsLead = document.getElementById('operationsLead');
+  operationsLead.innerHTML = info.Administrative[2]['Name'];
 }

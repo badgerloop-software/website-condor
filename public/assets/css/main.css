@@ -1,6 +1,6 @@
 @import url(font-awesome.min.css);
-@import url("https://fonts.googleapis.com/css?family=Lato:300,400,700,300i,400i,700i");
-@import url("https://fonts.googleapis.com/css?family=Play:400,700");
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,300i,400i,700i');
+@import url('https://fonts.googleapis.com/css?family=Play:400,700');
 
 html,
 body,
@@ -123,7 +123,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 
@@ -248,7 +248,7 @@ body,
 input,
 select,
 textarea {
-  font-family: "Lato", Arial, Helvetica, sans-serif;
+  font-family: 'Lato', Arial, Helvetica, sans-serif;
   font-weight: 200;
   font-size: 1rem;
   line-height: 1.65;
@@ -335,7 +335,7 @@ h6 a {
 }
 
 h1 {
-  font-family: "Play", sans-serif;
+  font-family: 'Play', sans-serif;
   font-size: 3.25rem;
   font-weight: 400;
   line-height: 1.3;
@@ -414,7 +414,7 @@ blockquote {
 code {
   border-radius: 0.5rem;
   border: solid 1px;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   font-size: 0.9rem;
   margin: 0 0.25rem;
   padding: 0.25rem 0.65rem;
@@ -422,7 +422,7 @@ code {
 
 pre {
   -webkit-overflow-scrolling: touch;
-  font-family: "Courier New", monospace;
+  font-family: 'Courier New', monospace;
   font-size: 0.9rem;
   margin: 0 0 2rem 0;
 }
@@ -1997,9 +1997,9 @@ hr {
 
 /* Button */
 
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
 button,
 .button {
   -moz-appearance: none;
@@ -2026,25 +2026,25 @@ button,
   outline: 0;
 }
 
-input[type="submit"].icon:before,
-input[type="reset"].icon:before,
-input[type="button"].icon:before,
+input[type='submit'].icon:before,
+input[type='reset'].icon:before,
+input[type='button'].icon:before,
 button.icon:before,
 .button.icon:before {
   margin-right: 0.5rem;
 }
 
-input[type="submit"].fit,
-input[type="reset"].fit,
-input[type="button"].fit,
+input[type='submit'].fit,
+input[type='reset'].fit,
+input[type='button'].fit,
 button.fit,
 .button.fit {
   width: 100%;
 }
 
-input[type="submit"].small,
-input[type="reset"].small,
-input[type="button"].small,
+input[type='submit'].small,
+input[type='reset'].small,
+input[type='button'].small,
 button.small,
 .button.small {
   font-size: 0.7rem;
@@ -2054,9 +2054,9 @@ button.small,
   padding: 0 1.25rem;
 }
 
-input[type="submit"].large,
-input[type="reset"].large,
-input[type="button"].large,
+input[type='submit'].large,
+input[type='reset'].large,
+input[type='button'].large,
 button.large,
 .button.large {
   font-size: 1rem;
@@ -2066,20 +2066,20 @@ button.large,
   padding: 0 2rem;
 }
 
-input[type="submit"].wide,
-input[type="reset"].wide,
-input[type="button"].wide,
+input[type='submit'].wide,
+input[type='reset'].wide,
+input[type='button'].wide,
 button.wide,
 .button.wide {
   min-width: 12rem;
 }
 
-input[type="submit"].disabled,
-input[type="submit"]:disabled,
-input[type="reset"].disabled,
-input[type="reset"]:disabled,
-input[type="button"].disabled,
-input[type="button"]:disabled,
+input[type='submit'].disabled,
+input[type='submit']:disabled,
+input[type='reset'].disabled,
+input[type='reset']:disabled,
+input[type='button'].disabled,
+input[type='button']:disabled,
 button.disabled,
 button:disabled,
 .button.disabled,
@@ -2088,9 +2088,9 @@ button:disabled,
   opacity: 0.25;
 }
 
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
+input[type='submit'],
+input[type='reset'],
+input[type='button'],
 button,
 .button {
   background-color: transparent;
@@ -2098,25 +2098,25 @@ button,
   color: #c5050c !important;
 }
 
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover,
+input[type='submit']:hover,
+input[type='reset']:hover,
+input[type='button']:hover,
 button:hover,
 .button:hover {
   background-color: rgba(135, 34, 37, 0.1);
 }
 
-input[type="submit"]:hover:active,
-input[type="reset"]:hover:active,
-input[type="button"]:hover:active,
+input[type='submit']:hover:active,
+input[type='reset']:hover:active,
+input[type='button']:hover:active,
 button:hover:active,
 .button:hover:active {
   background-color: rgba(135, 34, 37, 0.1);
 }
 
-input[type="submit"].primary,
-input[type="reset"].primary,
-input[type="button"].primary,
+input[type='submit'].primary,
+input[type='reset'].primary,
+input[type='button'].primary,
 button.primary,
 .button.primary {
   background-color: #c5050c;
@@ -2124,17 +2124,17 @@ button.primary,
   color: #ffffff !important;
 }
 
-input[type="submit"].primary:hover,
-input[type="reset"].primary:hover,
-input[type="button"].primary:hover,
+input[type='submit'].primary:hover,
+input[type='reset'].primary:hover,
+input[type='button'].primary:hover,
 button.primary:hover,
 .button.primary:hover {
   background-color: #872225;
 }
 
-input[type="submit"].primary:active,
-input[type="reset"].primary:active,
-input[type="button"].primary:active,
+input[type='submit'].primary:active,
+input[type='reset'].primary:active,
+input[type='button'].primary:active,
 button.primary:active,
 .button.primary:active {
   background-color: #872225;
@@ -2166,9 +2166,9 @@ label {
   margin: 0 0 1rem 0;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
+input[type='text'],
+input[type='password'],
+input[type='email'],
 select,
 textarea {
   -moz-appearance: none;
@@ -2186,9 +2186,9 @@ textarea {
   width: 100%;
 }
 
-input[type="text"]:invalid,
-input[type="password"]:invalid,
-input[type="email"]:invalid,
+input[type='text']:invalid,
+input[type='password']:invalid,
+input[type='email']:invalid,
 select:invalid,
 textarea:invalid {
   box-shadow: none;
@@ -2211,9 +2211,9 @@ select::-ms-expand {
   display: none;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
+input[type='text'],
+input[type='password'],
+input[type='email'],
 select {
   height: 2.75rem;
 }
@@ -2222,8 +2222,8 @@ textarea {
   padding: 0.75rem 1rem;
 }
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type='checkbox'],
+input[type='radio'] {
   -moz-appearance: none;
   -webkit-appearance: none;
   -ms-appearance: none;
@@ -2236,8 +2236,8 @@ input[type="radio"] {
   z-index: -1;
 }
 
-input[type="checkbox"] + label,
-input[type="radio"] + label {
+input[type='checkbox'] + label,
+input[type='radio'] + label {
   text-decoration: none;
   cursor: pointer;
   display: inline-block;
@@ -2248,8 +2248,8 @@ input[type="radio"] + label {
   position: relative;
 }
 
-input[type="checkbox"] + label:before,
-input[type="radio"] + label:before {
+input[type='checkbox'] + label:before,
+input[type='radio'] + label:before {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-family: FontAwesome;
@@ -2258,11 +2258,11 @@ input[type="radio"] + label:before {
   text-transform: none !important;
 }
 
-input[type="checkbox"] + label:before,
-input[type="radio"] + label:before {
+input[type='checkbox'] + label:before,
+input[type='radio'] + label:before {
   border-radius: 0.5rem;
   border: solid 1px;
-  content: "";
+  content: '';
   display: inline-block;
   height: 1.65rem;
   left: 0;
@@ -2273,16 +2273,16 @@ input[type="radio"] + label:before {
   width: 1.65rem;
 }
 
-input[type="checkbox"]:checked + label:before,
-input[type="radio"]:checked + label:before {
-  content: "\f00c";
+input[type='checkbox']:checked + label:before,
+input[type='radio']:checked + label:before {
+  content: '\f00c';
 }
 
-input[type="checkbox"] + label:before {
+input[type='checkbox'] + label:before {
   border-radius: 0.5rem;
 }
 
-input[type="radio"] + label:before {
+input[type='radio'] + label:before {
   border-radius: 100%;
 }
 
@@ -2306,17 +2306,17 @@ label {
   color: #3b3b3b;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
+input[type='text'],
+input[type='password'],
+input[type='email'],
 select,
 textarea {
   border-color: #eeeeee;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus,
-input[type="email"]:focus,
+input[type='text']:focus,
+input[type='password']:focus,
+input[type='email']:focus,
 select:focus,
 textarea:focus {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2),
@@ -2332,25 +2332,25 @@ select option {
   background: #ffffff;
 }
 
-input[type="checkbox"] + label,
-input[type="radio"] + label {
+input[type='checkbox'] + label,
+input[type='radio'] + label {
   color: #3b3b3b;
 }
 
-input[type="checkbox"] + label:before,
-input[type="radio"] + label:before {
+input[type='checkbox'] + label:before,
+input[type='radio'] + label:before {
   border-color: #eeeeee;
 }
 
-input[type="checkbox"]:checked + label:before,
-input[type="radio"]:checked + label:before {
+input[type='checkbox']:checked + label:before,
+input[type='radio']:checked + label:before {
   background-color: #c5050c;
   border-color: #c5050c;
   color: #ffffff;
 }
 
-input[type="checkbox"]:focus + label:before,
-input[type="radio"]:focus + label:before {
+input[type='checkbox']:focus + label:before,
+input[type='radio']:focus + label:before {
   border-color: #c5050c;
   box-shadow: 0 0 0 1px #c5050c;
 }
@@ -2668,7 +2668,7 @@ ul.links li:before {
 }
 
 ul.links li:before {
-  content: "\f105";
+  content: '\f105';
   position: absolute;
   top: 0;
   left: 0;
@@ -3471,7 +3471,7 @@ body {
 }
 
 #header > nav > ul > li.current:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   bottom: 0;
@@ -3511,7 +3511,7 @@ body {
   transform: rotate(45deg);
   background-color: #ffffff;
   box-shadow: -2px -2px 3px -1px rgba(0, 0, 0, 0.1);
-  content: "";
+  content: '';
   position: absolute;
   top: -0.375rem;
   right: 2rem;
@@ -3608,7 +3608,7 @@ body {
 }
 
 #header > .navPanelToggle:before {
-  content: "\f0c9";
+  content: '\f0c9';
   margin: 0 0 0 0.625rem;
   float: right;
 }
@@ -3662,14 +3662,14 @@ body {
   -webkit-transition: opacity 0.5s ease-in-out;
   -ms-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   opacity: 0.5;
-  background-image: url("../../images/solar.jpg");
+  background-image: url('../../images/solar.jpg');
   background-position: center; /* Center the image */
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover; /* Resize the background image to cover the entire container */
@@ -3970,9 +3970,9 @@ iframe {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main > header.accent1 input[type="submit"],
-#wrapper > .main > header.accent1 input[type="reset"],
-#wrapper > .main > header.accent1 input[type="button"],
+#wrapper > .main > header.accent1 input[type='submit'],
+#wrapper > .main > header.accent1 input[type='reset'],
+#wrapper > .main > header.accent1 input[type='button'],
 #wrapper > .main > header.accent1 button,
 #wrapper > .main > header.accent1 .button {
   background-color: transparent;
@@ -3980,25 +3980,25 @@ iframe {
   color: #ffffff !important;
 }
 
-#wrapper > .main > header.accent1 input[type="submit"]:hover,
-#wrapper > .main > header.accent1 input[type="reset"]:hover,
-#wrapper > .main > header.accent1 input[type="button"]:hover,
+#wrapper > .main > header.accent1 input[type='submit']:hover,
+#wrapper > .main > header.accent1 input[type='reset']:hover,
+#wrapper > .main > header.accent1 input[type='button']:hover,
 #wrapper > .main > header.accent1 button:hover,
 #wrapper > .main > header.accent1 .button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-#wrapper > .main > header.accent1 input[type="submit"]:hover:active,
-#wrapper > .main > header.accent1 input[type="reset"]:hover:active,
-#wrapper > .main > header.accent1 input[type="button"]:hover:active,
+#wrapper > .main > header.accent1 input[type='submit']:hover:active,
+#wrapper > .main > header.accent1 input[type='reset']:hover:active,
+#wrapper > .main > header.accent1 input[type='button']:hover:active,
 #wrapper > .main > header.accent1 button:hover:active,
 #wrapper > .main > header.accent1 .button:hover:active {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main > header.accent1 input[type="submit"].primary,
-#wrapper > .main > header.accent1 input[type="reset"].primary,
-#wrapper > .main > header.accent1 input[type="button"].primary,
+#wrapper > .main > header.accent1 input[type='submit'].primary,
+#wrapper > .main > header.accent1 input[type='reset'].primary,
+#wrapper > .main > header.accent1 input[type='button'].primary,
 #wrapper > .main > header.accent1 button.primary,
 #wrapper > .main > header.accent1 .button.primary {
   background-color: #ffffff;
@@ -4006,17 +4006,17 @@ iframe {
   color: #c5050c !important;
 }
 
-#wrapper > .main > header.accent1 input[type="submit"].primary:hover,
-#wrapper > .main > header.accent1 input[type="reset"].primary:hover,
-#wrapper > .main > header.accent1 input[type="button"].primary:hover,
+#wrapper > .main > header.accent1 input[type='submit'].primary:hover,
+#wrapper > .main > header.accent1 input[type='reset'].primary:hover,
+#wrapper > .main > header.accent1 input[type='button'].primary:hover,
 #wrapper > .main > header.accent1 button.primary:hover,
 #wrapper > .main > header.accent1 .button.primary:hover {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-#wrapper > .main > header.accent1 input[type="submit"].primary:active,
-#wrapper > .main > header.accent1 input[type="reset"].primary:active,
-#wrapper > .main > header.accent1 input[type="button"].primary:active,
+#wrapper > .main > header.accent1 input[type='submit'].primary:active,
+#wrapper > .main > header.accent1 input[type='reset'].primary:active,
+#wrapper > .main > header.accent1 input[type='button'].primary:active,
 #wrapper > .main > header.accent1 button.primary:active,
 #wrapper > .main > header.accent1 .button.primary:active {
   background-color: rgba(255, 255, 255, 0.75);
@@ -4026,17 +4026,17 @@ iframe {
   color: #ffffff;
 }
 
-#wrapper > .main > header.accent1 input[type="text"],
-#wrapper > .main > header.accent1 input[type="password"],
-#wrapper > .main > header.accent1 input[type="email"],
+#wrapper > .main > header.accent1 input[type='text'],
+#wrapper > .main > header.accent1 input[type='password'],
+#wrapper > .main > header.accent1 input[type='email'],
 #wrapper > .main > header.accent1 select,
 #wrapper > .main > header.accent1 textarea {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main > header.accent1 input[type="text"]:focus,
-#wrapper > .main > header.accent1 input[type="password"]:focus,
-#wrapper > .main > header.accent1 input[type="email"]:focus,
+#wrapper > .main > header.accent1 input[type='text']:focus,
+#wrapper > .main > header.accent1 input[type='password']:focus,
+#wrapper > .main > header.accent1 input[type='email']:focus,
 #wrapper > .main > header.accent1 select:focus,
 #wrapper > .main > header.accent1 textarea:focus {
   border-color: #ffffff;
@@ -4052,25 +4052,25 @@ iframe {
   background: #c5050c;
 }
 
-#wrapper > .main > header.accent1 input[type="checkbox"] + label,
-#wrapper > .main > header.accent1 input[type="radio"] + label {
+#wrapper > .main > header.accent1 input[type='checkbox'] + label,
+#wrapper > .main > header.accent1 input[type='radio'] + label {
   color: rgba(255, 255, 255, 0.75);
 }
 
-#wrapper > .main > header.accent1 input[type="checkbox"] + label:before,
-#wrapper > .main > header.accent1 input[type="radio"] + label:before {
+#wrapper > .main > header.accent1 input[type='checkbox'] + label:before,
+#wrapper > .main > header.accent1 input[type='radio'] + label:before {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main > header.accent1 input[type="checkbox"]:checked + label:before,
-#wrapper > .main > header.accent1 input[type="radio"]:checked + label:before {
+#wrapper > .main > header.accent1 input[type='checkbox']:checked + label:before,
+#wrapper > .main > header.accent1 input[type='radio']:checked + label:before {
   background-color: #ffffff;
   border-color: #ffffff;
   color: #c5050c;
 }
 
-#wrapper > .main > header.accent1 input[type="checkbox"]:focus + label:before,
-#wrapper > .main > header.accent1 input[type="radio"]:focus + label:before {
+#wrapper > .main > header.accent1 input[type='checkbox']:focus + label:before,
+#wrapper > .main > header.accent1 input[type='radio']:focus + label:before {
   border-color: #ffffff;
   box-shadow: 0 0 0 1px #ffffff;
 }
@@ -4196,9 +4196,9 @@ iframe {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main > header.accent2 input[type="submit"],
-#wrapper > .main > header.accent2 input[type="reset"],
-#wrapper > .main > header.accent2 input[type="button"],
+#wrapper > .main > header.accent2 input[type='submit'],
+#wrapper > .main > header.accent2 input[type='reset'],
+#wrapper > .main > header.accent2 input[type='button'],
 #wrapper > .main > header.accent2 button,
 #wrapper > .main > header.accent2 .button {
   background-color: transparent;
@@ -4206,25 +4206,25 @@ iframe {
   color: #ffffff !important;
 }
 
-#wrapper > .main > header.accent2 input[type="submit"]:hover,
-#wrapper > .main > header.accent2 input[type="reset"]:hover,
-#wrapper > .main > header.accent2 input[type="button"]:hover,
+#wrapper > .main > header.accent2 input[type='submit']:hover,
+#wrapper > .main > header.accent2 input[type='reset']:hover,
+#wrapper > .main > header.accent2 input[type='button']:hover,
 #wrapper > .main > header.accent2 button:hover,
 #wrapper > .main > header.accent2 .button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-#wrapper > .main > header.accent2 input[type="submit"]:hover:active,
-#wrapper > .main > header.accent2 input[type="reset"]:hover:active,
-#wrapper > .main > header.accent2 input[type="button"]:hover:active,
+#wrapper > .main > header.accent2 input[type='submit']:hover:active,
+#wrapper > .main > header.accent2 input[type='reset']:hover:active,
+#wrapper > .main > header.accent2 input[type='button']:hover:active,
 #wrapper > .main > header.accent2 button:hover:active,
 #wrapper > .main > header.accent2 .button:hover:active {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main > header.accent2 input[type="submit"].primary,
-#wrapper > .main > header.accent2 input[type="reset"].primary,
-#wrapper > .main > header.accent2 input[type="button"].primary,
+#wrapper > .main > header.accent2 input[type='submit'].primary,
+#wrapper > .main > header.accent2 input[type='reset'].primary,
+#wrapper > .main > header.accent2 input[type='button'].primary,
 #wrapper > .main > header.accent2 button.primary,
 #wrapper > .main > header.accent2 .button.primary {
   background-color: #ffffff;
@@ -4232,17 +4232,17 @@ iframe {
   color: #80bb2d !important;
 }
 
-#wrapper > .main > header.accent2 input[type="submit"].primary:hover,
-#wrapper > .main > header.accent2 input[type="reset"].primary:hover,
-#wrapper > .main > header.accent2 input[type="button"].primary:hover,
+#wrapper > .main > header.accent2 input[type='submit'].primary:hover,
+#wrapper > .main > header.accent2 input[type='reset'].primary:hover,
+#wrapper > .main > header.accent2 input[type='button'].primary:hover,
 #wrapper > .main > header.accent2 button.primary:hover,
 #wrapper > .main > header.accent2 .button.primary:hover {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-#wrapper > .main > header.accent2 input[type="submit"].primary:active,
-#wrapper > .main > header.accent2 input[type="reset"].primary:active,
-#wrapper > .main > header.accent2 input[type="button"].primary:active,
+#wrapper > .main > header.accent2 input[type='submit'].primary:active,
+#wrapper > .main > header.accent2 input[type='reset'].primary:active,
+#wrapper > .main > header.accent2 input[type='button'].primary:active,
 #wrapper > .main > header.accent2 button.primary:active,
 #wrapper > .main > header.accent2 .button.primary:active {
   background-color: rgba(255, 255, 255, 0.75);
@@ -4252,17 +4252,17 @@ iframe {
   color: #ffffff;
 }
 
-#wrapper > .main > header.accent2 input[type="text"],
-#wrapper > .main > header.accent2 input[type="password"],
-#wrapper > .main > header.accent2 input[type="email"],
+#wrapper > .main > header.accent2 input[type='text'],
+#wrapper > .main > header.accent2 input[type='password'],
+#wrapper > .main > header.accent2 input[type='email'],
 #wrapper > .main > header.accent2 select,
 #wrapper > .main > header.accent2 textarea {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main > header.accent2 input[type="text"]:focus,
-#wrapper > .main > header.accent2 input[type="password"]:focus,
-#wrapper > .main > header.accent2 input[type="email"]:focus,
+#wrapper > .main > header.accent2 input[type='text']:focus,
+#wrapper > .main > header.accent2 input[type='password']:focus,
+#wrapper > .main > header.accent2 input[type='email']:focus,
 #wrapper > .main > header.accent2 select:focus,
 #wrapper > .main > header.accent2 textarea:focus {
   border-color: #ffffff;
@@ -4278,25 +4278,25 @@ iframe {
   background: #80bb2d;
 }
 
-#wrapper > .main > header.accent2 input[type="checkbox"] + label,
-#wrapper > .main > header.accent2 input[type="radio"] + label {
+#wrapper > .main > header.accent2 input[type='checkbox'] + label,
+#wrapper > .main > header.accent2 input[type='radio'] + label {
   color: rgba(255, 255, 255, 0.75);
 }
 
-#wrapper > .main > header.accent2 input[type="checkbox"] + label:before,
-#wrapper > .main > header.accent2 input[type="radio"] + label:before {
+#wrapper > .main > header.accent2 input[type='checkbox'] + label:before,
+#wrapper > .main > header.accent2 input[type='radio'] + label:before {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main > header.accent2 input[type="checkbox"]:checked + label:before,
-#wrapper > .main > header.accent2 input[type="radio"]:checked + label:before {
+#wrapper > .main > header.accent2 input[type='checkbox']:checked + label:before,
+#wrapper > .main > header.accent2 input[type='radio']:checked + label:before {
   background-color: #ffffff;
   border-color: #ffffff;
   color: #80bb2d;
 }
 
-#wrapper > .main > header.accent2 input[type="checkbox"]:focus + label:before,
-#wrapper > .main > header.accent2 input[type="radio"]:focus + label:before {
+#wrapper > .main > header.accent2 input[type='checkbox']:focus + label:before,
+#wrapper > .main > header.accent2 input[type='radio']:focus + label:before {
   border-color: #ffffff;
   box-shadow: 0 0 0 1px #ffffff;
 }
@@ -4416,7 +4416,7 @@ iframe {
 }
 
 #wrapper > .main > .tabs > .titles:before {
-  content: "";
+  content: '';
   display: block;
   left: 0;
   width: 100%;
@@ -4520,9 +4520,9 @@ iframe {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main.accent1 input[type="submit"],
-#wrapper > .main.accent1 input[type="reset"],
-#wrapper > .main.accent1 input[type="button"],
+#wrapper > .main.accent1 input[type='submit'],
+#wrapper > .main.accent1 input[type='reset'],
+#wrapper > .main.accent1 input[type='button'],
 #wrapper > .main.accent1 button,
 #wrapper > .main.accent1 .button {
   background-color: transparent;
@@ -4530,25 +4530,25 @@ iframe {
   color: #ffffff !important;
 }
 
-#wrapper > .main.accent1 input[type="submit"]:hover,
-#wrapper > .main.accent1 input[type="reset"]:hover,
-#wrapper > .main.accent1 input[type="button"]:hover,
+#wrapper > .main.accent1 input[type='submit']:hover,
+#wrapper > .main.accent1 input[type='reset']:hover,
+#wrapper > .main.accent1 input[type='button']:hover,
 #wrapper > .main.accent1 button:hover,
 #wrapper > .main.accent1 .button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-#wrapper > .main.accent1 input[type="submit"]:hover:active,
-#wrapper > .main.accent1 input[type="reset"]:hover:active,
-#wrapper > .main.accent1 input[type="button"]:hover:active,
+#wrapper > .main.accent1 input[type='submit']:hover:active,
+#wrapper > .main.accent1 input[type='reset']:hover:active,
+#wrapper > .main.accent1 input[type='button']:hover:active,
 #wrapper > .main.accent1 button:hover:active,
 #wrapper > .main.accent1 .button:hover:active {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main.accent1 input[type="submit"].primary,
-#wrapper > .main.accent1 input[type="reset"].primary,
-#wrapper > .main.accent1 input[type="button"].primary,
+#wrapper > .main.accent1 input[type='submit'].primary,
+#wrapper > .main.accent1 input[type='reset'].primary,
+#wrapper > .main.accent1 input[type='button'].primary,
 #wrapper > .main.accent1 button.primary,
 #wrapper > .main.accent1 .button.primary {
   background-color: #ffffff;
@@ -4556,17 +4556,17 @@ iframe {
   color: #c5050c !important;
 }
 
-#wrapper > .main.accent1 input[type="submit"].primary:hover,
-#wrapper > .main.accent1 input[type="reset"].primary:hover,
-#wrapper > .main.accent1 input[type="button"].primary:hover,
+#wrapper > .main.accent1 input[type='submit'].primary:hover,
+#wrapper > .main.accent1 input[type='reset'].primary:hover,
+#wrapper > .main.accent1 input[type='button'].primary:hover,
 #wrapper > .main.accent1 button.primary:hover,
 #wrapper > .main.accent1 .button.primary:hover {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-#wrapper > .main.accent1 input[type="submit"].primary:active,
-#wrapper > .main.accent1 input[type="reset"].primary:active,
-#wrapper > .main.accent1 input[type="button"].primary:active,
+#wrapper > .main.accent1 input[type='submit'].primary:active,
+#wrapper > .main.accent1 input[type='reset'].primary:active,
+#wrapper > .main.accent1 input[type='button'].primary:active,
 #wrapper > .main.accent1 button.primary:active,
 #wrapper > .main.accent1 .button.primary:active {
   background-color: rgba(255, 255, 255, 0.75);
@@ -4576,17 +4576,17 @@ iframe {
   color: #ffffff;
 }
 
-#wrapper > .main.accent1 input[type="text"],
-#wrapper > .main.accent1 input[type="password"],
-#wrapper > .main.accent1 input[type="email"],
+#wrapper > .main.accent1 input[type='text'],
+#wrapper > .main.accent1 input[type='password'],
+#wrapper > .main.accent1 input[type='email'],
 #wrapper > .main.accent1 select,
 #wrapper > .main.accent1 textarea {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main.accent1 input[type="text"]:focus,
-#wrapper > .main.accent1 input[type="password"]:focus,
-#wrapper > .main.accent1 input[type="email"]:focus,
+#wrapper > .main.accent1 input[type='text']:focus,
+#wrapper > .main.accent1 input[type='password']:focus,
+#wrapper > .main.accent1 input[type='email']:focus,
 #wrapper > .main.accent1 select:focus,
 #wrapper > .main.accent1 textarea:focus {
   border-color: #ffffff;
@@ -4602,25 +4602,25 @@ iframe {
   background: #c5050c;
 }
 
-#wrapper > .main.accent1 input[type="checkbox"] + label,
-#wrapper > .main.accent1 input[type="radio"] + label {
+#wrapper > .main.accent1 input[type='checkbox'] + label,
+#wrapper > .main.accent1 input[type='radio'] + label {
   color: rgba(255, 255, 255, 0.75);
 }
 
-#wrapper > .main.accent1 input[type="checkbox"] + label:before,
-#wrapper > .main.accent1 input[type="radio"] + label:before {
+#wrapper > .main.accent1 input[type='checkbox'] + label:before,
+#wrapper > .main.accent1 input[type='radio'] + label:before {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main.accent1 input[type="checkbox"]:checked + label:before,
-#wrapper > .main.accent1 input[type="radio"]:checked + label:before {
+#wrapper > .main.accent1 input[type='checkbox']:checked + label:before,
+#wrapper > .main.accent1 input[type='radio']:checked + label:before {
   background-color: #ffffff;
   border-color: #ffffff;
   color: #c5050c;
 }
 
-#wrapper > .main.accent1 input[type="checkbox"]:focus + label:before,
-#wrapper > .main.accent1 input[type="radio"]:focus + label:before {
+#wrapper > .main.accent1 input[type='checkbox']:focus + label:before,
+#wrapper > .main.accent1 input[type='radio']:focus + label:before {
   border-color: #ffffff;
   box-shadow: 0 0 0 1px #ffffff;
 }
@@ -4728,9 +4728,9 @@ iframe {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main.accent2 input[type="submit"],
-#wrapper > .main.accent2 input[type="reset"],
-#wrapper > .main.accent2 input[type="button"],
+#wrapper > .main.accent2 input[type='submit'],
+#wrapper > .main.accent2 input[type='reset'],
+#wrapper > .main.accent2 input[type='button'],
 #wrapper > .main.accent2 button,
 #wrapper > .main.accent2 .button {
   background-color: transparent;
@@ -4738,42 +4738,42 @@ iframe {
   color: #ffffff;
 }
 
-#wrapper > .main.accent2 input[type="submit"]:hover,
-#wrapper > .main.accent2 input[type="reset"]:hover,
-#wrapper > .main.accent2 input[type="button"]:hover,
+#wrapper > .main.accent2 input[type='submit']:hover,
+#wrapper > .main.accent2 input[type='reset']:hover,
+#wrapper > .main.accent2 input[type='button']:hover,
 #wrapper > .main.accent2 button:hover,
 #wrapper > .main.accent2 .button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-#wrapper > .main.accent2 input[type="submit"]:hover:active,
-#wrapper > .main.accent2 input[type="reset"]:hover:active,
-#wrapper > .main.accent2 input[type="button"]:hover:active,
+#wrapper > .main.accent2 input[type='submit']:hover:active,
+#wrapper > .main.accent2 input[type='reset']:hover:active,
+#wrapper > .main.accent2 input[type='button']:hover:active,
 #wrapper > .main.accent2 button:hover:active,
 #wrapper > .main.accent2 .button:hover:active {
   background-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main.accent2 input[type="submit"].primary,
-#wrapper > .main.accent2 input[type="reset"].primary,
-#wrapper > .main.accent2 input[type="button"].primary,
+#wrapper > .main.accent2 input[type='submit'].primary,
+#wrapper > .main.accent2 input[type='reset'].primary,
+#wrapper > .main.accent2 input[type='button'].primary,
 #wrapper > .main.accent2 button.primary,
 #wrapper > .main.accent2 .button.primary {
   background-color: #ffffff;
   box-shadow: none;
 }
 
-#wrapper > .main.accent2 input[type="submit"].primary:hover,
-#wrapper > .main.accent2 input[type="reset"].primary:hover,
-#wrapper > .main.accent2 input[type="button"].primary:hover,
+#wrapper > .main.accent2 input[type='submit'].primary:hover,
+#wrapper > .main.accent2 input[type='reset'].primary:hover,
+#wrapper > .main.accent2 input[type='button'].primary:hover,
 #wrapper > .main.accent2 button.primary:hover,
 #wrapper > .main.accent2 .button.primary:hover {
   background-color: rgba(255, 255, 255, 0.9);
 }
 
-#wrapper > .main.accent2 input[type="submit"].primary:active,
-#wrapper > .main.accent2 input[type="reset"].primary:active,
-#wrapper > .main.accent2 input[type="button"].primary:active,
+#wrapper > .main.accent2 input[type='submit'].primary:active,
+#wrapper > .main.accent2 input[type='reset'].primary:active,
+#wrapper > .main.accent2 input[type='button'].primary:active,
 #wrapper > .main.accent2 button.primary:active,
 #wrapper > .main.accent2 .button.primary:active {
   background-color: rgba(255, 255, 255, 0.75);
@@ -4783,17 +4783,17 @@ iframe {
   color: #ffffff;
 }
 
-#wrapper > .main.accent2 input[type="text"],
-#wrapper > .main.accent2 input[type="password"],
-#wrapper > .main.accent2 input[type="email"],
+#wrapper > .main.accent2 input[type='text'],
+#wrapper > .main.accent2 input[type='password'],
+#wrapper > .main.accent2 input[type='email'],
 #wrapper > .main.accent2 select,
 #wrapper > .main.accent2 textarea {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main.accent2 input[type="text"]:focus,
-#wrapper > .main.accent2 input[type="password"]:focus,
-#wrapper > .main.accent2 input[type="email"]:focus,
+#wrapper > .main.accent2 input[type='text']:focus,
+#wrapper > .main.accent2 input[type='password']:focus,
+#wrapper > .main.accent2 input[type='email']:focus,
 #wrapper > .main.accent2 select:focus,
 #wrapper > .main.accent2 textarea:focus {
   border-color: #ffffff;
@@ -4809,25 +4809,25 @@ iframe {
   background: #80bb2d;
 }
 
-#wrapper > .main.accent2 input[type="checkbox"] + label,
-#wrapper > .main.accent2 input[type="radio"] + label {
+#wrapper > .main.accent2 input[type='checkbox'] + label,
+#wrapper > .main.accent2 input[type='radio'] + label {
   color: rgba(255, 255, 255, 0.75);
 }
 
-#wrapper > .main.accent2 input[type="checkbox"] + label:before,
-#wrapper > .main.accent2 input[type="radio"] + label:before {
+#wrapper > .main.accent2 input[type='checkbox'] + label:before,
+#wrapper > .main.accent2 input[type='radio'] + label:before {
   border-color: rgba(255, 255, 255, 0.25);
 }
 
-#wrapper > .main.accent2 input[type="checkbox"]:checked + label:before,
-#wrapper > .main.accent2 input[type="radio"]:checked + label:before {
+#wrapper > .main.accent2 input[type='checkbox']:checked + label:before,
+#wrapper > .main.accent2 input[type='radio']:checked + label:before {
   background-color: #ffffff;
   border-color: #ffffff;
   color: #80bb2d;
 }
 
-#wrapper > .main.accent2 input[type="checkbox"]:focus + label:before,
-#wrapper > .main.accent2 input[type="radio"]:focus + label:before {
+#wrapper > .main.accent2 input[type='checkbox']:focus + label:before,
+#wrapper > .main.accent2 input[type='radio']:focus + label:before {
   border-color: #ffffff;
   box-shadow: 0 0 0 1px #ffffff;
 }
@@ -5390,7 +5390,7 @@ iframe {
 }
 
 #navPanel .close:before {
-  content: "\f00d";
+  content: '\f00d';
   font-size: 1.25em;
 }
 
@@ -5477,7 +5477,7 @@ body.is-navPanel-visible #navPanel {
   -webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
   -ms-transition: background-color 0.5s ease, opacity 0.5s ease;
   transition: background-color 0.5s ease, opacity 0.5s ease;
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 0;
@@ -5498,7 +5498,7 @@ body.is-navPanel-visible #navPanel {
   -webkit-transition: opacity 0.5s ease;
   -ms-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 0;

@@ -57,7 +57,7 @@
       width: 100%;
     }
 
-    @include breakpoint("<=small") {
+    @include breakpoint('<=small') {
       margin: 0 0 _size(element-margin) 0;
     }
   }
@@ -68,15 +68,15 @@ a.image {
 
   img {
     @include vendor(
-      "transition",
-      "transform #{_duration(transition)} ease-in-out"
+      'transition',
+      'transform #{_duration(transition)} ease-in-out'
     );
     width: 100%;
   }
 
   &:hover {
     img {
-      @include vendor("transform", "scale(1.05)");
+      @include vendor('transform', 'scale(1.05)');
     }
   }
 }

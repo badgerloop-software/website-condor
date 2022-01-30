@@ -7,7 +7,7 @@
 
 /* The line */
 .cbp_tmtimeline:before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
@@ -76,7 +76,7 @@
 .cbp_tmtimeline > li .cbp_tmlabel:after {
   right: 100%;
   border: solid transparent;
-  content: " ";
+  content: ' ';
   height: 0;
   width: 0;
   position: absolute;
@@ -94,7 +94,7 @@
 .cbp_tmtimeline > li .cbp_tmicon {
   width: 40px;
   height: 40px;
-  font-family: "ecoico";
+  font-family: 'ecoico';
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -115,19 +115,19 @@
 }
 
 .cbp_tmicon-phone:before {
-  content: "\e000";
+  content: '\e000';
 }
 
 .cbp_tmicon-screen:before {
-  content: "\e001";
+  content: '\e001';
 }
 
 .cbp_tmicon-mail:before {
-  content: "\e002";
+  content: '\e002';
 }
 
 .cbp_tmicon-earth:before {
-  content: "\e003";
+  content: '\e003';
 }
 
 /* Example Media Queries */

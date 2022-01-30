@@ -7,13 +7,13 @@
 /* Spotlight */
 
 .spotlight {
-  @include vendor("display", "flex");
-  @include vendor("align-items", "center");
+  @include vendor('display', 'flex');
+  @include vendor('align-items', 'center');
   margin: 0 0 _size(element-margin) 0;
 
   > * {
-    @include vendor("flex-grow", "1");
-    @include vendor("flex-shrink", "1");
+    @include vendor('flex-grow', '1');
+    @include vendor('flex-shrink', '1');
     width: 100%;
   }
 
@@ -56,11 +56,11 @@
     }
   }
 
-  @include breakpoint("<=medium") {
-    @include vendor("flex-wrap", "wrap");
+  @include breakpoint('<=medium') {
+    @include vendor('flex-wrap', 'wrap');
 
     > ul {
-      @include vendor("order", "2");
+      @include vendor('order', '2');
       width: calc(50% - 1rem);
 
       &:first-child {
@@ -75,7 +75,7 @@
     }
 
     > .image {
-      @include vendor("order", "1");
+      @include vendor('order', '1');
       margin: 0 0 (_size(element-margin) * 1.5) 0;
       width: 100%;
 
@@ -87,7 +87,7 @@
     }
   }
 
-  @include breakpoint("<=small") {
+  @include breakpoint('<=small') {
     > .image {
       margin: 0 0 _size(element-margin) 0;
 
@@ -97,7 +97,7 @@
     }
   }
 
-  @include breakpoint("<=xsmall") {
+  @include breakpoint('<=xsmall') {
     > ul {
       width: 100%;
 

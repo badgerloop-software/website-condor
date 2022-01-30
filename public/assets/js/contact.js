@@ -4,9 +4,9 @@
  */
 (function () {
   document
-    .getElementById("contact-category")
-    .addEventListener("change", formChange);
-  document.getElementById("form-submit").addEventListener("click", formSubmit);
+    .getElementById('contact-category')
+    .addEventListener('change', formChange);
+  document.getElementById('form-submit').addEventListener('click', formSubmit);
 })();
 /**
  * Removes additional form and checks for which new type of form was selected. Used
@@ -20,7 +20,7 @@ function formChange() {
  * Removes the additional input fields appended to the DOM.
  */
 function removeForm() {
-  let list = document.querySelectorAll(".additional-form");
+  let list = document.querySelectorAll('.additional-form');
 
   for (x of list) {
     x.parentNode.removeChild(x);
@@ -31,17 +31,17 @@ function removeForm() {
  */
 function dynamicForm() {
   let selected = document
-    .getElementById("contact-category")
+    .getElementById('contact-category')
     .value.toLowerCase();
 
   switch (selected) {
-    case "student inquiry":
+    case 'student inquiry':
       studentForm();
       break;
-    case "sponsorship inquiry":
+    case 'sponsorship inquiry':
       sponsorForm();
       break;
-    case "media inquiry":
+    case 'media inquiry':
       mediaForm();
       break;
   }
@@ -50,8 +50,8 @@ function dynamicForm() {
  * Fills the DOM with the appropriate UI for a student inquiry.
  */
 function studentForm() {
-  let teams = document.createElement("div");
-  teams.setAttribute("class", "col-12 additional-form form-checkbox");
+  let teams = document.createElement('div');
+  teams.setAttribute('class', 'col-12 additional-form form-checkbox');
   teams.innerHTML = `
     <div class="form-label">Team(s) Interested In (select one or more):*</div>
     <div class="team-checkboxes">
@@ -61,58 +61,58 @@ function studentForm() {
     </div>
     `;
   document
-    .getElementById("contact-form")
+    .getElementById('contact-form')
     .insertBefore(
       teams,
-      document.getElementById("contact-category").parentNode.nextSibling
+      document.getElementById('contact-category').parentNode.nextSibling,
     );
 
-  let year = document.createElement("div");
-  year.setAttribute("class", "col-6 col-12-xsmall additional-form");
+  let year = document.createElement('div');
+  year.setAttribute('class', 'col-6 col-12-xsmall additional-form');
   year.innerHTML = `<div class="form-label">Year:*</div><input class="form-check" type="text" title="Year">`;
   document
-    .getElementById("contact-form")
+    .getElementById('contact-form')
     .insertBefore(
       year,
-      document.getElementById("contact-category").parentNode.nextSibling
+      document.getElementById('contact-category').parentNode.nextSibling,
     );
 
-  let major = document.createElement("div");
-  major.setAttribute("class", "col-6 col-12-xsmall additional-form");
+  let major = document.createElement('div');
+  major.setAttribute('class', 'col-6 col-12-xsmall additional-form');
   major.innerHTML = `<div class="form-label">Major:*</div><input class="form-check" type="text" title="Major">`;
   document
-    .getElementById("contact-form")
+    .getElementById('contact-form')
     .insertBefore(
       major,
-      document.getElementById("contact-category").parentNode.nextSibling
+      document.getElementById('contact-category').parentNode.nextSibling,
     );
 }
 /**
  * Fills the DOM with the appropriate UI for the sponsor form.
  */
 function sponsorForm() {
-  let company = document.createElement("div");
-  company.setAttribute("class", "col-12 additional-form");
+  let company = document.createElement('div');
+  company.setAttribute('class', 'col-12 additional-form');
   company.innerHTML = `<div class="form-label">Company Name:*</div><input class="form-check" type="text" title="Company Name">`;
   document
-    .getElementById("contact-form")
+    .getElementById('contact-form')
     .insertBefore(
       company,
-      document.getElementById("contact-category").parentNode.nextSibling
+      document.getElementById('contact-category').parentNode.nextSibling,
     );
 }
 /**
  * Fills the DOM with the appropriate UI for the media form.
  */
 function mediaForm() {
-  let media = document.createElement("div");
-  media.setAttribute("class", "col-12 additional-form");
+  let media = document.createElement('div');
+  media.setAttribute('class', 'col-12 additional-form');
   media.innerHTML = `<div class="form-label">Organization Name:*</div><input class="form-check" type="text" title="Organization Name">`;
   document
-    .getElementById("contact-form")
+    .getElementById('contact-form')
     .insertBefore(
       media,
-      document.getElementById("contact-category").parentNode.nextSibling
+      document.getElementById('contact-category').parentNode.nextSibling,
     );
 }
 /**
@@ -121,37 +121,37 @@ function mediaForm() {
  * to our slack. If the form is a student inquiry, it also sends the form input to our google form.
  */
 function formSubmit() {
-  let inputObjects = document.querySelectorAll(".form-check");
+  let inputObjects = document.querySelectorAll('.form-check');
 
-  let message = "";
+  let message = '';
   let validFlag = true;
-  let email = "";
+  let email = '';
 
   //checks all form inputs except for the checkboxes
   for (x of inputObjects) {
-    x.addEventListener("input", inputChange);
+    x.addEventListener('input', inputChange);
 
     if (validInput(x)) {
-      x.classList.remove("form-error");
-      message += "*" + x.title + ":* " + x.value + "\n";
-      if (x.title == "email") email = x.value;
+      x.classList.remove('form-error');
+      message += '*' + x.title + ':* ' + x.value + '\n';
+      if (x.title == 'email') email = x.value;
     } else {
       validFlag = false;
-      x.classList.add("form-error");
+      x.classList.add('form-error');
     }
   }
 
-  if (!validCheckGroup(document.querySelectorAll(".required-check")))
+  if (!validCheckGroup(document.querySelectorAll('.required-check')))
     validFlag = false;
 
   // teams interested in is separated becuase they are check boxes
   if (
     validFlag &&
-    document.getElementById("contact-category").value === "Student Inquiry"
+    document.getElementById('contact-category').value === 'Student Inquiry'
   ) {
     //googleFormSubmission(inputObjects);
     let teams = getStudentTeams();
-    message += "*Team(s) Interested In:* " + teams + "\n";
+    message += '*Team(s) Interested In:* ' + teams + '\n';
     // sendStudentEmailResponse(email);
   }
 
@@ -164,9 +164,9 @@ function formSubmit() {
  * @returns {boolean} true if all of the input fields are valid, false if one or more input fields are invalid.
  */
 function validInput(x) {
-  if (x.value.trim() === "") return false;
-  if (x.title === "Email") {
-    if (x.value.indexOf("@") === -1 || x.value.indexOf(".") === -1)
+  if (x.value.trim() === '') return false;
+  if (x.title === 'Email') {
+    if (x.value.indexOf('@') === -1 || x.value.indexOf('.') === -1)
       return false;
   }
   return true;
@@ -183,7 +183,7 @@ function validCheckGroup(group) {
   if (group.length > 0) {
     let flag = false;
     for (x of group) {
-      x.addEventListener("input", () => {
+      x.addEventListener('input', () => {
         checkChange(group);
       });
       if (x.checked) {
@@ -191,8 +191,8 @@ function validCheckGroup(group) {
       }
     }
 
-    if (group && flag) x.parentNode.classList.remove("check-error");
-    else if (group && !flag) x.parentNode.classList.add("check-error");
+    if (group && flag) x.parentNode.classList.remove('check-error');
+    else if (group && !flag) x.parentNode.classList.add('check-error');
 
     return flag;
   } else {
@@ -212,8 +212,8 @@ function checkChange(group) {
     }
   }
 
-  if (flag) group[0].parentNode.classList.remove("check-error");
-  else group[0].parentNode.classList.add("check-error");
+  if (flag) group[0].parentNode.classList.remove('check-error');
+  else group[0].parentNode.classList.add('check-error');
 }
 /**
  * Sends the form data to a slack webhook. The message will be posted in website-activity.
@@ -225,17 +225,17 @@ function sendForm(message) {
   xhttp.onreadystatechange = function () {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
       //posting message was successful
-      displayStatusMessage("success");
+      displayStatusMessage('success');
       clearForm();
     } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
       //posting message was unsuccessful
       //TODO: catch errors from Slack and from our API - set up email
-      displayStatusMessage("error");
+      displayStatusMessage('error');
       clearForm();
     }
   };
 
-  xhttp.open("POST", "/api/contact");
+  xhttp.open('POST', '/api/contact');
   xhttp.send(JSON.stringify(message));
 }
 /**
@@ -277,12 +277,12 @@ function sendStudentEmailResponse(emailAddr) {
  * @returns true if a checkbox is selected. false if no checkboxes are selected.
  */
 function getStudentTeams() {
-  let teams = "";
-  let checks = document.querySelectorAll(".required-check");
+  let teams = '';
+  let checks = document.querySelectorAll('.required-check');
 
   for (let x of checks) {
     if (x.checked) {
-      teams += x.title + ", ";
+      teams += x.title + ', ';
     }
   }
 
@@ -362,10 +362,10 @@ function getStudentTeams() {
  * @param {event} event the event object passed when an event fires
  */
 function inputChange(event) {
-  if (event.target.value !== "") {
-    event.target.classList.remove("form-error");
+  if (event.target.value !== '') {
+    event.target.classList.remove('form-error');
   } else {
-    event.target.classList.add("form-error");
+    event.target.classList.add('form-error');
   }
 }
 /**
@@ -374,10 +374,10 @@ function inputChange(event) {
 function clearForm() {
   removeForm();
 
-  let inputs = document.querySelectorAll(".form-check");
+  let inputs = document.querySelectorAll('.form-check');
 
   for (x of inputs) {
-    x.value = "";
+    x.value = '';
   }
 }
 /**
@@ -385,20 +385,20 @@ function clearForm() {
  * @param {string} message flag to identify if success or error message should be displayed. "success" for success, anything else for failure.
  */
 function displayStatusMessage(message) {
-  let button = document.getElementById("form-submit");
+  let button = document.getElementById('form-submit');
   let parent = button.parentNode.parentNode.parentNode;
 
-  if (message === "success") {
-    alertMessage = "Message successfully sent!";
-    css = "success-message";
+  if (message === 'success') {
+    alertMessage = 'Message successfully sent!';
+    css = 'success-message';
   } else {
     alertMessage =
-      "There was an issue sending your message. \nA notification has been sent to Badgerloop.";
-    css = "failure-message";
+      'There was an issue sending your message. \nA notification has been sent to Badgerloop.';
+    css = 'failure-message';
   }
 
-  let newNode = document.createElement("div");
-  newNode.setAttribute("class", "alert " + css);
+  let newNode = document.createElement('div');
+  newNode.setAttribute('class', 'alert ' + css);
   newNode.innerHTML =
     "<div class='status-content'>" +
     alertMessage +

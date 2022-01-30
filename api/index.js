@@ -1,101 +1,101 @@
-let http = require("http");
-let https = require("https");
-let url = require("url");
-let MongoClient = require("mongodb").MongoClient;
-let creds = require("./creds.json");
+let http = require('http');
+let https = require('https');
+let url = require('url');
+let MongoClient = require('mongodb').MongoClient;
+let creds = require('./creds.json');
 
 http
   .createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
-    if (pathName === "/teamleads" && request.method === "GET") {
+    if (pathName === '/teamleads' && request.method === 'GET') {
       getTeamleads()
-        .then((result) => {
-          return formatData(result, "Team");
+        .then(result => {
+          return formatData(result, 'Team');
         })
-        .then((result) => {
+        .then(result => {
           response.end(JSON.stringify(result));
         })
-        .catch((err) => {
+        .catch(err => {
           //TODO: do something with error
-          response.end("ERROR");
+          response.end('ERROR');
         });
     }
 
-    if (pathName === "/sponsors" && request.method === "GET") {
+    if (pathName === '/sponsors' && request.method === 'GET') {
       getSponsors()
-        .then((result) => {
-          return formatData(result, "tier");
+        .then(result => {
+          return formatData(result, 'tier');
         })
-        .then((result) => {
+        .then(result => {
           response.end(JSON.stringify(result));
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     }
 
-    if (pathName === "/news" && request.method === "GET") {
+    if (pathName === '/news' && request.method === 'GET') {
       getNewsPosts()
-        .then((result) => {
+        .then(result => {
           return formatData(result);
         })
-        .then((result) => {
+        .then(result => {
           response.end(JSON.stringify(result));
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     }
 
-    if (pathName === "/index" && request.method === "GET") {
+    if (pathName === '/index' && request.method === 'GET') {
       getSponsors()
-        .then((result) => {
-          return formatData(result, "tier");
+        .then(result => {
+          return formatData(result, 'tier');
         })
-        .then((result) => {
+        .then(result => {
           response.end(JSON.stringify(result));
         })
-        .catch((err) => {
+        .catch(err => {
           console.log(err);
         });
     }
 
-    if (pathName === "/contact" && request.method === "POST") {
-      var postData = "";
+    if (pathName === '/contact' && request.method === 'POST') {
+      var postData = '';
 
-      request.on("data", function (data) {
+      request.on('data', function (data) {
         postData += data;
       });
 
-      request.on("end", function () {
+      request.on('end', function () {
         let message = {
           text: JSON.parse(postData),
         };
 
         let options = {
-          hostname: "hooks.slack.com",
+          hostname: 'hooks.slack.com',
           path: creds.slackWebhook,
-          method: "POST",
+          method: 'POST',
           headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
           },
         };
 
-        let req = https.request(options, (res) => {
-          let slackResponse = "";
+        let req = https.request(options, res => {
+          let slackResponse = '';
 
-          res.on("data", (chunk) => {
+          res.on('data', chunk => {
             slackResponse += chunk;
           });
 
-          res.on("end", () => {
+          res.on('end', () => {
             response.statusCode = 200;
             response.end(slackResponse);
           });
         });
 
-        req.on("error", (e) => {
+        req.on('error', e => {
           response.statusCode = e.statusCode;
           response.end(e.message);
         });
@@ -112,14 +112,14 @@ function getTeamleads() {
   return new Promise((resolve, reject) => {
     let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
 
-    client.connect((err) => {
+    client.connect(err => {
       if (err) reject(err);
 
       let db = client.db(creds.db);
-      let collection = db.collection("teamleads");
+      let collection = db.collection('teamleads');
 
       let options = {
-        sort: "Position",
+        sort: 'Position',
       };
 
       collection.find({}, options).toArray((err, docs) => {
@@ -135,14 +135,14 @@ function getSponsors() {
   return new Promise((resolve, reject) => {
     let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
 
-    client.connect((err) => {
+    client.connect(err => {
       if (err) reject(err);
 
       let db = client.db(creds.db);
-      let collection = db.collection("sponsors");
+      let collection = db.collection('sponsors');
 
       let options = {
-        sort: "company",
+        sort: 'company',
       };
 
       collection.find({}, options).toArray((err, docs) => {
@@ -158,11 +158,11 @@ function getNewsPosts() {
   return new Promise((resolve, reject) => {
     let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
 
-    client.connect((err) => {
+    client.connect(err => {
       if (err) reject(err);
 
       let db = client.db(creds.db);
-      let collection = db.collection("news");
+      let collection = db.collection('news');
 
       collection.find({}).toArray((err, docs) => {
         if (err) reject(err);

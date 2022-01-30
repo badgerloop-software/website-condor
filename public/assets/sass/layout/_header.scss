@@ -6,7 +6,7 @@
 
 /* Header */
 
-@include keyframes("reveal-header") {
+@include keyframes('reveal-header') {
   0% {
     top: -4em;
     opacity: 0;
@@ -20,7 +20,7 @@
 body {
   padding-top: _size(header, default);
 
-  @include breakpoint("<=small") {
+  @include breakpoint('<=small') {
     padding-top: _size(header, small);
   }
 }
@@ -93,7 +93,7 @@ body {
 
         &.current {
           &:after {
-            content: "";
+            content: '';
             display: block;
             position: absolute;
             bottom: 0;
@@ -131,10 +131,10 @@ body {
           margin-left: 0;
 
           &:before {
-            @include vendor("transform", "rotate(45deg)");
+            @include vendor('transform', 'rotate(45deg)');
             background-color: _palette(bg);
             box-shadow: -2px -2px 3px -1px rgba(0, 0, 0, 0.1);
-            content: "";
+            content: '';
             position: absolute;
             top: -0.375rem;
             right: 2rem;
@@ -174,11 +174,11 @@ body {
   }
 
   &.reveal {
-    @include vendor("animation", "reveal-header 0.5s ease");
+    @include vendor('animation', 'reveal-header 0.5s ease');
   }
 
   &.alt {
-    @include vendor("animation", "none");
+    @include vendor('animation', 'none');
     box-shadow: none;
     background-color: transparent;
     position: absolute;
@@ -201,12 +201,12 @@ body {
 
   > .navPanelToggle {
     @include vendor(
-      "transition",
+      'transition',
       (
-        "background-color #{_duration(transition)} ease-in-out",
-        "color #{_duration(transition)} ease-in-out",
-        "top #{_duration(transition)} ease-in-out",
-        "right #{_duration(transition)} ease-in-out"
+        'background-color #{_duration(transition)} ease-in-out',
+        'color #{_duration(transition)} ease-in-out',
+        'top #{_duration(transition)} ease-in-out',
+        'right #{_duration(transition)} ease-in-out'
       )
     );
     @include icon;
@@ -220,13 +220,13 @@ body {
     outline: 0;
 
     &:before {
-      content: "\f0c9";
+      content: '\f0c9';
       margin: 0 0 0 0.625rem;
       float: right;
     }
   }
 
-  @include breakpoint("<=medium") {
+  @include breakpoint('<=medium') {
     > nav {
       display: none;
     }
@@ -236,7 +236,7 @@ body {
     }
   }
 
-  @include breakpoint("<=small") {
+  @include breakpoint('<=small') {
     height: _size(header, small);
     line-height: _size(header, small);
 
@@ -249,7 +249,7 @@ body {
     }
   }
 
-  @include breakpoint("<=xsmall") {
+  @include breakpoint('<=xsmall') {
     &.alt {
       > .logo {
         top: 0;

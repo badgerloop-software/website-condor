@@ -25,12 +25,12 @@
 /// @param {bool} $important If true, adds !important.
 @mixin padding($tb, $lr, $pad: (0, 0, 0, 0), $important: null) {
   @if $important {
-    $important: "!important";
+    $important: '!important';
   }
 
   $x: 0.1em;
 
-  @if unit(_size(element-margin)) == "rem" {
+  @if unit(_size(element-margin)) == 'rem' {
     $x: 0.1rem;
   }
 
@@ -43,14 +43,14 @@
 /// @return {string} Encoded SVG data URL.
 @function svg-url($svg) {
   $svg: str-replace($svg, '"', "'");
-  $svg: str-replace($svg, "%", "%25");
-  $svg: str-replace($svg, "<", "%3C");
-  $svg: str-replace($svg, ">", "%3E");
-  $svg: str-replace($svg, "&", "%26");
-  $svg: str-replace($svg, "#", "%23");
-  $svg: str-replace($svg, "{", "%7B");
-  $svg: str-replace($svg, "}", "%7D");
-  $svg: str-replace($svg, ";", "%3B");
+  $svg: str-replace($svg, '%', '%25');
+  $svg: str-replace($svg, '<', '%3C');
+  $svg: str-replace($svg, '>', '%3E');
+  $svg: str-replace($svg, '&', '%26');
+  $svg: str-replace($svg, '#', '%23');
+  $svg: str-replace($svg, '{', '%7B');
+  $svg: str-replace($svg, '}', '%7D');
+  $svg: str-replace($svg, ';', '%3B');
 
-  @return url("data:image/svg+xml;charset=utf8,#{$svg}");
+  @return url('data:image/svg+xml;charset=utf8,#{$svg}');
 }

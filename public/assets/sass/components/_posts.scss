@@ -42,7 +42,7 @@
     }
   }
 
-  @include breakpoint("<=large") {
+  @include breakpoint('<=large') {
     $padding: _size(padding, large);
 
     @include fixed-grid(
@@ -62,7 +62,7 @@
     }
   }
 
-  @include breakpoint("<=medium") {
+  @include breakpoint('<=medium') {
     $padding: _size(padding, medium);
 
     @include fixed-grid(
@@ -77,7 +77,7 @@
     text-align: center;
 
     ul.actions {
-      @include vendor("justify-content", "center");
+      @include vendor('justify-content', 'center');
       width: 100%;
       margin-left: 0;
 
@@ -108,7 +108,7 @@
     }
   }
 
-  @include breakpoint("<=small") {
+  @include breakpoint('<=small') {
     $padding: _size(padding, small);
 
     @include fixed-grid(

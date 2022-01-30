@@ -12,7 +12,7 @@
     }
   };
 
-  xhttp.open("GET", "/api/teamleads");
+  xhttp.open('GET', '/api/teamleads');
   xhttp.send();
 })();
 
@@ -20,13 +20,13 @@
     info: Array of objects holding each team leads information
 */
 function teamLeadCardDriver(info) {
-  let section = document.createElement("section");
-  section.setAttribute("class", "main alt");
-  let container = document.createElement("div");
-  container.setAttribute("class", "flex-container");
-  let tlContainer = document.createElement("div");
-  tlContainer.setAttribute("class", "team-lead-container");
-  let teams = ["Administrative", "Electrical", "Mechanical", "Operations"]; // an array containg the teams in correct order to sort for now
+  let section = document.createElement('section');
+  section.setAttribute('class', 'main alt');
+  let container = document.createElement('div');
+  container.setAttribute('class', 'flex-container');
+  let tlContainer = document.createElement('div');
+  tlContainer.setAttribute('class', 'team-lead-container');
+  let teams = ['Administrative', 'Electrical', 'Mechanical', 'Operations']; // an array containg the teams in correct order to sort for now
   for (let y = 0; y < teams.length; y++) {
     // loops through the correctly ordered teams array
     for (let team in info) {
@@ -34,8 +34,8 @@ function teamLeadCardDriver(info) {
         // if the currently selected JSON team = the teams in the array, continue (to check order)
         tlContainer.appendChild(createTeamTitle(team));
 
-        let teamContainer = document.createElement("div");
-        teamContainer.setAttribute("class", "team-container");
+        let teamContainer = document.createElement('div');
+        teamContainer.setAttribute('class', 'team-container');
         for (let x of info[team]) {
           teamContainer.appendChild(createTeamLeadCard(x));
         }
@@ -50,14 +50,14 @@ function teamLeadCardDriver(info) {
   container.appendChild(tlContainer);
   section.appendChild(container);
   document
-    .getElementById("wrapper")
-    .insertBefore(section, document.getElementById("footer"));
+    .getElementById('wrapper')
+    .insertBefore(section, document.getElementById('footer'));
 }
 
 function createTeamLeadCard(obj) {
-  let div = document.createElement("div");
-  div.classList.add("team-lead-card");
-  div.setAttribute("id", obj._id);
+  let div = document.createElement('div');
+  div.classList.add('team-lead-card');
+  div.setAttribute('id', obj._id);
   let card = `
         <div class='team-lead-img'>
             <img src='/images/teamleads/${obj.Picture}'>
@@ -81,21 +81,21 @@ function createTeamLeadCard(obj) {
 }
 
 function createTeamTitle(team) {
-  let div = document.createElement("div");
-  div.setAttribute("class", "team-title");
-  let title = document.createElement("h2");
+  let div = document.createElement('div');
+  div.setAttribute('class', 'team-title');
+  let title = document.createElement('h2');
   title.innerText = team;
   div.appendChild(title);
   return div;
 }
 
 function executiveLeadDriver(info) {
-  let electricalLead = document.getElementById("electricalLead");
-  electricalLead.innerHTML = info.Administrative[0]["Name"];
+  let electricalLead = document.getElementById('electricalLead');
+  electricalLead.innerHTML = info.Administrative[0]['Name'];
 
-  let mechanicalLead = document.getElementById("mechanicalLead");
-  mechanicalLead.innerHTML = info.Administrative[1]["Name"];
+  let mechanicalLead = document.getElementById('mechanicalLead');
+  mechanicalLead.innerHTML = info.Administrative[1]['Name'];
 
-  let operationsLead = document.getElementById("operationsLead");
-  operationsLead.innerHTML = info.Administrative[2]["Name"];
+  let operationsLead = document.getElementById('operationsLead');
+  operationsLead.innerHTML = info.Administrative[2]['Name'];
 }

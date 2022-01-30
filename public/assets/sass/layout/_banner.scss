@@ -13,9 +13,9 @@
   cursor: default;
 
   &:after {
-    @include vendor("transition", "opacity 3s ease-in-out");
-    @include vendor("transition-delay", "0.5s");
-    content: "";
+    @include vendor('transition', 'opacity 3s ease-in-out');
+    @include vendor('transition-delay', '0.5s');
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -26,8 +26,8 @@
   }
 
   video {
-    @include vendor("object-fit", "cover");
-    @include vendor("object-position", "center");
+    @include vendor('object-fit', 'cover');
+    @include vendor('object-position', 'center');
     position: fixed;
     top: 0;
     left: 0;
@@ -55,8 +55,8 @@
 
     &.primary {
       @include vendor(
-        "transition",
-        ("transform 0.75s ease-out", "opacity 1.25s ease")
+        'transition',
+        ('transform 0.75s ease-out', 'opacity 1.25s ease')
       );
     }
 
@@ -67,7 +67,7 @@
   }
 
   .features {
-    @include vendor("display", "flex");
+    @include vendor('display', 'flex');
 
     > section {
       padding: 0 2rem;
@@ -85,13 +85,13 @@
 
     .content {
       &.primary {
-        @include vendor("transform", "translateY(0.5rem)");
+        @include vendor('transform', 'translateY(0.5rem)');
         opacity: 0;
       }
     }
   }
 
-  @include breakpoint("<=large") {
+  @include breakpoint('<=large') {
     $padding: _size(padding, large);
 
     .content {
@@ -107,7 +107,7 @@
     }
   }
 
-  @include breakpoint("<=medium") {
+  @include breakpoint('<=medium') {
     $padding: _size(padding, medium);
 
     .content {
@@ -129,7 +129,7 @@
     }
   }
 
-  @include breakpoint("<=small") {
+  @include breakpoint('<=small') {
     $padding: _size(padding, small);
 
     .content {
@@ -151,7 +151,7 @@
     }
   }
 
-  @include breakpoint("<=xsmall") {
+  @include breakpoint('<=xsmall') {
     $padding: _size(padding, small);
 
     .content {
