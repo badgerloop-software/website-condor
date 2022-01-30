@@ -1,0 +1,25 @@
+{
+    "name": "website-condor",
+    "version": "1.0.0",
+    "description": "The third revision of the Badgerloop website! The official page for UW-Madison's hyperloop competition team.",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/badgerloop-software/website-condor.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/badgerloop-software/website-condor/issues"
+    },
+    "homepage": "https://github.com/badgerloop-software/website-condor#readme",
+    "husky": {
+        "hooks": {
+            "pre-commit": "pretty-quick --staged"
+        }
+    }
+}
