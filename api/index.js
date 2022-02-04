@@ -8,50 +8,10 @@ http
   .createServer((request, response) => {
     let pathName = url.parse(request.url).pathname;
 
-    if (pathName === '/teamleads' && request.method === 'GET') {
-      getTeamleads()
-        .then(result => {
-          return formatData(result, 'Team');
-        })
-        .then(result => {
-          response.end(JSON.stringify(result));
-        })
-        .catch(err => {
-          //TODO: do something with error
-          response.end('ERROR');
-        });
-    }
-
-    if (pathName === '/sponsors' && request.method === 'GET') {
-      getSponsors()
-        .then(result => {
-          return formatData(result, 'tier');
-        })
-        .then(result => {
-          response.end(JSON.stringify(result));
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-
     if (pathName === '/news' && request.method === 'GET') {
       getNewsPosts()
         .then(result => {
           return formatData(result);
-        })
-        .then(result => {
-          response.end(JSON.stringify(result));
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    }
-
-    if (pathName === '/index' && request.method === 'GET') {
-      getSponsors()
-        .then(result => {
-          return formatData(result, 'tier');
         })
         .then(result => {
           response.end(JSON.stringify(result));
@@ -107,52 +67,6 @@ http
     }
   })
   .listen(creds.port);
-
-function getTeamleads() {
-  return new Promise((resolve, reject) => {
-    let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
-
-    client.connect(err => {
-      if (err) reject(err);
-
-      let db = client.db(creds.db);
-      let collection = db.collection('teamleads');
-
-      let options = {
-        sort: 'Position',
-      };
-
-      collection.find({}, options).toArray((err, docs) => {
-        if (err) reject(err);
-
-        resolve(docs);
-      });
-    });
-  });
-}
-
-function getSponsors() {
-  return new Promise((resolve, reject) => {
-    let client = new MongoClient(creds.dbURL, { useNewUrlParser: true });
-
-    client.connect(err => {
-      if (err) reject(err);
-
-      let db = client.db(creds.db);
-      let collection = db.collection('sponsors');
-
-      let options = {
-        sort: 'company',
-      };
-
-      collection.find({}, options).toArray((err, docs) => {
-        if (err) reject(err);
-
-        resolve(docs);
-      });
-    });
-  });
-}
 
 function getNewsPosts() {
   return new Promise((resolve, reject) => {
