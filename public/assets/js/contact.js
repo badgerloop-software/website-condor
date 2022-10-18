@@ -231,7 +231,7 @@ function checkChange(group) {
  */
 function sendForm(submission) {
   let xhttp = new XMLHttpRequest();
-
+  console.log(xhttp.status);
   xhttp.onreadystatechange = function () {
     if (xhttp.readyState === 4 && xhttp.status === 200) {
       //posting message was successful
