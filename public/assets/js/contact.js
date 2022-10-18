@@ -240,7 +240,6 @@ function sendForm(submission) {
     } else if (xhttp.readyState === 4 && xhttp.status !== 200) {
       //posting message was unsuccessful
       //TODO: catch errors from Slack and from our API - set up email
-      console.log(xhttp.status);
       displayStatusMessage('error');
       clearForm();
     }
@@ -329,22 +328,22 @@ function getStudentTeams() {
     });
 
     for (let x of items) {
-        switch (x.title.toLowerCase()) {
+        switch (x.title.toLowerCase()) { 
             case "first-name":
                 data['First Name'] = x.value.trim();
                 break;
             case "last-name":
                 data['Last Name'] = x.value.trim();
                 break;
-            case "major":
+            case "major": 
                 data['Prospective Major(s)'] = x.value.trim();
                 break;
-            case "email":
+            case "email": 
                 data["Email address"] = x.value.trim();
                 break;
-            default:
+            default: 
                 break;
-        }
+        }    
     }
 
     let subTeams = document.querySelectorAll('.required-check');
@@ -358,10 +357,10 @@ function getStudentTeams() {
                 case "mechanical-check":
                     data["I am interested in the following Sub-team(s):"].push("Mechanical Teams (Analysis, Braking, Fabrication, Propulsion, Stability, Structural, Testing/Safety)");
                     break;
-                case "operations-check":
+                case "operations-check": 
                     data["I am interested in the following Sub-team(s):"].push("Operations Teams (Communications, Feasibility, Finance/Supply Chain, Industry Relations, Outreach & Recruiting, Virtual Reality, Website)");
                     break;
-                default:
+                default: 
                     break;
             }
         }
