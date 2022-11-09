@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Contact</title>
+    <title>Error</title>
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -24,57 +24,6 @@
       property="og:description"
       content="Badgerloop is a student organization at the University of Wisconsin-Madison that competes in the American Solar Challenge"
     />
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
-    ></script>
-    <script type="text/javascript">
-      (function () {
-        // https://dashboard.emailjs.com/admin/account
-        emailjs.init('O4T1w9CFEwMMAd-GL');
-      })();
-    </script>
-    <script type="text/javascript">
-      getCategory = function (children) {
-        for (child of children) {
-          if (child.selected === true) return child.innerText;
-        }
-        return '...';
-      };
-
-      sendMail = function (event) {
-        selectedCategory = getCategory(
-          document.getElementById('category_input').children,
-        );
-        console.log(child);
-        if (
-          document.getElementById('name_input').value === '' ||
-          document.getElementById('email_input').value === '' ||
-          document.getElementById('message_input').value === '' ||
-          selectedCategory === '...'
-        ) {
-          location.href = 'contact-error.html';
-        } else {
-          emailjs
-            .send('contact', 'contact-form', {
-              user_name: document.getElementById('name_input').value,
-              user_email: document.getElementById('email_input').value,
-              message: document.getElementById('message_input').value,
-              contact_category: selectedCategory,
-            })
-            .then(
-              function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-                location.reload();
-              },
-              function (error) {
-                location.href = 'contact-error.html';
-              },
-            );
-        }
-      };
-    </script>
   </head>
 
   <body class="is-preload">
@@ -116,72 +65,30 @@
       <!-- Section -->
       <section id="one" class="main alt">
         <header class="accent1">
-          <h1>Contact</h1>
-          <p>
-            Send us a message with comments, questions or feedback you have!
-          </p>
+          <h1>Error</h1>
         </header>
         <div class="inner alt">
           <div class="content">
-            <form id="contact-form">
-              <input type="hidden" name="contact_number" />
-              <div class="form-item">
-                <div>Full Name:*</div>
-                <input
-                  type="text"
-                  class="form-check"
-                  name="user_name"
-                  title="first-name"
-                  placeholder="Name"
-                  id="name_input"
-                />
-              </div>
-              <div class="form-item">
-                <div>Email:*</div>
-                <input
-                  type="email"
-                  name="user_email"
-                  class="form-check"
-                  title="Email"
-                  placeholder="Email"
-                  id="email_input"
-                />
-                <span class="email-error" aria-live="polite"></span>
-              </div>
-              <!-- Break -->
-              <div class="form-item">
-                <div>Reason For Contacting:*</div>
-                <select
-                  name="contact_category"
-                  class="form-check"
-                  title="Reason for Contacting"
-                  id="category_input"
-                  id="contact_category"
-                >
-                  <option value="" disabled selected>...</option>
-                  <option>Student Inquiry</option>
-                  <option>Sponsorship Inquiry</option>
-                  <option>Media Inquiry</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <!-- Break -->
-              <div class="form-item">
-                <div class="form-label">Message:*</div>
-                <textarea
-                  name="message"
-                  placeholder="Enter your message"
-                  rows="6"
-                  class="form-check"
-                  title="Message"
-                  id="message_input"
-                ></textarea>
-              </div>
-              <!-- Break -->
-            </form>
-            <button onclick="sendMail(event)" class="send-button form-item">
-              Send
-            </button>
+            <h3>Contact Error</h3>
+            <h2>Sorry, we couldn't send your message.</h2>
+            <p>
+              Please make sure all fields were filled out, or reach out directly
+              at
+              <a class="error-mail" href="mailto:badgerloop@gmail.com"
+                >badgerloop@gmail.com</a
+              >
+              if this error keeps occuring.
+            </p>
+            <ul>
+              <li>
+                If you'd like to try again,
+                <a class="link-bold" href="contact.html">click here.</a>
+              </li>
+              <li>
+                If you'd like to return home,
+                <a class="link-bold" href="index.html">click here.</a>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -190,7 +97,7 @@
       <footer id="footer">
         <div class="inner">
           <section>
-            <h3>Follow Us!</h3>
+            <h3>Follow us!</h3>
             <p>
               Check out our social media and give us a follow to stay up to date
               with all things Badgerloop!
@@ -238,10 +145,8 @@
             <h3>Contact/Donate</h3>
             <p>
               Feel free to send us a message or if you feel like supporting our
-              team and the creation of the solar car, a donation would be
-              amazing!
+              team and the creation of the pod, a donation would be amazing!
             </p>
-
             <p></p>
             <ul class="actions">
               <li><a href="contact.html" class="button primary">Contact</a></li>
@@ -254,16 +159,16 @@
               </li>
               <li>
                 <a
-                  href="https://teams.microsoft.com/l/team/19%3a9ee5ce3c7bc4487eae86f3548584efba%40thread.tacv2/conversations?groupId=6a03ad30-c770-4955-b28f-763caa75c448&tenantId=2ca68321-0eda-4908-88b2-424a8cb4b0f9"
+                  href="https://apps.badgerloop.org/slack/auth"
                   class="button primary"
-                  >Join Teams</a
+                  >Sign in with Slack</a
                 >
               </li>
             </ul>
           </section>
         </div>
         <div class="copyright">
-          <p>&copy; Badgerloop 2022</p>
+          <p>&copy; Badgerloop 2021</p>
         </div>
       </footer>
     </div>
@@ -278,6 +183,5 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/contact.js"></script>
   </body>
 </html>
