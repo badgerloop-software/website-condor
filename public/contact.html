@@ -24,6 +24,61 @@
       property="og:description"
       content="Badgerloop is a student organization at the University of Wisconsin-Madison that competes in the American Solar Challenge"
     />
+
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+    <script type="text/javascript">
+      (function () {
+        // https://dashboard.emailjs.com/admin/account
+        emailjs.init('O4T1w9CFEwMMAd-GL');
+      })();
+    </script>
+    <script type="text/javascript">
+      getCategory = function (children) {
+        for (child of children) {
+          if (child.selected === true) return child.innerText;
+        }
+        return '...';
+      };
+
+      function delay(time) {
+        return new Promise(resolve => setTimeout(resolve, time));
+      }
+
+      sendMail = function (event) {
+        selectedCategory = getCategory(
+          document.getElementById('category_input').children,
+        );
+        console.log(child);
+        if (
+          document.getElementById('name_input').value === '' ||
+          document.getElementById('email_input').value === '' ||
+          document.getElementById('message_input').value === '' ||
+          selectedCategory === '...'
+        ) {
+          location.href = 'contact-error.html';
+        } else {
+          emailjs
+            .send('contact', 'contact-form', {
+              user_name: document.getElementById('name_input').value,
+              user_email: document.getElementById('email_input').value,
+              message: document.getElementById('message_input').value,
+              contact_category: selectedCategory,
+            })
+            .then(
+              function (response) {
+                console.log('SUCCESS!', response.status, response.text);
+                location.reload();
+              },
+              function (error) {
+                location.href = 'contact-error.html';
+              },
+            );
+        }
+      };
+    </script>
   </head>
 
   <body class="is-preload">
@@ -71,50 +126,69 @@
           </p>
         </header>
         <div class="inner alt">
-							<div class="content">
-								<div class="row gtr-uniform" id="contact-form">
-									<div class="col-6 col-12-xsmall">
-										<div class="form-label">First Name:*</div>
-										<input type="text" class="form-check" id="first-name" title="first-name" placeholder="Name" />
-									</div>
-									<div class="col-6 col-12-xsmall">
-										<div class="form-label">Last Name:*</div>
-										<input type="text" class="form-check" id="last-name" title="last-name" placeholder="Name" />
-									</div>
-									<div class="col-12 col-12-xsmall">
-										<div class="form-label">Email:*</div>
-										<input type="email" class="form-check" title="Email" placeholder="Email" />
-										<span class="email-error" aria-live="polite"></span>
-									</div>
-									<!-- Break -->
-									<div class="col-12">
-										<div class="form-label">Reason For Contacting:*</div>
-										<select name="demo-category" id="contact-category" class="form-check" title="Reason for Contacting">
-											<option value="" disabled selected>...</option>
-											<option>Student Inquiry</option>
-											<option>Sponsorship Inquiry</option>
-											<option>Media Inquiry</option>
-											<option>Other</option>
-										</select>
-									</div>
-									<!-- Break -->
-									<div class="col-12">
-										<div class="form-label">Message:*</div>
-										<textarea name="form-message" placeholder="Enter your message" rows="6" class="form-check" title="Message"></textarea>
-									</div>
-									<!-- Break -->
-									<div class="col-12">
-										<div class="form-label">* Required Field</div>
-									</div>
-									<div class="col-12">
-										<ul class="actions">
-											<li class="form-li"><input id="form-submit" class="form-button primary" type="submit" value="Submit" /></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</section>
+          <div class="content">
+            <form id="contact-form">
+              <input type="hidden" name="contact_number" />
+              <div class="form-item">
+                <div>Full Name:*</div>
+                <input
+                  type="text"
+                  class="form-check"
+                  name="user_name"
+                  title="first-name"
+                  placeholder="Name"
+                  id="name_input"
+                />
+              </div>
+              <div class="form-item">
+                <div>Email:*</div>
+                <input
+                  type="email"
+                  name="user_email"
+                  class="form-check"
+                  title="Email"
+                  placeholder="Email"
+                  id="email_input"
+                />
+                <span class="email-error" aria-live="polite"></span>
+              </div>
+              <!-- Break -->
+              <div class="form-item">
+                <div>Reason For Contacting:*</div>
+                <select
+                  name="contact_category"
+                  class="form-check"
+                  title="Reason for Contacting"
+                  id="category_input"
+                  id="contact_category"
+                >
+                  <option value="" disabled selected>...</option>
+                  <option>Student Inquiry</option>
+                  <option>Sponsorship Inquiry</option>
+                  <option>Media Inquiry</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <!-- Break -->
+              <div class="form-item">
+                <div class="form-label">Message:*</div>
+                <textarea
+                  name="message"
+                  placeholder="Enter your message"
+                  rows="6"
+                  class="form-check"
+                  title="Message"
+                  id="message_input"
+                ></textarea>
+              </div>
+              <!-- Break -->
+            </form>
+            <button onclick="sendMail(event)" class="send-button form-item">
+              Send
+            </button>
+          </div>
+        </div>
+      </section>
 
       <!-- Footer -->
       <footer id="footer">

@@ -5733,3 +5733,17 @@ body.is-touch .tiles article .content {
 .error-email:hover {
   color: grey !important;
 }
+
+#contact-form {
+  margin: 0;
+  width: 100%;
+}
+
+.send-button {
+  margin-left: 40% !important;
+  width: 20%;
+}
+
+.form-item {
+  margin: 10px 0 10px;
+}
