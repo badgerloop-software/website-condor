@@ -43,10 +43,6 @@
         return '...';
       };
 
-      function delay(time) {
-        return new Promise(resolve => setTimeout(resolve, time));
-      }
-
       sendMail = function (event) {
         selectedCategory = getCategory(
           document.getElementById('category_input').children,
