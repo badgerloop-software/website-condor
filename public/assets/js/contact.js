@@ -42,6 +42,9 @@ function dynamicForm() {
     case 'media inquiry':
       mediaForm();
       break;
+    default:
+      console.log('Unknown Category');
+      break;
   }
 }
 /**
