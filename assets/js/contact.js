@@ -3,10 +3,8 @@
  * Sets event listeners for the form
  */
 (function () {
-  document
-    .getElementById('contact-category')
-    .addEventListener('change', formChange);
-  document.getElementById('form-submit').addEventListener('click', formSubmit);
+  //document.getElementById("contact-category").addEventListener("change", formChange);
+  //document.getElementById("form-submit").addEventListener("click", formSubmit);
 })();
 /**
  * Removes additional form and checks for which new type of form was selected. Used
@@ -43,6 +41,9 @@ function dynamicForm() {
       break;
     case 'media inquiry':
       mediaForm();
+      break;
+    default:
+      console.log('Unknown Category');
       break;
   }
 }

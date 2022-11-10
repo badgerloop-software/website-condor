@@ -5709,3 +5709,41 @@ body.is-touch .tiles article .content {
 #insert {
   width: 100%;
 }
+
+.error-banner {
+  background-color: #eda1a6;
+  color: #591b1f;
+  border-color: #591b1f;
+  border-radius: 1rem;
+  padding: 2rem 0 2rem 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.link-bold {
+  font-weight: bolder;
+}
+
+.error-email {
+  color: white !important;
+}
+
+.error-email:hover {
+  color: grey !important;
+}
+
+#contact-form {
+  margin: 0;
+  width: 100%;
+}
+
+.send-button {
+  margin-left: 40% !important;
+  width: 20%;
+}
+
+.form-item {
+  margin: 10px 0 10px;
+}
