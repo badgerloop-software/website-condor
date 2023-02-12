@@ -16,6 +16,8 @@
 .team-lead-card img {
   width: 100%;
   border-radius: 10px 10px 0px 0px;
+  height: 240px;
+  object-fit: cover;
 }
 .team-lead-name {
   font-weight: 600;
@@ -23,11 +25,6 @@
 }
 .team-lead-text {
   margin-bottom: 0.5em;
-}
-.team-lead-moment {
-  font-weight: 400;
-  font-size: 13px;
-  padding: 5px;
 }
 .flex-container {
   display: flex;
