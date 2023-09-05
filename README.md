@@ -1,6 +1,6 @@
-# Badgerloop Website- Condor ![GitHub Logo](https://raw.githubusercontent.com/badgerloop-software/pod-dashboard/master/src/public/images/icon.png)
+# Badger Solar Racing Website- Condor
 
-The third revision of the Badgerloop website! The official page for UW-Madison's hyperloop competition team.
+The first revision of the Badger Solar Racing website! The official page for UW-Madison's American Solar Challenge team.
 
 _Contributors: Luke Houge, Liam Mahoney_
 
@@ -8,7 +8,7 @@ _Contributors: Luke Houge, Liam Mahoney_
 
 For details on contributing to the site, check out [CONTIRBUTING.md](https://github.com/badgerloop-software/website-condor/blob/master/CONTRIBUTING.md)
 
-## Testing &nbsp; [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://status.badgerloop.org) [![Actions Status](https://github.com/badgerloop-software/website-condor/workflows/Node_CI/badge.svg)](https://github.com/badgerloop-software/website-condor/actions)
+## Testing &nbsp; [![Uptime Robot status](https://img.shields.io/uptimerobot/status/m779426128-6b6e81ed8dc987db17d4cad2.svg)](https://status.badgersolarracing.org) [![Actions Status](https://github.com/badgerloop-software/website-condor/workflows/Node_CI/badge.svg)](https://github.com/badgerloop-software/website-condor/actions)
 
 https://github.com/badgerloop-software/website-condor/actions
 
