@@ -1,7 +1,7 @@
 {
   "name": "website-condor",
   "version": "1.0.0",
-  "description": "The third revision of the Badgerloop website! The official page for UW-Madison's hyperloop competition team.",
+  "description": "The first revision of the Badger Solar Racing website! The official page for UW-Madison's American Solar Challenge team.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
