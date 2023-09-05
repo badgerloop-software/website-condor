@@ -11,6 +11,6 @@ function testRequest() {
     }
   };
 
-  req.open('GET', 'https://badgerloop.org/api/' + url); //TODO: need full link to server API when implemented.
+  req.open('GET', 'https://badgersolarracing.org/api/' + url); //TODO: need full link to server API when implemented.
   req.send();
 }

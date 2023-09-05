@@ -1,7 +1,7 @@
 When contributing to this repository, please first discuss the proposed changes with Luke. After the changes have been discussed, create a branch specifically for your feature using `git checkout -b [branch name]`.
 Develop on the branch you created until your feature is complete.
 
-# Badgerloop Website Development
+# Badger Solar Racing Website Development
 
 ### Non-Git (Just want to learn / play around)
 

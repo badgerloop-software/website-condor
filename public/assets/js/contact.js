@@ -405,7 +405,7 @@ function displayStatusMessage(message) {
     css = 'success-message';
   } else {
     alertMessage =
-      'There was an issue sending your message. \nA notification has been sent to Badgerloop.';
+      'There was an issue sending your message. \nA notification has been sent to Badger Solar Racing.';
     css = 'failure-message';
   }
 
