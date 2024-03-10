@@ -454,6 +454,13 @@ input:focus:invalid {
   justify-content: center;
   align-items: center;
 }
+.announcement-header h2 {
+  padding: 0 10vw;
+  color: #333;
+  font-family: venera, sans-serif;
+  font-size: 60px;
+  margin-top: -350px;
+}
 .announcement-header a {
   width: 50%;
   margin-top: 5rem;
@@ -461,6 +468,13 @@ input:focus:invalid {
 .announcement-header header {
   font-size: 3rem;
   font-weight: 600;
+}
+.our-mission p {
+  font-size: 30px;
+  padding: 0 20vw 0 20vw;
+  vertical-align: bottom;
+  font-weight: bold;
+  font-style: italic
 }
 /* media page styling */
 #media-flex-box img {
