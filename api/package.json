@@ -11,7 +11,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "countup.js": "^2.0.4",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongodb": "^3.5.3",
     "mongoose": "^5.7.1"
   },
